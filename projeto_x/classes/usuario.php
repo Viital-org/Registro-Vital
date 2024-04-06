@@ -3,7 +3,6 @@
 // CLASSE ABSTRATA
 class User 
 {
-
     public int $id;
     protected string $nome;
     public $categoria;
@@ -13,10 +12,10 @@ class User
     protected string $senha;
     public string $email;
     protected string $telefone;
-    protected string $data_nasc;
+    protected string $dataNasc;
 
 
-    public function __construct(int $id, string $nome, string $categoria, string $cpf, string $genero, string $login, string $senha, string $email, string $telefone, string $data_nasc)
+    public function __construct(int $id, string $nome, string $categoria, string $cpf, string $genero, string $login, string $senha, string $email, string $telefone, string $dataNasc)
     {
         $this->id = $id;   
         $this->nome = $nome;
@@ -27,7 +26,7 @@ class User
         $this->senha = $senha;
         $this->email = $email;
         $this->telefone = $telefone;
-        $this->data_nasc = $data_nasc;
+        $this->data_nasc = $dataNasc;
     }
 
     public function cria_usuario()
@@ -40,8 +39,64 @@ class User
 
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    public function setNome(string $nome)
+    {
+        $this->nome = $nome;    
+    }
+
+    public function setCategoria(string $categoria)
+    {
+        $this->categoria = $categoria;
+    }
+
+    public function setCpf(string $cpf)
+    {
+        $this->cpf = $cpf;
+    }
+
+    public function setgenero(string $genero)
+    {
+        $this->genero = $genero;
+    }
+
+    public function setLogin(string $login)
+    {
+        $this->login = $login;
+    }
+
+    public function setsenha(string $senha)
+    {
+        $this->senha = $senha;
+    }
+
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
+
+    public function setTelefone(string $telefone)
+    {
+        $this->telefone = $telefone;
+    }
+
+    public function setDataNasc(string $dataNasc)
+    {
+        $this->dataNasc = $dataNasc;
+    }
+
 }
 
+echo"";
 
 // PACIENTE
 class Paciente extends User 
