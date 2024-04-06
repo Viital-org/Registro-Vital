@@ -96,8 +96,6 @@ class User
 
 }
 
-echo"";
-
 // PACIENTE
 class Paciente extends User 
 {
