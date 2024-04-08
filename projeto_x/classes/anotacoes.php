@@ -1,56 +1,33 @@
 <?php
 
 namespace projeto_x\classes;
-class AgendamentoConsulta
+class Anotacao
 {
     public int $id;
-    public string $data;
-    public string $status;
-    public string $nome_profissional;
-    public string $especialidade;
-    public string $profissional;
-    public string $paciente;
-    public float $valor_consulta;
+    public int $id_usuario;
+    public string $data_anotacao;
+    public string $titulo;
+    public string $anotacao;
+    public string $tipo_anotacao;
+    public bool $visivel;
 
-    public function __construct(int $id, string $data, string $status, string $nome_profissional, string $especialidade, string $profissional, string $paciente, float $valor_consulta)
+    public function __construct(int $id, int $id_usuario, string $data_anotacao, string $titulo, string $anotacao, string $tipo_anotacao, bool $visivel)
     {
         $this->id = $id;
-        $this->data = $data;
-        $this->status = $status;
-        $this->nome_profissional = $nome_profissional;
-        $this->especialidade = $especialidade;
-        $this->profissional = $profissional;
-        $this->paciente = $paciente;
-        $this->valor_consuta = $valor_consulta;
+        $this->id_usuario = $id_usuario;
+        $this->data_anotacao = $data_anotacao;
+        $this->titulo = $titulo;
+        $this->anotacao = $anotacao;
+        $this->tipo_anotacao = $tipo_anotacao;
+        $this->visivel = $visivel;
     }
 
-    public function avalia_consuta()
+    public function deleta_anotacao()
     {
 
     }
 
-    public function conslui_consulta()
-    {
-
-    }
-}
-
-class agenda_de_consutas
-{
-    public int $id;
-    public int $id_profissional;
-    public string $data_agendamento;
-    public string $consuta_nome;
-
-    public function __construct(int $id, int $id_profissional, string $data_agendamento, string $consuta_nome)
-    {
-        $this->id = $id;
-        $this->id_profissional = $id_profissional;
-        $this->data_agendamento = $data_agendamento;
-        $this->consuta_nome = $consuta_nome;
-    }
-
-    public function exclui_consuta()
+    public function altera_visibilidade()
     {
 
     }
