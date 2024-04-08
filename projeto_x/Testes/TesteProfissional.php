@@ -1,7 +1,7 @@
 <?php
+use projeto_x\classes\ProfissionalSaude;
 require_once '..\classes\User.php';
 require_once '..\classes\Paciente.php';
-use projeto_x\classes\ProfissionalSaude;
 require_once '..\classes\ProfissionalSaude.php';
 
 /*
@@ -31,6 +31,7 @@ echo "Local de Formação: " . $profissional->getLocalFormacao() . "\n";
 echo "Data de Formação: " . $profissional->getDataFormacao() . "\n";
 echo "Descrição de Perfil: " . $profissional->getDescricaoPerfil() . "\n";
 */
+
 /*
 // Testando setter
 $profissional = new ProfissionalSaude(1, 'Dr. João', 'Profissional de Saúde', 'joao@example.com', '123.456.789-00', 'Masculino', 'joao123', 'senha123', '123456789', '1990-01-01', 'Cardiologia', 'Hospital Central', 'Universidade Federal', '2010-12-31', 'Profissional experiente na área de cardiologia.');

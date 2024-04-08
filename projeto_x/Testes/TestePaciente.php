@@ -1,7 +1,6 @@
 <?php
-
-require_once '..\classes\User.php';
 use projeto_x\classes\Paciente;
+require_once '..\classes\User.php';
 require_once '..\classes\Paciente.php';
 require_once '..\classes\ProfissionalSaude.php';
 
@@ -31,6 +30,7 @@ echo "CEP: " . $paciente->getCep() . "\n";
 echo "Doença Crônica: " . $paciente->getDoencaCronica() . "\n";
 echo "Remédio Regular: " . $paciente->getRemedioRegular() . "\n";
 */
+
 /*
 // Testando setter
 $paciente = new Paciente(1, 'Maria', 'Paciente', 'maria@example.com', '123.456.789-00', 'Feminino', 'maria123', 'senha123', '123456789', '1990-01-01', 'Rua do Paciente, 123', '12345-678', 'Hipertensão', 'Remédio X');

@@ -1,5 +1,4 @@
 <?php
-
 use projeto_x\classes\User;
 require_once '..\classes\User.php';
 require_once '..\classes\Paciente.php';
@@ -11,6 +10,7 @@ $user = new User(1, 'John Doe', 'categoria', '123.456.789-00', 'male', 'johndoe'
 echo "Testando o construtor:\n";
 var_dump($user);
 */
+
 /*
 // Testando getter
 $user = new User(1, 'John Doe', 'categoria', '123.456.789-00', 'male', 'johndoe', 'password', 'johndoe@example.com', '123456789', '1990-01-01');
@@ -26,6 +26,7 @@ echo "Email: " . $user->getEmail() . "\n";
 echo "Telefone: " . $user->getTelefone() . "\n";
 echo "Data de Nascimento: " . $user->getDataNasc() . "\n";
 */
+
 /*
 // Testando setter
 $user = new User(1, 'John Doe', 'categoria', '123.456.789-00', 'male', 'johndoe', 'password', 'johndoe@example.com', '123456789', '1990-01-01');
@@ -52,6 +53,7 @@ echo "Email após set: " . $user->getEmail() . "\n";
 echo "Telefone após set: " . $user->getTelefone() . "\n";
 echo "Data de Nascimento após set: " . $user->getDataNasc() . "\n";
 */
+
 /*
 // Teste criar Paciente
 $paciente = User::criarPaciente(
@@ -72,6 +74,7 @@ $paciente = User::criarPaciente(
 );
 var_dump($paciente);
 */
+
 /*
 $profissional = User::criarProfissionalSaude(
     2,
