@@ -9,9 +9,9 @@ class Paciente extends User
     protected string $doenca_cronica;
     protected string $remedio_regular;
 
-    public function __construct(int $id, string $nome, string $email, string $cpf, string $genero, string $login, string $senha, string $telefone, string $data_nasc, string $endereco, string $cep, string $doenca_cronica, string $remedio_regular)
+    public function __construct(int $id, string $nome, string $categoria,string $email, string $cpf, string $genero, string $login, string $senha, string $telefone, string $data_nasc, string $endereco, string $cep, string $doenca_cronica, string $remedio_regular)
     {
-        parent::__construct($id, $nome, $email, $cpf, $genero, $login, $senha, $telefone, $data_nasc);
+        parent::__construct($id, $nome, $categoria, $email, $cpf, $genero, $login, $senha, $telefone, $data_nasc);
         $this->endereco = $endereco;
         $this->cep = $cep;
         $this->doenca_cronica = $doenca_cronica;

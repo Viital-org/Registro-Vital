@@ -30,14 +30,14 @@ class User
         $this->data_nasc = $data_nasc;
     }
 
-    public static function criarPaciente(int $id, string $nome, string $email, string $cpf, string $genero, string $login, string $senha, string $telefone, string $data_nasc, string $endereco, string $cep, string $doenca_cronica, string $remedio_regular): Paciente
+    public static function criarPaciente(int $id, string $nome,string $categoria, string $email, string $cpf, string $genero, string $login, string $senha, string $telefone, string $data_nasc, string $endereco, string $cep, string $doenca_cronica, string $remedio_regular): Paciente
     {
-        return new Paciente($id, $nome, $email, $cpf, $genero, $login, $senha, $telefone, $data_nasc, $endereco, $cep, $doenca_cronica, $remedio_regular);
+        return new Paciente($id, $nome, $categoria, $email, $cpf, $genero, $login, $senha, $telefone, $data_nasc, $endereco, $cep, $doenca_cronica, $remedio_regular);
     }
 
-    public static function criarProfissionalSaude(int $id, string $nome, string $email, string $cpf, string $genero, string $login, string $senha, string $telefone, string $data_nasc, string $areaAtuacao, string $enderecoAtuacao, string $localFormacao, string $dataFormacao, string $descricaoPerfil): ProfissionalSaude
+    public static function criarProfissionalSaude(int $id, string $nome,string $categoria ,string $email, string $cpf, string $genero, string $login, string $senha, string $telefone, string $data_nasc, string $areaAtuacao, string $enderecoAtuacao, string $localFormacao, string $dataFormacao, string $descricaoPerfil): ProfissionalSaude
     {
-        return new ProfissionalSaude($id, $nome, $email, $cpf, $genero, $login, $senha, $telefone, $data_nasc, $areaAtuacao, $enderecoAtuacao, $localFormacao, $dataFormacao, $descricaoPerfil);
+        return new ProfissionalSaude($id, $nome, $categoria, $email, $cpf, $genero, $login, $senha, $telefone, $data_nasc, $areaAtuacao, $enderecoAtuacao, $localFormacao, $dataFormacao, $descricaoPerfil);
     }
 
     public function getId(): int

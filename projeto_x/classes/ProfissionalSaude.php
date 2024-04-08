@@ -10,9 +10,9 @@ class ProfissionalSaude extends User
     private string $dataFormacao;
     private string $descricaoPerfil;
 
-    public function __construct(int $id, string $nome, string $email, string $cpf, string $genero, string $login, string $senha, string $telefone, string $data_nasc, string $areaAtuacao, string $enderecoAtuacao, string $localFormacao, string $dataFormacao, string $descricaoPerfil)
+    public function __construct(int $id, string $nome, string $categoria, string $email, string $cpf, string $genero, string $login, string $senha, string $telefone, string $data_nasc, string $areaAtuacao, string $enderecoAtuacao, string $localFormacao, string $dataFormacao, string $descricaoPerfil)
     {
-        parent::__construct($id, $nome, $email, $cpf, $genero, $login, $senha, $telefone, $data_nasc);
+        parent::__construct($id, $nome, $categoria, $email, $cpf, $genero, $login, $senha, $telefone, $data_nasc);
         $this->areaAtuacao = $areaAtuacao;
         $this->enderecoAtuacao = $enderecoAtuacao;
         $this->localFormacao = $localFormacao;
