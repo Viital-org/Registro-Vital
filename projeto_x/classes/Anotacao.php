@@ -32,27 +32,3 @@ class Anotacao
 
     }
 }
-
-class tipo_anotacao
-{
-    public int $id;
-    public string $data_anotacao;
-    public string $tipo_anotacao;
-
-    public function __construct(int $id, string $data_anotacao, string $tipo_anotacao)
-    {
-        $this->id = $id;
-        $this->data_anotacao = $data_anotacao;
-        $this->tipo_anotacao = $tipo_anotacao;
-    }
-
-    public function modifica_tipo()
-    {
-
-    }
-
-    public function deleta_tipo()
-    {
-
-    }
-}

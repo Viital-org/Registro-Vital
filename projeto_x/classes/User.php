@@ -140,5 +140,3 @@ class User
         $this->data_nasc = $data_nasc;
     }
 }
-
-
