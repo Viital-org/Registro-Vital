@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class desafios_metas
+namespace projeto_x\classes;
+class DesafiosMetas
 {
     public int $id;
     public string $nome;
@@ -21,6 +22,6 @@ class desafios_metas
 
     public function remove_desafios_metas()
     {
-        
+
     }
 }
