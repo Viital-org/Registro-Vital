@@ -1,5 +1,6 @@
-<?php 
+<?php
 
+namespace projeto_x\classes;
 // AREA DE ATUACAO
 class area_atuacao
 {
@@ -21,14 +22,14 @@ class area_atuacao
 
     }
 
-    public function remove_area(int $id) 
+    public function remove_area(int $id)
     {
 
     }
 }
 
 // ESPECIALIZACAO
-class especializacao extends area_atuacao 
+class especializacao extends area_atuacao
 {
     public int $id;
     public string $nome_especializacao;
@@ -44,5 +45,5 @@ class especializacao extends area_atuacao
     public function remove_especailizacao()
     {
 
-    }    
+    }
 }
