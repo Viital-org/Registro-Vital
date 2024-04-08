@@ -2,11 +2,7 @@
 
 use projeto_x\classes\User;
 require_once '..\classes\User.php';
-
-use projeto_x\classes\Paciente;
 require_once '..\classes\Paciente.php';
-
-use projeto_x\classes\ProfissionalSaude;
 require_once '..\classes\ProfissionalSaude.php';
 
 /*
@@ -18,7 +14,7 @@ var_dump($user);
 /*
 // Testando getter
 $user = new User(1, 'John Doe', 'categoria', '123.456.789-00', 'male', 'johndoe', 'password', 'johndoe@example.com', '123456789', '1990-01-01');
-echo "\nTestando os métodos getter:\n";
+echo "\nTestando getter:\n";
 echo "ID: " . $user->getId() . "\n";
 echo "Nome: " . $user->getNome() . "\n";
 echo "Categoria: " . $user->getCategoria() . "\n";
@@ -33,7 +29,7 @@ echo "Data de Nascimento: " . $user->getDataNasc() . "\n";
 /*
 // Testando setter
 $user = new User(1, 'John Doe', 'categoria', '123.456.789-00', 'male', 'johndoe', 'password', 'johndoe@example.com', '123456789', '1990-01-01');
-echo "\nTestando os métodos setter:\n";
+echo "\nTestando setter:\n";
 $user->setId(2);
 $user->setCategoria('categoria 2');
 $user->setCpf('987.654.321-00');
