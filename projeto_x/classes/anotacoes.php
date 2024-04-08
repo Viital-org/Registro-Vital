@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class anotacao 
+namespace projeto_x\classes;
+class Anotacao
 {
     public int $id;
     public int $id_usuario;
@@ -52,6 +53,6 @@ class tipo_anotacao
 
     public function deleta_tipo()
     {
-        
+
     }
 }
