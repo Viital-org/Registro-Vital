@@ -1,11 +1,12 @@
-<?php 
+<?php
 
-class dicas
+namespace projeto_x\classes;
+class Dicas
 {
     public int $id;
     public string $titulo;
     public string $descricao;
-    
+
     public function __construct(int $id, string $titulo, string $descricao)
     {
         $this->id = $id;
@@ -20,6 +21,6 @@ class dicas
 
     public function deleta_dica()
     {
-        
+
     }
 }
