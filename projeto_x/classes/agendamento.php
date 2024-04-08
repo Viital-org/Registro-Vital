@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class consulta 
+namespace projeto_x\classes;
+class AgendamentoConsulta
 {
     public int $id;
     public string $data;
@@ -31,10 +32,10 @@ class consulta
     public function conslui_consulta()
     {
 
-    } 
+    }
 }
 
-class agenda_de_consutas 
+class agenda_de_consutas
 {
     public int $id;
     public int $id_profissional;
@@ -51,6 +52,6 @@ class agenda_de_consutas
 
     public function exclui_consuta()
     {
-        
+
     }
 }
