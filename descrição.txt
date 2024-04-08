@@ -1,3 +1,0 @@
--Utilizar essa branch como espelho da main;
--crie novas branchs a partir daqui;
--atulize esta branch antes de qualquer ateração na branch main.
