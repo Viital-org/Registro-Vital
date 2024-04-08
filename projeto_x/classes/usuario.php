@@ -1,23 +1,24 @@
-<?php 
+<?php
 
-// CLASSE ABSTRATA
-class User 
+namespace projeto_x\classes;
+class User
 {
+
     public int $id;
-    protected string $nome;
     public $categoria;
-    protected string $cpf;
     public string $genero;
     public string $login;
-    protected string $senha;
     public string $email;
+    protected string $nome;
+    protected string $cpf;
+    protected string $senha;
     protected string $telefone;
-    protected string $dataNasc;
+    protected string $data_nasc;
 
 
-    public function __construct(int $id, string $nome, string $categoria, string $cpf, string $genero, string $login, string $senha, string $email, string $telefone, string $dataNasc)
+    public function __construct(int $id, string $nome, string $categoria, string $cpf, string $genero, string $login, string $senha, string $email, string $telefone, string $data_nasc)
     {
-        $this->id = $id;   
+        $this->id = $id;
         $this->nome = $nome;
         $this->categoria = $categoria;
         $this->cpf = $cpf;
@@ -26,101 +27,116 @@ class User
         $this->senha = $senha;
         $this->email = $email;
         $this->telefone = $telefone;
-        $this->data_nasc = $dataNasc;
+        $this->data_nasc = $data_nasc;
     }
 
-    public function cria_usuario()
+    public static function criarPaciente(int $id, string $nome, string $email, string $cpf, string $genero, string $login, string $senha, string $telefone, string $data_nasc, string $endereco, string $cep, string $doenca_cronica, string $remedio_regular): Paciente
     {
-
+        return new Paciente($id, $nome, $email, $cpf, $genero, $login, $senha, $telefone, $data_nasc, $endereco, $cep, $doenca_cronica, $remedio_regular);
     }
 
-    public function deleta_usuario()
+    public static function criarProfissionalSaude(int $id, string $nome, string $email, string $cpf, string $genero, string $login, string $senha, string $telefone, string $data_nasc, string $areaAtuacao, string $enderecoAtuacao, string $localFormacao, string $dataFormacao, string $descricaoPerfil): ProfissionalSaude
     {
-
+        return new ProfissionalSaude($id, $nome, $email, $cpf, $genero, $login, $senha, $telefone, $data_nasc, $areaAtuacao, $enderecoAtuacao, $localFormacao, $dataFormacao, $descricaoPerfil);
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(int $id)
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
 
-    public function setNome(string $nome)
+    public function getNome(): string
     {
-        $this->nome = $nome;    
+        return $this->nome;
     }
 
-    public function setCategoria(string $categoria)
+    public function setNome(string $nome): void
+    {
+        $this->nome = $nome;
+    }
+
+    public function getCategoria(): string
+    {
+        return $this->categoria;
+    }
+
+    public function setCategoria(string $categoria): void
     {
         $this->categoria = $categoria;
     }
 
-    public function setCpf(string $cpf)
+    public function getGenero(): string
     {
-        $this->cpf = $cpf;
+        return $this->genero;
     }
 
-    public function setgenero(string $genero)
+    public function setGenero(string $genero): void
     {
         $this->genero = $genero;
     }
 
-    public function setLogin(string $login)
+    public function getLogin(): string
+    {
+        return $this->login;
+    }
+
+    public function setLogin(string $login): void
     {
         $this->login = $login;
     }
 
-    public function setsenha(string $senha)
+    public function getEmail(): string
     {
-        $this->senha = $senha;
+        return $this->email;
     }
 
-    public function setEmail(string $email)
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
 
-    public function setTelefone(string $telefone)
+    public function getCpf(): string
+    {
+        return $this->cpf;
+    }
+
+    public function setCpf(string $cpf): void
+    {
+        $this->cpf = $cpf;
+    }
+
+    public function getSenha(): string
+    {
+        return $this->senha;
+    }
+
+    public function setSenha(string $senha): void
+    {
+        $this->senha = $senha;
+    }
+
+    public function getTelefone(): string
+    {
+        return $this->telefone;
+    }
+
+    public function setTelefone(string $telefone): void
     {
         $this->telefone = $telefone;
     }
 
-    public function setDataNasc(string $dataNasc)
+    public function getDataNasc(): string
     {
-        $this->dataNasc = $dataNasc;
+        return $this->data_nasc;
     }
 
-}
-
-// PACIENTE
-class Paciente extends User 
-{
-    protected string $endereco; 
-    protected string $cep;
-    protected string $doenca_cronica;
-    protected string $remedio_regular;
-
-}
-
-// MEDICO
-class Medico extends User 
-{
-    public string $area_atuacao;
-    public string $endereco_atuacao;
-    public string $local_formacao;
-    public string $data_formacao;
-
-    public function cadastrar_atividade()
+    public function setDataNasc(string $data_nasc): void
     {
-
-    }
-
-    public function atualiza_anamnese()
-    {
-
+        $this->data_nasc = $data_nasc;
     }
 }
