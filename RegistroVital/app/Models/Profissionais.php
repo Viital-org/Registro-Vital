@@ -8,5 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Profissionais extends Model
 {
     use HasFactory;
-    protected $fillable = ['id',];
 }
