@@ -12,14 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Profissionais', function (Blueprint $tabela){
-            $tabela->id();
-            $tabela->string('areaatuacao',40);
-            $tabela->string('email',40);
-            $tabela->string('enderecoatual',60);
-            $tabela->string('localformacao',60);
-            $tabela->date('dataformacao');
-            $tabela->string('descricaoperfil');
+        Schema::create('Profissionais', function (Blueprint $table){
+            $table->id();
+            $table->string('areaatuacao',40);
+            $table->string('email',40);
+            $table->string('enderecoatual',60);
+            $table->string('localformacao',60);
+            $table->date('dataformacao');
+            $table->string('descricaoperfil');
         });
     }
 

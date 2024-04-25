@@ -9,5 +9,15 @@ class Profissional extends Model
 {
     use HasFactory;
 
-    
+    protected $table = 'profissionais';
+
+    protected $fillable = [
+        'areaatuacao',
+        'email',
+        'enderecoatual',
+        'localformacao',
+        'dataformacao',
+        'descricaoperfil',
+    ];
+
 }

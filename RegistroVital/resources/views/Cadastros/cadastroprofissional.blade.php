@@ -1,13 +1,12 @@
 @extends ('layoutspadrao.profissionais')
 
-@section('conteudo')
+@section ('titulo', 'Cadastro de profissionais')
+
+@section ('conteudo')
 
 <form action="/Cadastros" method="POST">
 
 <h1>Cadastro de profissionais</h1>
-
-<label for="id">ID</label>
-<input type="text" name="id" id="id">
 
 <br>
 
