@@ -4,9 +4,14 @@
 
 @section ('conteudo')
 
-<form action="/Cadastros" method="POST">
-
+<form action="{{ route('profissionais-store') }}" method="POST">
+@csrf
 <h1>Cadastro de profissionais</h1>
+
+<br>
+
+<label for="nome">Nome</label>
+<input type="text" name="nome" id="nome">
 
 <br>
 
@@ -16,7 +21,7 @@
 <br>
 
 <label for="email">E-mail</label>
-<input type="email" name="id" id="email">
+<input type="email" name="email" id="email">
 
 <br>
 
@@ -35,11 +40,12 @@
 
 <br>
 
-<label for="descricaoperfil">Data de formacao</label>
+<label for="descricaoperfil">Descricao</label>
 <input type="text" name="descricaoperfil" id="descricaoperfil">
 
+<input type="submit" value="Enviar">
 
-<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 </form>
+
 
 @endsection

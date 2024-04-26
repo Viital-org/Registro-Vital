@@ -12,7 +12,9 @@ class ProfissionaisController extends Controller
      */
     public function index()
     {
-        $profissionais=Profissional::all();
+        
+        $profissionais = Profissional::all();
+        return view('cadastros.listaprofissionais', ['profissionais'=>$profissionais]);
     }
 
     /**
@@ -28,10 +30,12 @@ class ProfissionaisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Profissional::create($request->all());
+        $profissionais = Profissional::all();
+        return view('cadastros.listaprofissionais', ['profissionais'=>$profissionais]);
     }
 
-    /**
+    /*
      * Display the specified resource.
      */
     public function show(Profissional $profissional)
@@ -42,9 +46,10 @@ class ProfissionaisController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Profissional $profissional)
+    public function edit($id)
     {
-        //
+        $profissional = Profissional::where('id', $id);
+        dd($profissional);
     }
 
     /**

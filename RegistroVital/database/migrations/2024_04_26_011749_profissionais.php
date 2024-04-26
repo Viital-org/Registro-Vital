@@ -14,12 +14,15 @@ return new class extends Migration
     {
         Schema::create('Profissionais', function (Blueprint $table){
             $table->id();
+            $table->string('nome',70);
             $table->string('areaatuacao',40);
             $table->string('email',40);
-            $table->string('enderecoatual',60);
+            $table->string('enderecoatuacao',80);
             $table->string('localformacao',60);
             $table->date('dataformacao');
             $table->string('descricaoperfil');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

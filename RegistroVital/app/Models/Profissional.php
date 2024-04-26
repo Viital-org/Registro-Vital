@@ -13,8 +13,9 @@ class Profissional extends Model
 
     protected $fillable = [
         'areaatuacao',
+        'nome',
         'email',
-        'enderecoatual',
+        'enderecoatuacao',
         'localformacao',
         'dataformacao',
         'descricaoperfil',
