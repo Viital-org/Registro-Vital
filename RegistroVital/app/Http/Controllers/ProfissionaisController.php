@@ -31,8 +31,7 @@ class ProfissionaisController extends Controller
     public function store(Request $request)
     {
         Profissional::create($request->all());
-        $profissionais = Profissional::all();
-        return view('cadastros.listaprofissionais', ['profissionais'=>$profissionais]);
+        return ProfissionaisController::index();
     }
 
     /*
