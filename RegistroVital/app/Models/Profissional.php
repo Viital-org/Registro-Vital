@@ -20,5 +20,4 @@ class Profissional extends Model
         'dataformacao',
         'descricaoperfil',
     ];
-
 }
