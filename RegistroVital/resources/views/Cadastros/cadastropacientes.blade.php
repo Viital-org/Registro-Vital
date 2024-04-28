@@ -13,42 +13,42 @@
         <br>
 
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" required>
+        <input type="text" name="nome" id="nome">
 
         <br>
 
         <label for="datanascimento">Data de Nascimento</label>
-        <input type="date" name="datanascimento" id="datanascimento" required>
+        <input type="date" name="datanascimento" id="datanascimento">
 
         <br>
 
         <label for="cep">CEP</label>
-        <input type="text" name="cep" id="cep" required>
+        <input type="text" name="cep" id="cep">
 
         <br>
 
         <label for="endereco">Endereço</label>
-        <input type="text" name="endereco" id="endereco" required>
+        <input type="text" name="endereco" id="endereco">
 
         <br>
 
         <label for="numcartaocred">Cartão de Crédito</label>
-        <input type="text" name="numcartaocred" id="numcartaocred" required>
+        <input type="text" name="numcartaocred" id="numcartaocred">
 
         <br>
 
         <label for="hobbies">Hobbies</label>
-        <input type="text" name="hobbies" id="hobbies" required>
+        <input type="text" name="hobbies" id="hobbies">
 
         <br>
 
         <label for="doencascronicas">Lista de Doenças Cronicas</label>
-        <input type="text" name="doencascronicas" id="doencascronicas" required>
+        <input type="text" name="doencascronicas" id="doencascronicas">
 
         <br>
 
         <label for="remediosregulares">Lista de Remedios Regulares</label>
-        <input type="text" name="remediosregulares" id="remediosregulares" required>
+        <input type="text" name="remediosregulares" id="remediosregulares">
 
         <br>
 
