@@ -1,41 +1,39 @@
 @extends ('layoutspadrao.profissionais')
 
-@section('titulo', 'Listagem de profissionais')
+@section('titulo', 'Listagem de Consultas')
 
 @section('conteudo')
 
     @csrf
-    <a href="/cadastrarprof">Cadastrar novo Profissional</a>
+    <a href="/cadastroconsul">Cadastrar nova Consulta</a>
 
-    <h1>Listagem de Profissionais</h1>
+    <h1>Listagem de Consultas</h1>
     <table class="table">
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Área de Atuação</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Endereço</th>
-            <th scope="col">Local de Formação</th>
-            <th scope="col">Data de formacao</th>
-            <th scope="col">Descricao do perfil</th>
+            <th scope="col">Data</th>
+            <th scope="col">Status</th>
+            <th scope="col">Profissional</th>
+            <th scope="col">Especialidade</th>
+            <th scope="col">Paciente</th>
+            <th scope="col">Valor</th>
             <th scope="col">Editar</th>
             <th scope="col">Excluir</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($profissionais as $item)
+        @foreach($consultas as $item)
             <tr>
                 <th scope="row">{{$item->id}}</th>
-                <td>{{$item->nome}}</td>
-                <td>{{$item->areaatuacao}}</td>
-                <td>{{$item->email}}</td>
-                <td>{{$item->endereco}}</td>
-                <td>{{$item->localformacao}}</td>
-                <td>{{$item->dataformacao}}</td>
-                <td>{{$item->descricaoperfil}}</td>
+                <td>{{$item->data}}</td>
+                <td>{{$item->status}}</td>
+                <td>{{$item->profissional_id}}</td>
+                <td>{{$item->especialidade}}</td>
+                <td>{{$item->paciente_id}}</td>
+                <td>{{$item->valor}}</td>
                 <th>
-                    <a href="{{ route('profissionais-edit', ['id' => $item->id]) }}">
+                    <a href="{{ route('consultas-edit', ['id' => $item->id]) }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                              class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path
@@ -45,7 +43,7 @@
                         </svg>
                     </a></th>
                 <th>
-                    <form action="{{ route('profissionais-delete', ['id'=> $item->id])}}" method="POST">
+                    <form action="{{ route('consultas-delete', ['id'=> $item->id])}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit">
@@ -57,7 +55,6 @@
                             </svg>
                         </button>
                     </form>
-                </th>
             </tr>
         @endforeach
         </tbody>

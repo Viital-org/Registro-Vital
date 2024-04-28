@@ -30,7 +30,7 @@ class PacientesController extends Controller
      */
     public function create()
     {
-        return view('Cadastros/cadastroPacientes');
+        return view('Cadastros/cadastropacientes');
     }
 
     /**
@@ -63,7 +63,7 @@ class PacientesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $paciente = Paciente::findorfail($id);
         $paciente->delete();
