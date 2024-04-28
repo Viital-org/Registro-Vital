@@ -10,17 +10,19 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('Profissionais', function (Blueprint $table) {
+        Schema::create('Pacientes', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 70);
-            $table->string('areaatuacao', 40);
-            $table->string('email', 40);
-            $table->string('enderecoatuacao', 80);
-            $table->string('localformacao', 60);
-            $table->date('dataformacao');
-            $table->string('descricaoperfil');
+            $table->string('nome');
+            $table->date('datanascimento');
+            $table->string('cep');
+            $table->string('endereco');
+            $table->string('numcartaocred');
+            $table->string('hobbies');
+            $table->string('doencascronicas');
+            $table->string('remediosregulares');
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 

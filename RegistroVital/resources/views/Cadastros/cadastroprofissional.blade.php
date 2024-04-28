@@ -4,48 +4,47 @@
 
 @section ('conteudo')
 
-<form action="{{ route('profissionais-store') }}" method="POST">
-@csrf
-<h1>Cadastro de profissionais</h1>
+    <form action="{{route('profissionais-store') }}" method="POST">
+        @csrf
+        <h1>Cadastro de profissionais</h1>
 
-<br>
+        <br>
 
-<label for="nome">Nome</label>
-<input type="text" name="nome" id="nome">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome">
 
-<br>
+        <br>
 
-<label for="areaatuacao">Area de atuacao</label>
-<input type="text" name="areaatuacao" id="areaatuacao">
+        <label for="areaatuacao">Area de atuacao</label>
+        <input type="text" name="areaatuacao" id="areaatuacao">
 
-<br>
+        <br>
 
-<label for="email">E-mail</label>
-<input type="email" name="email" id="email">
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email">
 
-<br>
+        <br>
 
-<label for="enderecoatuacao">Endereco de atuacao</label>
-<input type="text" name="enderecoatuacao" id="enderecoatuacao">
+        <label for="enderecoatuacao">Endereco de atuacao</label>
+        <input type="text" name="enderecoatuacao" id="enderecoatuacao">
 
-<br>
+        <br>
 
-<label for="localformacao">Local de formacao</label>
-<input type="text" name="localformacao" id="localformacao">
+        <label for="localformacao">Local de formacao</label>
+        <input type="text" name="localformacao" id="localformacao">
 
-<br>
+        <br>
 
-<label for="dataformacao">Data de formacao</label>
-<input type="date" name="dataformacao" id="dataformacao">
+        <label for="dataformacao">Data de formacao</label>
+        <input type="date" name="dataformacao" id="dataformacao">
 
-<br>
+        <br>
 
-<label for="descricaoperfil">Descricao</label>
-<input type="text" name="descricaoperfil" id="descricaoperfil">
+        <label for="descricaoperfil">Descricao</label>
+        <input type="text" name="descricaoperfil" id="descricaoperfil">
 
-<input type="submit" value="Enviar">
+        <input type="submit" value="Enviar">
 
-</form>
-
+    </form>
 
 @endsection
