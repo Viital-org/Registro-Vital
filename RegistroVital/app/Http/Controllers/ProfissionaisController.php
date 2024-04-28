@@ -12,17 +12,8 @@ class ProfissionaisController extends Controller
      */
     public function index()
     {
-        
         $profissionais = Profissional::all();
-        return view('cadastros.listaprofissionais', ['profissionais'=>$profissionais]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('cadastros.cadastroprofissional');
+        return view('Cadastros/listaprofissionais', ['profissionais' => $profissionais]);
     }
 
     /**
@@ -31,12 +22,21 @@ class ProfissionaisController extends Controller
     public function store(Request $request)
     {
         Profissional::create($request->all());
-        return ProfissionaisController::index();
+        return redirect()->route('profissionais-index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('Cadastros/cadastroprofissional');
     }
 
     /*
      * Display the specified resource.
      */
+
     public function show(Profissional $profissional)
     {
         //
@@ -47,23 +47,29 @@ class ProfissionaisController extends Controller
      */
     public function edit($id)
     {
-        $profissional = Profissional::where('id', $id);
-        dd($profissional);
+        $profissional = Profissional::find($id);
+        return view('Cadastros/editarprofissional', compact('profissional'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Profissional $profissional)
+    public function update(Request $request, $id)
     {
-        //
+        $profissional = Profissional::findorfail($id);
+        $profissional->update($request->all());
+        return redirect()->route('profissionais-index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Profissional $profissional)
+    public function destroy($id)
     {
-        //
+        {
+            $profissional = Profissional::findorfail($id);
+            $profissional->delete();
+            return redirect()->route('profissionais-index');
+        }
     }
 }

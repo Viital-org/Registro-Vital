@@ -1,41 +1,43 @@
 @extends ('layoutspadrao.profissionais')
 
-@section('titulo', 'Listagem de profissionais')
+@section('titulo', 'Listagem de Pacientes')
 
 @section('conteudo')
 
     @csrf
-    <a href="cadastrarprof">Cadastrar novo Profissional</a>
+    <a href="cadastroPacientes">Cadastrar novo Paciente</a>
 
-    <h1>Listagem de Profissionais</h1>
+    <h1>Listagem de Pacientes</h1>
     <table class="table">
         <thead>
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
-            <th scope="col">Área de Atuação</th>
-            <th scope="col">E-mail</th>
+            <th scope="col">Data de Nascimento</th>
+            <th scope="col">CEP</th>
             <th scope="col">Endereço</th>
-            <th scope="col">Local de Formação</th>
-            <th scope="col">Data de formacao</th>
-            <th scope="col">Descricao do perfil</th>
+            <th scope="col">Cartão de Crédito</th>
+            <th scope="col">Hobbies</th>
+            <th scope="col">Doenças Cronicas</th>
+            <th scope="col">Remedios Regulares</th>
             <th scope="col">Editar</th>
             <th scope="col">Excluir</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($profissionais as $item)
+        @foreach($pacientes as $item)
             <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->nome}}</td>
-                <td>{{$item->areaatuacao}}</td>
-                <td>{{$item->email}}</td>
+                <td>{{$item->datanascimento}}</td>
+                <td>{{$item->cep}}</td>
                 <td>{{$item->endereco}}</td>
-                <td>{{$item->localformacao}}</td>
-                <td>{{$item->dataformacao}}</td>
-                <td>{{$item->descricaoperfil}}</td>
+                <td>{{$item->numcartaocred}}</td>
+                <td>{{$item->hobbies}}</td>
+                <td>{{$item->doencascronicas}}</td>
+                <td>{{$item->remediosregulares}}</td>
                 <th>
-                    <a href="{{ route('profissionais-edit', ['id' => $item->id]) }}">
+                    <a href="{{ route('pacientes-edit', ['id' => $item->id]) }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                              class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path
@@ -45,7 +47,7 @@
                         </svg>
                     </a></th>
                 <th>
-                    <form action="{{ route('profissionais-delete', ['id'=> $item->id])}}" method="POST">
+                    <form action="{{ route('pacientes-delete', ['id'=> $item->id])}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit">
@@ -55,7 +57,6 @@
                             </svg>
                         </button>
                     </form>
-                </th>
             </tr>
         @endforeach
         </tbody>

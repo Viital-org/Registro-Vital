@@ -6,6 +6,6 @@
     <title> @yield('titulo')</title>
 </head>
 <body>
-    @yield('conteudo')
+@yield('conteudo')
 </body>
 </html>
