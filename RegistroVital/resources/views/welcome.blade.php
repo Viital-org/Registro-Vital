@@ -10,6 +10,7 @@
 <ul>
     <li><a href="{{ route('pacientes-index') }}">Lista de Pacientes</a></li>
     <li><a href="{{ route('profissionais-index') }}">Lista de Profissionais</a></li>
+    <li><a href="{{ route('consultas-index') }}">Lista de Consultas</a></li>
 </ul>
 </body>
 </html>
