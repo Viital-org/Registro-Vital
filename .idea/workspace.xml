@@ -4,35 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="717b48df-9d60-4074-9371-db712cee3cd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Registro-Vital.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/PacientesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Paciente.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_27_221602_pacientes.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/cadastroPacientes.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/editarpaciente.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/editarprofissional.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/listapacientes.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ProfissionaisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ProfissionaisController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000001_create_cache_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000001_create_cache_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000002_create_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000002_create_jobs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_24_035446_create_profissionais_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_24_035446_create_profissionais_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_26_011749_profissionais.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_26_011749_profissionais.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/cadastroprofissional.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/cadastroprofissional.blade.php" afterDir="false" />
+    <list default="true" id="717b48df-9d60-4074-9371-db712cee3cd0" name="Changes" comment="organização de pastas e criação das funções create pacientes, update profissinais e pacientes, delete profissionais e pacientes">
       <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/listaprofissionais.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/listaprofissionais.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/profissionais.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/profissionais.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Gabriel" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -189,20 +162,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Gabriel&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Registro-Vital/RegistroVital/resources/views/Cadastros&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Registro-Vital/RegistroVital/resources/views/Cadastros",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Registro-Vital\RegistroVital\resources\views\Cadastros" />
@@ -234,11 +206,24 @@
       <option name="presentableId" value="Default" />
       <updated>1714244256977</updated>
       <workItem from="1714244259242" duration="16762000" />
-      <workItem from="1714261350401" duration="12578000" />
+      <workItem from="1714261350401" duration="13583000" />
     </task>
+    <task id="LOCAL-00001" summary="organização de pastas e criação das funções create pacientes, update profissinais e pacientes, delete profissionais e pacientes">
+      <option name="closed" value="true" />
+      <created>1714274540383</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714274540383</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="organização de pastas e criação das funções create pacientes, update profissinais e pacientes, delete profissionais e pacientes" />
+    <option name="LAST_COMMIT_MESSAGE" value="organização de pastas e criação das funções create pacientes, update profissinais e pacientes, delete profissionais e pacientes" />
   </component>
 </project>
