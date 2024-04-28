@@ -36,7 +36,7 @@ class PacientesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
     }
@@ -63,7 +63,7 @@ class PacientesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $paciente = Paciente::findorfail($id);
         $paciente->delete();

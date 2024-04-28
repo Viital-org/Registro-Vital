@@ -8,8 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/RegistroVital/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/RegistroVital/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/RegistroVital/tests/Unit" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/RegistroVital/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/RegistroVital/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/RegistroVital/vendor/carbonphp/carbon-doctrine-types" />
