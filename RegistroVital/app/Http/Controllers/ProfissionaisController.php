@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AtuaArea;
 use App\Models\Profissional;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,8 @@ class ProfissionaisController extends Controller
      */
     public function create()
     {
-        return view('Cadastros/cadastroprofissional');
+        $atuaareas = AtuaArea::all();
+        return view('Cadastros/cadastroprofissional',['atuaareas' => $atuaareas]);
     }
 
     /*
@@ -48,7 +50,8 @@ class ProfissionaisController extends Controller
     public function edit($id)
     {
         $profissional = Profissional::find($id);
-        return view('Cadastros/editarprofissional', compact('profissional'));
+        $atuaareas = AtuaArea::all();
+        return view('Cadastros/editarprofissional', ['profissionais' => $profissional, 'atuaareas' => $atuaareas]);
     }
 
     /**

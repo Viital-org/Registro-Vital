@@ -15,8 +15,12 @@
 
         <br>
 
-        <label for="areaatuacao">Area de atuacao</label>
-        <input type="text" name="areaatuacao" id="areaatuacao" required>
+        <label for="areaatuacao_id">Area de atuacao:</label>
+        <select name="areaatuacao_id" id="areaatuacao_id" required>
+            @foreach($atuaareas as $atuaarea)
+                <option value="{{ $atuaarea->id }}">{{ $atuaarea->area }}</option>
+            @endforeach
+        </select>
 
         <br>
 

@@ -11,6 +11,7 @@
     <li><a href="{{ route('pacientes-index') }}">Lista de Pacientes</a></li>
     <li><a href="{{ route('profissionais-index') }}">Lista de Profissionais</a></li>
     <li><a href="{{ route('consultas-index') }}">Lista de Consultas</a></li>
+    <li><a href="{{ route('atuaareas-index') }}">Lista de Areas de Atuação</a></li>
 </ul>
 </body>
 </html>
