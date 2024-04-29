@@ -28,9 +28,9 @@
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->data}}</td>
                 <td>{{$item->status}}</td>
-                <td>{{$item->profissional_id}}</td>
+                <td>{{$item->nome_profissional}}</td>
                 <td>{{$item->especialidade}}</td>
-                <td>{{$item->paciente_id}}</td>
+                <td>{{$item->nome_paciente}}</td>
                 <td>{{$item->valor}}</td>
                 <th>
                     <a href="{{ route('consultas-edit', ['id' => $item->id]) }}">

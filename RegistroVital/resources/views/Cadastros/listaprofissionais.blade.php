@@ -28,7 +28,7 @@
             <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->nome}}</td>
-                <td>{{$item->areaatuacao_id}}</td>
+                <td>{{$item->area}}</td>
                 <td>{{$item->email}}</td>
                 <td>{{$item->endereco}}</td>
                 <td>{{$item->localformacao}}</td>

@@ -13,7 +13,10 @@ class ProfissionaisController extends Controller
      */
     public function index()
     {
-        $profissionais = Profissional::all();
+        $profissionais = Profissional::join('atuaareas', 'profissionais.areaatuacao_id', '=', 'atuaareas.id')
+            ->select('profissionais.*', 'atuaareas.area')
+            ->orderBy('profissionais.created_at', 'DESC')
+            ->get();
         return view('Cadastros/listaprofissionais', ['profissionais' => $profissionais]);
     }
 
