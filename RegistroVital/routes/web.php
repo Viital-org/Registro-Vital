@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AtuaAreasController;
 use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfissionaisController;
@@ -32,3 +33,11 @@ Route::get('/cadastroconsul', [ConsultasController::class, 'create']);
 Route::get('/editarconsulta/{id}', [ConsultasController::class, 'edit'])->name('consultas-edit');
 Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
 Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas-delete');
+
+Route::resource('/cadastroatuaareas', AtuaAreasController::class);
+Route::get('/listaatuaareas', [AtuaAreasController::class, 'index'])->name('atuaareas-index');
+Route::post('/listaatuaareas', [AtuaAreasController::class, 'store'])->name('atuaareas-store');
+Route::get('/cadastroarea', [AtuaAreasController::class, 'create']);
+Route::get('/editaratuaarea/{id}', [AtuaAreasController::class, 'edit'])->name('atuaareas-edit');
+Route::put('/editaratuaarea/{id}', [AtuaAreasController::class, 'update'])->name('atuaareas-update');
+Route::delete('/listaatuaareas/{id}', [AtuaAreasController::class, 'destroy'])->name('atuaareas-delete');

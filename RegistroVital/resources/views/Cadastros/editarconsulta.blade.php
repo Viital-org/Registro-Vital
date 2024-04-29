@@ -21,10 +21,10 @@
 
         <label for="status">Status:</label>
         <select name="status" id="status" required>
-            <option value="agendado">agendado</option>
-            <option value="confirmada">confirmada</option>
-            <option value="realizada">realizada</option>
-            <option value="cancelada">cancelada</option>
+            <option value="agendado" @if ($consultas->status === 'agendado') selected @endif>agendado</option>
+            <option value="confirmada" @if ($consultas->status === 'confirmada') selected @endif>confirmada</option>
+            <option value="realizada" @if ($consultas->status === 'realizada') selected @endif>realizada</option>
+            <option value="cancelada" @if ($consultas->status === 'cancelada') selected @endif>cancelada</option>
         </select>
 
         <br>
@@ -32,7 +32,7 @@
         <label for="profissional_id">Profissional:</label>
         <select name="profissional_id" id="profissional_id" required>
             @foreach($profissionais as $profissional)
-                <option value="{{ $profissional->id }}">{{ $profissional->nome }}</option>
+                <option value="{{ $profissional->id }}" @if ($profissional->id === $consultas->profissional_id) selected @endif>{{ $profissional->nome }}</option>
             @endforeach
         </select>
 
@@ -46,7 +46,7 @@
         <label for="paciente_id">Paciente:</label>
         <select name="paciente_id" id="paciente_id" required>
             @foreach($pacientes as $paciente)
-                <option value="{{ $paciente->id }}">{{ $paciente->nome }}</option>
+                <option value="{{ $paciente->id }}" @if ($paciente->id === $consultas->paciente_id) selected @endif>{{ $paciente->nome }}</option>
             @endforeach
         </select>
 
