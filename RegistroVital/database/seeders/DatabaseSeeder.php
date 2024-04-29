@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Consulta;
 use App\Models\Paciente;
 use App\Models\Profissional;
 use Database\Factories\ProfissionaisFactory;
@@ -18,5 +19,6 @@ class DatabaseSeeder extends Seeder
 
         Profissional::factory(10)->create();
         Paciente::factory(10)->create();
+        Consulta::factory(10)->create();
     }
 }

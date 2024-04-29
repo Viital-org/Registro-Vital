@@ -16,4 +16,11 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testando_inserir_profissional(): void
+    {
+        $response = $this->get('/index.php');
+
+        
+    } 
 }
