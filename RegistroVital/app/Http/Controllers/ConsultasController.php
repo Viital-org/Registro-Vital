@@ -17,7 +17,7 @@ class ConsultasController extends Controller
         $consultas = Consulta::join('profissionais', 'consultas.profissional_id', '=', 'profissionais.id')
             ->join('pacientes', 'consultas.paciente_id', '=', 'pacientes.id')
             ->select('consultas.*', 'profissionais.nome as nome_profissional', 'pacientes.nome as nome_paciente')
-            ->orderByDesc('consultas.created_at')
+            ->orderBy('consultas.created_at')
             ->get();
         return view('Cadastros/listaconsultas', compact('consultas'), ['consultas' => $consultas]);
     }
