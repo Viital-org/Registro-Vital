@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AtuaAreasController;
 use App\Http\Controllers\ConsultasController;
+use App\Http\Controllers\EspecializacoesController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfissionaisController;
 use Illuminate\Support\Facades\Route;
@@ -41,3 +42,11 @@ Route::get('/cadastroarea', [AtuaAreasController::class, 'create']);
 Route::get('/editaratuaarea/{id}', [AtuaAreasController::class, 'edit'])->name('atuaareas-edit');
 Route::put('/editaratuaarea/{id}', [AtuaAreasController::class, 'update'])->name('atuaareas-update');
 Route::delete('/listaatuaareas/{id}', [AtuaAreasController::class, 'destroy'])->name('atuaareas-delete');
+
+Route::resource('/cadastroespecializacoes', EspecializacoesController::class);
+Route::get('/listaespecializacoes', [EspecializacoesController::class, 'index'])->name('especializacoes-index');
+Route::post('/listaespecializacoes', [EspecializacoesController::class, 'store'])->name('especializacoes-store');
+Route::get('/cadastroespec', [EspecializacoesController::class, 'create']);
+Route::get('/editarespecializacao/{id}', [EspecializacoesController::class, 'edit'])->name('especializacoes-edit');
+Route::put('/editarespecializacao/{id}', [EspecializacoesController::class, 'update'])->name('especializacoes-update');
+Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, 'destroy'])->name('especializacoes-delete');

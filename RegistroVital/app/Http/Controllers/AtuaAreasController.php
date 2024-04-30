@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AtuaArea;
+use App\Models\Especializacao;
 use Illuminate\Http\Request;
 
 class AtuaAreasController extends Controller
@@ -12,8 +13,11 @@ class AtuaAreasController extends Controller
      */
     public function index()
     {
-        $atuaareas = AtuaArea::all();
-        return view('Cadastros/listaatuaareas', compact('atuaareas'), ['atuaareas' => $atuaareas]);
+        $atuaareas = AtuaArea::join('especializacoes', 'atuaareas.especializacao_id', '=', 'especializacoes.id')
+            ->select('atuaareas.*', 'especializacoes.especializacao')
+            ->orderBy('atuaareas.created_at')
+            ->get();
+        return view('Cadastros/listaatuaareas', ['atuaareas' => $atuaareas]);
     }
 
     /**
@@ -21,7 +25,8 @@ class AtuaAreasController extends Controller
      */
     public function create()
     {
-        return view('Cadastros/cadastroatuaareas');
+        $especializacoes = Especializacao::all();
+        return view('Cadastros/cadastroatuaareas',['especializacoes' => $especializacoes]);
     }
 
     /**
@@ -47,7 +52,8 @@ class AtuaAreasController extends Controller
     public function edit($id)
     {
         $atuaarea = AtuaArea::find($id);
-        return view('Cadastros/editaratuaarea', compact('atuaarea'));
+        $especializacoes = Especializacao::all();
+        return view('Cadastros/editaratuaarea', ['atuaareas' => $atuaarea, 'especializacoes' => $especializacoes]);
     }
 
     /**
