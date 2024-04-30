@@ -19,9 +19,9 @@ class PacienteFactory extends Factory
         return [
         'nome' => $this->faker->name,
         'datanascimento' => $this->faker->date,
-        'cep' => $this->faker->text,
+        'cep' => $this->faker->postcode(),
         'endereco' => $this->faker ->address,
-        'numcartaocred'=> $this->faker ->text,
+        'numcartaocred'=> $this->faker ->creditCardNumber(),
         'hobbies' => $this->faker ->text,
         'doencascronicas' => $this->faker->word,
         'remediosregulares' =>$this->faker->word,

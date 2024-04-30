@@ -17,7 +17,9 @@ class EspecializacaoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+                'especializacao' => $this->faker->jobTitle,
+                'tempoespecializacao' => $this->faker->numberBetween($min = 1, $max = 100),
+                'descricao' => $this->faker->text,
         ];
     }
 }

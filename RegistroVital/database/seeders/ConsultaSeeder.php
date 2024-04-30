@@ -2,16 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Especializacao;
+use App\Models\Consulta;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class EspecializacaoSeeder extends Seeder
+class ConsultaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Especializacao::factory(10)->create();
+        Consulta::factory(10)->create();
     }
 }
