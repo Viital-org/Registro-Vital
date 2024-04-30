@@ -8,6 +8,12 @@
 
         @csrf
 
+        <a href="{{ route('welcome') }}">Home</a>
+
+        <br>
+        
+        <a href="{{ route('consultas-index') }} ">Listar Consultas</a>
+
         <h1>Cadastro de Paciente</h1>
 
         <br>
