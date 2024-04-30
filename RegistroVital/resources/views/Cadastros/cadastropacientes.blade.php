@@ -12,7 +12,7 @@
 
         <br>
         
-        <a href="{{ route('pacientes-index') }} ">Listar pacientes</a>
+        <a href="{{ route('pacientes-index') }} ">Listar Consultas</a>
 
         <h1>Cadastro de Paciente</h1>
 
