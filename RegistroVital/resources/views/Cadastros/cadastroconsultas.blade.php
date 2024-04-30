@@ -5,8 +5,15 @@
 @section ('conteudo')
 
     <form action="{{route('consultas-store')}}" method="POST">
-
         @csrf
+
+        <a href="{{ route('welcome') }}">Home</a>
+
+        <br>
+        
+        <a href="{{ route('consultas-index') }} ">Listar Consultas</a>
+
+        <br>
 
         <h1>Cadastro de Consulta</h1>
 

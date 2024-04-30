@@ -8,6 +8,16 @@
 
         @csrf
 
+        <a href="{{ route('welcome') }}">Home</a>
+
+        <br>
+        
+        <a href="{{ route('profissionais-index') }} ">Listar profissionais</a>
+
+        <br>
+        
+        <a href="{{ route('cadastroprofissional.create') }} ">Cadastrar Profissional</a>
+
         @method('PUT')
 
         <h1>Editar Dados do Profissional</h1>

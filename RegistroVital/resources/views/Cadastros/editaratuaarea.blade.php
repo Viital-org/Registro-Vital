@@ -8,6 +8,16 @@
 
         @csrf
 
+        <a href="{{ route('welcome') }}">Home</a>
+
+        <br>
+        
+        <a href="{{ route('atuaareas-index') }} ">Listar areas de atuacao</a>
+
+        <br>
+        
+        <a href="{{ route('cadastroatuaareas.create') }} ">Cadastrar area de atuacao</a>
+
         @method('PUT')
 
         <h1>Editar Dados de Area de Atuação</h1>
