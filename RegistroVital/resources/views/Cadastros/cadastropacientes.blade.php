@@ -13,12 +13,12 @@
         <br>
 
         <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome">
+        <input type="text" name="nome" id="nome" required>
 
         <br>
 
         <label for="datanascimento">Data de Nascimento</label>
-        <input type="date" name="datanascimento" id="datanascimento">
+        <input type="date" name="datanascimento" id="datanascimento" required>
 
         <br>
 
