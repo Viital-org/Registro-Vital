@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Consulta;
 use App\Models\Paciente;
 use App\Models\Profissional;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Consulta>
+ * @extends Factory<Consulta>
  */
 class ConsultaFactory extends Factory
 {
@@ -35,11 +36,11 @@ class ConsultaFactory extends Factory
         }
 
         return [
-        'data' => $this->faker->date(),
-        'status' => $this->faker->word,
-        'profissional_id' => $profissionalId,
-        'especialidade' => $this->faker->jobTitle,
-        'paciente_id' => $pacienteId,
-        'valor' => $this->faker->numberBetween(100,7080),];
+            'data' => $this->faker->date(),
+            'status' => $this->faker->word,
+            'profissional_id' => $profissionalId,
+            'especialidade' => $this->faker->jobTitle,
+            'paciente_id' => $pacienteId,
+            'valor' => $this->faker->numberBetween(100, 7080),];
     }
 }

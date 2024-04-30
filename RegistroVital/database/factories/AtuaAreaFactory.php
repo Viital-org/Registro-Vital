@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\AtuaArea;
 use App\Models\Especializacao;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AtuaArea>
+ * @extends Factory<AtuaArea>
  */
 class AtuaAreaFactory extends Factory
 {

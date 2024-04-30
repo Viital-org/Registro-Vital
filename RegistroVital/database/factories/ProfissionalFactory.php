@@ -3,10 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\AtuaArea;
+use App\Models\Profissional;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Profissional>
+ * @extends Factory<Profissional>
  */
 class ProfissionalFactory extends Factory
 {
@@ -26,13 +27,13 @@ class ProfissionalFactory extends Factory
         }
 
         return [
-        'areaatuacao_id' => $atuaareaId,
-        'nome' => $this->faker->name,
-        'email' =>$this->faker->safeEmail,
-        'enderecoatuacao' =>$this->faker->address,
-        'localformacao' =>$this->faker->address,
-        'dataformacao' => $this->faker->date,
-        'descricaoperfil' => $this->faker->text,
+            'areaatuacao_id' => $atuaareaId,
+            'nome' => $this->faker->name,
+            'email' => $this->faker->safeEmail,
+            'enderecoatuacao' => $this->faker->address,
+            'localformacao' => $this->faker->address,
+            'dataformacao' => $this->faker->date,
+            'descricaoperfil' => $this->faker->text,
         ];
     }
 }

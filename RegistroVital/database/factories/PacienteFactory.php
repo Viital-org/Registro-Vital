@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Paciente;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Paciente>
+ * @extends Factory<Paciente>
  */
 class PacienteFactory extends Factory
 {
@@ -17,14 +18,14 @@ class PacienteFactory extends Factory
     public function definition(): array
     {
         return [
-        'nome' => $this->faker->name,
-        'datanascimento' => $this->faker->date,
-        'cep' => $this->faker->postcode(),
-        'endereco' => $this->faker ->address,
-        'numcartaocred'=> $this->faker ->creditCardNumber(),
-        'hobbies' => $this->faker ->text,
-        'doencascronicas' => $this->faker->word,
-        'remediosregulares' =>$this->faker->word,
+            'nome' => $this->faker->name,
+            'datanascimento' => $this->faker->date,
+            'cep' => $this->faker->postcode(),
+            'endereco' => $this->faker->address,
+            'numcartaocred' => $this->faker->creditCardNumber(),
+            'hobbies' => $this->faker->text,
+            'doencascronicas' => $this->faker->word,
+            'remediosregulares' => $this->faker->word,
         ];
     }
 }

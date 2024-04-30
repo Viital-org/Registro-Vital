@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Especializacao;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Especializacao>
+ * @extends Factory<Especializacao>
  */
 class EspecializacaoFactory extends Factory
 {
@@ -17,9 +18,9 @@ class EspecializacaoFactory extends Factory
     public function definition(): array
     {
         return [
-                'especializacao' => $this->faker->jobTitle,
-                'tempoespecializacao' => $this->faker->numberBetween($min = 1, $max = 100),
-                'descricao' => $this->faker->text,
+            'especializacao' => $this->faker->jobTitle,
+            'tempoespecializacao' => $this->faker->numberBetween($min = 1, $max = 100),
+            'descricao' => $this->faker->text,
         ];
     }
 }
