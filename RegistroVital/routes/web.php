@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AtuaAreasController;
 use App\Http\Controllers\ConsultasController;
+use App\Http\Controllers\DicasController;
 use App\Http\Controllers\EspecializacoesController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfissionaisController;
@@ -50,3 +51,11 @@ Route::get('/cadastroespec', [EspecializacoesController::class, 'create']);
 Route::get('/editarespecializacao/{id}', [EspecializacoesController::class, 'edit'])->name('especializacoes-edit');
 Route::put('/editarespecializacao/{id}', [EspecializacoesController::class, 'update'])->name('especializacoes-update');
 Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, 'destroy'])->name('especializacoes-delete');
+
+Route::resource('/cadastrodicas', DicasController::class);
+Route::get('/listadicas', [DicasController::class, 'index'])->name('dicas-index');
+Route::post('/listadicas', [DicasController::class, 'store'])->name('dicas-store');
+Route::get('/cadastrodica', [DicasController::class, 'create']);
+Route::get('/editardica/{id}', [DicasController::class, 'edit'])->name('dicas-edit');
+Route::put('/editardica/{id}', [DicasController::class, 'update'])->name('dicas-update');
+Route::delete('/listadicas/{id}', [DicasController::class, 'destroy'])->name('dicas-delete');

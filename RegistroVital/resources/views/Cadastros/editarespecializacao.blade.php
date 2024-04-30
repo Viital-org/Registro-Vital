@@ -9,7 +9,19 @@
 
             @csrf
 
+            <a href="{{ route('welcome') }}">Home</a>
+
+            <br>
+
+            <a href="{{ route('especializacoes-index') }} ">Listar Especialização</a>
+
+            <br>
+
+            <a href="{{ route('cadastroespecializacoes.create') }} ">Cadastrar Especialização</a>
+
             @method('PUT')
+
+
 
             <h1>Editar Dados da Especialização</h1>
 

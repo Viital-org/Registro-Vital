@@ -8,6 +8,14 @@
 
         @csrf
 
+        <a href="{{ route('welcome') }}">Home</a>
+
+        <br>
+
+        <a href="{{ route('pacientes-index') }} ">Listar Pacientes</a>
+
+        <br>
+
         <h1>Cadastro de Paciente</h1>
 
         <br>
@@ -53,6 +61,7 @@
         <br>
 
         <input type="submit" value="Enviar">
+
     </form>
 
 @endsection

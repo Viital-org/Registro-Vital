@@ -8,6 +8,14 @@
 
         @csrf
 
+        <a href="{{ route('welcome') }}">Home</a>
+
+        <br>
+
+        <a href="{{ route('especializacoes-index') }} ">Listar Especializações</a>
+
+        <br>
+
         <h1>Cadastro de Especialização</h1>
 
         <br>

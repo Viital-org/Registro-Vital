@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             AtuaAreaSeeder::class,
             ProfissionalSeeder::class,
             PacienteSeeder::class,
+            DicaSeeder::class,
             ConsultaSeeder::class
         ]);
 
