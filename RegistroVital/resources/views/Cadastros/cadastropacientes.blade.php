@@ -14,6 +14,8 @@
         
         <a href="{{ route('pacientes-index') }} ">Listar Consultas</a>
 
+        <br>
+
         <h1>Cadastro de Paciente</h1>
 
         <br>
