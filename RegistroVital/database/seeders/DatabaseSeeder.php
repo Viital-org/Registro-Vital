@@ -2,10 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Consulta;
-use App\Models\Paciente;
-use App\Models\Profissional;
-use Database\Factories\ProfissionaisFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,10 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call([
+            EspecializacaoSeeder::class,
+            AtuaAreaSeeder::class,
+            ProfissionalSeeder::class,
+            PacienteSeeder::class,
+            ConsultaSeeder::class
+        ]);
 
-        Profissional::factory(10)->create();
-        Paciente::factory(10)->create();
-        Consulta::factory(10)->create();
     }
 }

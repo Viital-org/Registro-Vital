@@ -12,7 +12,13 @@ class   AtuaArea extends Model
     protected $table = 'Atuaareas';
     protected $fillable = [
         'area',
-        'especializacao',
+        'especializacao_id',
         'descricao',
     ];
+
+    public function especializacao()
+    {
+        return $this->belongsTo(Especializacao::class);
+    }
 }
+

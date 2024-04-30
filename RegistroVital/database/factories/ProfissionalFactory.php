@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\AtuaArea;
+use App\Models\Profissional;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends Factory<Profissional>
  */
 class ProfissionalFactory extends Factory
 {
@@ -16,14 +18,22 @@ class ProfissionalFactory extends Factory
      */
     public function definition(): array
     {
+        $atuaareas = AtuaArea::all();
+        if ($atuaareas->count() > 0) {
+            $atuaarea = $atuaareas->random();
+            $atuaareaId = $atuaarea->id;
+        } else {
+            $atuaareaId = null;
+        }
+
         return [
-        'areaatuacao' => $this->faker->jobTitle,
-        'nome' => $this->faker->name,
-        'email' =>$this->faker->safeEmail,
-        'enderecoatuacao' =>$this->faker->address,
-        'localformacao' =>$this->faker->address,
-        'dataformacao' => $this->faker->date,
-        'descricaoperfil' => $this->faker->text,
+            'areaatuacao_id' => $atuaareaId,
+            'nome' => $this->faker->name,
+            'email' => $this->faker->safeEmail,
+            'enderecoatuacao' => $this->faker->address,
+            'localformacao' => $this->faker->address,
+            'dataformacao' => $this->faker->date,
+            'descricaoperfil' => $this->faker->text,
         ];
     }
 }

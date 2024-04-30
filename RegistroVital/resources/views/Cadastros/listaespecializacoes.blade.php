@@ -1,6 +1,6 @@
 @extends ('layoutspadrao.profissionais')
 
-@section('titulo', 'Listagem de Areas de Atuação')
+@section('titulo', 'Listagem de Especializações')
 
 @section('conteudo')
 
@@ -9,29 +9,29 @@
 
     <br>
 
-    <a href="/cadastroarea">Cadastrar nova Area de Atuação</a>
+    <a href="/cadastroespec">Cadastrar nova Especialização</a>
 
-    <h1>Listagem de Areas de Atuação</h1>
+    <h1>Listagem de Especializações</h1>
     <table class="table">
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Area</th>
             <th scope="col">Especialização</th>
+            <th scope="col">Tempo de Especialização</th>
             <th scope="col">Descrição</th>
             <th scope="col">Editar</th>
             <th scope="col">Excluir</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($atuaareas as $item)
+        @foreach($especializacoes as $item)
             <tr>
                 <th scope="row">{{$item->id}}</th>
-                <td>{{$item->area}}</td>
-                <td>{{ $item->especializacao ?: 'Não definido' }}</td>
+                <td>{{$item->especializacao}}</td>
+                <td>{{$item->tempoespecializacao}}</td>
                 <td>{{$item->descricao}}</td>
                 <th>
-                    <a href="{{ route('atuaareas-edit', ['id' => $item->id]) }}">
+                    <a href="{{ route('especializacoes-edit', ['id' => $item->id]) }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                              class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path
@@ -41,7 +41,7 @@
                         </svg>
                     </a></th>
                 <th>
-                    <form action="{{ route('atuaareas-delete', ['id'=> $item->id])}}" method="POST">
+                    <form action="{{ route('especializacoes-delete', ['id'=> $item->id])}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit">

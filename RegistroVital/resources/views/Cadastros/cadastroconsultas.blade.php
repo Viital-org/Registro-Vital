@@ -10,7 +10,7 @@
         <a href="{{ route('welcome') }}">Home</a>
 
         <br>
-        
+
         <a href="{{ route('consultas-index') }} ">Listar Consultas</a>
 
         <br>

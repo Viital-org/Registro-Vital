@@ -10,7 +10,7 @@
         <a href="{{ route('welcome') }}">Home</a>
 
         <br>
-        
+
         <a href="{{ route('profissionais-index') }} ">Listar Profissionais</a>
 
         <h1>Cadastro de profissionais</h1>

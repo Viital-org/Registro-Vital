@@ -11,11 +11,11 @@
         <a href="{{ route('welcome') }}">Home</a>
 
         <br>
-        
+
         <a href="{{ route('consultas-index') }} ">Listar Consultas</a>
 
         <br>
-        
+
         <a href="{{ route('cadastroconsultas.create') }} ">Cadastrar area de atuacao</a>
 
         @method('PUT')
@@ -42,7 +42,8 @@
         <label for="profissional_id">Profissional:</label>
         <select name="profissional_id" id="profissional_id" required>
             @foreach($profissionais as $profissional)
-                <option value="{{ $profissional->id }}" @if ($profissional->id === $consultas->profissional_id) selected @endif>{{ $profissional->nome }}</option>
+                <option value="{{ $profissional->id }}"
+                        @if ($profissional->id === $consultas->profissional_id) selected @endif>{{ $profissional->nome }}</option>
             @endforeach
         </select>
 
@@ -56,7 +57,8 @@
         <label for="paciente_id">Paciente:</label>
         <select name="paciente_id" id="paciente_id" required>
             @foreach($pacientes as $paciente)
-                <option value="{{ $paciente->id }}" @if ($paciente->id === $consultas->paciente_id) selected @endif>{{ $paciente->nome }}</option>
+                <option value="{{ $paciente->id }}"
+                        @if ($paciente->id === $consultas->paciente_id) selected @endif>{{ $paciente->nome }}</option>
             @endforeach
         </select>
 

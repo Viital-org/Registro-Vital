@@ -12,15 +12,8 @@ class ExampleTest extends TestCase
      */
     public function test_the_application_returns_a_successful_response(): void
     {
-        $response = $this->get('/');
+        $response = $this->get('/listaprofissionais');
 
         $response->assertStatus(200);
     }
-
-    public function testando_inserir_profissional(): void
-    {
-        $response = $this->get('/index.php');
-
-        
-    } 
 }
