@@ -5,6 +5,10 @@
 @section('conteudo')
 
     @csrf
+    <a href="{{ route('welcome') }}">Home</a>
+
+    <br>
+
     <a href="/cadastroarea">Cadastrar nova Area de Atuação</a>
 
     <h1>Listagem de Areas de Atuação</h1>

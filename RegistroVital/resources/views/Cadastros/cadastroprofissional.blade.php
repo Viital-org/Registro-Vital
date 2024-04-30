@@ -6,6 +6,13 @@
 
     <form action="{{route('profissionais-store') }}" method="POST">
         @csrf
+
+        <a href="{{ route('welcome') }}">Home</a>
+
+        <br>
+        
+        <a href="{{ route('profissionais-index') }} ">Listar Profissionais</a>
+
         <h1>Cadastro de profissionais</h1>
 
         <br>

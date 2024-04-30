@@ -8,6 +8,16 @@
 
         @csrf
 
+        <a href="{{ route('welcome') }}">Home</a>
+
+        <br>
+        
+        <a href="{{ route('consultas-index') }} ">Listar Consultas</a>
+
+        <br>
+        
+        <a href="{{ route('cadastroconsultas.create') }} ">Cadastrar area de atuacao</a>
+
         @method('PUT')
 
         <h1>Editar Dados de Consulta</h1>

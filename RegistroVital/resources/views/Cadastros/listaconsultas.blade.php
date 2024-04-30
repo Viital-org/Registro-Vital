@@ -5,6 +5,10 @@
 @section('conteudo')
 
     @csrf
+    <a href="{{ route('welcome') }}">Home</a>
+
+    <br>
+
     <a href="/cadastroconsul">Cadastrar nova Consulta</a>
 
     <h1>Listagem de Consultas</h1>
