@@ -16,8 +16,12 @@
 
         <br>
 
-        <label for="especializacao">Especialização</label>
-        <input type="text" name="especializacao" id="especializacao" required>
+        <label for="especializacao_id">Especialização:</label>
+        <select name="especializacao_id" id="especializacao_id" required>
+            @foreach($especializacoes as $especializacao)
+                <option value="{{ $especializacao->id }}">{{ $especializacao->especializacao }}</option>
+            @endforeach
+        </select>
 
         <br>
 
