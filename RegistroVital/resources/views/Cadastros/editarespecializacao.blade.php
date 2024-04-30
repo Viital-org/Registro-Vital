@@ -16,12 +16,14 @@
             <br>
 
             <label for="especializacao">Especialização</label>
-            <input type="text" name="especializacao" id="especializacao" value="{{ $especializacao->especializacao }}" required>
+            <input type="text" name="especializacao" id="especializacao" value="{{ $especializacao->especializacao }}"
+                   required>
 
             <br>
 
             <label for="tempoespecializacao">Tempo da Especialização</label>
-            <input type="number" name="tempoespecializacao" id="tempoespecializacao" value="{{ $especializacao->tempoespecializacao }}" required>
+            <input type="number" name="tempoespecializacao" id="tempoespecializacao"
+                   value="{{ $especializacao->tempoespecializacao }}" required>
 
             <br>
 

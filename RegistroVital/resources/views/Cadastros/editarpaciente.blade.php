@@ -11,11 +11,11 @@
         <a href="{{ route('welcome') }}">Home</a>
 
         <br>
-        
+
         <a href="{{ route('consultas-index') }} ">Listar pacientes</a>
 
         <br>
-        
+
         <a href="{{ route('cadastropacientes.create') }} ">Cadastrar paciente</a>
 
         @method('PUT')

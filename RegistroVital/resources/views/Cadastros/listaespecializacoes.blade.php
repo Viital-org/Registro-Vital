@@ -5,6 +5,10 @@
 @section('conteudo')
 
     @csrf
+    <a href="{{ route('welcome') }}">Home</a>
+
+    <br>
+
     <a href="/cadastroespec">Cadastrar nova Especialização</a>
 
     <h1>Listagem de Especializações</h1>

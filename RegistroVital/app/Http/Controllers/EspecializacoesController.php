@@ -17,20 +17,20 @@ class EspecializacoesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('Cadastros/cadastroespecializacoes');
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         Especializacao::create($request->all());
         return redirect()->route('especializacoes-index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('Cadastros/cadastroespecializacoes');
     }
 
     /**

@@ -18,7 +18,7 @@ class Profissional extends Model
         'localformacao',
         'dataformacao',
         'descricaoperfil',
-        ];
+    ];
 
     public function atuaarea()
     {

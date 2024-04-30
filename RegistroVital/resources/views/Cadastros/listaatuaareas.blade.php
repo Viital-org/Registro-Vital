@@ -28,7 +28,7 @@
             <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->area}}</td>
-                <td>{{$item->especializacao}}</td>
+                <td>{{ $item->especializacao ?: 'Não definido' }}</td>
                 <td>{{$item->descricao}}</td>
                 <th>
                     <a href="{{ route('atuaareas-edit', ['id' => $item->id]) }}">

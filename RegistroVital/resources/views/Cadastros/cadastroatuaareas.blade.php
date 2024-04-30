@@ -10,7 +10,7 @@
         <a href="{{ route('welcome') }}">Home</a>
 
         <br>
-        
+
         <a href="{{ route('atuaareas-index') }} ">Listar areas de atuacao</a>
 
         <br>

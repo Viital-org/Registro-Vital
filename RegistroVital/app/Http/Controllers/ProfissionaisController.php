@@ -13,7 +13,7 @@ class ProfissionaisController extends Controller
      */
     public function index()
     {
-        $profissionais = Profissional::join('atuaareas', 'profissionais.areaatuacao_id', '=', 'atuaareas.id')
+        $profissionais = Profissional::leftJoin('atuaareas', 'profissionais.areaatuacao_id', '=', 'atuaareas.id')
             ->select('profissionais.*', 'atuaareas.area')
             ->orderBy('profissionais.created_at')
             ->get();
@@ -35,7 +35,7 @@ class ProfissionaisController extends Controller
     public function create()
     {
         $atuaareas = AtuaArea::all();
-        return view('Cadastros/cadastroprofissional',['atuaareas' => $atuaareas]);
+        return view('Cadastros/cadastroprofissional', ['atuaareas' => $atuaareas]);
     }
 
     /*

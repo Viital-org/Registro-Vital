@@ -11,11 +11,11 @@
         <a href="{{ route('welcome') }}">Home</a>
 
         <br>
-        
+
         <a href="{{ route('profissionais-index') }} ">Listar profissionais</a>
 
         <br>
-        
+
         <a href="{{ route('cadastroprofissional.create') }} ">Cadastrar Profissional</a>
 
         @method('PUT')
@@ -30,9 +30,11 @@
         <br>
 
         <label for="areaatuacao_id">Área de atuação:</label>
-        <select name="areaatuacao_id" id="areaatuacao_id" required>
+        <select name="areaatuacao_id" id="areaatuacao_id">
+            <option value="" @if (is_null($profissionais->areaatuacao_id)) selected @endif>Não definido</option>
             @foreach($atuaareas as $atuaarea)
-                <option value="{{ $atuaarea->id }}" @if ($atuaarea->id === $profissionais->areaatuacao_id) selected @endif>{{ $atuaarea->area }}</option>
+                <option value="{{ $atuaarea->id }}"
+                        @if ($atuaarea->id === $profissionais->areaatuacao_id) selected @endif>{{ $atuaarea->area }}</option>
             @endforeach
         </select>
 
