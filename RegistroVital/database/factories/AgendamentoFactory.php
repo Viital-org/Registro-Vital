@@ -22,38 +22,35 @@ class AgendamentoFactory extends Factory
     
     public function definition(): array
     {
-        
-        $especializacoes = Especializacao::all();
-        $profissionais = Profissional::all();
-        $pacientes = Paciente::all();
-        $consultas = Consulta::all();
-        
 
-        // Funcoes para buscar as chaves estrangeiras
+        $especializacoes = Especializacao::all()->last();
+        $profissionais = Profissional::all()->last();
+        $pacientes = Paciente::all()->last();
+        $consultas = Consulta::all()->last();
 
         if ($especializacoes->count() > 0){
-            $especializacao = $especializacoes->random();
+            $especializacao = $especializacoes->last();
             $especializacaoId = $especializacao->id;
         } else{
                 $especializacaoId = 0;
         }
 
         if($profissionais->count() > 0){
-            $profissional = $profissionais->random();
+            $profissional = $profissionais->last();
             $profissionalId = $profissional->id;
         } else{
             $profissionalId = 0;
         }
         
         if($pacientes->count() > 0){
-            $paciente = $pacientes->random();
+            $paciente = $pacientes->last();
             $pacienteId = $paciente->id;
         } else{
             $pacienteId = 0;
         }
         
         if($consultas->count() > 0){
-            $consulta = $consultas->random();
+            $consulta = $consultas->last();
             $consultaData = $consulta->data;
             $consultaId = $consulta->id;
         } else {
@@ -66,8 +63,10 @@ class AgendamentoFactory extends Factory
         'profissional_id' => $profissionalId,
         'paciente_id' => $pacienteId,
         'data_agendamento' => $consultaData,
-        'consulta_id' => $consultaId,   
+        'consulta_id' => $consultaId,    
         ];
-
     }
+
+
+    
 }

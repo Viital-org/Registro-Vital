@@ -13,7 +13,7 @@
 
         <a href="{{ route('tipoanotacao-index') }} ">Listar tipos de anotacao</a>
 
-        <h1>Cadastro de de Tipos de anotacao</h1>
+        <h1>Cadastro de Tipos de anotacao</h1>
 
         <br>
 

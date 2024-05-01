@@ -16,6 +16,7 @@
     <li><a href="{{ route('agendamentos-index') }}">Lista de Agendamentos</a></li>
     <li><a href="{{ route('tipoanotacao-index') }}">Lista de tipos de anotacao</a></li>
     <li><a href="{{ route('dicas-index')}}">Lista de Dicas</a></li>
+    <li><a href="{{ route('anotacoessaude-index')}}">Lista de anotacoes</a></li>
 </ul>
 </body>
 </html>
