@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TipoAnotacao;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +17,9 @@ class DatabaseSeeder extends Seeder
             AtuaAreaSeeder::class,
             ProfissionalSeeder::class,
             PacienteSeeder::class,
-            ConsultaSeeder::class
+            ConsultaSeeder::class,
+            AgendamentoSeeder::class,
+            TipoAnotacao::class,
         ]);
 
     }
