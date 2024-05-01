@@ -3,6 +3,7 @@
 use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\AtuaAreasController;
 use App\Http\Controllers\ConsultasController;
+use App\Http\Controllers\DicasController;
 use App\Http\Controllers\EspecializacoesController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfissionaisController;
@@ -59,6 +60,7 @@ Route::get('/editarespecializacao/{id}', [EspecializacoesController::class, 'edi
 Route::put('/editarespecializacao/{id}', [EspecializacoesController::class, 'update'])->name('especializacoes-update');
 Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, 'destroy'])->name('especializacoes-delete');
 
+<<<<<<< HEAD
 //Agendamentos
 
 Route::resource('/cadastroagendamentos',AgendamentosController::class);
@@ -73,3 +75,12 @@ Route::get('/cadastrotipanot', [TipoAnotacoesController::class, 'create'])->name
 Route::get('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'edit'])->name('tipoanotacao-edit');
 Route::put('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'update'])->name('tipoanotacao-update');
 Route::delete('/listatipoanotacoes/{id}', [TipoAnotacoesController::class, 'destroy'])->name('tipoanotacao-delete');
+=======
+Route::resource('/cadastrodicas', DicasController::class);
+Route::get('/listadicas', [DicasController::class, 'index'])->name('dicas-index');
+Route::post('/listadicas', [DicasController::class, 'store'])->name('dicas-store');
+Route::get('/cadastrodica', [DicasController::class, 'create']);
+Route::get('/editardica/{id}', [DicasController::class, 'edit'])->name('dicas-edit');
+Route::put('/editardica/{id}', [DicasController::class, 'update'])->name('dicas-update');
+Route::delete('/listadicas/{id}', [DicasController::class, 'destroy'])->name('dicas-delete');
+>>>>>>> 59cddbf760597b0d30a090230c3e4c919d585731

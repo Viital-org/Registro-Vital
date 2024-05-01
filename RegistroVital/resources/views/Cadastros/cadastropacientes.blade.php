@@ -11,8 +11,10 @@
         <a href="{{ route('welcome') }}">Home</a>
 
         <br>
-        
-        <a href="{{ route('consultas-index') }} ">Listar Consultas</a>
+
+        <a href="{{ route('pacientes-index') }} ">Listar Pacientes</a>
+
+        <br>
 
         <h1>Cadastro de Paciente</h1>
 
@@ -59,6 +61,7 @@
         <br>
 
         <input type="submit" value="Enviar">
+
     </form>
 
 @endsection
