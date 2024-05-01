@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('enderecoatuacao', 80);
             $table->string('localformacao', 60);
             $table->date('dataformacao');
-            $table->string('descricaoperfil');
+            $table->text('descricaoperfil');
             $table->timestamps();
             $table->softDeletes();
         });

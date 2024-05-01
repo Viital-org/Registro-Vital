@@ -18,6 +18,7 @@
             <th scope="col">ID</th>
             <th scope="col">Especialização</th>
             <th scope="col">Tempo de Especialização</th>
+            <th scope="col">Área de Atuação</th>
             <th scope="col">Descrição</th>
             <th scope="col">Editar</th>
             <th scope="col">Excluir</th>
@@ -29,6 +30,7 @@
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->especializacao}}</td>
                 <td>{{$item->tempoespecializacao}}</td>
+                <td>{{$item->area ?: 'Não definido' }}</td>
                 <td>{{$item->descricao}}</td>
                 <th>
                     <a href="{{ route('especializacoes-edit', ['id' => $item->id]) }}">

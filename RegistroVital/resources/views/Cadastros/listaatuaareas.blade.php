@@ -17,7 +17,7 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Area</th>
-            <th scope="col">Especialização</th>
+            <th scope="col">Especializações</th>
             <th scope="col">Descrição</th>
             <th scope="col">Editar</th>
             <th scope="col">Excluir</th>
@@ -28,7 +28,13 @@
             <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->area}}</td>
-                <td>{{ $item->especializacao ?: 'Não definido' }}</td>
+                <td>
+                    @if($item->especializacoes->isNotEmpty())
+                        {{ $item->especializacoes->pluck('especializacao')->implode(', ') }}
+                    @else
+                        Não definido
+                    @endif
+                </td>
                 <td>{{$item->descricao}}</td>
                 <th>
                     <a href="{{ route('atuaareas-edit', ['id' => $item->id]) }}">

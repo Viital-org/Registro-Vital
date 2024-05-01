@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AtuaArea;
 use App\Models\Especializacao;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,13 @@ class EspecializacoesController extends Controller
      */
     public function index()
     {
-        $especializacoes = Especializacao::all();
-        return view('Cadastros/listaespecializacoes', compact('especializacoes'), ['especializacoes' => $especializacoes]);
+        $especializacoes = Especializacao::leftJoin('atuaareas', 'especializacoes.area_id', '=', 'atuaareas.id')
+            ->select('especializacoes.*', 'atuaareas.area')
+            ->orderBy('especializacoes.created_at')
+            ->get();
+        return view('Cadastros/listaespecializacoes', ['especializacoes' => $especializacoes]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -30,7 +35,8 @@ class EspecializacoesController extends Controller
      */
     public function create()
     {
-        return view('Cadastros/cadastroespecializacoes');
+        $atuaareas = AtuaArea::all();
+        return view('Cadastros/cadastroespecializacoes', ['atuaareas' => $atuaareas]);
     }
 
     /**
@@ -47,7 +53,8 @@ class EspecializacoesController extends Controller
     public function edit($id)
     {
         $especializacao = Especializacao::find($id);
-        return view('Cadastros/editarespecializacao', compact('especializacao'));
+        $atuaareas = AtuaArea::all();
+        return view('Cadastros/editarespecializacao', ['especializacoes' => $especializacao, 'atuaareas' => $atuaareas]);
     }
 
     /**

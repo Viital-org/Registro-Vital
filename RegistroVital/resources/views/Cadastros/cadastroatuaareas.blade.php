@@ -24,15 +24,6 @@
 
         <br>
 
-        <label for="especializacao_id">Especialização:</label>
-        <select name="especializacao_id" id="especializacao_id" required>
-            @foreach($especializacoes as $especializacao)
-                <option value="{{ $especializacao->id }}">{{ $especializacao->especializacao }}</option>
-            @endforeach
-        </select>
-
-        <br>
-
         <label for="descricao">Descrição</label>
         <input type="text" name="descricao" id="descricao" required>
 

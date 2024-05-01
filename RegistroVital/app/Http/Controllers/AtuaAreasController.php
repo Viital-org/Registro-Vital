@@ -13,11 +13,8 @@ class AtuaAreasController extends Controller
      */
     public function index()
     {
-        $atuaareas = AtuaArea::leftJoin('especializacoes', 'atuaareas.especializacao_id', '=', 'especializacoes.id')
-            ->select('atuaareas.*', 'especializacoes.especializacao')
-            ->orderBy('atuaareas.created_at')
-            ->get();
-        return view('Cadastros/listaatuaareas', ['atuaareas' => $atuaareas]);
+        $atuaareas = AtuaArea::with('especializacoes')->get();
+        return view('Cadastros/listaatuaareas', compact('atuaareas'), ['atuaareas' => $atuaareas]);
     }
 
     /**
@@ -34,8 +31,7 @@ class AtuaAreasController extends Controller
      */
     public function create()
     {
-        $especializacoes = Especializacao::all();
-        return view('Cadastros/cadastroatuaareas', ['especializacoes' => $especializacoes]);
+        return view('Cadastros/cadastroatuaareas');
     }
 
     /**
@@ -52,8 +48,7 @@ class AtuaAreasController extends Controller
     public function edit($id)
     {
         $atuaarea = AtuaArea::find($id);
-        $especializacoes = Especializacao::all();
-        return view('Cadastros/editaratuaarea', ['atuaareas' => $atuaarea, 'especializacoes' => $especializacoes]);
+        return view('Cadastros/editaratuaarea', compact('atuaarea'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\AtuaArea;
 use App\Models\Especializacao;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,9 +18,18 @@ class EspecializacaoFactory extends Factory
      */
     public function definition(): array
     {
+        $atuaareas = AtuaArea::all();
+        if ($atuaareas->count() > 0) {
+            $atuaarea = $atuaareas->random();
+            $atuaareaId = $atuaarea->id;
+        } else {
+            $atuaareaId = null;
+        }
+
         return [
             'especializacao' => $this->faker->jobTitle,
             'tempoespecializacao' => $this->faker->numberBetween($min = 1, $max = 100),
+            'area_id' => $atuaareaId,
             'descricao' => $this->faker->text,
         ];
     }

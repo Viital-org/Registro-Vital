@@ -13,7 +13,6 @@ return new class extends Migration {
         Schema::create('Atuaareas', function (Blueprint $table) {
             $table->id();
             $table->string('area');
-            $table->foreignId('especializacao_id')->nullable()->constrained('Especializacoes')->onDelete('set null');
             $table->text('descricao');
             $table->timestamps();
             $table->softDeletes();

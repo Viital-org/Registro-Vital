@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tipoanotacoes', function(Blueprint $table){
             $table->id();
             $table->Integer('tipo_anotacao');
-            $table->string('desc_anotacao');
+            $table->text('desc_anotacao');
             $table->timestamps();
             $table->softDeletes();
         });

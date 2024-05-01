@@ -14,7 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->string('especializacao');
             $table->integer('tempoespecializacao');
-            $table->string('descricao');
+            $table->foreignId('area_id')->nullable()->constrained('Atuaareas')->onDelete('cascade');
+            $table->text('descricao');
             $table->timestamps();
             $table->softDeletes();
         });

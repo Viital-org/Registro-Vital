@@ -5,7 +5,7 @@
 
     @section ('conteudo')
 
-        <form action="{{ route('especializacoes-update', ['id' => $especializacao->id]) }}" method="POST">
+        <form action="{{ route('especializacoes-update', ['id' => $especializacoes->id]) }}" method="POST">
 
             @csrf
 
@@ -28,19 +28,30 @@
             <br>
 
             <label for="especializacao">Especialização</label>
-            <input type="text" name="especializacao" id="especializacao" value="{{ $especializacao->especializacao }}"
+            <input type="text" name="especializacao" id="especializacao" value="{{ $especializacoes->especializacao }}"
                    required>
 
             <br>
 
             <label for="tempoespecializacao">Tempo da Especialização</label>
             <input type="number" name="tempoespecializacao" id="tempoespecializacao"
-                   value="{{ $especializacao->tempoespecializacao }}" required>
+                   value="{{ $especializacoes->tempoespecializacao }}" required>
+
+            <br>
+
+            <label for="area_id">Area de Atuação:</label>
+            <select name="area_id" id="area_id">
+                <option value="" @if (is_null($especializacoes->area_id)) selected @endif>Não definido</option>
+                @foreach($atuaareas as $atuaarea)
+                    <option value="{{ $atuaarea->id }}"
+                            @if ($atuaarea->id === $especializacoes->area_id) selected @endif>{{ $atuaarea->area }}</option>
+                @endforeach
+            </select>
 
             <br>
 
             <label for="descricao">Descrição</label>
-            <input type="text" name="descricao" id="descricao" value="{{ $especializacao->descricao }}" required>
+            <input type="text" name="descricao" id="descricao" value="{{ $especializacoes->descricao }}" required>
 
             <br>
 

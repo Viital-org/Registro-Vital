@@ -4,7 +4,7 @@
 
 @section ('conteudo')
 
-    <form action="{{ route('atuaareas-update', ['id' => $atuaareas->id]) }}" method="POST">
+    <form action="{{ route('atuaareas-update', ['id' => $atuaarea->id]) }}" method="POST">
 
         @csrf
 
@@ -25,23 +25,13 @@
         <br>
 
         <label for="area">Area</label>
-        <input type="text" name="area" id="area" value="{{ $atuaareas->area }}" required>
+        <input type="text" name="area" id="area" value="{{ $atuaarea->area }}" required>
 
-        <br>
-
-        <label for="especializacao_id">Especialização:</label>
-        <select name="especializacao_id" id="especializacao_id">
-            <option value="" @if (is_null($atuaareas->especializacao_id)) selected @endif>Não definido</option>
-            @foreach($especializacoes as $especializacao)
-                <option value="{{ $especializacao->id }}"
-                        @if ($especializacao->id === $atuaareas->especializacao_id) selected @endif>{{ $especializacao->especializacao }}</option>
-            @endforeach
-        </select>
 
         <br>
 
         <label for="descricao">Descrição</label>
-        <input type="text" name="descricao" id="descricao" value="{{ $atuaareas->descricao }}" required>
+        <input type="text" name="descricao" id="descricao" value="{{ $atuaarea->descricao }}" required>
 
         <br>
 

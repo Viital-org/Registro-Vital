@@ -18,17 +18,8 @@ class AtuaAreaFactory extends Factory
      */
     public function definition(): array
     {
-        $especializacoes = Especializacao::all();
-        if ($especializacoes->count() > 0) {
-            $especializacao = $especializacoes->random();
-            $especializacaoId = $especializacao->id;
-        } else {
-            $especializacaoId = null;
-        }
-
         return [
             'area' => $this->faker->jobTitle(),
-            'especializacao_id' => $especializacaoId,
             'descricao' => $this->faker->text,
         ];
     }

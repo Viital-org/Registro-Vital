@@ -30,6 +30,15 @@
 
         <br>
 
+        <label for="area_id">Area de Atuação:</label>
+        <select name="area_id" id="area_id" required>
+            @foreach($atuaareas as $atuaarea)
+                <option value="{{ $atuaarea->id }}">{{ $atuaarea->area }}</option>
+            @endforeach
+        </select>
+
+        <br>
+
         <label for="descricao">Descrição</label>
         <input type="text" name="descricao" id="descricao" required>
 

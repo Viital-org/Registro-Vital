@@ -12,13 +12,12 @@ class   AtuaArea extends Model
     protected $table = 'Atuaareas';
     protected $fillable = [
         'area',
-        'especializacao_id',
         'descricao',
     ];
 
-    public function especializacao()
+    public function especializacoes()
     {
-        return $this->belongsTo(Especializacao::class);
+        return $this->hasMany(Especializacao::class, 'area_id');
     }
 }
 
