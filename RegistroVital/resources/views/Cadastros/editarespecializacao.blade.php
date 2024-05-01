@@ -41,7 +41,6 @@
 
             <label for="area_id">Area de Atuação:</label>
             <select name="area_id" id="area_id">
-                <option value="" @if (is_null($especializacoes->area_id)) selected @endif>Não definido</option>
                 @foreach($atuaareas as $atuaarea)
                     <option value="{{ $atuaarea->id }}"
                             @if ($atuaarea->id === $especializacoes->area_id) selected @endif>{{ $atuaarea->area }}</option>
