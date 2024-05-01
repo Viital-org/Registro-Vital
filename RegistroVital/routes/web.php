@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgendamentosController;
+use App\Http\Controllers\AnotacoesSaudeController;
 use App\Http\Controllers\AtuaAreasController;
 use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\DicasController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfissionaisController;
 use App\Http\Controllers\TipoAnotacoesController;
 use App\Models\Agendamento;
+use App\Models\Anotacaosaude;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -74,6 +76,15 @@ Route::get('/cadastrotipanot', [TipoAnotacoesController::class, 'create'])->name
 Route::get('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'edit'])->name('tipoanotacao-edit');
 Route::put('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'update'])->name('tipoanotacao-update');
 Route::delete('/listatipoanotacoes/{id}', [TipoAnotacoesController::class, 'destroy'])->name('tipoanotacao-delete');
+
+//Anotacoes
+Route::resource('/cadastroanotacoes', AnotacoesSaudeController::class);
+Route::get('/listaanotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
+Route::post('/listaanotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
+Route::get('/cadastroanotacoes', [AnotacoesSaudeController::class, 'create']);
+Route::get('/editaranotacao/{id}', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
+Route::put('/editaranotacao/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
+Route::delete('/listaanotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
 
 //Dicas
 Route::resource('/cadastrodicas', DicasController::class);
