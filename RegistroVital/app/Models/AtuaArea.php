@@ -19,5 +19,6 @@ class   AtuaArea extends Model
     {
         return $this->hasMany(Especializacao::class, 'area_id');
     }
+
 }
 

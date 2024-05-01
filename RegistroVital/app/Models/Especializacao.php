@@ -16,10 +16,4 @@ class Especializacao extends Model
         'descricao',
         'area_id',
     ];
-
-    public function atuaarea()
-    {
-        return $this->belongsTo(AtuaArea::class, 'area_id');
-    }
-
 }

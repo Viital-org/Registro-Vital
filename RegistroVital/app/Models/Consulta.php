@@ -18,14 +18,5 @@ class Consulta extends Model
         'valor',
     ];
 
-    public function profissional()
-    {
-        return $this->belongsTo(Profissional::class);
-    }
-
-    public function paciente()
-    {
-        return $this->belongsTo(Paciente::class);
-    }
 }
 

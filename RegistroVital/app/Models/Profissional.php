@@ -12,6 +12,7 @@ class Profissional extends Model
     protected $table = 'profissionais';
     protected $fillable = [
         'areaatuacao_id',
+        'especializacao_id',
         'nome',
         'email',
         'enderecoatuacao',
@@ -19,9 +20,4 @@ class Profissional extends Model
         'dataformacao',
         'descricaoperfil',
     ];
-
-    public function atuaarea()
-    {
-        return $this->belongsTo(AtuaArea::class);
-    }
 }
