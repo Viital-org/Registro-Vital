@@ -35,7 +35,8 @@
         <br>
 
         <label for="data_fim">Data de Fim:</label>
-        <input type="date" name="data_fim" id="data_fim" value="{{ $meta->data_fim }}" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required>
+        <input type="date" name="data_fim" id="data_fim" value="{{ $meta->data_fim }}"
+               min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required>
 
         <br>
 

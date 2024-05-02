@@ -1,4 +1,4 @@
-Vital project 
+Vital project
 
 Team:
 

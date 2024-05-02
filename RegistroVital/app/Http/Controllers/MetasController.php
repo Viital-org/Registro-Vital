@@ -18,20 +18,20 @@ class MetasController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('Cadastros/cadastrometas');
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         Meta::create($request->all());
         return redirect()->route('metas-index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('Cadastros/cadastrometas');
     }
 
     /**
