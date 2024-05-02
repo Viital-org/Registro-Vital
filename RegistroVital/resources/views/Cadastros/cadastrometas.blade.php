@@ -23,13 +23,15 @@
         <input type="text" name="meta" id="meta" required>
 
         <br>
-        <label for="data_inicio">Data de Inicio</label>
-        <input type="date" name="data_inicio" id="data_inicio" required>
+
+        <label for="data_inicio">Data de Início:</label>
+        <input type="date" name="data_inicio" id="data_inicio" value="<?php echo date('Y-m-d'); ?>" readonly required>
 
         <br>
 
-        <label for="data_fim">Data de Fim</label>
-        <input type="date" name="data_fim" id="data_fim" required>
+        <label for="data_fim">Data de Fim:</label>
+        <input type="date" name="data_fim" id="data_fim" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required>
+
 
         <br>
 
