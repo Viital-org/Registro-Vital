@@ -2,11 +2,9 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 use App\Models\Paciente;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class PacienteTest extends TestCase
 {
@@ -31,14 +29,14 @@ class PacienteTest extends TestCase
         $response->assertSatatus(200);
 
         $response = $this->post('/cadastropaci', [
-            'nome'=>'Testeeee',
-            'datanascimento'=>'01122023',
-            'cep'=>'12345678',
-            'endereco'=>'Aquela rua lá',
-            'numcartaocred'=>'1234123412341234',
-            'hobbies'=>'Toca bateria',
-            'doencascronicas'=>'Alzheimer',
-            'remediosregulares'=>'Zolpidem'
+            'nome' => 'Testeeee',
+            'datanascimento' => '01122023',
+            'cep' => '12345678',
+            'endereco' => 'Aquela rua lá',
+            'numcartaocred' => '1234123412341234',
+            'hobbies' => 'Toca bateria',
+            'doencascronicas' => 'Alzheimer',
+            'remediosregulares' => 'Zolpidem'
         ]);
 
         $response->assertRedirect();
