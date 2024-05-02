@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Consulta;
 use App\Models\Paciente;
 use App\Models\Profissional;
-use Database\Seeders\AgendamentoSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
@@ -30,7 +29,7 @@ class ConsultasController extends Controller
     public function store(Request $request)
     {
         Consulta::create($request->all());
-        Artisan::call('db:seed',['--class=AgendamentoSeeder']);
+        Artisan::call('db:seed', ['--class=AgendamentoSeeder']);
         return redirect()->route('consultas-index');
     }
 

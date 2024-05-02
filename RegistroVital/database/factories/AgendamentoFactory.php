@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Agendamento;
 use App\Models\Consulta;
 use App\Models\Especializacao;
 use App\Models\Paciente;
@@ -9,7 +10,7 @@ use App\Models\Profissional;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Agendamento>
+ * @extends Factory<Agendamento>
  */
 class AgendamentoFactory extends Factory
 {
@@ -19,7 +20,7 @@ class AgendamentoFactory extends Factory
      * @return array<string, mixed>
      */
 
-    
+
     public function definition(): array
     {
 
@@ -28,28 +29,28 @@ class AgendamentoFactory extends Factory
         $pacientes = Paciente::all()->last();
         $consultas = Consulta::all()->last();
 
-        if ($especializacoes->count() > 0){
+        if ($especializacoes->count() > 0) {
             $especializacao = $especializacoes->last();
             $especializacaoId = $especializacao->id;
-        } else{
-                $especializacaoId = 0;
+        } else {
+            $especializacaoId = 0;
         }
 
-        if($profissionais->count() > 0){
+        if ($profissionais->count() > 0) {
             $profissional = $profissionais->last();
             $profissionalId = $profissional->id;
-        } else{
+        } else {
             $profissionalId = 0;
         }
-        
-        if($pacientes->count() > 0){
+
+        if ($pacientes->count() > 0) {
             $paciente = $pacientes->last();
             $pacienteId = $paciente->id;
-        } else{
+        } else {
             $pacienteId = 0;
         }
-        
-        if($consultas->count() > 0){
+
+        if ($consultas->count() > 0) {
             $consulta = $consultas->last();
             $consultaData = $consulta->data;
             $consultaId = $consulta->id;
@@ -59,14 +60,13 @@ class AgendamentoFactory extends Factory
         }
 
         return [
-        'especializacao_id' => $especializacaoId,
-        'profissional_id' => $profissionalId,
-        'paciente_id' => $pacienteId,
-        'data_agendamento' => $consultaData,
-        'consulta_id' => $consultaId,    
+            'especializacao_id' => $especializacaoId,
+            'profissional_id' => $profissionalId,
+            'paciente_id' => $pacienteId,
+            'data_agendamento' => $consultaData,
+            'consulta_id' => $consultaId,
         ];
     }
 
 
-    
 }

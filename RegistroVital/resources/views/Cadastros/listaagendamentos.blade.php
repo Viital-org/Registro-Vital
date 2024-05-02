@@ -31,7 +31,7 @@
                 <td>{{$item->nome_paciente}}</td>
                 <td>{{$item->data_consulta}}</td>
                 <td>{{$item->consulta_id}}</td>
-                    
+
             </tr>
         @endforeach
         </tbody>

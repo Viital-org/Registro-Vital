@@ -9,8 +9,6 @@ use App\Http\Controllers\EspecializacoesController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfissionaisController;
 use App\Http\Controllers\TipoAnotacoesController;
-use App\Models\Agendamento;
-use App\Models\Anotacaosaude;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,6 +23,7 @@ Route::get('/cadastrarprof', [ProfissionaisController::class, 'create']);
 Route::get('/editarprofissional/{id}', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
 Route::put('/editarprofissional/{id}', [ProfissionaisController::class, 'update'])->name('profissionais-update');
 Route::delete('/listaprofissionais/{id}', [ProfissionaisController::class, 'destroy'])->name('profissionais-delete');
+Route::get('/especializacoes/{areaId}', [ProfissionaisController::class, 'especializacoesPorArea']);
 
 //Pacientes
 Route::resource('/cadastropacientes', PacientesController::class);
@@ -64,7 +63,7 @@ Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, '
 
 //Agendamentos
 
-Route::resource('/cadastroagendamentos',AgendamentosController::class);
+Route::resource('/cadastroagendamentos', AgendamentosController::class);
 Route::get('/listaagendamentos', [AgendamentosController::class, 'index'])->name('agendamentos-index');
 Route::delete('/listaagendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos-delete');
 

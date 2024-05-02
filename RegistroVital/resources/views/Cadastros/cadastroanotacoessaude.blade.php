@@ -20,7 +20,7 @@
         <label for="paciente_id">Id do paciente</label>
         <select name="paciente_id" id="paciente_id">
             @foreach ($paciente as $item)
-            <option value="{{$item->id}}">{{$item->nome}}</option>
+                <option value="{{$item->id}}">{{$item->nome}}</option>
             @endforeach
         </select>
 
@@ -29,7 +29,7 @@
         <label for="tipo_anot">Tipo da anotacao</label>
         <select name="tipo_anot" id="tipo_anot">
             @foreach ($tipoanotacao as $item)
-            <option value="{{$item->id}}">{{$item->desc_anotacao}}</option>
+                <option value="{{$item->id}}">{{$item->desc_anotacao}}</option>
             @endforeach
         </select>
 
@@ -50,7 +50,7 @@
             <option value="Visivel">Publico</option>
             <option value="Escondido">Privado</option>
         </select>
-        
+
         <br>
 
         <input type="submit" value="Enviar">

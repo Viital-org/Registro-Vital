@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\AtuaArea;
-use App\Models\Especializacao;
 use Illuminate\Http\Request;
 
 class AtuaAreasController extends Controller

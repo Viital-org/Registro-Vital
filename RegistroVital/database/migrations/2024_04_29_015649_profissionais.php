@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('nome', 70);
             $table->foreignId('areaatuacao_id')->nullable()->constrained('Atuaareas')->onDelete('set null');
+            $table->foreignId('especializacao_id')->nullable()->constrained('Especializacoes')->onDelete('set null');
             $table->string('email', 40);
             $table->string('enderecoatuacao', 80);
             $table->string('localformacao', 60);

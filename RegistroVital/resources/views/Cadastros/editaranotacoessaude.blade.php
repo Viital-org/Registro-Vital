@@ -52,11 +52,10 @@
         <br>
 
         <label for="anotacao">Anotacao</label>
-        <textarea name="anotacao" id="anotacao" value="{{ $anotacaosaude->anotacao }}" > </textarea>
+        <textarea name="anotacao" id="anotacao">{{ $anotacaosaude->anotacao }}</textarea>
 
         <br>
 
-        
 
         <button type="submit">Salvar Alterações</button>
 

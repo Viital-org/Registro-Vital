@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
+
+use App\Models\TipoAnotacao;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends Factory<TipoAnotacao>
  */
 class TipoAnotacaoFactory extends Factory
 {
@@ -17,8 +19,8 @@ class TipoAnotacaoFactory extends Factory
     public function definition(): array
     {
         return [
-            'tipo_anotacao'=>$this->faker->numberBetween(1,14),
-            'desc_anotacao'=>$this->faker->text(20),
+            'tipo_anotacao' => $this->faker->numberBetween(1, 14),
+            'desc_anotacao' => $this->faker->text(20),
         ];
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Consulta;
 use App\Models\Agendamento;
 use Illuminate\Database\Seeder;
 

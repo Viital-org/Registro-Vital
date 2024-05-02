@@ -22,7 +22,6 @@
             @method('PUT')
 
 
-
             <h1>Editar Dados da Especialização</h1>
 
             <br>

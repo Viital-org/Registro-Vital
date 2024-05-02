@@ -18,6 +18,7 @@
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
             <th scope="col">Área de Atuação</th>
+            <th scope="col">Especialização</th>
             <th scope="col">E-mail</th>
             <th scope="col">Endereço</th>
             <th scope="col">Local de Formação</th>
@@ -33,8 +34,9 @@
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->nome}}</td>
                 <td>{{$item->area ?: 'Não definido' }}</td>
+                <td>{{$item->especializacao ?: 'Não definido' }}</td>
                 <td>{{$item->email}}</td>
-                <td>{{$item->endereco}}</td>
+                <td>{{$item->enderecoatuacao}}</td>
                 <td>{{$item->localformacao}}</td>
                 <td>{{$item->dataformacao}}</td>
                 <td>{{$item->descricaoperfil}}</td>

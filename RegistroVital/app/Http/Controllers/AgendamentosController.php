@@ -16,7 +16,7 @@ class AgendamentosController extends Controller
             ->join('pacientes', 'agendamentos.paciente_id', '=', 'pacientes.id')
             ->join('profissionais', 'agendamentos.profissional_id', '=', 'profissionais.id')
             ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
-            ->select('consultas.*','especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional','consultas.id', 'consultas.data as data_consulta')
+            ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta')
             ->orderBy('agendamentos.id')
             ->get();
         return view('Cadastros/listaagendamentos', ['agendamentos' => $agendamentos]);
@@ -28,7 +28,7 @@ class AgendamentosController extends Controller
     public function create()
     {
         $agendamentos = Agendamento::all();
-        return view('Cadastros/cadastroagendamentos', ['agendamentos'=>$agendamentos]);
+        return view('Cadastros/cadastroagendamentos', ['agendamentos' => $agendamentos]);
     }
 
     /**

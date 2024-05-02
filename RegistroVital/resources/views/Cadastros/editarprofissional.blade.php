@@ -40,6 +40,12 @@
 
         <br>
 
+        <label for="especializacao_id">Especialização:</label>
+        <select name="especializacao_id" id="especializacao_id">
+        </select>
+
+        <br>
+
         <label for="email">E-mail</label>
         <input type="email" name="email" id="email" value="{{ $profissionais->email}}" required>
 
@@ -70,5 +76,33 @@
         <button type="submit">Salvar Alterações</button>
 
     </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#areaatuacao_id').change(function () {
+                var areaId = $(this).val();
+                if (areaId) {
+                    $.ajax({
+                        type: "GET",
+                        url: "/especializacoes/" + areaId,
+                        success: function (data) {
+                            $('#especializacao_id').empty();
+                            $('#especializacao_id').append('<option value="">Não Definido</option>');
+                            $.each(data, function (index, especializacao) {
+                                $('#especializacao_id').append('<option value="' + especializacao.id + '">' + especializacao.especializacao + '</option>');
+                            });
+                        }
+                    });
+                } else {
+
+                    $('#especializacao_id').empty().append('<option value="">Não Definido</option>');
+                }
+            });
+
+
+            $('#areaatuacao_id').trigger('change');
+        });
+    </script>
 
 @endsection

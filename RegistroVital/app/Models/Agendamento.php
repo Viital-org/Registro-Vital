@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agendamento extends Model
 {
     use HasFactory;
+
     protected $table = 'agendamentos';
     protected $fillable = [
         'especializacao_id',
@@ -17,19 +18,23 @@ class Agendamento extends Model
         'consulta_id',
     ];
 
-    public function consulta(){
+    public function consulta()
+    {
         return $this->belongsTo(Consulta::class);
     }
 
-    public function especializacao(){
+    public function especializacao()
+    {
         return $this->belongsTo(Especializacao::class);
     }
 
-    public function profissional(){
+    public function profissional()
+    {
         return $this->belongsTo(Profissional::class);
     }
 
-    public function paciente(){
+    public function paciente()
+    {
         return $this->belongsTo(Paciente::class);
     }
 }

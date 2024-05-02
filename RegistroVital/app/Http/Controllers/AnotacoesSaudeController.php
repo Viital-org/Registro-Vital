@@ -15,11 +15,20 @@ class AnotacoesSaudeController extends Controller
     public function index()
     {
         $anotacoessaude = Anotacaosaude::join('pacientes', 'anotacoessaude.paciente_id', '=', 'pacientes.id')
-        ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
-        ->select('anotacoessaude.*','tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao', 'pacientes.nome as paciente')
-        ->get();
+            ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
+            ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao', 'pacientes.nome as paciente')
+            ->get();
 
         return view('Cadastros/listaranotacoessaude', ['anotacoessaude' => $anotacoessaude]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        Anotacaosaude::create($request->all());
+        return redirect()->route('anotacoessaude-index');
     }
 
     /**
@@ -31,15 +40,6 @@ class AnotacoesSaudeController extends Controller
         $paciente = Paciente::all();
         $tipoanotacao = TipoAnotacao::all();
         return view('Cadastros/cadastroanotacoessaude', ['anotacoessaude' => $anotacoessaude, 'paciente' => $paciente, 'tipoanotacao' => $tipoanotacao]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        Anotacaosaude::create($request->all());
-        return redirect()->route('anotacoessaude-index');
     }
 
     /**

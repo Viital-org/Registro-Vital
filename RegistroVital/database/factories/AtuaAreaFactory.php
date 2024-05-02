@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\AtuaArea;
-use App\Models\Especializacao;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
