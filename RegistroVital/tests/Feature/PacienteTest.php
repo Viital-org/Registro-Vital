@@ -24,7 +24,7 @@ class PacienteTest extends TestCase
     {
         $paciente = Paciente::factory()->create();
 
-        $user->actingAs($paciente);
+        $paciente->actingAs($paciente);
 
         $response = $this->get('/cadastropaci');
 
@@ -43,9 +43,15 @@ class PacienteTest extends TestCase
 
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('/database.sqlite', [
-            'campo1' => 'valor1',
-            'campo2' => 'valor2',
+        $this->assertDatabaseHas('/Pacientes', [
+            'nome' => $this->faker->name,
+            'datanascimento' => $this->faker->date,
+            'cep' => $this->faker->postcode(),
+            'endereco' => $this->faker->address,
+            'numcartaocred' => $this->faker->creditCardNumber(),
+            'hobbies' => $this->faker->text,
+            'doencascronicas' => $this->faker->word,
+            'remediosregulares' => $this->faker->word,
         ]);
 
     }
