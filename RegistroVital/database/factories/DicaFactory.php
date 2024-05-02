@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Dica;
 use App\Models\Paciente;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Dica>
+ * @extends Factory<Dica>
  */
 class DicaFactory extends Factory
 {
