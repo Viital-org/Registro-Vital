@@ -6,6 +6,7 @@ use App\Http\Controllers\AtuaAreasController;
 use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\DicasController;
 use App\Http\Controllers\EspecializacoesController;
+use App\Http\Controllers\MetasController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfissionaisController;
 use App\Http\Controllers\TipoAnotacoesController;
@@ -93,3 +94,12 @@ Route::get('/cadastrodica', [DicasController::class, 'create']);
 Route::get('/editardica/{id}', [DicasController::class, 'edit'])->name('dicas-edit');
 Route::put('/editardica/{id}', [DicasController::class, 'update'])->name('dicas-update');
 Route::delete('/listadicas/{id}', [DicasController::class, 'destroy'])->name('dicas-delete');
+
+//Metas
+Route::resource('/cadastrometas', MetasController::class);
+Route::get('/listametas', [MetasController::class, 'index'])->name('metas-index');
+Route::post('/listametas', [MetasController::class, 'store'])->name('metas-store');
+Route::get('/cadastrometa', [MetasController::class, 'create']);
+Route::get('/editarmeta/{id}', [MetasController::class, 'edit'])->name('metas-edit');
+Route::put('/editarmeta/{id}', [MetasController::class, 'update'])->name('metas-update');
+Route::delete('/listametas/{id}', [MetasController::class, 'destroy'])->name('metas-delete');

@@ -14,9 +14,11 @@
     <li><a href="{{ route('atuaareas-index') }}">Lista de Areas de Atuação</a></li>
     <li><a href="{{ route('especializacoes-index') }}">Lista de Especializações</a></li>
     <li><a href="{{ route('agendamentos-index') }}">Lista de Agendamentos</a></li>
-    <li><a href="{{ route('tipoanotacao-index') }}">Lista de tipos de anotacao</a></li>
+    <li><a href="{{ route('tipoanotacao-index') }}">Lista de tipos de Anotacao</a></li>
     <li><a href="{{ route('dicas-index')}}">Lista de Dicas</a></li>
-    <li><a href="{{ route('anotacoessaude-index')}}">Lista de anotacoes</a></li>
+    <li><a href="{{ route('anotacoessaude-index')}}">Lista de Anotacoes</a></li>
+    <li><a href="{{ route('metas-index')}}">Lista de Metas</a></li>
+
 </ul>
 </body>
 </html>

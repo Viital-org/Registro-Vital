@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             TipoAnotacaoSeeder::class,
             DicaSeeder::class,
             AnotacaoSaudeSeeder::class,
-            //desenvolvendo MetaSeeder::class,
+            MetaSeeder::class,
         ]);
 
     }
