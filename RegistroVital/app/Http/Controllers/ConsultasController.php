@@ -48,9 +48,26 @@ class ConsultasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Consulta $consulta)
+    public function show(Request $request)
     {
-        //
+        $id = $request->input('id');
+    
+
+        if ($id === null) {
+            $consultas = Consulta::join('profissionais', 'consultas.profissional_id', '=', 'profissionais.id')
+            ->join('pacientes', 'consultas.paciente_id', '=', 'pacientes.id')
+            ->select('consultas.*', 'profissionais.nome as nome_profissional', 'pacientes.nome as nome_paciente')
+            ->orderBy('consultas.created_at')
+            ->get();
+        } else{
+            $consultas = Consulta::join('profissionais', 'consultas.profissional_id', '=', 'profissionais.id')
+            ->join('pacientes', 'consultas.paciente_id', '=', 'pacientes.id')
+            ->where('consultas.id','=', $id)
+            ->select('consultas.*', 'profissionais.nome as nome_profissional', 'pacientes.nome as nome_paciente')
+            ->orderBy('consultas.created_at')
+            ->get();
+        }
+        return view('Cadastros/listaconsultas', ['consultas' => $consultas]);
     }
 
     /**

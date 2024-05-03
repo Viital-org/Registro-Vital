@@ -36,9 +36,17 @@ class AtuaAreasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(AtuaArea $atuaArea)
+    public function show(Request $request)
     {
-        //
+        $id = $request->input('id');
+    
+
+        if ($id === null) {
+            $atuaareas = AtuaArea::all();
+        } else{
+            $atuaareas = AtuaArea::all()->where('id','=', $id);
+        }
+        return view('Cadastros/listaatuaareas', ['atuaareas' => $atuaareas]);
     }
 
     /**

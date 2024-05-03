@@ -5,11 +5,22 @@
 @section('conteudo')
 
     @csrf
-    <a href="{{ route('welcome') }}">Home</a>
+    <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
     <br>
 
     <h1>Listagem Agendamentos</h1>
+
+    <br>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form action="{{ route('agendamentos-show')}}" method="post">
+        @csrf
+        <input name="id" id="id" class="form-control mr-sm-2" type="search" placeholder="Digite o ID" aria-label="Search">
+        <button class="btn btn-primary" type="submit">Buscar</button>
+    </form>
+    </nav>
+    <br>
+
     <table class="table">
         <thead>
         <tr>

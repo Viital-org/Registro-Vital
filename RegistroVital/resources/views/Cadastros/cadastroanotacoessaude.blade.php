@@ -7,11 +7,11 @@
     <form action="{{route('anotacoessaude-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('anotacoessaude-index') }} ">Listar anotacoes</a>
+        <a href="{{ route('anotacoessaude-index') }} " class="btn btn-outline-info">Listar anotacoes</a>
 
         <h1>Cadastro de nova anotacao</h1>
 

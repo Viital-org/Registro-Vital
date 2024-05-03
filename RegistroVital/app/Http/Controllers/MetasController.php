@@ -37,9 +37,17 @@ class MetasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Meta $meta)
+    public function show(Request $request)
     {
-        //
+        $id = $request->input('id');
+    
+
+        if ($id === null) {
+            $metas = Meta::all();
+        } else{
+            $metas = Meta::all()->where('id','=', $id);
+        }
+        return view('Cadastros/listametas', ['metas' => $metas]);
     }
 
     /**

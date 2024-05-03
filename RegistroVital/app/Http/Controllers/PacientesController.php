@@ -36,9 +36,16 @@ class PacientesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $id = $request->input('id');    
+
+        if ($id === null) {
+            $pacientes = Paciente::all();
+        } else{
+            $pacientes = Paciente::all()->where('id','=', $id);
+        }
+        return view('Cadastros/listapacientes', ['pacientes' => $pacientes]);
     }
 
     /**

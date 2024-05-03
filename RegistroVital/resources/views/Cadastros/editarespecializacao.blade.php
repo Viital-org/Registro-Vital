@@ -9,15 +9,15 @@
 
             @csrf
 
-            <a href="{{ route('welcome') }}">Home</a>
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-            <br>
+            &nbsp;
 
-            <a href="{{ route('especializacoes-index') }} ">Listar Especialização</a>
+            <a href="{{ route('especializacoes-index') }} " class="btn btn-outline-info">Listar Especialização</a>
 
-            <br>
+            &nbsp;
 
-            <a href="{{ route('cadastroespecializacoes.create') }} ">Cadastrar Especialização</a>
+            <a href="{{ route('cadastroespecializacoes.create') }} " class="btn btn-outline-info">Cadastrar Especialização</a>
 
             @method('PUT')
 

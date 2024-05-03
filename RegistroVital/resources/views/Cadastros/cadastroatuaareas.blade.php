@@ -7,11 +7,11 @@
     <form action="{{route('atuaareas-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('atuaareas-index') }} ">Listar areas de atuacao</a>
+        <a href="{{ route('atuaareas-index') }} " class="btn btn-outline-info">Listar areas de atuacao</a>
 
         <br>
 

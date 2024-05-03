@@ -5,13 +5,29 @@
 @section('conteudo')
 
     @csrf
-    <a href="{{ route('welcome') }}">Home</a>
+    <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+
+    &nbsp;
+
+    <a href="/cadastroespec" class="btn btn-outline-info">Cadastrar nova Especialização</a>
+
+    <h1>Listagem de Especializações</h1>
 
     <br>
 
-    <a href="/cadastroespec">Cadastrar nova Especialização</a>
 
-    <h1>Listagem de Especializações</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form action="{{ route('especializacoes-show')}}" method="post">
+        @csrf
+        <input name="id" id="id" class="form-control mr-sm-2" type="search" placeholder="Digite o ID" aria-label="Search">
+        <button class="btn btn-primary" type="submit">Buscar</button>
+    </form>
+</nav>
+
+
+    
+    <br>
+
     <table class="table">
         <thead>
         <tr>
@@ -62,9 +78,6 @@
                             <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Confirmacao de exclusao</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
                             </div>
                             <div class="modal-body">
                                 <p>Deseja realmente excluir o registro '{{$item->especializacao}}' ?  <p>

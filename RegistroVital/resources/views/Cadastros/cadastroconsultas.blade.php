@@ -7,11 +7,11 @@
     <form action="{{route('consultas-store')}}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('consultas-index') }} ">Listar Consultas</a>
+        <a href="{{ route('consultas-index') }} " class="btn btn-outline-info">Listar Consultas</a>
 
         <br>
 

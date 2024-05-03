@@ -8,15 +8,17 @@
 
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
         <br>
 
-        <a href="{{ route('consultas-index') }} ">Listar pacientes</a>
+        &nbsp;
 
-        <br>
+        <a href="{{ route('pacientes-index') }} " class="btn btn-outline-info">Listar pacientes</a>
 
-        <a href="{{ route('cadastropacientes.create') }} ">Cadastrar paciente</a>
+        &nbsp;
+
+        <a href="{{ route('cadastropacientes.create') }} " class="btn btn-outline-info">Cadastrar paciente</a>
 
         @method('PUT')
 

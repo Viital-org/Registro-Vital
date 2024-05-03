@@ -8,15 +8,15 @@
 
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('metas-index') }} ">Listar Metas</a>
+        <a href="{{ route('metas-index') }} " class="btn btn-outline-info">Listar Metas</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('cadastrometas.create') }} ">Cadastrar Metas</a>
+        <a href="{{ route('cadastrometas.create') }} " class="btn btn-outline-info">Cadastrar Metas</a>
 
         @method('PUT')
 

@@ -36,9 +36,17 @@ class TipoAnotacoesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TipoAnotacao $tipoAnotacao)
+    public function show(Request $request)
     {
-        //
+        $id = $request->input('id');
+    
+
+        if ($id === null) {
+            $anotacaosaude = TipoAnotacao::all();
+        } else{
+            $anotacaosaude = TipoAnotacao::all()->where('id','=', $id);
+        }
+        return view('Cadastros/listatipoanotacoes', ['tipoanotacao' => $anotacaosaude]);
     }
 
     /**

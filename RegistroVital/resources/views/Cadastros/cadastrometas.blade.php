@@ -7,11 +7,11 @@
     <form action="{{route('metas-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('metas-index') }} ">Listar metas</a>
+        <a href="{{ route('metas-index') }} " class="btn btn-outline-info">Listar metas</a>
 
         <br>
 
