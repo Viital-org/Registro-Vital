@@ -31,7 +31,6 @@
             <th scope="col">Paciente</th>
             <th scope="col">Data</th>
             <th scope="col">ID Consulta</th>
-            <th scope="col">Ações</th>
         </tr>
         </thead>
         <tbody>
@@ -43,15 +42,6 @@
                 <td>{{$item->nome_paciente}}</td>
                 <td>{{$item->data_consulta}}</td>
                 <td>{{$item->consulta_id}}</td>
-                <td>
-                    <a href="{{ route('agendamentos-edit', ['id' => $item->id]) }}" class="btn btn-primary">Editar</a>
-                    <form action="{{ route('agendamentos-delete', ['id'=> $item->id])}}" method="POST"
-                          style="display: inline-block;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Excluir</button>
-                    </form>
-                </td>
             </tr>
         @endforeach
         </tbody>

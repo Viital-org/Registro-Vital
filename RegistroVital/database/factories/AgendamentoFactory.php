@@ -24,34 +24,34 @@ class AgendamentoFactory extends Factory
     public function definition(): array
     {
 
-        $especializacoes = Especializacao::all()->last();
-        $profissionais = Profissional::all()->last();
-        $pacientes = Paciente::all()->last();
-        $consultas = Consulta::all()->last();
+        $especializacoes = Especializacao::all();
+        $profissionais = Profissional::all();
+        $pacientes = Paciente::all();
+        $consultas = Consulta::all();
 
         if ($especializacoes->count() > 0) {
-            $especializacao = $especializacoes->last();
+            $especializacao = $especializacoes->random();
             $especializacaoId = $especializacao->id;
         } else {
             $especializacaoId = 0;
         }
 
         if ($profissionais->count() > 0) {
-            $profissional = $profissionais->last();
+            $profissional = $profissionais->random();
             $profissionalId = $profissional->id;
         } else {
             $profissionalId = 0;
         }
 
         if ($pacientes->count() > 0) {
-            $paciente = $pacientes->last();
+            $paciente = $pacientes->random();
             $pacienteId = $paciente->id;
         } else {
             $pacienteId = 0;
         }
 
         if ($consultas->count() > 0) {
-            $consulta = $consultas->last();
+            $consulta = $consultas->random();
             $consultaData = $consulta->data;
             $consultaId = $consulta->id;
         } else {
