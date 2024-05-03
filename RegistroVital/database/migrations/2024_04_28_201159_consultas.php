@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->id();
             $table->date('data');
             $table->string('status');
-            $table->string('especialidade');
             $table->float('valor');
             $table->foreignId('profissional_id')->constrained('Profissionais')->onDelete('cascade');
             $table->foreignId('paciente_id')->constrained('Pacientes')->onDelete('cascade');
@@ -31,3 +30,4 @@ return new class extends Migration {
         Schema::dropIfExists('Consultas');
     }
 };
+

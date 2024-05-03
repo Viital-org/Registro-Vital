@@ -13,8 +13,18 @@ class Consulta extends Model
         'data',
         'status',
         'profissional_id',
-        'especialidade',
         'paciente_id',
         'valor',
     ];
+
+    public function profissional()
+    {
+        return $this->belongsTo(Profissional::class, 'profissional_id');
+    }
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class, 'paciente_id');
+    }
 }
+

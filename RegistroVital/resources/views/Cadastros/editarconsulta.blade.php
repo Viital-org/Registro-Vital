@@ -42,12 +42,6 @@
         </div>
 
         <div class="mb-3">
-            <label for="especialidade" class="form-label">Especialidade</label>
-            <input type="text" name="especialidade" id="especialidade" class="form-control"
-                   value="{{$consultas->especialidade}}" required>
-        </div>
-
-        <div class="mb-3">
             <label for="paciente_id" class="form-label">Paciente:</label>
             <select name="paciente_id" id="paciente_id" class="form-select" required>
                 @foreach($pacientes as $paciente)

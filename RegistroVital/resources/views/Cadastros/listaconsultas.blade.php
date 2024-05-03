@@ -45,7 +45,7 @@
                 <td>{{ $item->data }}</td>
                 <td>{{ $item->status }}</td>
                 <td>{{ $item->nome_profissional }}</td>
-                <td>{{ $item->especialidade }}</td>
+                <td>{{ $item->especializacao ?: 'Nao definido' }}</td>
                 <td>{{ $item->nome_paciente }}</td>
                 <td>{{ $item->valor }}</td>
                 <td>
