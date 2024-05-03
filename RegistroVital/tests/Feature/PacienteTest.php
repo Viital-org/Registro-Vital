@@ -24,11 +24,11 @@ class PacienteTest extends TestCase
     {
         $paciente = Paciente::factory()->create();
 
-        $paciente->actingAs($paciente);
+        $paciente->actingAs($paciente,'backend');
 
         $response = $this->get('/cadastropaci');
 
-        $response->assertSatatus(200);
+        $response->assertStatus(200);
 
         $response = $this->post('/cadastropaci', [
             'nome'=>'Testeeee',
