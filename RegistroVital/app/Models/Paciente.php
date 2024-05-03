@@ -17,6 +17,12 @@ class Paciente extends Model
         'numcartaocred',
         'hobbies',
         'doencascronicas',
-        'remediosregulares'
+        'remediosregulares',
+        'meta_id',
     ];
+
+    public function meta()
+    {
+        return $this->belongsTo(Meta::class, 'meta_id');
+    }
 }

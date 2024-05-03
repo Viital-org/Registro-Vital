@@ -2,64 +2,61 @@
 
 @section('titulo', 'Cadastro de Consultas')
 
-@section ('conteudo')
+@section('conteudo')
 
-    <form action="{{route('consultas-store')}}" method="POST">
+    <form action="{{ route('consultas-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-
-        &nbsp;
-
-        <a href="{{ route('consultas-index') }} " class="btn btn-outline-info">Listar Consultas</a>
-
-        <br>
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('consultas-index') }}" class="btn btn-outline-info">Listar Consultas</a>
+        </div>
 
         <h1>Cadastro de Consulta</h1>
 
-        <br>
+        <div class="mb-3">
+            <label for="data" class="form-label">Data da Consulta</label>
+            <input type="date" name="data" id="data" class="form-control" required>
+        </div>
 
-        <label for="data">Data da Consulta</label>
-        <input type="date" name="data" id="data" required>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status:</label>
+            <select name="status" id="status" class="form-select" required>
+                <option value="agendado">Agendado</option>
+            </select>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="profissional_id" class="form-label">Profissional:</label>
+            <select name="profissional_id" id="profissional_id" class="form-select" required>
+                @foreach($profissionais as $profissional)
+                    <option value="{{ $profissional->id }}">{{ $profissional->nome }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <label for="status">Status:</label>
-        <select name="status" id="status" required>
-            <option value="agendado">agendado</option>
-        </select>
+        <div class="mb-3">
+            <label for="especialidade" class="form-label">Especialidade</label>
+            <input type="text" name="especialidade" id="especialidade" class="form-control" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="paciente_id" class="form-label">Paciente:</label>
+            <select name="paciente_id" id="paciente_id" class="form-select" required>
+                @foreach($pacientes as $paciente)
+                    <option value="{{ $paciente->id }}">{{ $paciente->nome }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <label for="profissional_id">Profissional:</label>
-        <select name="profissional_id" id="profissional_id" required>
-            @foreach($profissionais as $profissional)
-                <option value="{{ $profissional->id }}">{{ $profissional->nome }}</option>
-            @endforeach
-        </select>
+        <div class="mb-3">
+            <label for="valor" class="form-label">Valor</label>
+            <input type="number" step="0.01" name="valor" id="valor" class="form-control" required>
+        </div>
 
-        <br>
-
-        <label for="especialidade">especialidade</label>
-        <input type="text" name="especialidade" id="especialidade" required>
-
-        <br>
-
-        <label for="paciente_id">Paciente:</label>
-        <select name="paciente_id" id="paciente_id" required>
-            @foreach($pacientes as $paciente)
-                <option value="{{ $paciente->id }}">{{ $paciente->nome }}</option>
-            @endforeach
-        </select>
-
-        <br>
-
-        <label for="valor">Valor</label>
-        <input type="number" step="0.01" name="valor" id="valor" required>
-
-        <br>
-        <input type="submit" value="Enviar">
+        <button type="submit" class="btn btn-primary">Enviar</button>
 
     </form>
 
 @endsection
+

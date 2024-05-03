@@ -2,50 +2,45 @@
 
 @section('titulo', 'Cadastro de Especializações')
 
-@section ('conteudo')
+@section('conteudo')
 
-    <form action="{{route('especializacoes-store')}}" method="POST">
-
+    <form action="{{ route('especializacoes-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-
-        &nbsp;
-
-        <a href="{{ route('especializacoes-index') }} " class="btn btn-outline-info">Listar Especializações</a>
-
-        <br>
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('especializacoes-index') }}" class="btn btn-outline-info">Listar Especializações</a>
+        </div>
 
         <h1>Cadastro de Especialização</h1>
 
-        <br>
+        <div class="mb-3">
+            <label for="especializacao" class="form-label">Especialização</label>
+            <input type="text" name="especializacao" id="especializacao" class="form-control" required>
+        </div>
 
-        <label for="especializacao">Especialização</label>
-        <input type="text" name="especializacao" id="especializacao" required>
+        <div class="mb-3">
+            <label for="tempoespecializacao" class="form-label">Tempo da Especialização</label>
+            <input type="number" name="tempoespecializacao" id="tempoespecializacao" class="form-control" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="area_id" class="form-label">Área de Atuação:</label>
+            <select name="area_id" id="area_id" class="form-select" required>
+                @foreach($atuaareas as $atuaarea)
+                    <option value="{{ $atuaarea->id }}">{{ $atuaarea->area }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <label for="tempoespecializacao">Tempo da Especialização</label>
-        <input type="number" name="tempoespecializacao" id="tempoespecializacao" required>
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" name="descricao" id="descricao" class="form-control" required>
+        </div>
 
-        <br>
-
-        <label for="area_id">Area de Atuação:</label>
-        <select name="area_id" id="area_id" required>
-            @foreach($atuaareas as $atuaarea)
-                <option value="{{ $atuaarea->id }}">{{ $atuaarea->area }}</option>
-            @endforeach
-        </select>
-
-        <br>
-
-        <label for="descricao">Descrição</label>
-        <input type="text" name="descricao" id="descricao" required>
-
-        <br>
-
-        <input type="submit" value="Enviar">
+        <button type="submit" class="btn btn-primary">Enviar</button>
 
     </form>
 
 @endsection
+

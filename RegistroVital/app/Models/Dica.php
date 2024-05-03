@@ -15,3 +15,4 @@ class Dica extends Model
         'descricao',
     ];
 }
+

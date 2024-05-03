@@ -12,8 +12,7 @@ class MetasController extends Controller
      */
     public function index()
     {
-        //$metas = Meta::with('pacientes')->get(); <- implementar meta em paciente
-        $metas = Meta::all();
+        $metas = Meta::with('pacientes')->get();
         return view('Cadastros/listametas', compact('metas'), ['metas' => $metas]);
     }
 
@@ -40,7 +39,7 @@ class MetasController extends Controller
     public function show(Request $request)
     {
         $id = $request->input('id');
-    
+
 
         if ($id === null) {
             $metas = Meta::all();

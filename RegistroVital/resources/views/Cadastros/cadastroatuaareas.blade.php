@@ -1,35 +1,30 @@
-@extends ('layoutspadrao.profissionais')
+@extends('layoutspadrao.profissionais')
 
-@section ('titulo', 'Cadastro de Areas de Atuação')
+@section('titulo', 'Cadastro de Áreas de Atuação')
 
-@section ('conteudo')
+@section('conteudo')
 
-    <form action="{{route('atuaareas-store') }}" method="POST">
+    <form action="{{ route('atuaareas-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('atuaareas-index') }}" class="btn btn-outline-info">Listar áreas de atuação</a>
+        </div>
 
-        &nbsp;
+        <h1>Cadastro de Áreas de Atuação</h1>
 
-        <a href="{{ route('atuaareas-index') }} " class="btn btn-outline-info">Listar areas de atuacao</a>
+        <div class="mb-3">
+            <label for="area" class="form-label">Área</label>
+            <input type="text" name="area" id="area" class="form-control" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" name="descricao" id="descricao" class="form-control" required>
+        </div>
 
-        <h1>Cadastro de Areas de Atuação</h1>
-
-        <br>
-
-        <label for="area">Area</label>
-        <input type="text" name="area" id="area" required>
-
-        <br>
-
-        <label for="descricao">Descrição</label>
-        <input type="text" name="descricao" id="descricao" required>
-
-        <br>
-
-        <input type="submit" value="Enviar">
+        <button type="submit" class="btn btn-primary">Enviar</button>
 
     </form>
 

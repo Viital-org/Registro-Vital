@@ -9,7 +9,7 @@ class TipoAnotacao extends Model
 {
     use HasFactory;
 
-    protected $table = 'Tipoanotacoes';
+    protected $table = 'tipoanotacoes';
 
     protected $fillable = [
         'tipo_anotacao',

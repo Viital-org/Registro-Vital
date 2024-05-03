@@ -10,6 +10,7 @@ class Profissional extends Model
     use HasFactory;
 
     protected $table = 'profissionais';
+
     protected $fillable = [
         'areaatuacao_id',
         'especializacao_id',
@@ -20,4 +21,14 @@ class Profissional extends Model
         'dataformacao',
         'descricaoperfil',
     ];
+
+    public function atuaarea()
+    {
+        return $this->belongsTo(AtuaArea::class, 'areaatuacao_id');
+    }
+
+    public function especializacao()
+    {
+        return $this->belongsTo(Especializacao::class, 'especializacao_id');
+    }
 }

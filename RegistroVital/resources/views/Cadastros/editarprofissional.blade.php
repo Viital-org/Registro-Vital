@@ -2,107 +2,104 @@
 
 @section('titulo', 'Editar Informações de Profissional')
 
-@section ('conteudo')
+@section('conteudo')
 
     <form action="{{ route('profissionais-update', ['id' => $profissionais->id]) }}" method="POST">
-
         @csrf
-
-        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-
-        &nbsp;
-
-        <a href="{{ route('profissionais-index') }} " class="btn btn-outline-info">Listar profissionais</a>
-
-        &nbsp;
-
-        <a href="{{ route('cadastroprofissional.create') }} " class="btn btn-outline-info">Cadastrar Profissional</a>
-
         @method('PUT')
+
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('profissionais-index') }}" class="btn btn-outline-info">Listar Profissionais</a>
+            <a href="{{ route('cadastroprofissional.create') }}" class="btn btn-outline-info">Cadastrar Profissional</a>
+        </div>
 
         <h1>Editar Dados do Profissional</h1>
 
-        <br>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" value="{{ $profissionais->nome }}" required>
+        </div>
 
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" value="{{ $profissionais->nome}}" required>
+        <div class="mb-3">
+            <label for="areaatuacao_id" class="form-label">Área de Atuação</label>
+            <select name="areaatuacao_id" id="areaatuacao_id" class="form-select">
+                <option value="" @if (is_null($profissionais->areaatuacao_id)) selected @endif>Não definido</option>
+                @foreach($atuaareas as $atuaarea)
+                    <option value="{{ $atuaarea->id }}" @if ($atuaarea->id === $profissionais->areaatuacao_id) selected @endif>{{ $atuaarea->area }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="especializacao_id" class="form-label">Especialização</label>
+            <select name="especializacao_id" id="especializacao_id" class="form-select"></select>
+        </div>
 
-        <label for="areaatuacao_id">Área de atuação:</label>
-        <select name="areaatuacao_id" id="areaatuacao_id">
-            <option value="" @if (is_null($profissionais->areaatuacao_id)) selected @endif>Não definido</option>
-            @foreach($atuaareas as $atuaarea)
-                <option value="{{ $atuaarea->id }}"
-                        @if ($atuaarea->id === $profissionais->areaatuacao_id) selected @endif>{{ $atuaarea->area }}</option>
-            @endforeach
-        </select>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" name="email" id="email" class="form-control" value="{{ $profissionais->email }}" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="enderecoatuacao" class="form-label">Endereço de Atuação</label>
+            <input type="text" name="enderecoatuacao" id="enderecoatuacao" class="form-control" value="{{ $profissionais->enderecoatuacao }}" required>
+        </div>
 
-        <label for="especializacao_id">Especialização:</label>
-        <select name="especializacao_id" id="especializacao_id">
-        </select>
+        <div class="mb-3">
+            <label for="localformacao" class="form-label">Local de Formação</label>
+            <input type="text" name="localformacao" id="localformacao" class="form-control" value="{{ $profissionais->localformacao }}" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="dataformacao" class="form-label">Data de Formação</label>
+            <input type="date" name="dataformacao" id="dataformacao" class="form-control" value="{{ $profissionais->dataformacao }}" required>
+        </div>
 
-        <label for="email">E-mail</label>
-        <input type="email" name="email" id="email" value="{{ $profissionais->email}}" required>
+        <div class="mb-3">
+            <label for="descricaoperfil" class="form-label">Descrição do Perfil</label>
+            <input type="text" name="descricaoperfil" id="descricaoperfil" class="form-control" value="{{ $profissionais->descricaoperfil }}" required>
+        </div>
 
-        <br>
-
-        <label for="enderecoatuacao">Endereco de atuacao</label>
-        <input type="text" name="enderecoatuacao" id="enderecoatuacao" value="{{ $profissionais->enderecoatuacao}}"
-               required>
-
-        <br>
-
-        <label for="localformacao">Local de formacao</label>
-        <input type="text" name="localformacao" id="localformacao" value="{{ $profissionais->localformacao}}" required>
-
-        <br>
-
-        <label for="dataformacao">Data de formacao</label>
-        <input type="date" name="dataformacao" id="dataformacao" value="{{ $profissionais->dataformacao}}" required>
-
-        <br>
-
-        <label for="descricaoperfil">Descricao</label>
-        <input type="text" name="descricaoperfil" id="descricaoperfil" value="{{ $profissionais->descricaoperfil}}"
-               required>
-
-        <br>
-
-        <button type="submit">Salvar Alterações</button>
-
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#areaatuacao_id').change(function () {
-                var areaId = $(this).val();
+            var especializacaoSelecionada = "{{ $profissionais->especializacao_id ?? '' }}";
+
+            function carregarEspecializacoes(areaId) {
                 if (areaId) {
                     $.ajax({
                         type: "GET",
                         url: "/especializacoes/" + areaId,
-                        success: function (data) {
-                            $('#especializacao_id').empty();
-                            $('#especializacao_id').append('<option value="">Não Definido</option>');
-                            $.each(data, function (index, especializacao) {
-                                $('#especializacao_id').append('<option value="' + especializacao.id + '">' + especializacao.especializacao + '</option>');
+                    })
+                        .done(function (data) {
+                            $('#especializacao_id').html('<option value="">Não Definido</option>');
+                            $.each(data, function (_, especializacao) {
+                                $('#especializacao_id').append(`<option value="${especializacao.id}">${especializacao.especializacao}</option>`);
                             });
-                        }
-                    });
+
+                            if (especializacaoSelecionada && $(`#especializacao_id option[value="${especializacaoSelecionada}"]`).length) {
+                                $('#especializacao_id').val(especializacaoSelecionada);
+                            }
+                        })
+                        .fail(function () {
+                            console.error('Erro ao carregar especializações.');
+                        });
                 } else {
-
-                    $('#especializacao_id').empty().append('<option value="">Não Definido</option>');
+                    $('#especializacao_id').html('<option value="">Não Definido</option>');
                 }
-            });
+            }
 
+            $('#areaatuacao_id').change(function () {
+                carregarEspecializacoes($(this).val());
+            });
 
             $('#areaatuacao_id').trigger('change');
         });
     </script>
 
 @endsection
+

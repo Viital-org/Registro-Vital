@@ -1,60 +1,58 @@
-@extends ('layoutspadrao.profissionais')
+@extends('layoutspadrao.profissionais')
 
-@section ('titulo', 'Cadastrar nova anotacao')
+@section('titulo', 'Cadastrar nova anotação')
 
-@section ('conteudo')
+@section('conteudo')
 
-    <form action="{{route('anotacoessaude-store') }}" method="POST">
+    <form action="{{ route('anotacoessaude-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('anotacoessaude-index') }}" class="btn btn-outline-info">Listar anotações</a>
+        </div>
 
-        &nbsp;
+        <h1>Cadastro de nova anotação</h1>
 
-        <a href="{{ route('anotacoessaude-index') }} " class="btn btn-outline-info">Listar anotacoes</a>
+        <div class="mb-3">
+            <label for="paciente_id" class="form-label">Paciente</label>
+            <select name="paciente_id" id="paciente_id" class="form-select">
+                @foreach ($pacientes as $paciente)
+                    <option value="{{ $paciente->id }}">{{ $paciente->nome }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <h1>Cadastro de nova anotacao</h1>
+        <div class="mb-3">
+            <label for="tipo_anot" class="form-label">Tipo de anotação</label>
+            <select name="tipo_anot" id="tipo_anot" class="form-select">
+                @foreach ($tipoanotacoes as $tipoanotacao)
+                    <option value="{{ $tipoanotacao->id }}">{{ $tipoanotacao->desc_anotacao }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="anotacao" class="form-label">Anotação</label>
+            <textarea name="anotacao" id="anotacao" class="form-control" required></textarea>
+        </div>
 
-        <label for="paciente_id">Id do paciente</label>
-        <select name="paciente_id" id="paciente_id">
-            @foreach ($paciente as $item)
-                <option value="{{$item->id}}">{{$item->nome}}</option>
-            @endforeach
-        </select>
+        <div class="mb-3">
+            <label for="data_anotacao" class="form-label">Data da anotação</label>
+            <input type="date" name="data_anotacao" id="data_anotacao" class="form-control" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="visibilidade" class="form-label">Visibilidade</label>
+            <select name="visibilidade" id="visibilidade" class="form-select">
+                <option value="Visivel">Público</option>
+                <option value="Escondido">Privado</option>
+            </select>
+        </div>
 
-        <label for="tipo_anot">Tipo da anotacao</label>
-        <select name="tipo_anot" id="tipo_anot">
-            @foreach ($tipoanotacao as $item)
-                <option value="{{$item->id}}">{{$item->desc_anotacao}}</option>
-            @endforeach
-        </select>
-
-        <br>
-
-        <label for="anotacao">Anotacao</label>
-        <textarea name="anotacao" id="anotacao" required> </textarea>
-
-        <br>
-
-        <label for="data_anotacao">Data da anotacao</label>
-        <input type="date" name="data_anotacao" id="data_anotacao" required>
-
-        <br>
-
-        <label for="visibilidade">Visibilidade</label>
-        <select name="visibilidade" id="visibilidade">
-            <option value="Visivel">Publico</option>
-            <option value="Escondido">Privado</option>
-        </select>
-
-        <br>
-
-        <input type="submit" value="Enviar">
+        <button type="submit" class="btn btn-primary">Enviar</button>
 
     </form>
 
 @endsection
+

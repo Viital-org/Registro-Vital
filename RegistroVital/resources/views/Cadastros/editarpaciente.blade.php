@@ -2,73 +2,71 @@
 
 @section('titulo', 'Editar Informações de Paciente')
 
-@section ('conteudo')
+@section('conteudo')
 
     <form action="{{ route('pacientes-update', ['id' => $paciente->id]) }}" method="POST">
-
         @csrf
-
-        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-
-        <br>
-
-        &nbsp;
-
-        <a href="{{ route('pacientes-index') }} " class="btn btn-outline-info">Listar pacientes</a>
-
-        &nbsp;
-
-        <a href="{{ route('cadastropacientes.create') }} " class="btn btn-outline-info">Cadastrar paciente</a>
-
         @method('PUT')
+
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('pacientes-index') }}" class="btn btn-outline-info">Listar Pacientes</a>
+            <a href="{{ route('cadastropacientes.create') }}" class="btn btn-outline-info">Cadastrar Paciente</a>
+        </div>
 
         <h1>Editar Dados do Paciente</h1>
 
-        <br>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" value="{{ $paciente->nome }}" required>
+        </div>
 
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" value="{{ $paciente->nome }}" required>
+        <div class="mb-3">
+            <label for="datanascimento" class="form-label">Data de Nascimento</label>
+            <input type="date" name="datanascimento" id="datanascimento" class="form-control" value="{{ $paciente->datanascimento }}" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="cep" class="form-label">CEP</label>
+            <input type="text" name="cep" id="cep" class="form-control" value="{{ $paciente->cep }}" required>
+        </div>
 
-        <label for="datanascimento">Data de Nascimento</label>
-        <input type="date" name="datanascimento" id="datanascimento" value="{{$paciente->datanascimento}}" required>
+        <div class="mb-3">
+            <label for="endereco" class="form-label">Endereço</label>
+            <input type="text" name="endereco" id="endereco" class="form-control" value="{{ $paciente->endereco }}" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="numcartaocred" class="form-label">Cartão de Crédito</label>
+            <input type="text" name="numcartaocred" id="numcartaocred" class="form-control" value="{{ $paciente->numcartaocred }}" required>
+        </div>
 
-        <label for="cep">CEP</label>
-        <input type="text" name="cep" id="cep" value="{{$paciente->cep}}" required>
+        <div class="mb-3">
+            <label for="hobbies" class="form-label">Hobbies</label>
+            <input type="text" name="hobbies" id="hobbies" class="form-control" value="{{ $paciente->hobbies }}" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="doencascronicas" class="form-label">Lista de Doenças Cronicas</label>
+            <input type="text" name="doencascronicas" id="doencascronicas" class="form-control" value="{{ $paciente->doencascronicas }}" required>
+        </div>
 
-        <label for="endereco">Endereço</label>
-        <input type="text" name="endereco" id="endereco" value="{{$paciente->endereco}}" required>
+        <div class="mb-3">
+            <label for="remediosregulares" class="form-label">Lista de Remédios Regulares</label>
+            <input type="text" name="remediosregulares" id="remediosregulares" class="form-control" value="{{ $paciente->remediosregulares }}" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="meta_id" class="form-label">Meta</label>
+            <select name="meta_id" id="meta_id" class="form-select">
+                <option value="">Não definido</option>
+                @foreach($metas as $meta)
+                    <option value="{{$meta->id}}" @if ($meta->id == $paciente->meta_id) selected @endif>{{ $meta->meta }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <label for="numcartaocred">Cartão de Crédito</label>
-        <input type="text" name="numcartaocred" id="numcartaocred" value="{{$paciente->numcartaocred}}" required>
-
-        <br>
-
-        <label for="hobbies">Hobbies</label>
-        <input type="text" name="hobbies" id="hobbies" value="{{$paciente->hobbies}}" required>
-
-        <br>
-
-        <label for="doencascronicas">Lista de Doenças Cronicas</label>
-        <input type="text" name="doencascronicas" id="doencascronicas" value="{{$paciente->doencascronicas}}" required>
-
-        <br>
-
-        <label for="remediosregulares">Lista de Remedios Regulares</label>
-        <input type="text" name="remediosregulares" id="remediosregulares" value="{{$paciente->remediosregulares}}"
-               required>
-
-        <br>
-
-        <button type="submit">Salvar Alterações</button>
-
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
     </form>
 
 @endsection

@@ -13,24 +13,25 @@
 
     <br>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <form action="{{ route('agendamentos-show')}}" method="post">
-        @csrf
-        <input name="id" id="id" class="form-control mr-sm-2" type="search" placeholder="Digite o ID" aria-label="Search">
-        <button class="btn btn-primary" type="submit">Buscar</button>
-    </form>
+        <form action="{{ route('agendamentos-show')}}" method="post">
+            @csrf
+            <input name="id" id="id" class="form-control mr-sm-2" type="search" placeholder="Digite o ID"
+                   aria-label="Search">
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
     </nav>
     <br>
 
     <table class="table">
         <thead>
         <tr>
-
             <th scope="col">ID</th>
             <th scope="col">Especialidade</th>
             <th scope="col">Profissional</th>
             <th scope="col">Paciente</th>
             <th scope="col">Data</th>
-            <th scope="col">Id Consulta</th>
+            <th scope="col">ID Consulta</th>
+            <th scope="col">Ações</th>
         </tr>
         </thead>
         <tbody>
@@ -42,9 +43,18 @@
                 <td>{{$item->nome_paciente}}</td>
                 <td>{{$item->data_consulta}}</td>
                 <td>{{$item->consulta_id}}</td>
-
+                <td>
+                    <a href="{{ route('agendamentos-edit', ['id' => $item->id]) }}" class="btn btn-primary">Editar</a>
+                    <form action="{{ route('agendamentos-delete', ['id'=> $item->id])}}" method="POST"
+                          style="display: inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>
     </table>
 @endsection
+

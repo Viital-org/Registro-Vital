@@ -1,48 +1,44 @@
-@extends ('layoutspadrao.profissionais')
+@extends('layoutspadrao.profissionais')
 
-@section ('titulo', 'Cadastro de Metas')
+@section('titulo', 'Cadastro de Metas')
 
-@section ('conteudo')
+@section('conteudo')
 
-    <form action="{{route('metas-store') }}" method="POST">
+    <form action="{{ route('metas-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-
-        &nbsp;
-
-        <a href="{{ route('metas-index') }} " class="btn btn-outline-info">Listar metas</a>
-
-        <br>
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('metas-index') }}" class="btn btn-outline-info">Listar Metas</a>
+        </div>
 
         <h1>Cadastro de Metas</h1>
 
-        <br>
+        <div class="mb-3">
+            <label for="meta" class="form-label">Meta</label>
+            <input type="text" name="meta" id="meta" class="form-control" required>
+        </div>
 
-        <label for="meta">Meta</label>
-        <input type="text" name="meta" id="meta" required>
+        <div class="mb-3">
+            <label for="data_inicio" class="form-label">Data de Início:</label>
+            <input type="date" name="data_inicio" id="data_inicio" class="form-control" value="{{ date('Y-m-d') }}"
+                   readonly required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="data_fim" class="form-label">Data de Fim:</label>
+            <input type="date" name="data_fim" id="data_fim" class="form-control"
+                   min="{{ date('Y-m-d', strtotime('+1 day')) }}" required>
+        </div>
 
-        <label for="data_inicio">Data de Início:</label>
-        <input type="date" name="data_inicio" id="data_inicio" value="<?php echo date('Y-m-d'); ?>" readonly required>
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" name="descricao" id="descricao" class="form-control" required>
+        </div>
 
-        <br>
-
-        <label for="data_fim">Data de Fim:</label>
-        <input type="date" name="data_fim" id="data_fim" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>"
-               required>
-
-
-        <br>
-
-        <label for="descricao">Descrição</label>
-        <input type="text" name="descricao" id="descricao" required>
-
-        <br>
-
-        <input type="submit" value="Enviar">
+        <button type="submit" class="btn btn-primary">Enviar</button>
 
     </form>
 
 @endsection
+

@@ -71,23 +71,20 @@
             $('#areaatuacao_id').change(function () {
                 var areaId = $(this).val();
                 if (areaId) {
-                    $.ajax({
-                        type: "GET",
-                        url: "/especializacoes/" + areaId,
-                        success: function (data) {
-                            $('#especializacao_id').empty();
-                            $('#especializacao_id').append('<option value="">Não Definido</option>');
-                            $.each(data, function (index, especializacao) {
-                                $('#especializacao_id').append('<option value="' + especializacao.id + '">' + especializacao.especializacao + '</option>');
+                    $.get("/especializacoes/" + areaId)
+                        .done(function (data) {
+                            $('#especializacao_id').html('<option value="">Não Definido</option>');
+                            $.each(data, function (_, especializacao) {
+                                $('#especializacao_id').append(`<option value="${especializacao.id}">${especializacao.especializacao}</option>`);
                             });
-                        }
-                    });
+                        })
+                        .fail(function () {
+                            console.error('Erro ao carregar especializações.');
+                        });
                 } else {
                     $('#especializacao_id').empty();
                 }
-            });
-
-            $('#areaatuacao_id').change();
+            }).change();
         });
     </script>
 

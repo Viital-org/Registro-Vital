@@ -58,7 +58,7 @@ class ProfissionaisController extends Controller
 
     public function show(Request $request)
     {
-        $id = $request->input('id');    
+        $id = $request->input('id');
 
         if ($id === null) {
             $profissionais = Profissional::leftJoin('atuaareas', 'profissionais.areaatuacao_id', '=', 'atuaareas.id')
@@ -73,7 +73,7 @@ class ProfissionaisController extends Controller
             ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
             ->orderBy('profissionais.created_at')
             ->get();
-            
+
         }
         return view('Cadastros/listaprofissionais', ['profissionais' => $profissionais]);
     }
@@ -86,8 +86,9 @@ class ProfissionaisController extends Controller
     {
         $profissional = Profissional::find($id);
         $atuaareas = AtuaArea::all();
+        $especializacoes = Especializacao::all();
 
-        return view('Cadastros/editarprofissional', ['profissionais' => $profissional, 'atuaareas' => $atuaareas]);
+        return view('Cadastros/editarprofissional', ['profissionais' => $profissional, 'atuaareas' => $atuaareas, 'especializacoes' => $especializacoes]);
     }
 
     /**

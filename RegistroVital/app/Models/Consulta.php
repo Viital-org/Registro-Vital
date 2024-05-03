@@ -17,6 +17,4 @@ class Consulta extends Model
         'paciente_id',
         'valor',
     ];
-
 }
-

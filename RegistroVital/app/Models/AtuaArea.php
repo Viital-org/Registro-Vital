@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class   AtuaArea extends Model
+class AtuaArea extends Model
 {
     use HasFactory;
 
-    protected $table = 'Atuaareas';
+    protected $table = 'atuaareas';
+
     protected $fillable = [
         'area',
         'descricao',
@@ -19,6 +20,4 @@ class   AtuaArea extends Model
     {
         return $this->hasMany(Especializacao::class, 'area_id');
     }
-
 }
-

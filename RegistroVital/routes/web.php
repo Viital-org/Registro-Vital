@@ -97,7 +97,7 @@ Route::delete('/listaanotacoes/{id}', [AnotacoesSaudeController::class, 'destroy
 //Dicas
 Route::resource('/cadastrodicas', DicasController::class);
 Route::get('/listadicas', [DicasController::class, 'index'])->name('dicas-index');
-Route::post('/guardarmetas', [DicasController::class, 'store'])->name('dicas-store');
+Route::post('/guardardicas', [DicasController::class, 'store'])->name('dicas-store');
 Route::post('/listadicas', [DicasController::class, 'show'])->name('dicas-show');
 Route::get('/cadastrodica', [DicasController::class, 'create']);
 Route::get('/editardica/{id}', [DicasController::class, 'edit'])->name('dicas-edit');

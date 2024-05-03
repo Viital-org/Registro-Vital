@@ -18,4 +18,10 @@ class Anotacaosaude extends Model
         'tipo_anot',
         'visibilidade',
     ];
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class);
+    }
 }
+

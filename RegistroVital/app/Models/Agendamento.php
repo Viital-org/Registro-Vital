@@ -10,6 +10,7 @@ class Agendamento extends Model
     use HasFactory;
 
     protected $table = 'agendamentos';
+
     protected $fillable = [
         'especializacao_id',
         'profissional_id',
@@ -38,3 +39,4 @@ class Agendamento extends Model
         return $this->belongsTo(Paciente::class);
     }
 }
+

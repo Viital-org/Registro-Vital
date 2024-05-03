@@ -2,65 +2,59 @@
 
 @section('titulo', 'Cadastro de Pacientes')
 
-@section ('conteudo')
+@section('conteudo')
 
-    <form action="{{route('pacientes-store')}}" method="POST">
-
+    <form action="{{ route('pacientes-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-
-        &nbsp;
-
-        <a href="{{ route('pacientes-index') }} " class="btn btn-outline-info">Listar Pacientes</a>
-
-        <br>
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('pacientes-index') }}" class="btn btn-outline-info">Listar Pacientes</a>
+        </div>
 
         <h1>Cadastro de Paciente</h1>
 
-        <br>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" required>
+        </div>
 
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" required>
+        <div class="mb-3">
+            <label for="datanascimento" class="form-label">Data de Nascimento</label>
+            <input type="date" name="datanascimento" id="datanascimento" class="form-control" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="cep" class="form-label">CEP</label>
+            <input type="text" name="cep" id="cep" class="form-control" required>
+        </div>
 
-        <label for="datanascimento">Data de Nascimento</label>
-        <input type="date" name="datanascimento" id="datanascimento" required>
+        <div class="mb-3">
+            <label for="endereco" class="form-label">Endereço</label>
+            <input type="text" name="endereco" id="endereco" class="form-control" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="numcartaocred" class="form-label">Cartão de Crédito</label>
+            <input type="text" name="numcartaocred" id="numcartaocred" class="form-control" required>
+        </div>
 
-        <label for="cep">CEP</label>
-        <input type="text" name="cep" id="cep" required>
+        <div class="mb-3">
+            <label for="hobbies" class="form-label">Hobbies</label>
+            <input type="text" name="hobbies" id="hobbies" class="form-control" required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="doencascronicas" class="form-label">Lista de Doenças Crônicas</label>
+            <input type="text" name="doencascronicas" id="doencascronicas" class="form-control" required>
+        </div>
 
-        <label for="endereco">Endereço</label>
-        <input type="text" name="endereco" id="endereco" required>
+        <div class="mb-3">
+            <label for="remediosregulares" class="form-label">Lista de Remédios Regulares</label>
+            <input type="text" name="remediosregulares" id="remediosregulares" class="form-control" required>
+        </div>
 
-        <br>
-
-        <label for="numcartaocred">Cartão de Crédito</label>
-        <input type="text" name="numcartaocred" id="numcartaocred" required>
-
-        <br>
-
-        <label for="hobbies">Hobbies</label>
-        <input type="text" name="hobbies" id="hobbies" required>
-
-        <br>
-
-        <label for="doencascronicas">Lista de Doenças Cronicas</label>
-        <input type="text" name="doencascronicas" id="doencascronicas" required>
-
-        <br>
-
-        <label for="remediosregulares">Lista de Remedios Regulares</label>
-        <input type="text" name="remediosregulares" id="remediosregulares" required>
-
-        <br>
-
-        <input type="submit" value="Enviar">
+        <button type="submit" class="btn btn-primary">Enviar</button>
 
     </form>
 
