@@ -43,8 +43,8 @@ class MetasController extends Controller
 
         if ($id === null) {
             $metas = Meta::all();
-        } else{
-            $metas = Meta::all()->where('id','=', $id);
+        } else {
+            $metas = Meta::all()->where('id', '=', $id);
         }
         return view('Cadastros/listametas', ['metas' => $metas]);
     }

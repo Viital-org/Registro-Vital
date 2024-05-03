@@ -44,19 +44,19 @@ class DicasController extends Controller
     public function show(Request $request)
     {
         $id = $request->input('id');
-    
+
 
         if ($id === null) {
             $dicas = Dica::join('pacientes', 'dicas.paciente_id', '=', 'pacientes.id')
-            ->select('dicas.*', 'pacientes.nome as nome_paciente')
-            ->orderBy('dicas.created_at')
-            ->get();
-        } else{
+                ->select('dicas.*', 'pacientes.nome as nome_paciente')
+                ->orderBy('dicas.created_at')
+                ->get();
+        } else {
             $dicas = Dica::join('pacientes', 'dicas.paciente_id', '=', 'pacientes.id')
-            ->where('dicas.id','=', $id)
-            ->select('dicas.*', 'pacientes.nome as nome_paciente')
-            ->orderBy('dicas.created_at')
-            ->get();
+                ->where('dicas.id', '=', $id)
+                ->select('dicas.*', 'pacientes.nome as nome_paciente')
+                ->orderBy('dicas.created_at')
+                ->get();
         }
         return view('Cadastros/listadicas', ['dicas' => $dicas]);
     }

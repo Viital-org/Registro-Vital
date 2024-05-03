@@ -22,7 +22,7 @@ class PacienteTest extends TestCase
     {
         $paciente = Paciente::factory()->create();
 
-        $paciente->actingAs($paciente,'backend');
+        $paciente->actingAs($paciente, 'backend');
 
         $response = $this->get('/cadastropaci');
 

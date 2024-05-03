@@ -18,12 +18,14 @@
 
         <div class="mb-3">
             <label for="tipo_anotacao" class="form-label">Código/Tipo de Anotação</label>
-            <input type="number" name="tipo_anotacao" id="tipo_anotacao" class="form-control" value="{{ $Tipoanotacao->tipo_anotacao }}" required>
+            <input type="number" name="tipo_anotacao" id="tipo_anotacao" class="form-control"
+                   value="{{ $Tipoanotacao->tipo_anotacao }}" required>
         </div>
 
         <div class="mb-3">
             <label for="desc_anotacao" class="form-label">Descrição da Anotação</label>
-            <input type="text" name="desc_anotacao" id="desc_anotacao" class="form-control" value="{{ $Tipoanotacao->desc_anotacao }}" required>
+            <input type="text" name="desc_anotacao" id="desc_anotacao" class="form-control"
+                   value="{{ $Tipoanotacao->desc_anotacao }}" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar Alterações</button>

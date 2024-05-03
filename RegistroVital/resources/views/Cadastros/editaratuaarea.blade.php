@@ -23,7 +23,8 @@
 
         <div class="mb-3">
             <label for="descricao" class="form-label">Descrição</label>
-            <input type="text" name="descricao" id="descricao" class="form-control" value="{{ $atuaarea->descricao }}" required>
+            <input type="text" name="descricao" id="descricao" class="form-control" value="{{ $atuaarea->descricao }}"
+                   required>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar Alterações</button>

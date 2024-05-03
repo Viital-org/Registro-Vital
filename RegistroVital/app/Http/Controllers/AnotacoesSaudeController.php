@@ -54,15 +54,15 @@ class AnotacoesSaudeController extends Controller
 
         if ($id === null) {
             $anotacoessaude = Anotacaosaude::join('pacientes', 'anotacoessaude.paciente_id', '=', 'pacientes.id')
-            ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
-            ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao', 'pacientes.nome as paciente')
-            ->get();
+                ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
+                ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao', 'pacientes.nome as paciente')
+                ->get();
 
-        } else{
+        } else {
             $anotacoessaude = $anotacoessaude = Anotacaosaude::join('pacientes', 'anotacoessaude.paciente_id', '=', 'pacientes.id')
-            ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')->where('anotacoessaude.id','=', $id)
-            ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao', 'pacientes.nome as paciente')
-            ->get();
+                ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')->where('anotacoessaude.id', '=', $id)
+                ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao', 'pacientes.nome as paciente')
+                ->get();
         }
         return view('Cadastros/listaranotacoessaude', ['anotacoessaude' => $anotacoessaude, 'tipoanotacao' => $tipoanotacao, 'paciente' => $paciente]);
     }

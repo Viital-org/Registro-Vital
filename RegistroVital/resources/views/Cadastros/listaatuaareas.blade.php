@@ -17,7 +17,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <form action="{{ route('atuareas-show')}}" method="post">
             @csrf
-            <input name="id" id="id" class="form-control mr-sm-2" type="search" placeholder="Digite o ID" aria-label="Search">
+            <input name="id" id="id" class="form-control mr-sm-2" type="search" placeholder="Digite o ID"
+                   aria-label="Search">
             <button class="btn btn-primary" type="submit">Buscar</button>
         </form>
     </nav>
@@ -59,7 +60,8 @@
                     </a>
                 </th>
                 <th>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#delete{{$item->id}}">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#delete{{$item->id}}">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                              viewBox="0 0 24 24">
                             <path
@@ -71,7 +73,8 @@
                         @csrf
                         @method('DELETE')
                         <!-- Modal -->
-                        <div class="modal fade" id="delete{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="delete{{$item->id}}" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -81,7 +84,8 @@
                                         <p>Deseja realmente excluir o registro {{$item->id}}?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar
+                                        </button>
                                         <button type="submit" class="btn btn-primary">Excluir</button>
                                     </div>
                                 </div>

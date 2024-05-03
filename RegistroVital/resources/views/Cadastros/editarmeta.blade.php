@@ -23,17 +23,20 @@
 
         <div class="mb-3">
             <label for="data_inicio" class="form-label">Data de Início:</label>
-            <input type="date" name="data_inicio" id="data_inicio" class="form-control" value="{{ $meta->data_inicio }}" readonly required>
+            <input type="date" name="data_inicio" id="data_inicio" class="form-control" value="{{ $meta->data_inicio }}"
+                   readonly required>
         </div>
 
         <div class="mb-3">
             <label for="data_fim" class="form-label">Data de Fim:</label>
-            <input type="date" name="data_fim" id="data_fim" class="form-control" value="{{ $meta->data_fim }}" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required>
+            <input type="date" name="data_fim" id="data_fim" class="form-control" value="{{ $meta->data_fim }}"
+                   min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required>
         </div>
 
         <div class="mb-3">
             <label for="descricao" class="form-label">Descrição</label>
-            <input type="text" name="descricao" id="descricao" class="form-control" value="{{ $meta->descricao }}" required>
+            <input type="text" name="descricao" id="descricao" class="form-control" value="{{ $meta->descricao }}"
+                   required>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar Alterações</button>

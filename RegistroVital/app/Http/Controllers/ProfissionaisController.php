@@ -62,17 +62,17 @@ class ProfissionaisController extends Controller
 
         if ($id === null) {
             $profissionais = Profissional::leftJoin('atuaareas', 'profissionais.areaatuacao_id', '=', 'atuaareas.id')
-            ->leftJoin('especializacoes', 'profissionais.especializacao_id', '=', 'especializacoes.id')
-            ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
-            ->orderBy('profissionais.created_at')
-            ->get();
-        } else{
+                ->leftJoin('especializacoes', 'profissionais.especializacao_id', '=', 'especializacoes.id')
+                ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
+                ->orderBy('profissionais.created_at')
+                ->get();
+        } else {
             $profissionais = Profissional::leftJoin('atuaareas', 'profissionais.areaatuacao_id', '=', 'atuaareas.id')
-            ->leftJoin('especializacoes', 'profissionais.especializacao_id', '=', 'especializacoes.id')
-            ->where('profissionais.id','=', $id)
-            ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
-            ->orderBy('profissionais.created_at')
-            ->get();
+                ->leftJoin('especializacoes', 'profissionais.especializacao_id', '=', 'especializacoes.id')
+                ->where('profissionais.id', '=', $id)
+                ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
+                ->orderBy('profissionais.created_at')
+                ->get();
 
         }
         return view('Cadastros/listaprofissionais', ['profissionais' => $profissionais]);

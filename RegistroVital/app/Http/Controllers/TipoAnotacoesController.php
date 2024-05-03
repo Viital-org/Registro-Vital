@@ -39,12 +39,12 @@ class TipoAnotacoesController extends Controller
     public function show(Request $request)
     {
         $id = $request->input('id');
-    
+
 
         if ($id === null) {
             $anotacaosaude = TipoAnotacao::all();
-        } else{
-            $anotacaosaude = TipoAnotacao::all()->where('id','=', $id);
+        } else {
+            $anotacaosaude = TipoAnotacao::all()->where('id', '=', $id);
         }
         return view('Cadastros/listatipoanotacoes', ['tipoanotacao' => $anotacaosaude]);
     }

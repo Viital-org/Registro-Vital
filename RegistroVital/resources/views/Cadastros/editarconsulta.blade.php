@@ -35,28 +35,32 @@
             <label for="profissional_id" class="form-label">Profissional:</label>
             <select name="profissional_id" id="profissional_id" class="form-select" required>
                 @foreach($profissionais as $profissional)
-                    <option value="{{ $profissional->id }}" @if ($profissional->id === $consultas->profissional_id) selected @endif>{{ $profissional->nome }}</option>
+                    <option value="{{ $profissional->id }}"
+                            @if ($profissional->id === $consultas->profissional_id) selected @endif>{{ $profissional->nome }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="mb-3">
             <label for="especialidade" class="form-label">Especialidade</label>
-            <input type="text" name="especialidade" id="especialidade" class="form-control" value="{{$consultas->especialidade}}" required>
+            <input type="text" name="especialidade" id="especialidade" class="form-control"
+                   value="{{$consultas->especialidade}}" required>
         </div>
 
         <div class="mb-3">
             <label for="paciente_id" class="form-label">Paciente:</label>
             <select name="paciente_id" id="paciente_id" class="form-select" required>
                 @foreach($pacientes as $paciente)
-                    <option value="{{ $paciente->id }}" @if ($paciente->id === $consultas->paciente_id) selected @endif>{{ $paciente->nome }}</option>
+                    <option value="{{ $paciente->id }}"
+                            @if ($paciente->id === $consultas->paciente_id) selected @endif>{{ $paciente->nome }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="mb-3">
             <label for="valor" class="form-label">Valor</label>
-            <input type="number" step="0.01" name="valor" id="valor" class="form-control" value="{{$consultas->valor}}" required>
+            <input type="number" step="0.01" name="valor" id="valor" class="form-control" value="{{$consultas->valor}}"
+                   required>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar Alterações</button>

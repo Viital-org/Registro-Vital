@@ -47,8 +47,8 @@ class PacientesController extends Controller
 
         if ($id === null) {
             $pacientes = Paciente::all();
-        } else{
-            $pacientes = Paciente::all()->where('id','=', $id);
+        } else {
+            $pacientes = Paciente::all()->where('id', '=', $id);
         }
         return view('Cadastros/listapacientes', ['pacientes' => $pacientes]);
     }

@@ -26,7 +26,8 @@
             <select name="areaatuacao_id" id="areaatuacao_id" class="form-select">
                 <option value="" @if (is_null($profissionais->areaatuacao_id)) selected @endif>Não definido</option>
                 @foreach($atuaareas as $atuaarea)
-                    <option value="{{ $atuaarea->id }}" @if ($atuaarea->id === $profissionais->areaatuacao_id) selected @endif>{{ $atuaarea->area }}</option>
+                    <option value="{{ $atuaarea->id }}"
+                            @if ($atuaarea->id === $profissionais->areaatuacao_id) selected @endif>{{ $atuaarea->area }}</option>
                 @endforeach
             </select>
         </div>
@@ -38,27 +39,32 @@
 
         <div class="mb-3">
             <label for="email" class="form-label">E-mail</label>
-            <input type="email" name="email" id="email" class="form-control" value="{{ $profissionais->email }}" required>
+            <input type="email" name="email" id="email" class="form-control" value="{{ $profissionais->email }}"
+                   required>
         </div>
 
         <div class="mb-3">
             <label for="enderecoatuacao" class="form-label">Endereço de Atuação</label>
-            <input type="text" name="enderecoatuacao" id="enderecoatuacao" class="form-control" value="{{ $profissionais->enderecoatuacao }}" required>
+            <input type="text" name="enderecoatuacao" id="enderecoatuacao" class="form-control"
+                   value="{{ $profissionais->enderecoatuacao }}" required>
         </div>
 
         <div class="mb-3">
             <label for="localformacao" class="form-label">Local de Formação</label>
-            <input type="text" name="localformacao" id="localformacao" class="form-control" value="{{ $profissionais->localformacao }}" required>
+            <input type="text" name="localformacao" id="localformacao" class="form-control"
+                   value="{{ $profissionais->localformacao }}" required>
         </div>
 
         <div class="mb-3">
             <label for="dataformacao" class="form-label">Data de Formação</label>
-            <input type="date" name="dataformacao" id="dataformacao" class="form-control" value="{{ $profissionais->dataformacao }}" required>
+            <input type="date" name="dataformacao" id="dataformacao" class="form-control"
+                   value="{{ $profissionais->dataformacao }}" required>
         </div>
 
         <div class="mb-3">
             <label for="descricaoperfil" class="form-label">Descrição do Perfil</label>
-            <input type="text" name="descricaoperfil" id="descricaoperfil" class="form-control" value="{{ $profissionais->descricaoperfil }}" required>
+            <input type="text" name="descricaoperfil" id="descricaoperfil" class="form-control"
+                   value="{{ $profissionais->descricaoperfil }}" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar Alterações</button>

@@ -18,7 +18,8 @@
 
         <div class="mb-3">
             <label for="paciente_id" class="form-label">Paciente</label>
-            <input type="text" name="paciente_id" id="paciente_id" class="form-control" value="{{ $anotacaosaude->paciente_id }}" readonly>
+            <input type="text" name="paciente_id" id="paciente_id" class="form-control"
+                   value="{{ $anotacaosaude->paciente_id }}" readonly>
         </div>
 
         <div class="mb-3">
@@ -40,7 +41,8 @@
 
         <div class="mb-3">
             <label for="data_anotacao" class="form-label">Data da Anotação</label>
-            <input type="text" name="data_anotacao" id="data_anotacao" class="form-control" value="{{ $anotacaosaude->data_anotacao }}" readonly>
+            <input type="text" name="data_anotacao" id="data_anotacao" class="form-control"
+                   value="{{ $anotacaosaude->data_anotacao }}" readonly>
         </div>
 
         <div class="mb-3">
