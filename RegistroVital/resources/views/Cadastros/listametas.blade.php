@@ -50,10 +50,8 @@
                         </svg>
                     </a></th>
                 <th>
-                    <form action="{{ route('metas-delete', ['id'=> $item->id])}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">
+
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#delete">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                                  viewBox="0 0 24 24">
                                 <path
@@ -61,6 +59,30 @@
                                 </path>
                             </svg>
                         </button>
+
+                    <form action="{{ route('metas-delete', ['id'=> $item->id])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                                    <!-- Modal -->
+                        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Confirmacao de exclusao</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Deseja realmente excluir o registro '{{$item->meta}}' ?  <p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Excluir</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     </form>
             </tr>
         @endforeach
