@@ -8,15 +8,15 @@
 
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('consultas-index') }} ">Listar Consultas</a>
+        <a href="{{ route('consultas-index') }} " class="btn btn-outline-info">Listar Consultas</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('cadastroconsultas.create') }} ">Cadastrar area de atuacao</a>
+        <a href="{{ route('cadastroconsultas.create') }} " class="btn btn-outline-info">Cadastrar Consulta</a>
 
         @method('PUT')
 

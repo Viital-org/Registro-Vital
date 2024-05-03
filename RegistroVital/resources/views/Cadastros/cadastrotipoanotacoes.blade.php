@@ -7,11 +7,11 @@
     <form action="{{route('tipoanotacao-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('tipoanotacao-index') }} ">Listar tipos de anotacao</a>
+        <a href="{{ route('tipoanotacao-index') }} " class="btn btn-outline-info">Listar tipos de anotacao</a>
 
         <h1>Cadastro de Tipos de anotacao</h1>
 

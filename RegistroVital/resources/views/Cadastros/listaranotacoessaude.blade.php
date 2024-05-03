@@ -5,13 +5,22 @@
 @section('conteudo')
 
     @csrf
-    <a href="{{ route('welcome') }}">Home</a>
+    <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-    <br>
+    &nbsp;
 
-    <a href="/cadastroanotacoes">Inserir nova anotacao</a>
+    <a href="/cadastroanotacoes" class="btn btn-outline-info">Cadastrar nova anotacao</a>
 
     <h1>Anotacoes realizadas</h1>
+    <br>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <form action="{{ route('anotacoessaude-show')}}" method="post">
+            @csrf
+            <input name="id" id="id" class="form-control mr-sm-2" type="search" placeholder="Digite o ID" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+    </nav>
+    <br>
     <table class="table">
         <thead>
         <tr>

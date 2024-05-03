@@ -56,10 +56,28 @@ class ProfissionaisController extends Controller
      * Display the specified resource.
      */
 
-    public function show(Profissional $profissional)
+    public function show(Request $request)
     {
-        //
+        $id = $request->input('id');    
+
+        if ($id === null) {
+            $profissionais = Profissional::leftJoin('atuaareas', 'profissionais.areaatuacao_id', '=', 'atuaareas.id')
+            ->leftJoin('especializacoes', 'profissionais.especializacao_id', '=', 'especializacoes.id')
+            ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
+            ->orderBy('profissionais.created_at')
+            ->get();
+        } else{
+            $profissionais = Profissional::leftJoin('atuaareas', 'profissionais.areaatuacao_id', '=', 'atuaareas.id')
+            ->leftJoin('especializacoes', 'profissionais.especializacao_id', '=', 'especializacoes.id')
+            ->where('profissionais.id','=', $id)
+            ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
+            ->orderBy('profissionais.created_at')
+            ->get();
+            
+        }
+        return view('Cadastros/listaprofissionais', ['profissionais' => $profissionais]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

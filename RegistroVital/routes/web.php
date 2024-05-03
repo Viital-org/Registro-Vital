@@ -19,7 +19,8 @@ Route::get('/', function () {
 //Profissionais
 Route::resource('/cadastroprofissional', ProfissionaisController::class);
 Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
-Route::post('/listaprofissionais', [ProfissionaisController::class, 'store'])->name('profissionais-store');
+Route::post('/guardarprofissionais', [ProfissionaisController::class, 'store'])->name('profissionais-store');
+Route::post('/listaprofissionais', [ProfissionaisController::class, 'show'])->name('profissionais-show');
 Route::get('/cadastrarprof', [ProfissionaisController::class, 'create']);
 Route::get('/editarprofissional/{id}', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
 Route::put('/editarprofissional/{id}', [ProfissionaisController::class, 'update'])->name('profissionais-update');
@@ -29,7 +30,8 @@ Route::get('/especializacoes/{areaId}', [ProfissionaisController::class, 'especi
 //Pacientes
 Route::resource('/cadastropacientes', PacientesController::class);
 Route::get('/listapacientes', [PacientesController::class, 'index'])->name('pacientes-index');
-Route::post('/listapacientes', [PacientesController::class, 'store'])->name('pacientes-store');
+Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
+Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes-show');
 Route::get('/cadastropaci', [PacientesController::class, 'create']);
 Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes-edit');
 Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
@@ -38,7 +40,8 @@ Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->
 //Consultas
 Route::resource('/cadastroconsultas', ConsultasController::class);
 Route::get('/listaconsultas', [ConsultasController::class, 'index'])->name('consultas-index');
-Route::post('/listaconsultas', [ConsultasController::class, 'store'])->name('consultas-store');
+Route::post('/guardarconsultas', [ConsultasController::class, 'store'])->name('consultas-store');
+Route::post('/listaconsultas', [ConsultasController::class, 'show'])->name('consultas-show');
 Route::get('/cadastroconsul', [ConsultasController::class, 'create']);
 Route::get('/editarconsulta/{id}', [ConsultasController::class, 'edit'])->name('consultas-edit');
 Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
@@ -47,7 +50,8 @@ Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->
 //Areas de atuacao
 Route::resource('/cadastroatuaareas', AtuaAreasController::class);
 Route::get('/listaatuaareas', [AtuaAreasController::class, 'index'])->name('atuaareas-index');
-Route::post('/listaatuaareas', [AtuaAreasController::class, 'store'])->name('atuaareas-store');
+Route::post('/guardaratuaareas', [AtuaAreasController::class, 'store'])->name('atuaareas-store');
+Route::post('/listaatuaareas', [AtuaAreasController::class, 'show'])->name('atuareas-show');
 Route::get('/cadastroarea', [AtuaAreasController::class, 'create']);
 Route::get('/editaratuaarea/{id}', [AtuaAreasController::class, 'edit'])->name('atuaareas-edit');
 Route::put('/editaratuaarea/{id}', [AtuaAreasController::class, 'update'])->name('atuaareas-update');
@@ -56,7 +60,8 @@ Route::delete('/listaatuaareas/{id}', [AtuaAreasController::class, 'destroy'])->
 //Especializacoes
 Route::resource('/cadastroespecializacoes', EspecializacoesController::class);
 Route::get('/listaespecializacoes', [EspecializacoesController::class, 'index'])->name('especializacoes-index');
-Route::post('/listaespecializacoes', [EspecializacoesController::class, 'store'])->name('especializacoes-store');
+Route::post('/guardarespecializacao', [EspecializacoesController::class, 'store'])->name('especializacoes-store');
+Route::post('/listaespecializacoes', [EspecializacoesController::class, 'show'])->name('especializacoes-show');
 Route::get('/cadastroespec', [EspecializacoesController::class, 'create']);
 Route::get('/editarespecializacao/{id}', [EspecializacoesController::class, 'edit'])->name('especializacoes-edit');
 Route::put('/editarespecializacao/{id}', [EspecializacoesController::class, 'update'])->name('especializacoes-update');
@@ -66,12 +71,14 @@ Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, '
 
 Route::resource('/cadastroagendamentos', AgendamentosController::class);
 Route::get('/listaagendamentos', [AgendamentosController::class, 'index'])->name('agendamentos-index');
+Route::post('/listaagendamentos', [AgendamentosController::class, 'show'])->name('agendamentos-show');
 Route::delete('/listaagendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos-delete');
 
 //Tipos de anotacao
 Route::resource('/cadastrotipoanotacao', TipoAnotacoesController::class);
 Route::get('/listatipoanotacoes', [TipoAnotacoesController::class, 'index'])->name('tipoanotacao-index');
-Route::post('/listatipoanotacoes', [TipoAnotacoesController::class, 'store'])->name('tipoanotacao-store');
+Route::post('/guardartioanotacao', [TipoAnotacoesController::class, 'store'])->name('tipoanotacao-store');
+Route::post('/listatipoanotacoes', [TipoAnotacoesController::class, 'show'])->name('anotacoessaude-show');
 Route::get('/cadastrotipanot', [TipoAnotacoesController::class, 'create'])->name('tipoanotacao-create');
 Route::get('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'edit'])->name('tipoanotacao-edit');
 Route::put('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'update'])->name('tipoanotacao-update');
@@ -80,7 +87,8 @@ Route::delete('/listatipoanotacoes/{id}', [TipoAnotacoesController::class, 'dest
 //Anotacoes
 Route::resource('/cadastroanotacoes', AnotacoesSaudeController::class);
 Route::get('/listaanotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
-Route::post('/listaanotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
+Route::post('/guardaranotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
+Route::post('/listaranotacoes', [AnotacoesSaudeController::class, 'show'])->name('anotacoessaude-show');
 Route::get('/cadastroanotacoes', [AnotacoesSaudeController::class, 'create']);
 Route::get('/editaranotacao/{id}', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
 Route::put('/editaranotacao/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
@@ -89,7 +97,8 @@ Route::delete('/listaanotacoes/{id}', [AnotacoesSaudeController::class, 'destroy
 //Dicas
 Route::resource('/cadastrodicas', DicasController::class);
 Route::get('/listadicas', [DicasController::class, 'index'])->name('dicas-index');
-Route::post('/listadicas', [DicasController::class, 'store'])->name('dicas-store');
+Route::post('/guardarmetas', [DicasController::class, 'store'])->name('dicas-store');
+Route::post('/listadicas', [DicasController::class, 'show'])->name('dicas-show');
 Route::get('/cadastrodica', [DicasController::class, 'create']);
 Route::get('/editardica/{id}', [DicasController::class, 'edit'])->name('dicas-edit');
 Route::put('/editardica/{id}', [DicasController::class, 'update'])->name('dicas-update');
@@ -98,13 +107,9 @@ Route::delete('/listadicas/{id}', [DicasController::class, 'destroy'])->name('di
 //Metas
 Route::resource('/cadastrometas', MetasController::class);
 Route::get('/listametas', [MetasController::class, 'index'])->name('metas-index');
-Route::post('/listametas', [MetasController::class, 'store'])->name('metas-store');
+Route::post('/guardarmetas', [MetasController::class, 'store'])->name('metas-store');
+Route::post('/listametas', [MetasController::class, 'show'])->name('metas-show');
 Route::get('/cadastrometa', [MetasController::class, 'create']);
 Route::get('/editarmeta/{id}', [MetasController::class, 'edit'])->name('metas-edit');
 Route::put('/editarmeta/{id}', [MetasController::class, 'update'])->name('metas-update');
 Route::delete('/listametas/{id}', [MetasController::class, 'destroy'])->name('metas-delete');
-
-
-Route::get('/teste', function(){
-    return view('teste');
-});

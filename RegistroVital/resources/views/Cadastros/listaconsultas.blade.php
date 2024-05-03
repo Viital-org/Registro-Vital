@@ -5,13 +5,24 @@
 @section('conteudo')
 
     @csrf
-    <a href="{{ route('welcome') }}">Home</a>
+    <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-    <br>
+    &nbsp;
 
-    <a href="/cadastroconsul">Cadastrar nova Consulta</a>
+    <a href="/cadastroconsul" class="btn btn-outline-info">Cadastrar nova Consulta</a>
 
     <h1>Listagem de Consultas</h1>
+
+    <br>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form action="{{ route('consultas-show')}}" method="post">
+        @csrf
+        <input name="id" id="id" class="form-control mr-sm-2" type="search" placeholder="Digite o ID" aria-label="Search">
+        <button class="btn btn-primary" type="submit">Buscar</button>
+    </form>
+    </nav>
+    <br>
+
     <table class="table">
         <thead>
         <tr>
@@ -71,7 +82,7 @@
                         <p>Deseja realmente excluir o registro {{$item->id}} ?  <p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancelar</button>
                         <button type="submit" class="btn btn-primary">Excluir</button>
                     </div>
                     </div>

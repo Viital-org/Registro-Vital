@@ -8,11 +8,11 @@
 
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('pacientes-index') }} ">Listar Pacientes</a>
+        <a href="{{ route('pacientes-index') }} " class="btn btn-outline-info">Listar Pacientes</a>
 
         <br>
 

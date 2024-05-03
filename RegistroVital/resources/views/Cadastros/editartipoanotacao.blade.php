@@ -8,11 +8,15 @@
 
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
 
-        <br>
+        &nbsp;
 
-        <a href="{{ route('tipoanotacao-create') }} ">Cadastrar tipo de anotacao</a>
+        <a href="{{ route('tipoanotacao-create') }} " class="btn btn-outline-info">Cadastrar tipo de anotacao</a>
+
+        &nbsp;
+
+        <a href="{{ route('tipoanotacao-index') }} " class="btn btn-outline-info">Listar tipos de anotacao</a>
 
         @method('PUT')
 
