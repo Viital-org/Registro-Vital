@@ -10,6 +10,7 @@ class Agendamento extends Model
     use HasFactory;
 
     protected $table = 'agendamentos';
+
     protected $fillable = [
         'especializacao_id',
         'profissional_id',
@@ -20,21 +21,22 @@ class Agendamento extends Model
 
     public function consulta()
     {
-        return $this->belongsTo(Consulta::class);
+        return $this->belongsTo(Consulta::class, 'consulta_id');
     }
 
     public function especializacao()
     {
-        return $this->belongsTo(Especializacao::class);
+        return $this->belongsTo(Especializacao::class, 'especializacao_id');
     }
 
     public function profissional()
     {
-        return $this->belongsTo(Profissional::class);
+        return $this->belongsTo(Profissional::class, 'profissional_id');
     }
 
     public function paciente()
     {
-        return $this->belongsTo(Paciente::class);
+        return $this->belongsTo(Paciente::class, 'paciente_id');
     }
 }
+

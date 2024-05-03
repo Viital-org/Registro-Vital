@@ -14,4 +14,10 @@ class Dica extends Model
         'paciente_id',
         'descricao',
     ];
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class, 'paciente_id');
+    }
 }
+

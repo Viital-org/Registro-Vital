@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Meta;
 use App\Models\Paciente;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,6 +18,13 @@ class PacienteFactory extends Factory
      */
     public function definition(): array
     {
+        $metas = Meta::all();
+        if ($metas->count() > 0) {
+            $meta = $metas->random();
+            $metaId = $meta->id;
+        } else {
+            $metaId = null;
+        }
         return [
             'nome' => $this->faker->name,
             'datanascimento' => $this->faker->date,
@@ -26,6 +34,7 @@ class PacienteFactory extends Factory
             'hobbies' => $this->faker->text,
             'doencascronicas' => $this->faker->word,
             'remediosregulares' => $this->faker->word,
+            'meta_id' => $metaId,
         ];
     }
 }

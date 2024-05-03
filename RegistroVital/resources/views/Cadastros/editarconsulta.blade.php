@@ -2,75 +2,64 @@
 
 @section('titulo', 'Editar Informações de Consulta')
 
-@section ('conteudo')
+@section('conteudo')
 
     <form action="{{ route('consultas-update', ['id' => $consultas->id]) }}" method="POST">
-
         @csrf
-
-        <a href="{{ route('welcome') }}">Home</a>
-
-        <br>
-
-        <a href="{{ route('consultas-index') }} ">Listar Consultas</a>
-
-        <br>
-
-        <a href="{{ route('cadastroconsultas.create') }} ">Cadastrar area de atuacao</a>
-
         @method('PUT')
+
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('consultas-index') }}" class="btn btn-outline-info">Listar Consultas</a>
+            <a href="{{ route('cadastroconsultas.create') }}" class="btn btn-outline-info">Cadastrar Consulta</a>
+        </div>
 
         <h1>Editar Dados de Consulta</h1>
 
-        <br>
+        <div class="mb-3">
+            <label for="data" class="form-label">Data da Consulta</label>
+            <input type="date" name="data" id="data" class="form-control" value="{{ $consultas->data }}" required>
+        </div>
 
-        <label for="data">Data da Consulta</label>
-        <input type="date" name="data" id="data" value="{{$consultas->data}}" required>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status:</label>
+            <select name="status" id="status" class="form-select" required>
+                <option value="agendado" @if ($consultas->status === 'agendado') selected @endif>Agendado</option>
+                <option value="confirmada" @if ($consultas->status === 'confirmada') selected @endif>Confirmada</option>
+                <option value="realizada" @if ($consultas->status === 'realizada') selected @endif>Realizada</option>
+                <option value="cancelada" @if ($consultas->status === 'cancelada') selected @endif>Cancelada</option>
+            </select>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="profissional_id" class="form-label">Profissional:</label>
+            <select name="profissional_id" id="profissional_id" class="form-select" required>
+                @foreach($profissionais as $profissional)
+                    <option value="{{ $profissional->id }}"
+                            @if ($profissional->id === $consultas->profissional_id) selected @endif>{{ $profissional->nome }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <label for="status">Status:</label>
-        <select name="status" id="status" required>
-            <option value="agendado" @if ($consultas->status === 'agendado') selected @endif>agendado</option>
-            <option value="confirmada" @if ($consultas->status === 'confirmada') selected @endif>confirmada</option>
-            <option value="realizada" @if ($consultas->status === 'realizada') selected @endif>realizada</option>
-            <option value="cancelada" @if ($consultas->status === 'cancelada') selected @endif>cancelada</option>
-        </select>
+        <div class="mb-3">
+            <label for="paciente_id" class="form-label">Paciente:</label>
+            <select name="paciente_id" id="paciente_id" class="form-select" required>
+                @foreach($pacientes as $paciente)
+                    <option value="{{ $paciente->id }}"
+                            @if ($paciente->id === $consultas->paciente_id) selected @endif>{{ $paciente->nome }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="valor" class="form-label">Valor</label>
+            <input type="number" step="0.01" name="valor" id="valor" class="form-control" value="{{$consultas->valor}}"
+                   required>
+        </div>
 
-        <label for="profissional_id">Profissional:</label>
-        <select name="profissional_id" id="profissional_id" required>
-            @foreach($profissionais as $profissional)
-                <option value="{{ $profissional->id }}"
-                        @if ($profissional->id === $consultas->profissional_id) selected @endif>{{ $profissional->nome }}</option>
-            @endforeach
-        </select>
-
-        <br>
-
-        <label for="especialidade">especialidade</label>
-        <input type="text" name="especialidade" id="especialidade" value="{{$consultas->especialidade}}" required>
-
-        <br>
-
-        <label for="paciente_id">Paciente:</label>
-        <select name="paciente_id" id="paciente_id" required>
-            @foreach($pacientes as $paciente)
-                <option value="{{ $paciente->id }}"
-                        @if ($paciente->id === $consultas->paciente_id) selected @endif>{{ $paciente->nome }}</option>
-            @endforeach
-        </select>
-
-        <br>
-
-        <label for="valor">Valor</label>
-        <input type="number" step="0.01" name="valor" id="valor" value="{{$consultas->valor}}" required>
-
-        <br>
-
-        <button type="submit">Salvar Alterações</button>
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
 
     </form>
 
 @endsection
+

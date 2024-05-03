@@ -2,53 +2,45 @@
 
 @section('titulo', 'Editar Informações de Metas')
 
-@section ('conteudo')
+@section('conteudo')
 
     <form action="{{ route('metas-update', ['id' => $meta->id]) }}" method="POST">
-
         @csrf
-
-        <a href="{{ route('welcome') }}">Home</a>
-
-        <br>
-
-        <a href="{{ route('metas-index') }} ">Listar Metas</a>
-
-        <br>
-
-        <a href="{{ route('cadastrometas.create') }} ">Cadastrar Metas</a>
-
         @method('PUT')
+
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('metas-index') }}" class="btn btn-outline-info">Listar Metas</a>
+            <a href="{{ route('cadastrometas.create') }}" class="btn btn-outline-info">Cadastrar Metas</a>
+        </div>
 
         <h1>Editar Dados de Meta</h1>
 
-        <br>
+        <div class="mb-3">
+            <label for="meta" class="form-label">Meta</label>
+            <input type="text" name="meta" id="meta" class="form-control" value="{{ $meta->meta }}" required>
+        </div>
 
-        <label for="meta">Meta</label>
-        <input type="text" name="meta" id="meta" value="{{ $meta->meta }}" required>
+        <div class="mb-3">
+            <label for="data_inicio" class="form-label">Data de Início:</label>
+            <input type="date" name="data_inicio" id="data_inicio" class="form-control" value="{{ $meta->data_inicio }}"
+                   readonly required>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="data_fim" class="form-label">Data de Fim:</label>
+            <input type="date" name="data_fim" id="data_fim" class="form-control" value="{{ $meta->data_fim }}"
+                   min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required>
+        </div>
 
-        <label for="data_inicio">Data de Início:</label>
-        <input type="date" name="data_inicio" id="data_inicio" value="{{ $meta->data_inicio }}" readonly required>
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" name="descricao" id="descricao" class="form-control" value="{{ $meta->descricao }}"
+                   required>
+        </div>
 
-        <br>
-
-        <label for="data_fim">Data de Fim:</label>
-        <input type="date" name="data_fim" id="data_fim" value="{{ $meta->data_fim }}"
-               min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required>
-
-        <br>
-
-        <br>
-
-        <label for="descricao">Descrição</label>
-        <input type="text" name="descricao" id="descricao" value="{{ $meta->descricao }}" required>
-
-        <br>
-
-        <button type="submit">Salvar Alterações</button>
-
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
     </form>
 
 @endsection
+

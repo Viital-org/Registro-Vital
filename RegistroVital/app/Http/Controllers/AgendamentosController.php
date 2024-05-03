@@ -42,9 +42,30 @@ class AgendamentosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Agendamento $agendamento)
+    public function show(Request $request)
     {
-        //
+        $id = $request->input('id');
+
+
+        if ($id === null) {
+            $agendamentos = Agendamento::join('especializacoes', 'agendamentos.especializacao_id', '=', 'especializacoes.id')
+                ->join('pacientes', 'agendamentos.paciente_id', '=', 'pacientes.id')
+                ->join('profissionais', 'agendamentos.profissional_id', '=', 'profissionais.id')
+                ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
+                ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta')
+                ->orderBy('agendamentos.id')
+                ->get();
+        } else {
+            $agendamentos = Agendamento::join('especializacoes', 'agendamentos.especializacao_id', '=', 'especializacoes.id')
+                ->join('pacientes', 'agendamentos.paciente_id', '=', 'pacientes.id')
+                ->join('profissionais', 'agendamentos.profissional_id', '=', 'profissionais.id')
+                ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
+                ->where('agendamentos.id', '=', $id)
+                ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta')
+                ->orderBy('agendamentos.id')
+                ->get();
+        }
+        return view('Cadastros/listaagendamentos', ['agendamentos' => $agendamentos]);
     }
 
     /**

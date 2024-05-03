@@ -22,3 +22,4 @@ class Meta extends Model
         return $this->hasMany(Paciente::class, 'meta_id');
     }
 }
+

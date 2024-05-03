@@ -12,8 +12,7 @@ class MetasController extends Controller
      */
     public function index()
     {
-        //$metas = Meta::with('pacientes')->get(); <- implementar meta em paciente
-        $metas = Meta::all();
+        $metas = Meta::with('pacientes')->get();
         return view('Cadastros/listametas', compact('metas'), ['metas' => $metas]);
     }
 
@@ -37,9 +36,17 @@ class MetasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Meta $meta)
+    public function show(Request $request)
     {
-        //
+        $id = $request->input('id');
+
+
+        if ($id === null) {
+            $metas = Meta::all();
+        } else {
+            $metas = Meta::all()->where('id', '=', $id);
+        }
+        return view('Cadastros/listametas', ['metas' => $metas]);
     }
 
     /**

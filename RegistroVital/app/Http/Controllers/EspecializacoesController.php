@@ -42,10 +42,26 @@ class EspecializacoesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Especializacao $especializacao)
+    public function show(Request $request)
     {
-        //
+        $id = $request->input('id');
+
+        if ($id === null) {
+            $especializacoes = Especializacao::leftJoin('atuaareas', 'especializacoes.area_id', '=', 'atuaareas.id')
+                ->select('especializacoes.*', 'atuaareas.area')
+                ->orderBy('especializacoes.created_at')
+                ->get();
+        } else {
+            $especializacoes = Especializacao::leftJoin('atuaareas', 'especializacoes.area_id', '=', 'atuaareas.id')
+                ->where('especializacoes.id', '=', $id)
+                ->select('especializacoes.*', 'atuaareas.area')
+                ->orderBy('especializacoes.created_at')
+                ->get();
+
+        }
+        return view('Cadastros/listaespecializacoes', ['especializacoes' => $especializacoes]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

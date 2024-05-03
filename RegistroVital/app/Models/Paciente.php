@@ -19,9 +19,11 @@ class Paciente extends Model implements PacienteInterface
         'numcartaocred',
         'hobbies',
         'doencascronicas',
-        'remediosregulares'
+        'remediosregulares',
+        'meta_id',
     ];
 
+<<<<<<< HEAD
     public function getNome(): string
     {
         return $this->nome;
@@ -62,4 +64,10 @@ class Paciente extends Model implements PacienteInterface
         return $this->remediosregulares;
     }
 
+=======
+    public function meta()
+    {
+        return $this->belongsTo(Meta::class, 'meta_id');
+    }
+>>>>>>> 2c7c640da83d507ce21f744c9f644e20fbdc1a4b
 }

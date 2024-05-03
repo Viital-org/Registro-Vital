@@ -1,31 +1,30 @@
-@extends ('layoutspadrao.profissionais')
+@extends('layoutspadrao.profissionais')
 
-@section ('titulo', 'Cadastro de tipos de anotacao')
+@section('titulo', 'Cadastro de Tipos de Anotação')
 
-@section ('conteudo')
+@section('conteudo')
 
-    <form action="{{route('tipoanotacao-store') }}" method="POST">
+    <form action="{{ route('tipoanotacao-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('tipoanotacao-index') }}" class="btn btn-outline-info">Listar Tipos de Anotação</a>
+        </div>
 
-        <br>
+        <h1>Cadastro de Tipos de Anotação</h1>
 
-        <a href="{{ route('tipoanotacao-index') }} ">Listar tipos de anotacao</a>
+        <div class="mb-3">
+            <label for="cad_tipanot" class="form-label">Tipo/Código da Anotação</label>
+            <input type="number" name="cad_tipanot" id="cad_tipanot" class="form-control" required>
+        </div>
 
-        <h1>Cadastro de Tipos de anotacao</h1>
+        <div class="mb-3">
+            <label for="desc_anotacao" class="form-label">Descrição da Anotação</label>
+            <input type="text" name="desc_anotacao" id="desc_anotacao" class="form-control" required>
+        </div>
 
-        <br>
-
-        <label for="cad_tipanot">Tipo/Codigo da anotacao</label>
-        <input type="number" name="cad_tipanot" id="cad_tipanot" required>
-
-        <br>
-
-        <label for="desc_anotacao">Descricao da anotacao</label>
-        <input type="text" name="desc_anotacao" id="desc_anotacao" required>
-
-        <input type="submit" value="Enviar">
+        <button type="submit" class="btn btn-primary">Enviar</button>
 
     </form>
 

@@ -1,45 +1,41 @@
-@extends ('layoutspadrao.profissionais')
+@extends('layoutspadrao.profissionais')
 
-@section ('titulo', 'Cadastro de Dicas')
+@section('titulo', 'Cadastro de Dicas')
 
-@section ('conteudo')
+@section('conteudo')
 
-    <form action="{{route('dicas-store') }}" method="POST">
+    <form action="{{ route('dicas-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
-
-        <br>
-
-        <a href="{{ route('dicas-index') }} ">Listar Dicas</a>
-
-        <br>
+        <div class="mb-3">
+            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+            <a href="{{ route('dicas-index') }}" class="btn btn-outline-info">Listar Dicas</a>
+        </div>
 
         <h1>Cadastro de Dicas</h1>
 
-        <br>
+        <div class="mb-3">
+            <label for="dica" class="form-label">Dica</label>
+            <input type="text" name="dica" id="dica" class="form-control" required>
+        </div>
 
-        <label for="dica">Dica</label>
-        <input type="text" name="dica" id="dica" required>
+        <div class="mb-3">
+            <label for="paciente_id" class="form-label">Paciente:</label>
+            <select name="paciente_id" id="paciente_id" class="form-select" required>
+                @foreach($pacientes as $paciente)
+                    <option value="{{ $paciente->id }}">{{ $paciente->nome }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <br>
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" name="descricao" id="descricao" class="form-control" required>
+        </div>
 
-        <label for="paciente_id">Paciente:</label>
-        <select name="paciente_id" id="paciente_id" required>
-            @foreach($pacientes as $paciente)
-                <option value="{{ $paciente->id }}">{{ $paciente->nome }}</option>
-            @endforeach
-        </select>
-
-        <br>
-
-        <label for="descricao">Descrição</label>
-        <input type="text" name="descricao" id="descricao" required>
-
-        <br>
-
-        <input type="submit" value="Enviar">
+        <button type="submit" class="btn btn-primary">Enviar</button>
 
     </form>
 
 @endsection
+

@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string('hobbies');
             $table->string('doencascronicas');
             $table->string('remediosregulares');
+            $table->string('meta_id')->nullable()->constrained('Metas')->onDelete('set null');
             $table->timestamps();
             $table->softDeletes();
 

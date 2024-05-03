@@ -7,9 +7,11 @@
     <form action="{{ route('profissionais-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}">Home</a>
-        <br>
-        <a href="{{ route('profissionais-index') }}">Listar Profissionais</a>
+        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
+
+        &nbsp;
+
+        <a href="{{ route('profissionais-index') }}" class="btn btn-outline-info">Listar Profissionais</a>
 
         <h1>Cadastro de profissionais</h1>
 
@@ -69,23 +71,20 @@
             $('#areaatuacao_id').change(function () {
                 var areaId = $(this).val();
                 if (areaId) {
-                    $.ajax({
-                        type: "GET",
-                        url: "/especializacoes/" + areaId,
-                        success: function (data) {
-                            $('#especializacao_id').empty();
-                            $('#especializacao_id').append('<option value="">Não Definido</option>');
-                            $.each(data, function (index, especializacao) {
-                                $('#especializacao_id').append('<option value="' + especializacao.id + '">' + especializacao.especializacao + '</option>');
+                    $.get("/especializacoes/" + areaId)
+                        .done(function (data) {
+                            $('#especializacao_id').html('<option value="">Não Definido</option>');
+                            $.each(data, function (_, especializacao) {
+                                $('#especializacao_id').append(`<option value="${especializacao.id}">${especializacao.especializacao}</option>`);
                             });
-                        }
-                    });
+                        })
+                        .fail(function () {
+                            console.error('Erro ao carregar especializações.');
+                        });
                 } else {
                     $('#especializacao_id').empty();
                 }
-            });
-
-            $('#areaatuacao_id').change();
+            }).change();
         });
     </script>
 

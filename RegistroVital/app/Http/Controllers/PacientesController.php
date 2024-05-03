@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meta;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,11 @@ class PacientesController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::all();
-        return view('Cadastros/listapacientes', compact('pacientes'), ['pacientes' => $pacientes]);
+        $pacientes = Paciente::leftJoin('metas', 'pacientes.meta_id', '=', 'metas.id')
+            ->select('pacientes.*', 'metas.meta')
+            ->orderBy('pacientes.created_at')
+            ->get();
+        return view('Cadastros/listapacientes', ['pacientes' => $pacientes]);
     }
 
     /**
@@ -30,15 +34,23 @@ class PacientesController extends Controller
      */
     public function create()
     {
-        return view('Cadastros/cadastropacientes');
+        $metas = Meta::all();
+        return view('Cadastros/cadastropacientes', ['metas' => $metas]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $id = $request->input('id');
+
+        if ($id === null) {
+            $pacientes = Paciente::all();
+        } else {
+            $pacientes = Paciente::all()->where('id', '=', $id);
+        }
+        return view('Cadastros/listapacientes', ['pacientes' => $pacientes]);
     }
 
     /**
@@ -47,7 +59,8 @@ class PacientesController extends Controller
     public function edit($id)
     {
         $paciente = Paciente::find($id);
-        return view('Cadastros/editarpaciente', compact('paciente'));
+        $metas = Meta::all();
+        return view('Cadastros/editarpaciente', ['paciente' => $paciente, 'metas' => $metas]);
     }
 
     /**
