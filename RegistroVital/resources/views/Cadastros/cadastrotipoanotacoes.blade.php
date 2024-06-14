@@ -1,4 +1,4 @@
-@extends('layoutspadrao.profissionais')
+@extends('layoutspadrao.inicio')
 
 @section('titulo', 'Cadastro de Tipos de Anotação')
 
@@ -6,11 +6,6 @@
 
     <form action="{{ route('tipoanotacao-store') }}" method="POST">
         @csrf
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('tipoanotacao-index') }}" class="btn btn-outline-info">Listar Tipos de Anotação</a>
-        </div>
 
         <h1>Cadastro de Tipos de Anotação</h1>
 

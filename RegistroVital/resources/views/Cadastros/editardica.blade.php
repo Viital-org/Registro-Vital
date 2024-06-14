@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.profissionais')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Editar Informações de Dicas')
 
@@ -7,12 +7,6 @@
     <form action="{{ route('dicas-update', ['id' => $dicas->id]) }}" method="POST">
         @csrf
         @method('PUT')
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('dicas-index') }}" class="btn btn-outline-info">Listar Dicas</a>
-            <a href="{{ route('cadastrodicas.create') }}" class="btn btn-outline-info">Cadastrar Dica</a>
-        </div>
 
         <h1>Editar Dados de Dicas</h1>
 

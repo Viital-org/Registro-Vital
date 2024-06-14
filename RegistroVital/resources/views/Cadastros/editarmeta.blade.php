@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.profissionais')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Editar Informações de Metas')
 
@@ -7,12 +7,6 @@
     <form action="{{ route('metas-update', ['id' => $meta->id]) }}" method="POST">
         @csrf
         @method('PUT')
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('metas-index') }}" class="btn btn-outline-info">Listar Metas</a>
-            <a href="{{ route('cadastrometas.create') }}" class="btn btn-outline-info">Cadastrar Metas</a>
-        </div>
 
         <h1>Editar Dados de Meta</h1>
 

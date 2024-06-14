@@ -1,4 +1,4 @@
-@extends('layoutspadrao.profissionais')
+@extends('layoutspadrao.inicio')
 
 @section('titulo', 'Cadastro de Dicas')
 
@@ -6,11 +6,6 @@
 
     <form action="{{ route('dicas-store') }}" method="POST">
         @csrf
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('dicas-index') }}" class="btn btn-outline-info">Listar Dicas</a>
-        </div>
 
         <h1>Cadastro de Dicas</h1>
 

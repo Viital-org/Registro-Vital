@@ -1,4 +1,4 @@
-@extends('layoutspadrao.profissionais')
+@extends('layoutspadrao.inicio')
 
 @section('titulo', 'Cadastrar nova anotação')
 
@@ -6,11 +6,6 @@
 
     <form action="{{ route('anotacoessaude-store') }}" method="POST">
         @csrf
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('anotacoessaude-index') }}" class="btn btn-outline-info">Listar anotações</a>
-        </div>
 
         <h1>Cadastro de nova anotação</h1>
 

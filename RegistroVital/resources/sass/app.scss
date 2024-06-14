@@ -1,1 +1,83 @@
 @import 'bootstrap/scss/bootstrap';
+
+.container-fluid{
+    background-image: linear-gradient(to left, rgba(197, 145, 145, 0.466), rgba(250, 61, 3, 0.596));
+    background-size: 500% 100%;
+    animation: plano-fundo 10s infinite alternate;
+}
+
+.main-content {
+    margin-top: 70px;
+    font-size: 12px;
+}
+
+.navbar-brand{ /* Titulo */
+    margin-left: 10px;
+    animation: cor-titulo 3s infinite alternate;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+/* Navbar */
+.navbar {
+    border-radius: 10px;
+    position: fixed;
+}
+
+.navbar-collapse{
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .nav-link{
+    font-size: 15pt;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.navbar .nav-link:hover {
+    color: #ff6347; /* Tom mais claro de laranja */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    margin-top: 70px;
+    border-radius: 10px;
+    position: fixed;
+}
+
+.sidebar .nav-link {
+    color: black;
+}
+
+.sidebar .nav-link:hover {
+    color: #ff6347; /* Tom mais claro de laranja */
+}
+
+/* Conteúdo principal */
+.main-content {
+    margin-left: 25%; /* Ajuste conforme necessário */
+    padding-top: 20px;
+    color: #333333; /* Cor de texto */
+}
+
+@keyframes plano-fundo {
+    0%{
+        background-position-x: 0%;
+    }
+
+    100%{
+        background-position-x: 100%;
+    }
+}
+
+@keyframes cor-titulo{
+    0%{
+        color: rgb(26, 10, 10);
+    }
+
+    100%{
+        color: rgba(204, 24, 24, 0.753);
+    }
+}

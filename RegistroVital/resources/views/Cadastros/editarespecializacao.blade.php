@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.profissionais')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Editar Informações de Especialização')
 
@@ -7,11 +7,6 @@
     <form action="{{ route('especializacoes-update', ['id' => $especializacoes->id]) }}" method="POST">
         @csrf
         @method('PUT')
-
-        <a href="{{ route('welcome') }}" class="btn btn-outline-primary mb-3">Home</a>
-        <a href="{{ route('especializacoes-index') }}" class="btn btn-outline-info mb-3">Listar Especialização</a>
-        <a href="{{ route('cadastroespecializacoes.create') }}" class="btn btn-outline-info mb-3">Cadastrar
-            Especialização</a>
 
         <h1>Editar Dados da Especialização</h1>
 

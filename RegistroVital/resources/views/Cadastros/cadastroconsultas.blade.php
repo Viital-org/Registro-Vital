@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.profissionais')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Cadastro de Consultas')
 
@@ -6,11 +6,6 @@
 
     <form action="{{ route('consultas-store') }}" method="POST">
         @csrf
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('consultas-index') }}" class="btn btn-outline-info">Listar Consultas</a>
-        </div>
 
         <h1>Cadastro de Consulta</h1>
 

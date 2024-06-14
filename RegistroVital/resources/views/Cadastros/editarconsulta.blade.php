@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.profissionais')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Editar Informações de Consulta')
 
@@ -7,12 +7,6 @@
     <form action="{{ route('consultas-update', ['id' => $consultas->id]) }}" method="POST">
         @csrf
         @method('PUT')
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('consultas-index') }}" class="btn btn-outline-info">Listar Consultas</a>
-            <a href="{{ route('cadastroconsultas.create') }}" class="btn btn-outline-info">Cadastrar Consulta</a>
-        </div>
 
         <h1>Editar Dados de Consulta</h1>
 

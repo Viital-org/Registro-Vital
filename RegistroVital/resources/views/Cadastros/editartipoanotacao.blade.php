@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.profissionais')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Editar Informações de Área de Atuação')
 
@@ -7,12 +7,6 @@
     <form action="{{ route('tipoanotacao-update', ['id' => $Tipoanotacao->id]) }}" method="POST">
         @csrf
         @method('PUT')
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('tipoanotacao-create') }}" class="btn btn-outline-info">Cadastrar Tipo de Anotação</a>
-            <a href="{{ route('tipoanotacao-index') }}" class="btn btn-outline-info">Listar Tipos de Anotação</a>
-        </div>
 
         <h1>Editar Dados do Tipo de Anotação</h1>
 
