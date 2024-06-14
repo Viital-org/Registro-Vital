@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.profissionais')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Editar Anotação')
 
@@ -7,12 +7,6 @@
     <form action="{{ route('anotacoessaude-update', ['id' => $anotacaosaude->id]) }}" method="POST">
         @csrf
         @method('PUT')
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('anotacoessaude-index') }}" class="btn btn-outline-info">Listar Anotações</a>
-            <a href="{{ route('cadastroanotacoes.create') }}" class="btn btn-outline-info">Cadastrar Anotação</a>
-        </div>
 
         <h1>Editar Dados da Anotação</h1>
 

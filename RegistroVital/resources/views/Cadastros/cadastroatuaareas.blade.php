@@ -1,4 +1,4 @@
-@extends('layoutspadrao.profissionais')
+@extends('layoutspadrao.inicio')
 
 @section('titulo', 'Cadastro de Áreas de Atuação')
 
@@ -6,11 +6,6 @@
 
     <form action="{{ route('atuaareas-store') }}" method="POST">
         @csrf
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('atuaareas-index') }}" class="btn btn-outline-info">Listar áreas de atuação</a>
-        </div>
 
         <h1>Cadastro de Áreas de Atuação</h1>
 

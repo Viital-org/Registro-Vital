@@ -1,4 +1,4 @@
-@extends('layoutspadrao.profissionais')
+@extends('layoutspadrao.inicio')
 
 @section('titulo', 'Cadastro de profissionais')
 
@@ -7,11 +7,7 @@
     <form action="{{ route('profissionais-store') }}" method="POST">
         @csrf
 
-        <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-
         &nbsp;
-
-        <a href="{{ route('profissionais-index') }}" class="btn btn-outline-info">Listar Profissionais</a>
 
         <h1>Cadastro de profissionais</h1>
 

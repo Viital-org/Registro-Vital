@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.profissionais')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Editar Informações de Área de Atuação')
 
@@ -7,12 +7,6 @@
     <form action="{{ route('atuaareas-update', ['id' => $atuaarea->id]) }}" method="POST">
         @csrf
         @method('PUT')
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('atuaareas-index') }}" class="btn btn-outline-info">Listar Áreas de Atuação</a>
-            <a href="{{ route('cadastroatuaareas.create') }}" class="btn btn-outline-info">Cadastrar Área de Atuação</a>
-        </div>
 
         <h1>Editar Dados de Área de Atuação</h1>
 

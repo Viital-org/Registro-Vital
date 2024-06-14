@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.profissionais')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Cadastro de Pacientes')
 
@@ -6,11 +6,6 @@
 
     <form action="{{ route('pacientes-store') }}" method="POST">
         @csrf
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('pacientes-index') }}" class="btn btn-outline-info">Listar Pacientes</a>
-        </div>
 
         <h1>Cadastro de Paciente</h1>
 

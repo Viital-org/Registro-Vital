@@ -1,22 +1,18 @@
-@extends ('layoutspadrao.profissionais')
+@extends ('layoutspadrao.inicio')
 
 @section('titulo', 'Listagem de Anotações')
 
 @section('conteudo')
-
     @csrf
-    <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-    <a href="/cadastroanotacoes" class="btn btn-outline-info">Cadastrar nova anotação</a>
 
     <h1>Anotações Realizadas</h1>
     <br>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <form action="{{ route('anotacoessaude-show')}}" method="post">
+    <nav class="d-flex align-items-center justify-content-between" role="search">
+        <form action="{{ route('anotacoessaude-show') }}" method="post" class="d-flex w-100">
             @csrf
-            <input name="id" id="id" class="form-control mr-sm-2" type="search" placeholder="Digite o ID"
-                   aria-label="Search">
-            <button class="btn btn-primary" type="submit">Buscar</button>
+            <input class="form-control me-2 flex-grow-1" type="search" placeholder="Digite o ID" aria-label="Search">
+            <button class="btn btn-light" type="submit">Buscar</button>
         </form>
     </nav>
 

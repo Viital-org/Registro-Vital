@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.profissionais')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Editar Informações de Paciente')
 
@@ -7,12 +7,6 @@
     <form action="{{ route('pacientes-update', ['id' => $paciente->id]) }}" method="POST">
         @csrf
         @method('PUT')
-
-        <div class="mb-3">
-            <a href="{{ route('welcome') }}" class="btn btn-outline-primary">Home</a>
-            <a href="{{ route('pacientes-index') }}" class="btn btn-outline-info">Listar Pacientes</a>
-            <a href="{{ route('cadastropacientes.create') }}" class="btn btn-outline-info">Cadastrar Paciente</a>
-        </div>
 
         <h1>Editar Dados do Paciente</h1>
 

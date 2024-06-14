@@ -1,0 +1,55 @@
+.sidebar {
+    height: calc(100vh - 56px); /* Altura da viewport menos a altura da navbar */
+    position: fixed;
+    top: 56px; /* Altura da navbar */
+    left: 0;
+    overflow-y: auto;
+    padding-top: 20px;
+}
+
+.main-content {
+    margin-left: 25%; /* Ajuste conforme necessário */
+    padding-top: 20px;
+}
+
+/* custom.css */
+
+/* Navbar */
+.navbar {
+    background-color: #ff4500; /* Laranja avermelhado */
+}
+
+.navbar .navbar-brand, .navbar .nav-link {
+    color: #ffffff; /* Branco */
+}
+
+.navbar .nav-link:hover {
+    color: #ff6347; /* Tom mais claro de laranja */
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #dc143c; /* Vermelho carmesim */
+    height: calc(100vh - 56px); /* Altura da viewport menos a altura da navbar */
+    position: fixed;
+    top: 56px; /* Altura da navbar */
+    left: 0;
+    overflow-y: auto;
+    padding-top: 20px;
+}
+
+.sidebar .nav-link {
+    color: #ffffff; /* Branco */
+}
+
+.sidebar .nav-link:hover {
+    color: #ff6347; /* Tom mais claro de laranja */
+}
+
+/* Conteúdo principal */
+.main-content {
+    margin-left: 25%; /* Ajuste conforme necessário */
+    padding-top: 20px;
+    background-color: #ffffff; /* Branco */
+    color: #333333; /* Cor de texto */
+}
