@@ -38,6 +38,13 @@
                     </li>
                 </ul>
             </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">@nomeUser</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
         <!-- Sidebar -->
