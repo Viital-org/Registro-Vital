@@ -68,11 +68,13 @@ Route::put('/editarespecializacao/{id}', [EspecializacoesController::class, 'upd
 Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, 'destroy'])->name('especializacoes-delete');
 
 //Agendamentos
-
 Route::resource('/cadastroagendamentos', AgendamentosController::class);
 Route::get('/listaagendamentos', [AgendamentosController::class, 'index'])->name('agendamentos-index');
 Route::post('/listaagendamentos', [AgendamentosController::class, 'show'])->name('agendamentos-show');
 Route::delete('/listaagendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos-delete');
+
+//Agendamentos Paciente
+Route::get('/listaagendamentopaciente', [AgendamentosController::class, 'index'])->name('agendamentos-paciente');
 
 //Tipos de anotacao
 Route::resource('/cadastrotipoanotacao', TipoAnotacoesController::class);
