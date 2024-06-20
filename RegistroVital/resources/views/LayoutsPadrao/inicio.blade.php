@@ -76,6 +76,7 @@
                         <li><a class="dropdown-item" href="{{ route('dicas-index')}}">Dicas</a></li>
                         <li><a class="dropdown-item" href="{{ route('anotacoessaude-index')}}">Anotações</a></li>
                         <li><a class="dropdown-item" href="{{ route('metas-index')}}">Metas</a></li>
+                        <li><a class="dropdown-item" href="{{ route('agendamentos-paciente')}}">Agendamentos de @nomeUser</a></li>
                     </ul>
                 </div>
 
