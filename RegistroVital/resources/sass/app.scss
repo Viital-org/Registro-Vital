@@ -1,7 +1,7 @@
 @import 'bootstrap/scss/bootstrap';
 
 .container-fluid{
-    background-image: linear-gradient(to left, rgba(197, 145, 145, 0.466), rgba(250, 61, 3, 0.596));
+    background-image: linear-gradient(to left, rgba(191, 255, 0, 0.500), rgba(126, 3, 250, 0.500));
     background-size: 500% 100%;
     animation: plano-fundo 10s infinite alternate;
 }
@@ -36,7 +36,7 @@
 }
 
 .navbar .nav-link:hover {
-    color: #ff6347; /* Tom mais claro de laranja */
+    color: #a347ff; /* Tom mais claro de laranja */
 }
 
 /* Sidebar */
@@ -52,7 +52,7 @@
 }
 
 .sidebar .nav-link:hover {
-    color: #ff6347; /* Tom mais claro de laranja */
+    color: #a347ff; /* Tom mais claro de laranja */
 }
 
 /* Conteúdo principal */
@@ -78,6 +78,6 @@
     }
 
     100%{
-        color: rgba(204, 24, 24, 0.753);
+        color: rgba(132, 24, 204, 0.753);
     }
 }

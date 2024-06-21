@@ -12,7 +12,7 @@
 <nav class="d-flex align-items-center justify-content-between" role="search">
     <form action="{{ route('agendamentos-paciente-show') }}" method="post" class="d-flex w-100">
         @csrf
-        <input type="date" name="" id="">
+        <input type="date" name="" id="" class="form-control me-2 flex-grow-1">
         <button class="btn btn-light" type="submit">Buscar</button>
     </form>
 </nav>
