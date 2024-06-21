@@ -28,7 +28,7 @@
         </tr>
     </thead>
     <tbody>
-    @foreach ($agendamentos as $item)
+    @foreach ($agendamento_paciente as $item)
         <tr>
             <th scope="row">{{$item->id}}</th>
             <td>{{$item->nome_profissional ?: 'Não definido' }}</td>

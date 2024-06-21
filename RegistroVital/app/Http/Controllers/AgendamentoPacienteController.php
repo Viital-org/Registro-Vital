@@ -5,21 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Agendamento;
 use Illuminate\Http\Request;
 
-class AgendamentosController extends Controller
+class AgendamentoPacienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $agendamentos = Agendamento::join('especializacoes', 'agendamentos.especializacao_id', '=', 'especializacoes.id')
+        $agendamento_paciente = Agendamento::join('especializacoes', 'agendamentos.especializacao_id', '=', 'especializacoes.id')
             ->join('pacientes', 'agendamentos.paciente_id', '=', 'pacientes.id')
             ->join('profissionais', 'agendamentos.profissional_id', '=', 'profissionais.id')
             ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
             ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta')
             ->orderBy('agendamentos.id')
             ->get();
-        return view('Cadastros/listaagendamentopaciente', ['agendamentos' => $agendamentos]);
+        return view('Cadastros/listaagendamentopaciente', ['agendamento-paciente' => $agendamento_paciente]);
     }
 
     /**
@@ -27,8 +27,8 @@ class AgendamentosController extends Controller
      */
     public function create()
     {
-        $agendamentos = Agendamento::all();
-        return view('Cadastros/cadastroagendamentos', ['agendamentos' => $agendamentos]);
+        $agendamento_paciente = Agendamento::all();
+        return view('Cadastros/cadastroagendamentos', ['agendamento-paciente' => $agendamento_paciente]);
     }
 
     /**
@@ -48,7 +48,7 @@ class AgendamentosController extends Controller
 
 
         if ($id === null) {
-            $agendamentos = Agendamento::join('especializacoes', 'agendamentos.especializacao_id', '=', 'especializacoes.id')
+            $agendamento_paciente = Agendamento::join('especializacoes', 'agendamentos.especializacao_id', '=', 'especializacoes.id')
                 ->join('pacientes', 'agendamentos.paciente_id', '=', 'pacientes.id')
                 ->join('profissionais', 'agendamentos.profissional_id', '=', 'profissionais.id')
                 ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
@@ -56,7 +56,7 @@ class AgendamentosController extends Controller
                 ->orderBy('agendamentos.id')
                 ->get();
         } else {
-            $agendamentos = Agendamento::join('especializacoes', 'agendamentos.especializacao_id', '=', 'especializacoes.id')
+            $agendamento_paciente = Agendamento::join('especializacoes', 'agendamentos.especializacao_id', '=', 'especializacoes.id')
                 ->join('pacientes', 'agendamentos.paciente_id', '=', 'pacientes.id')
                 ->join('profissionais', 'agendamentos.profissional_id', '=', 'profissionais.id')
                 ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
@@ -65,7 +65,7 @@ class AgendamentosController extends Controller
                 ->orderBy('agendamentos.id')
                 ->get();
         }
-        return view('Cadastros/listaagendamentopaciente', ['agendamentos' => $agendamentos]);
+        return view('Cadastros/listaagendamentopaciente', ['agendamento-paciente' => $agendamento_paciente]);
     }
 
     /**
@@ -73,8 +73,8 @@ class AgendamentosController extends Controller
      */
     public function destroy($id)
     {
-        $Agendamento = Agendamento::findorfail($id);
-        $Agendamento->delete();
-        return redirect()->route('agendamentos-paciente');
+        $agendamento_paciente = Agendamento::findorfail($id);
+        $agendamento_paciente->delete();
+        return redirect()->route('agendamento-paciente');
     }
 }

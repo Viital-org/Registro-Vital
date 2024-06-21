@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgendamentosController;
+use App\Http\Controllers\AgendamentoPacienteController;
 use App\Http\Controllers\AnotacoesSaudeController;
 use App\Http\Controllers\AtuaAreasController;
 use App\Http\Controllers\ConsultasController;
@@ -74,8 +75,8 @@ Route::post('/listaagendamentos', [AgendamentosController::class, 'show'])->name
 Route::delete('/listaagendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos-delete');
 
 //Agendamentos Paciente
-Route::get('/listaagendamentopaciente', [AgendamentosController::class, 'index'])->name('agendamentos-paciente-index');
-Route::post('/listaagendamentopaciente', [AgendamentosController::class, 'show'])->name('agendamentos-paciente-show');
+Route::get('/listaagendamentopaciente', [AgendamentoPacienteController::class, 'index'])->name('agendamentos-paciente-index');
+Route::post('/listaagendamentopaciente', [AgendamentoPacienteController::class, 'show'])->name('agendamentos-paciente-show');
 
 //Tipos de anotacao
 Route::resource('/cadastrotipoanotacao', TipoAnotacoesController::class);
