@@ -18,6 +18,9 @@ class ProfissionalFactory extends Factory
      */
     public function definition(): array
     {
+        $atuaareaId = null;
+        $especializacaoId = null;
+
         $atuaareas = AtuaArea::all();
         if ($atuaareas->count() > 0) {
 
