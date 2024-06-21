@@ -74,7 +74,8 @@ Route::post('/listaagendamentos', [AgendamentosController::class, 'show'])->name
 Route::delete('/listaagendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos-delete');
 
 //Agendamentos Paciente
-Route::get('/listaagendamentopaciente', [AgendamentosController::class, 'index'])->name('agendamentos-paciente');
+Route::get('/listaagendamentopaciente', [AgendamentosController::class, 'index'])->name('agendamentos-paciente-index');
+Route::post('/listaagendamentopaciente', [AgendamentosController::class, 'show'])->name('agendamentos-paciente-show');
 
 //Tipos de anotacao
 Route::resource('/cadastrotipoanotacao', TipoAnotacoesController::class);

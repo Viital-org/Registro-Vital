@@ -19,7 +19,7 @@ class AgendamentosController extends Controller
             ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta')
             ->orderBy('agendamentos.id')
             ->get();
-        return view('Cadastros/listaagendamentos', ['agendamentos' => $agendamentos]);
+        return view('Cadastros/listaagendamentopaciente', ['agendamentos' => $agendamentos]);
     }
 
     /**
@@ -75,6 +75,6 @@ class AgendamentosController extends Controller
     {
         $Agendamento = Agendamento::findorfail($id);
         $Agendamento->delete();
-        return redirect()->route('agendamentos-index');
+        return redirect()->route('agendamentos-paciente');
     }
 }

@@ -10,7 +10,7 @@
 <h1>Consultas de agendamentos</h1>
 
 <nav class="d-flex align-items-center justify-content-between" role="search">
-    <form action="{{ route('agendamentos-paciente') }}" method="post" class="d-flex w-100">
+    <form action="{{ route('agendamentos-paciente-show') }}" method="post" class="d-flex w-100">
         @csrf
         <input type="date" name="" id="">
         <button class="btn btn-light" type="submit">Buscar</button>
