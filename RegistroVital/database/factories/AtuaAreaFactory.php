@@ -19,7 +19,7 @@ class AtuaAreaFactory extends Factory
     {
         return [
             'area' => $this->faker->jobTitle(),
-            'descricao' => $this->faker->text,
+            'descricao' => $this->faker->text(),
         ];
     }
 }
