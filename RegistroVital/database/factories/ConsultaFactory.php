@@ -36,7 +36,7 @@ class ConsultaFactory extends Factory
             'status' => $this->faker->word,
             'profissional_id' => $profissionalId,
             'paciente_id' => $pacienteId,
-            'valor' => $this->faker->numberBetween(100, 7080),
+            'valor' => $this->faker->randomFloat(100, 7080),
         ];
     }
 }

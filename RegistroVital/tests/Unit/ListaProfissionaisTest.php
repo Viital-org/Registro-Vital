@@ -23,7 +23,7 @@ test('Testa se o usuario esta sendo redirecionado para a pagina', function () {
     $response->assertStatus(200);
 });
 
-test('Testa se o o que foi criado é do tipo certo', function(){
+test('Testa se o que foi criado é do tipo certo', function(){
 
     $response = Profissional::factory()->count(1)->create();
 

@@ -78,7 +78,7 @@ Route::delete('/listaagendamentos/{id}', [AgendamentosController::class, 'destro
 Route::resource('/cadastrotipoanotacao', TipoAnotacoesController::class);
 Route::get('/listatipoanotacoes', [TipoAnotacoesController::class, 'index'])->name('tipoanotacao-index');
 Route::post('/guardartioanotacao', [TipoAnotacoesController::class, 'store'])->name('tipoanotacao-store');
-Route::post('/listatipoanotacoes', [TipoAnotacoesController::class, 'show'])->name('anotacoessaude-show');
+Route::post('/listatipoanotacoes', [TipoAnotacoesController::class, 'show'])->name('tipoanotacao-show');
 Route::get('/cadastrotipanot', [TipoAnotacoesController::class, 'create'])->name('tipoanotacao-create');
 Route::get('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'edit'])->name('tipoanotacao-edit');
 Route::put('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'update'])->name('tipoanotacao-update');
