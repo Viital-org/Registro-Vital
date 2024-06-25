@@ -9,6 +9,7 @@
 
     <h1>Consultas de agendamentos</h1>
 
+
     <nav class="d-flex align-items-center justify-content-between" role="search">
         <form action="{{ route('agendamentos-paciente-show') }}" method="post" class="d-flex w-100">
             @csrf
@@ -16,6 +17,7 @@
             <button class="btn btn-light" type="submit">Buscar</button>
         </form>
     </nav>
+
 
     <table class="table">
         <thead>
