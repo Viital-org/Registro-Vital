@@ -30,8 +30,8 @@ class ConsultasController extends Controller
     public function store(Request $request)
     {
         Consulta::create($request->all());
-        Artisan::call('db:seed', ['--class=AgendamentoSeeder']);
-        return redirect()->route('consultas-index');
+        Artisan::call('db:seed', ['class=AgendamentoSeeder']);
+        return redirect()->route('consultas-index');   
     }
 
     /**

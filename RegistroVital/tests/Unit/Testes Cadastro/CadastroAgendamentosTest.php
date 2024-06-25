@@ -9,13 +9,9 @@ use App\Models\Profissional;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
+use function PHPUnit\Framework\assertTrue;
+
 uses(TestCase::class, RefreshDatabase::class);
-
-test("Testa se quando uma consulta é criada, o agendamento também é", function () {
-    expect(true)->toBeTrue();
-
-});
-
 
 test('Testa se a criacao deu certo', function () {
 
@@ -29,11 +25,10 @@ test('Testa se a criacao deu certo', function () {
         'especializacao_id' => $especializacao->id,
         'profissional_id' => $profissional->id,
         'paciente_id' => $paciente->id,
-        'data_agendamento' => '2021-01-01', // Formato correto de data no Laravel
+        'data_agendamento' => '2021-01-01',
         'consulta_id' => $consulta->id,
     ];
 
-    // Criação do Agendamento usando Eloquent
     $agendamento = Agendamento::create($dadosAgendamento);
 
     $this->assertInstanceOf(Agendamento::class, $agendamento);
@@ -45,8 +40,17 @@ test('Testa se a criacao deu certo', function () {
 
 });
 
-test('Testa se o que esta sendo criado esta sendo persistido no banco de dados', function(){
-    $teste = true;
+test('Testa se o que se o status da criacao esta OK.', function(){
 
-    expect($teste)->toBeTrue();
+    $dadosCadastro = [    
+                    'especializacao_id' => '1',
+                    'profissional_id' => '1',
+                    'paciente_id' => '1',
+                    'data_agendamento' => '01-01-2022',
+                    'consulta_id' => '1'
+    ];
+
+    $response =  $this->post(route('consultas-store', $dadosCadastro));
+
+    $response->assertStatus(201);
 });
