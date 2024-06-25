@@ -82,4 +82,8 @@ class PacientesController extends Controller
         $paciente->delete();
         return redirect()->route('pacientes-index');
     }
+    public function tela()
+    {
+        return view('profile.paciente-dashboard');
+    }
 }

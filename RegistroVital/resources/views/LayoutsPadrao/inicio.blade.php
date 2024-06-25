@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
 
     <!-- Título da página dinâmico -->
     <title> @yield('titulo')</title>
@@ -16,13 +16,14 @@
 <body>
 <!-- Conteúdo da página -->
 <div class="container-fluid">
-    
+
     <!-- Conteúdo principal com sidebar -->
     <div class="row">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Registro Vital</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -56,7 +57,7 @@
                         Cadastros
                     </a>
                     <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/cadastropaci">Pacientes</a></li>
+                        <li><a class="dropdown-item" href="/cadastropaci">Pacientes</a></li>
                         <li><a class="dropdown-item" href="/cadastrarprof">Profissionais</a></li>
                         <li><a class="dropdown-item" href="/cadastroconsul">Consultas</a></li>
                         <li><a class="dropdown-item" href="/cadastroarea">Areas de atuacao</a></li>
@@ -65,6 +66,7 @@
                         <li><a class="dropdown-item" href="/cadastrodica">Dicas</a></li>
                         <li><a class="dropdown-item" href="/cadastroanotacoes">Anotações</a></li>
                         <li><a class="dropdown-item" href="/cadastrometa">Metas</a></li>
+                        <li><a class="dropdown-item" href="/marcaconsulta">Marcar consulta</a></li>
                     </ul>
                 </div>
 
@@ -77,25 +79,26 @@
                         <li><a class="dropdown-item" href="{{ route('profissionais-index') }}">Profissionais</a></li>
                         <li><a class="dropdown-item" href="{{ route('consultas-index') }}">Consultas</a></li>
                         <li><a class="dropdown-item" href="{{ route('atuaareas-index') }}">Areas de atuacao</a></li>
-                        <li><a class="dropdown-item" href="{{ route('especializacoes-index') }}">Especializações</a></li>
+                        <li><a class="dropdown-item" href="{{ route('especializacoes-index') }}">Especializações</a>
+                        </li>
                         <li><a class="dropdown-item" href="{{ route('agendamentos-index') }}">Agendamentos</a></li>
                         <li><a class="dropdown-item" href="{{ route('tipoanotacao-index') }}">Tipos de anotação</a></li>
                         <li><a class="dropdown-item" href="{{ route('dicas-index')}}">Dicas</a></li>
                         <li><a class="dropdown-item" href="{{ route('anotacoessaude-index')}}">Anotações</a></li>
                         <li><a class="dropdown-item" href="{{ route('metas-index')}}">Metas</a></li>
-                        <li><a class="dropdown-item" href="{{ route('agendamentos-paciente-index')}}">Agendamentos de @nomeUser</a></li>
+                        <li><a class="dropdown-item" href="{{ route('agendamentos-paciente-index')}}">Agendamentos de
+                                @nomeUser</a></li>
                     </ul>
                 </div>
-
             </ul>
         </div>
 
         <!-- Conteúdo principal -->
-        
+
     </div>
     <div class="col-md-9 col-lg-9 pt-3 main-content">
-            @yield('conteudo')
-        </div>
+        @yield('conteudo')
+    </div>
 </div>
 
 </body>

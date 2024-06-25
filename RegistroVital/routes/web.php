@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\AgendamentoPacienteController;
+use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\AnotacoesSaudeController;
 use App\Http\Controllers\AtuaAreasController;
 use App\Http\Controllers\ConsultasController;
@@ -9,6 +9,7 @@ use App\Http\Controllers\DicasController;
 use App\Http\Controllers\EspecializacoesController;
 use App\Http\Controllers\MetasController;
 use App\Http\Controllers\PacientesController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfissionaisController;
 use App\Http\Controllers\TipoAnotacoesController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,31 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
+Route::middleware(['auth', 'role'])->group(function () {
+    Route::get('/paciente/dashboard', [PacientesController::class, 'Tela'])
+        ->name('paciente.dashboard');
+});
+
+Route::middleware(['auth', 'role'])->group(function () {
+    Route::get('/medico/dashboard', [ProfissionaisController::class, 'Tela'])
+       ->name('medico.dashboard');
+});
+
+
+
 
 //Profissionais
 Route::resource('/cadastroprofissional', ProfissionaisController::class);
@@ -117,3 +143,4 @@ Route::get('/cadastrometa', [MetasController::class, 'create']);
 Route::get('/editarmeta/{id}', [MetasController::class, 'edit'])->name('metas-edit');
 Route::put('/editarmeta/{id}', [MetasController::class, 'update'])->name('metas-update');
 Route::delete('/listametas/{id}', [MetasController::class, 'destroy'])->name('metas-delete');
+
