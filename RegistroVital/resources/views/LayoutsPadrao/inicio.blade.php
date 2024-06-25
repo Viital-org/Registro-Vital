@@ -65,6 +65,7 @@
                         <li><a class="dropdown-item" href="/cadastrodica">Dicas</a></li>
                         <li><a class="dropdown-item" href="/cadastroanotacoes">Anotações</a></li>
                         <li><a class="dropdown-item" href="/cadastrometa">Metas</a></li>
+                        <li><a class="dropdown-item" href="/marcaconsulta">Marcar consulta</a></li>
                     </ul>
                 </div>
 
@@ -86,7 +87,6 @@
                         <li><a class="dropdown-item" href="{{ route('agendamentos-paciente-index')}}">Agendamentos de @nomeUser</a></li>
                     </ul>
                 </div>
-
             </ul>
         </div>
 
