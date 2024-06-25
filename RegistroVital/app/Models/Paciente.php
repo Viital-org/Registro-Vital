@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Contracts\PacienteInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Contracts\PacienteInterface;
 use Illuminate\Foundation\Auth\Paciente as Authenticatable;
 
 class Paciente extends Model implements PacienteInterface

@@ -112,4 +112,8 @@ class ProfissionaisController extends Controller
             return redirect()->route('profissionais-index');
         }
     }
+    public function tela()
+    {
+        return view('profile.medico-dashboard');
+    }
 }

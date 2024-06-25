@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             DicaSeeder::class,
             AnotacaoSaudeSeeder::class,
             MetaSeeder::class,
-            //AgendamentoSeeder::class,
+            UserSeeder::class,
+            AgendamentoSeeder::class,
         ]);
 
     }
