@@ -28,7 +28,7 @@ class AgendamentoPacienteController extends Controller
     public function create()
     {
         $agendamento_paciente = Agendamento::all();
-        return view('Cadastros/cadastroagendamentos', ['agendamento-paciente' => $agendamento_paciente]);
+        return view('Cadastros/cadastroagendamentos', ['agendamento_paciente' => $agendamento_paciente]);
     }
 
     /**
