@@ -45,5 +45,9 @@
         @endforeach
         </tbody>
     </table>
+    <div class="pagination justify-content-end">
+        {{ $profissionais->links() }}
+    </div>
+
 @endsection
 

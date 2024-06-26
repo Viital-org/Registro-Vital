@@ -66,6 +66,19 @@
     color: #333333; /* Cor de texto */
 }
 
+.hidden{
+    display: flex;
+    max-width: 50px;
+    max-height: 10px;
+}
+
+.flex{
+    display: flex;
+}
+
+.relative {
+    border-radius: 10px;
+}
 
 @keyframes plano-fundo {
     0%{

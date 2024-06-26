@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AgendamentoPaciente;
 use Illuminate\Http\Request;
+use App\Models\Agendamento;
 
 class AgendamentoPacienteController extends Controller
 {
@@ -18,7 +19,7 @@ class AgendamentoPacienteController extends Controller
             ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
             ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta')
             ->orderBy('agendamentos.id')
-            ->get();
+            ->simplePaginate(5);
         return view('Cadastros/listaagendamentopaciente', ['agendamento_paciente' => $agendamento_paciente]);
     }
 

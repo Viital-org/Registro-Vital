@@ -143,4 +143,3 @@ Route::get('/cadastrometa', [MetasController::class, 'create']);
 Route::get('/editarmeta/{id}', [MetasController::class, 'edit'])->name('metas-edit');
 Route::put('/editarmeta/{id}', [MetasController::class, 'update'])->name('metas-update');
 Route::delete('/listametas/{id}', [MetasController::class, 'destroy'])->name('metas-delete');
-

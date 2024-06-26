@@ -96,7 +96,7 @@
         <!-- Conteúdo principal -->
 
     </div>
-    <div class="col-md-9 col-lg-9 pt-3 main-content">
+    <div class="col-md-9 col-lg-9 pt-3 main-content ">
         @yield('conteudo')
     </div>
 </div>

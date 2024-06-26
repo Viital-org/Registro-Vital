@@ -19,7 +19,9 @@ class ProfissionaisController extends Controller
             ->leftJoin('especializacoes', 'profissionais.especializacao_id', '=', 'especializacoes.id')
             ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
             ->orderBy('profissionais.created_at')
-            ->get();
+            ->simplePaginate(5);
+            // ->get();
+
         return view('Cadastros/listaprofissionais', ['profissionais' => $profissionais]);
     }
 

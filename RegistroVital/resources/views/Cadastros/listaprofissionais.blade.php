@@ -57,6 +57,7 @@
                         </svg>
                     </a>
                 </td>
+
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#delete{{ $item->id }}">
@@ -96,5 +97,11 @@
         @endforeach
         </tbody>
     </table>
+    <div class="pagination justify-content-end">
+        {{ $profissionais->links() }}
+    </div>
 
 @endsection
+
+
+    
