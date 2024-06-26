@@ -31,17 +31,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware(['auth', 'role'])->group(function () {
-    Route::get('/paciente/dashboard', [PacientesController::class, 'Tela'])
-        ->name('paciente.dashboard');
-});
-
-Route::middleware(['auth', 'role'])->group(function () {
-    Route::get('/medico/dashboard', [ProfissionaisController::class, 'Tela'])
-       ->name('medico.dashboard');
-});
-
-
 
 
 //Profissionais

@@ -15,12 +15,12 @@
 
         <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">
             @csrf
-            <button type="submit" onclick="event.preventDefault(); document.getElementById('edit-form').submit();">Editar Perfil</button>
+            <button type="submit" onclick="event.preventDefault(); document.getElementById('edit-form').submit();" class="btn btn-primary mb-3">Editar Perfil</button>
         </form>
 
         <form method="POST" action="{{ route('logout') }}" id="logout-form">
             @csrf
-            <button type="submit" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</button>
+            <button type="submit" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary mb-3">Log Out</button>
         </form>
     </div>
 @endsection

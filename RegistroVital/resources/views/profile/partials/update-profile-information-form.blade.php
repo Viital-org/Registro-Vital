@@ -1,7 +1,7 @@
 @php use Illuminate\Contracts\Auth\MustVerifyEmail; @endphp
 <section>
     <header>
-        <h2 class=class="mb-3">Informação do Perfil</h2>
+        <h2 class="mb-3">Informação do Perfil</h2>
         <p class="mb-3">Atualiza suas informações de perfil e E-mail</p>
     </header>
 
