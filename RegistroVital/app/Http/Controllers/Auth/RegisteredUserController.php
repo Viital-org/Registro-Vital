@@ -62,6 +62,7 @@ class RegisteredUserController extends Controller
         }
         return redirect()->intended(route('paciente.dashboard'));
     }
+
     /**
      * Display the registration view.
      */

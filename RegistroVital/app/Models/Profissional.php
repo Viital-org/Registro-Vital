@@ -32,6 +32,7 @@ class Profissional extends Model
     {
         return $this->belongsTo(Especializacao::class, 'especializacao_id');
     }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

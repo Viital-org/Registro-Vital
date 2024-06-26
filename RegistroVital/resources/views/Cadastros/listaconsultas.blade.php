@@ -97,7 +97,6 @@
         {{ $profissionais->links() }}
     </div>
 
-
 @endsection
 
 

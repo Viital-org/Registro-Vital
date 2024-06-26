@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::middleware(['auth', 'role:paciente'])->group(function () {
     Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
@@ -42,7 +42,7 @@ Route::middleware(['auth', 'role:medico'])->group(function () {
     Route::get('/medico/dashboard', [ProfissionaisController::class, 'tela'])->name('medico.dashboard');
     Route::get('/cadastrarprof', [ProfissionaisController::class, 'create'])->name('cadastrarprof');
     //Route::get('/editarprofissional/{id}', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
-   // Route::put('/editarprofissional/{id}', [ProfissionaisController::class, 'update'])->name('profissionais-update');
+    // Route::put('/editarprofissional/{id}', [ProfissionaisController::class, 'update'])->name('profissionais-update');
     Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
     Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
 });

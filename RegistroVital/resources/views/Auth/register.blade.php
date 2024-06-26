@@ -11,7 +11,8 @@
 
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
-                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
+                       value="{{ old('name') }}" required autocomplete="name" autofocus>
                 @error('name')
                 <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -21,7 +22,8 @@
 
             <div class="mb-3">
                 <label for="email" class="form-label">Endereço de Email</label>
-                <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email">
+                <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
+                       value="{{ old('email') }}" required autocomplete="email">
                 @error('email')
                 <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -31,7 +33,9 @@
 
             <div class="mb-3">
                 <label for="password" class="form-label">Senha</label>
-                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="new-password">
+                <input type="password" name="password" id="password"
+                       class="form-control @error('password') is-invalid @enderror" required
+                       autocomplete="new-password">
                 @error('password')
                 <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -41,7 +45,8 @@
 
             <div class="mb-3">
                 <label for="password-confirm" class="form-label">Confirmar Senha</label>
-                <input type="password" name="password_confirmation" id="password-confirm" class="form-control" required autocomplete="new-password">
+                <input type="password" name="password_confirmation" id="password-confirm" class="form-control" required
+                       autocomplete="new-password">
             </div>
 
             <div class="mb-3">

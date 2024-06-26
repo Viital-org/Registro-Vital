@@ -34,6 +34,16 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function paciente()
+    {
+        return $this->hasOne(Paciente::class, 'user_id');
+    }
+
+    public function profissional()
+    {
+        return $this->hasOne(Profissional::class, 'user_id');
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -45,15 +55,6 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-    public function paciente()
-    {
-        return $this->hasOne(Paciente::class, 'user_id');
-    }
-
-    public function profissional()
-    {
-        return $this->hasOne(Profissional::class, 'user_id');
     }
 }
 

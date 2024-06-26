@@ -69,6 +69,7 @@ class Paciente extends Model implements PacienteInterface
     {
         return $this->belongsTo(Meta::class, 'meta_id');
     }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

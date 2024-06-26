@@ -24,15 +24,15 @@ test('Testa se o usuario esta sendo redirecionado para a pagina', function () {
     $response->assertStatus(200);
 });
 
-test('Testa se o que foi criado é do tipo certo', function(){
+test('Testa se o que foi criado é do tipo certo', function () {
 
     Paciente::factory()->create();
 
     $response = Dica::factory()->count(1)->create();
 
     $item = $response->first();
-    
-    
+
+
     expect($item->id)->toBeInt();
     expect($item->dica)->toBeString();
     expect($item->paciente_id)->toBeInt();

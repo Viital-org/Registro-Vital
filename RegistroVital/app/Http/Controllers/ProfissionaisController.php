@@ -20,7 +20,7 @@ class ProfissionaisController extends Controller
             ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
             ->orderBy('profissionais.created_at')
             ->simplePaginate(5);
-            // ->get();
+        // ->get();
 
         return view('Cadastros/listaprofissionais', ['profissionais' => $profissionais]);
     }

@@ -21,13 +21,13 @@ test('Testa se o usuario esta sendo redirecionado para a pagina', function () {
     $response->assertStatus(200);
 });
 
-test('Testa se o que foi criado é do tipo certo', function(){
+test('Testa se o que foi criado é do tipo certo', function () {
 
     $response = TipoAnotacao::factory()->count(1)->create();
 
     $item = $response->first();
-    
-    
+
+
     expect($item->id)->toBeInt();
     expect($item->tipo_anotacao)->toBeInt();
     expect($item->desc_anotacao)->toBeString();
