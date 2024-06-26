@@ -1,9 +1,12 @@
 @import 'bootstrap/scss/bootstrap';
 
 .container-fluid{
-    background-image: linear-gradient(to left, rgba(191, 255, 0, 0.500), rgba(126, 3, 250, 0.500));
+    min-height: 100vh; /* Garante que o contêiner ocupe pelo menos a altura total da viewport */
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(to left, rgba(157, 132, 182, 0.5), rgba(126, 3, 250, 0.500));
     background-size: 500% 100%;
-    animation: plano-fundo 10s infinite alternate;
+    animation: plano-fundo 15s infinite alternate;
 }
 
 .main-content {
@@ -42,6 +45,7 @@
 /* Sidebar */
 .sidebar {
     width: 300px;
+    height: 85%;
     margin-top: 70px;
     border-radius: 10px;
     position: fixed;
@@ -52,15 +56,16 @@
 }
 
 .sidebar .nav-link:hover {
-    color: #a347ff; /* Tom mais claro de laranja */
+    color: #a347ff;
 }
 
 /* Conteúdo principal */
 .main-content {
-    margin-left: 25%; /* Ajuste conforme necessário */
+    margin-left: 25%;
     padding-top: 5%;
     color: #333333; /* Cor de texto */
 }
+
 
 @keyframes plano-fundo {
     0%{
