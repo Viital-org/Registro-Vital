@@ -40,9 +40,11 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        if ($request->User()->role === 'medico') {
+            return redirect(route('medico.dashboard'));
+        }
+        return redirect()->intended(route('paciente.dashboard'));
     }
-
     /**
      * Display the registration view.
      */
