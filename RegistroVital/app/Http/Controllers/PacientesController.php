@@ -16,7 +16,7 @@ class PacientesController extends Controller
         $pacientes = Paciente::leftJoin('metas', 'pacientes.meta_id', '=', 'metas.id')
             ->select('pacientes.*', 'metas.meta')
             ->orderBy('pacientes.created_at')
-            ->get();
+            ->simplePaginate(5);;
         return view('Cadastros/listapacientes', ['pacientes' => $pacientes]);
     }
 

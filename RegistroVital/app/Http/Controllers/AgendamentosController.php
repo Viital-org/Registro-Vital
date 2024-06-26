@@ -18,7 +18,7 @@ class AgendamentosController extends Controller
             ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
             ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta')
             ->orderBy('agendamentos.id')
-            ->get();
+            ->simplePaginate(5);
         return view('Cadastros/listaagendamentos', ['agendamentos' => $agendamentos]);
     }
 

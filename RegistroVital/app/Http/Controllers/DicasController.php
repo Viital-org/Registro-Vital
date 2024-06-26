@@ -16,7 +16,7 @@ class DicasController extends Controller
         $dicas = Dica::join('pacientes', 'dicas.paciente_id', '=', 'pacientes.id')
             ->select('dicas.*', 'pacientes.nome as nome_paciente')
             ->orderBy('dicas.created_at')
-            ->get();
+            ->simplePaginate(5);
         return view('Cadastros/listadicas', ['dicas' => $dicas]);
     }
 

@@ -12,7 +12,7 @@ class MetasController extends Controller
      */
     public function index()
     {
-        $metas = Meta::with('pacientes')->get();
+        $metas = Meta::with('pacientes')->simplePaginate(5);
         return view('Cadastros/listametas', compact('metas'), ['metas' => $metas]);
     }
 

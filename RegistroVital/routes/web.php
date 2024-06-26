@@ -31,15 +31,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware(['auth', 'role'])->group(function () {
-    Route::get('/paciente/dashboard', [PacientesController::class, 'Tela'])
-        ->name('paciente.dashboard');
-});
 
-Route::middleware(['auth', 'role'])->group(function () {
-    Route::get('/medico/dashboard', [ProfissionaisController::class, 'Tela'])
-       ->name('medico.dashboard');
-});
 
 
 
@@ -144,4 +136,3 @@ Route::get('/cadastrometa', [MetasController::class, 'create']);
 Route::get('/editarmeta/{id}', [MetasController::class, 'edit'])->name('metas-edit');
 Route::put('/editarmeta/{id}', [MetasController::class, 'update'])->name('metas-update');
 Route::delete('/listametas/{id}', [MetasController::class, 'destroy'])->name('metas-delete');
-

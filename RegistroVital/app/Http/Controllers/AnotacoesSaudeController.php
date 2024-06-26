@@ -17,7 +17,7 @@ class AnotacoesSaudeController extends Controller
         $anotacoessaude = Anotacaosaude::join('pacientes', 'anotacoessaude.paciente_id', '=', 'pacientes.id')
             ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
             ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao', 'pacientes.nome as paciente')
-            ->get();
+            ->simplePaginate(5);
 
         return view('Cadastros/listaranotacoessaude', ['anotacoessaude' => $anotacoessaude]);
     }
