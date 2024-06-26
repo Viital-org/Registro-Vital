@@ -12,14 +12,16 @@ return new class extends Migration {
     {
         Schema::create('Pacientes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('nome');
-            $table->date('datanascimento');
-            $table->string('cep');
-            $table->string('endereco');
-            $table->string('numcartaocred');
-            $table->string('hobbies');
-            $table->string('doencascronicas');
-            $table->string('remediosregulares');
+            $table->string('email', 40);
+            $table->date('datanascimento')->nullable();
+            $table->string('cep')->nullable();
+            $table->string('endereco')->nullable();
+            $table->string('numcartaocred')->nullable();
+            $table->string('hobbies')->nullable();
+            $table->string('doencascronicas')->nullable();
+            $table->string('remediosregulares')->nullable();
             $table->string('meta_id')->nullable()->constrained('Metas')->onDelete('set null');
             $table->timestamps();
             $table->softDeletes();

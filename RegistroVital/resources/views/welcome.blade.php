@@ -14,10 +14,10 @@
                 @endphp
                 <button onclick="window.location.href='{{ $dashboardUrl }}'" class="btn btn-primary mb-3">Seu Menu</button>
             @else
-                <a href="{{ route('login') }}" class="mb-3">Login</a>
+                <button onclick="window.location.href='{{ route('login') }}'" class="btn btn-primary mb-3">Login</button>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="mb-3">Registro</a>
+                    <button onclick="window.location.href='{{ route('register') }}'" class="btn btn-primary mb-3">Registro</button>
                 @endif
             @endauth
         </nav>

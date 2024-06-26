@@ -12,7 +12,9 @@ class Paciente extends Model implements PacienteInterface
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'nome',
+        'email',
         'datanascimento',
         'cep',
         'endereco',
@@ -66,5 +68,9 @@ class Paciente extends Model implements PacienteInterface
     public function meta()
     {
         return $this->belongsTo(Meta::class, 'meta_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

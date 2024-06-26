@@ -30,7 +30,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+require __DIR__.'/auth.php';
 
+Route::middleware(['auth', 'role:paciente'])->group(function () {
+    Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
+    Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes-edit');
+    Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
+});
+
+Route::middleware(['auth', 'role:medico'])->group(function () {
+    Route::get('/medico/dashboard', [ProfissionaisController::class, 'tela'])->name('medico.dashboard');
+    Route::get('/cadastrarprof', [ProfissionaisController::class, 'create'])->name('cadastrarprof');
+    //Route::get('/editarprofissional/{id}', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
+   // Route::put('/editarprofissional/{id}', [ProfissionaisController::class, 'update'])->name('profissionais-update');
+    Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
+    Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
+});
 
 
 //Profissionais
@@ -38,9 +53,6 @@ Route::resource('/cadastroprofissional', ProfissionaisController::class);
 Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
 Route::post('/guardarprofissionais', [ProfissionaisController::class, 'store'])->name('profissionais-store');
 Route::post('/listaprofissionais', [ProfissionaisController::class, 'show'])->name('profissionais-show');
-Route::get('/cadastrarprof', [ProfissionaisController::class, 'create']);
-Route::get('/editarprofissional/{id}', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
-Route::put('/editarprofissional/{id}', [ProfissionaisController::class, 'update'])->name('profissionais-update');
 Route::delete('/listaprofissionais/{id}', [ProfissionaisController::class, 'destroy'])->name('profissionais-delete');
 Route::get('/especializacoes/{areaId}', [ProfissionaisController::class, 'especializacoesPorArea']);
 
@@ -50,8 +62,6 @@ Route::get('/listapacientes', [PacientesController::class, 'index'])->name('paci
 Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
 Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes-show');
 Route::get('/cadastropaci', [PacientesController::class, 'create']);
-Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes-edit');
-Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
 Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
 
 //Consultas

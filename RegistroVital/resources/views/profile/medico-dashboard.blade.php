@@ -1,4 +1,4 @@
-@extends ('LayoutsPadrao.inicio')
+@extends ('LayoutsPadrao.layoutmedico')
 
 @section('titulo', 'RegistroVital')
 
@@ -22,5 +22,10 @@
             @csrf
             <button type="submit" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary mb-3">Log Out</button>
         </form>
+        <form method="GET" action="{{ route('profissionais-edit') }}" id="profissionais-edit">
+            @csrf
+            <button type="submit" onclick="event.preventDefault(); document.getElementById('profissionais-edit').submit();" class="btn btn-primary mb-3">Completar Cadastro de Profissional</button>
+        </form>
+
     </div>
 @endsection

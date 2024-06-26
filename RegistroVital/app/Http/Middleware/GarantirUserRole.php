@@ -21,9 +21,9 @@ class GarantirUserRole
         if (!$user || $user->role !== $role) {
 
             if ($user && $user->role === 'medico') {
-                return redirect()->route('medico.dashboard')->with('error', 'Você não tem permissão para acessar as paginas de paciente página.');
+                return redirect()->route('medico.dashboard')->with('error', 'Você não tem permissão para acessar as paginas de paciente.');
             } else {
-                return redirect()->route('paciente.dashboard')->with('error', 'Você não tem permissão para acessar as paginas de medico página.');
+                return redirect()->route('paciente.dashboard')->with('error', 'Você não tem permissão para acessar as paginas de medico.');
             }
         }
 
