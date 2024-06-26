@@ -33,9 +33,6 @@ Route::middleware('auth')->group(function () {
 
 
 
-
-
-
 //Profissionais
 Route::resource('/cadastroprofissional', ProfissionaisController::class);
 Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
