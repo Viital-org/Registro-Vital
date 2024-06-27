@@ -28,8 +28,7 @@ class AgendamentoPacienteController extends Controller
      */
     public function create()
     {
-        $agendamento_paciente = Agendamento::all();
-        return view('Cadastros/agendaconsulta', ['agenda_consulta' => $agenda_consulta]);
+        
     }
 
     /**
@@ -37,7 +36,7 @@ class AgendamentoPacienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
