@@ -29,7 +29,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('welcome') }}">Home</a>
+                    @if (auth()->check())
+                        @if (auth()->user()->role === 'paciente')
+                            <a class="nav-link" href="{{ route('paciente.dashboard') }}">Home</a>
+                        @elseif (auth()->user()->role === 'medico')
+                            <a class="nav-link" href="{{ route('medico.dashboard') }}">Home</a>
+                        @endif
+                    @endif
+                    
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Quem somos</a>
@@ -39,13 +46,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">@nomeUser</a>
-                    </li>
-                </ul>
-            </div>
+            
         </nav>
 
         <!-- Sidebar -->

@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('welcome') }}">Home</a>
+                        <a class="nav-link" href="{{ route('paciente.dashboard') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Quem somos</a>
@@ -41,8 +41,34 @@
             </div>
             <div class="navbar-collapse">
                 <ul class="navbar-nav">
+                    
+                <div class="dropdown">
+                    <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <label>{{ Auth::user()->name }}</label>
+                    </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                            <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">
+                                @csrf
+                                <button type="submit" onclick="event.preventDefault(); document.getElementById('edit-form').submit();"
+                                        class="dropdown-item">Editar Perfil
+                                </button>
+                            </form>
+                            </li>
+
+                            <li>
+                            <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                                @csrf
+                                <button type="submit" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                        class="dropdown-item">Sair
+                                </button>
+                            </form>
+                            </li>
+                        </ul>
+                </div>
+
                     <li class="nav-item">
-                        <a href="#" class="nav-link">@nomeUser</a>
+                        
                     </li>
                 </ul>
             </div>
