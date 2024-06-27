@@ -1,61 +1,96 @@
-@php use Illuminate\Contracts\Auth\MustVerifyEmail; @endphp
 <section>
     <header>
-        <h2 class="mb-3">Informação do Perfil</h2>
-        <p class="mb-3">Atualiza suas informações de perfil e E-mail</p>
+        <h2 class="mb-3">Informações do Profissional</h2>
+        <p class="mb-3">Atualize suas informações de profissional</p>
     </header>
 
-    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
-        @csrf
-    </form>
-
-    <form method="post" action="{{ route('profile.update') }}" class="mb-3">
+    <form method="post" action="{{ route('profile.updateRoleInfo') }}" class="mb-3">
         @csrf
         @method('patch')
-        <div>
-            <x-input-label for="name" :value="'Nome'"/>
-            <x-text-input id="name" name="name" type="text" class="mb-3" :value="old('name', $user->name)" required
-                          autofocus autocomplete="name"/>
-            <x-input-error class="mb-3" :messages="$errors->get('name')"/>
-        </div>
 
-        <div>
-            <x-input-label for="email" :value="'E-mail'"/>
-            <x-text-input id="email" name="email" type="email" class="mb-3" :value="old('email', $user->email)" required
-                          autocomplete="username"/>
-            <x-input-error class="mb-3" :messages="$errors->get('email')"/>
-
-            @if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail())
-                <div>
-                    <p class="mb-3">
-                        Seu endereço de email não está verificado
-                        <button form="send-verification"
-                                class="btn btn-primary mb-3">
-                            Clique aqui para reenviar a confirmação de e-mail
-                        </button>
-                    </p>
-
-                    @if (session('status') === 'verification-link-sent')
-                        <p class="mb-3">
-                            Um novo link de verificação foi enviado para o seu e-mail
-                        </p>
-                    @endif
-                </div>
-            @endif
+        <div class="mb-3">
+            <label for="areaatuacao_id" class="form-label">Área de Atuação</label>
+            <select name="areaatuacao_id" id="areaatuacao_id" class="form-select">
+                <option value="" @if (is_null($profissional->areaatuacao_id)) selected @endif>Não definido</option>
+                @foreach($atuaareas as $atuaarea)
+                    <option value="{{ $atuaarea->id }}" @if ($atuaarea->id === $profissional->areaatuacao_id) selected @endif>{{ $atuaarea->area }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="mb-3">
-            <button class="btn btn-primary mb-3">Salvar alterações</button>
-
-            @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="mb-3"
-                >Alterações Salvas</p>
-            @endif
+            <label for="especializacao_id" class="form-label">Especialização</label>
+            <select name="especializacao_id" id="especializacao_id" class="form-select"></select>
         </div>
+
+        <div class="mb-3">
+            <label for="enderecoatuacao" class="form-label">Endereço de Atuação</label>
+            <input type="text" name="enderecoatuacao" id="enderecoatuacao" class="form-control" value="{{ $profissional->enderecoatuacao }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="localformacao" class="form-label">Local de Formação</label>
+            <input type="text" name="localformacao" id="localformacao" class="form-control" value="{{ $profissional->localformacao }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="dataformacao" class="form-label">Data de Formação</label>
+            <input type="date" name="dataformacao" id="dataformacao" class="form-control" value="{{ $profissional->dataformacao }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="descricaoperfil" class="form-label">Descrição do Perfil</label>
+            <input type="text" name="descricaoperfil" id="descricaoperfil" class="form-control" value="{{ $profissional->descricaoperfil }}" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+
+        @if (session('status') === 'role-info-updated')
+            <p
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition
+                x-init="setTimeout(() => show = false, 2000)"
+                class="mb-3"
+            >Alterações Salvas</p>
+        @endif
     </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var especializacaoSelecionada = "{{ $profissional->especializacao_id ?? '' }}";
+
+            function carregarEspecializacoes(areaId) {
+                if (areaId) {
+                    $.ajax({
+                        type: "GET",
+                        url: "/especializacoes/" + areaId,
+                    })
+                        .done(function (data) {
+                            $('#especializacao_id').html('<option value="">Não Definido</option>');
+                            $.each(data, function (_, especializacao) {
+                                $('#especializacao_id').append(`<option value="${especializacao.id}">${especializacao.especializacao}</option>`);
+                            });
+
+                            if (especializacaoSelecionada && $(`#especializacao_id option[value="${especializacaoSelecionada}"]`).length) {
+                                $('#especializacao_id').val(especializacaoSelecionada);
+                            }
+                        })
+                        .fail(function () {
+                            console.error('Erro ao carregar especializações.');
+                        });
+                } else {
+                    $('#especializacao_id').html('<option value="">Não Definido</option>');
+                }
+            }
+
+            $('#areaatuacao_id').change(function () {
+                carregarEspecializacoes($(this).val());
+            });
+
+            $('#areaatuacao_id').trigger('change');
+        });
+    </script>
 </section>
+

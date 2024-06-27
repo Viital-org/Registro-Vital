@@ -11,7 +11,7 @@
         @endif
         <div class="container">
             <h1>Menu de Medico</h1>
-            <p>Bem-Vindo, {{ Auth::user()->name }}.Esse é o seu menu.</p>
+            <p>Bem-Vindo, {{ Auth::user()->name }} Esse é o seu menu.</p>
 
             <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">
                 @csrf
