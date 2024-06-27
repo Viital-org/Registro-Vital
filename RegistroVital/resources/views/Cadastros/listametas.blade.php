@@ -98,7 +98,7 @@
         </tbody>
     </table>
     <div class="pagination justify-content-end">
-        {{ $profissionais->links() }}
+        {{ $metas->links() }}
     </div>
 
 @endsection
