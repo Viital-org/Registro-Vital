@@ -26,6 +26,7 @@
             <th scope="col">Profissional</th>
             <th scope="col">Área</th>
             <th scope="col">Código da consulta</th>
+            <th scope="col">Status da consulta</th>
             <th scope="col">Data</th>
         </tr>
         </thead>
@@ -36,6 +37,7 @@
                 <td>{{$item->nome_profissional ?: 'Não definido' }}</td>
                 <td>{{$item->tipo_especializacao}}</td>
                 <td>{{$item->consulta_id}}</td>
+                <td>{{$item->status}}</td>
                 <td>{{$item->data_consulta}}</td>
             </tr>
         @endforeach

@@ -92,7 +92,7 @@
                         <li><a class="dropdown-item" href="/cadastrodica">Dicas</a></li>
                         <li><a class="dropdown-item" href="/cadastroanotacoes">Anotações</a></li>
                         <li><a class="dropdown-item" href="/cadastrometa">Metas</a></li>
-                        <li><a class="dropdown-item" href="/marcaconsulta">Marcar consulta</a></li>
+                        <li><a class="dropdown-item" href="/agendaconsulta">Marcar consulta</a></li>
                     </ul>
                 </div>
 
