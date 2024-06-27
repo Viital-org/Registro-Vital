@@ -12,6 +12,7 @@ class Profissional extends Model
     protected $table = 'profissionais';
 
     protected $fillable = [
+        'user_id',
         'areaatuacao_id',
         'especializacao_id',
         'nome',
@@ -30,5 +31,10 @@ class Profissional extends Model
     public function especializacao()
     {
         return $this->belongsTo(Especializacao::class, 'especializacao_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

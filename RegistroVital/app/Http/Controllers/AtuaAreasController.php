@@ -12,7 +12,7 @@ class AtuaAreasController extends Controller
      */
     public function index()
     {
-        $atuaareas = AtuaArea::with('especializacoes')->get();
+        $atuaareas = AtuaArea::with('especializacoes')->simplePaginate(5);
         return view('Cadastros/listaatuaareas', compact('atuaareas'), ['atuaareas' => $atuaareas]);
     }
 

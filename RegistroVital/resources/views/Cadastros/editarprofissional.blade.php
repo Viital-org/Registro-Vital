@@ -4,7 +4,7 @@
 
 @section('conteudo')
 
-    <form action="{{ route('profissionais-update', ['id' => $profissionais->id]) }}" method="POST">
+    <form action="{{ route('profissionais-update') }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -12,7 +12,8 @@
 
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" name="nome" id="nome" class="form-control" value="{{ $profissionais->nome }}" required>
+            <input type="text" name="nome" id="nome" class="form-control" value="{{ $profissionais->nome }}" readonly
+                   required>
         </div>
 
         <div class="mb-3">

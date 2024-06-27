@@ -8,7 +8,7 @@ use Tests\TestCase;
 uses(TestCase::class, RefreshDatabase::class);
 
 test('Testa se as especializações estão sendo listados', function () {
-    
+
     AtuaArea::factory()->create();
 
     Especializacao::factory()->count(3)->create();
@@ -24,15 +24,15 @@ test('Testa se o usuario esta sendo redirecionado para a pagina', function () {
     $response->assertStatus(200);
 });
 
-test('Testa se o que foi criado é do tipo certo', function(){
+test('Testa se o que foi criado é do tipo certo', function () {
 
     AtuaArea::factory()->create();
 
     $response = Especializacao::factory()->count(1)->create();
 
     $item = $response->first();
-    
-    
+
+
     expect($item->id)->toBeInt();
     expect($item->especializacao)->toBeString();
     expect($item->tempoespecializacao)->toBeInt();

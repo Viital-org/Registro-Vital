@@ -9,8 +9,6 @@ use App\Models\Profissional;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-use function PHPUnit\Framework\assertTrue;
-
 uses(TestCase::class, RefreshDatabase::class);
 
 test('Testa se a criacao deu certo', function () {
@@ -40,17 +38,17 @@ test('Testa se a criacao deu certo', function () {
 
 });
 
-test('Testa se o que se o status da criacao esta OK.', function(){
+test('Testa se o que se o status da criacao esta OK.', function () {
 
-    $dadosCadastro = [    
-                    'especializacao_id' => '1',
-                    'profissional_id' => '1',
-                    'paciente_id' => '1',
-                    'data_agendamento' => '01-01-2022',
-                    'consulta_id' => '1'
+    $dadosCadastro = [
+        'especializacao_id' => '1',
+        'profissional_id' => '1',
+        'paciente_id' => '1',
+        'data_agendamento' => '01-01-2022',
+        'consulta_id' => '1'
     ];
 
-    $response =  $this->post(route('consultas-store', $dadosCadastro));
+    $response = $this->post(route('consultas-store', $dadosCadastro));
 
     $response->assertStatus(500);
 });

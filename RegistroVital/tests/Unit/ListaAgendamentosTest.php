@@ -32,7 +32,7 @@ test('Testa se o usuario esta sendo redirecionado para a pagina', function () {
     $response->assertStatus(200);
 });
 
-test('Testa se o que foi criado é do tipo certo', function(){
+test('Testa se o que foi criado é do tipo certo', function () {
 
     AtuaArea::factory()->create();
     Especializacao::factory()->create();
@@ -43,8 +43,8 @@ test('Testa se o que foi criado é do tipo certo', function(){
     $response = Agendamento::factory()->count(1)->create();
 
     $item = $response->first();
-    
-    
+
+
     expect($item->id)->toBeInt();
     expect($item->especializacao_id)->toBeInt();
     expect($item->profissional_id)->toBeInt();

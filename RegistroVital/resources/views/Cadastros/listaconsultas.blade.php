@@ -93,6 +93,9 @@
         @endforeach
         </tbody>
     </table>
+    <div class="pagination justify-content-end">
+        {{ $consultas->links() }}
+    </div>
 
 @endsection
 

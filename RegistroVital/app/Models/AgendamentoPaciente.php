@@ -19,7 +19,7 @@ class AgendamentoPaciente extends Model
         'consulta_id',
     ];
 
-    
+
     public function consulta()
     {
         return $this->belongsTo(Consulta::class, 'consulta_id');

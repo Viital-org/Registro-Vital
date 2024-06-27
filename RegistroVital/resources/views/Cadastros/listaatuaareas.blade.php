@@ -94,5 +94,9 @@
         @endforeach
         </tbody>
     </table>
+    <div class="pagination justify-content-end">
+        {{ $atuaareas->links() }}
+    </div>
+
 @endsection
 

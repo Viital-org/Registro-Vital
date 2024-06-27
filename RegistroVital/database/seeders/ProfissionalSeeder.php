@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Profissional;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ProfissionalSeeder extends Seeder
@@ -12,6 +13,14 @@ class ProfissionalSeeder extends Seeder
      */
     public function run(): void
     {
-        Profissional::factory(10)->create();
+
+        $profissionais = User::where('role', 'medico')->get();
+        foreach ($profissionais as $user) {
+            Profissional::factory()->create([
+                'user_id' => $user->id,
+                'nome' => $user->name,
+                'email' => $user->email,
+            ]);
+        }
     }
 }

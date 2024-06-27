@@ -20,7 +20,7 @@ class ConsultasController extends Controller
             ->leftJoin('especializacoes', 'profissionais.especializacao_id', '=', 'especializacoes.id')
             ->select('consultas.*', 'profissionais.nome as nome_profissional', 'especializacoes.especializacao as especializacao', 'pacientes.nome as nome_paciente')
             ->orderBy('consultas.created_at')
-            ->get();
+            ->simplePaginate(5);
         return view('Cadastros/listaconsultas', compact('consultas'), ['consultas' => $consultas]);
     }
 
@@ -31,7 +31,7 @@ class ConsultasController extends Controller
     {
         Consulta::create($request->all());
         Artisan::call('db:seed', ['class=AgendamentoSeeder']);
-        return redirect()->route('consultas-index');   
+        return redirect()->route('consultas-index');
     }
 
     /**

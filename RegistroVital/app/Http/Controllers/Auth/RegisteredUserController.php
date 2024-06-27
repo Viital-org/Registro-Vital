@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Paciente;
+use App\Models\Profissional;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -24,9 +26,9 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required', 'string', 'in:paciente,medico']
+            'role' => ['required', 'string', 'in:paciente,medico'],
         ]);
 
         $user = User::create([
@@ -38,6 +40,21 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+
+        if ($user->role === 'paciente') {
+            Paciente::create([
+                'user_id' => $user->id,
+                'nome' => $user->name,
+                'email' => $user->email,
+            ]);
+        } elseif ($user->role === 'medico') {
+            Profissional::create([
+                'user_id' => $user->id,
+                'nome' => $user->name,
+                'email' => $user->email,
+            ]);
+        }
+
         Auth::login($user);
 
         if ($request->User()->role === 'medico') {
@@ -45,6 +62,7 @@ class RegisteredUserController extends Controller
         }
         return redirect()->intended(route('paciente.dashboard'));
     }
+
     /**
      * Display the registration view.
      */

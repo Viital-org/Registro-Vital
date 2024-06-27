@@ -31,8 +31,10 @@ class AuthenticatedSessionController extends Controller
         if ($request->User()->role === 'medico') {
             return redirect(route('medico.dashboard'));
         }
+        
         return redirect()->intended(route('paciente.dashboard'));
     }
+
 
     /**
      * Destroy an authenticated session.

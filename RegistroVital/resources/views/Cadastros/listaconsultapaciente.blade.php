@@ -12,5 +12,4 @@
             <label for=""></label>
         </div>
     </form>
-
 @endsection

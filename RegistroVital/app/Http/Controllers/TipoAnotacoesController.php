@@ -12,7 +12,7 @@ class TipoAnotacoesController extends Controller
      */
     public function index()
     {
-        $tipoanotacao = TipoAnotacao::all();
+        $tipoanotacao = TipoAnotacao::simplePaginate(5);
         return view('Cadastros/listatipoanotacoes', ['tipoanotacao' => $tipoanotacao]);
     }
 

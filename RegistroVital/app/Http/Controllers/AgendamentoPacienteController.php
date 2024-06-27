@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agendamento;
 use App\Models\AgendamentoPaciente;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,9 @@ class AgendamentoPacienteController extends Controller
             ->join('pacientes', 'agendamentos.paciente_id', '=', 'pacientes.id')
             ->join('profissionais', 'agendamentos.profissional_id', '=', 'profissionais.id')
             ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
-            ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta')
+            ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta, consultas.status as status')
             ->orderBy('agendamentos.id')
-            ->get();
+            ->simplePaginate(5);
         return view('Cadastros/listaagendamentopaciente', ['agendamento_paciente' => $agendamento_paciente]);
     }
 
@@ -28,7 +29,7 @@ class AgendamentoPacienteController extends Controller
     public function create()
     {
         $agendamento_paciente = Agendamento::all();
-        return view('Cadastros/cadastroagendamentos', ['agendamento_paciente' => $agendamento_paciente]);
+        return view('Cadastros/agendaconsulta', ['agenda_consulta' => $agenda_consulta]);
     }
 
     /**
@@ -52,7 +53,7 @@ class AgendamentoPacienteController extends Controller
                 ->join('pacientes', 'agendamentos.paciente_id', '=', 'pacientes.id')
                 ->join('profissionais', 'agendamentos.profissional_id', '=', 'profissionais.id')
                 ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
-                ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta')
+                ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta, consultas.status as status')
                 ->orderBy('agendamentos.id')
                 ->get();
         } else {
@@ -61,7 +62,7 @@ class AgendamentoPacienteController extends Controller
                 ->join('profissionais', 'agendamentos.profissional_id', '=', 'profissionais.id')
                 ->Join('consultas', 'agendamentos.consulta_id', '=', 'consultas.id')
                 ->where('agendamentos.id', '=', $id)
-                ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta')
+                ->select('consultas.*', 'especializacoes.especializacao as tipo_especializacao', 'pacientes.nome as nome_paciente', 'profissionais.nome as nome_profissional', 'consultas.id', 'consultas.data as data_consulta, consultas.status as status')
                 ->orderBy('agendamentos.id')
                 ->get();
         }

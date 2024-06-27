@@ -87,5 +87,8 @@
         @endforeach
         </tbody>
     </table>
+    <div class="pagination justify-content-end">
+        {{ $dicas->links() }}
+    </div>
 
 @endsection

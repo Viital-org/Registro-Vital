@@ -16,7 +16,7 @@ class EspecializacoesController extends Controller
         $especializacoes = Especializacao::leftJoin('atuaareas', 'especializacoes.area_id', '=', 'atuaareas.id')
             ->select('especializacoes.*', 'atuaareas.area')
             ->orderBy('especializacoes.created_at')
-            ->get();
+            ->simplePaginate(5);
         return view('Cadastros/listaespecializacoes', ['especializacoes' => $especializacoes]);
     }
 

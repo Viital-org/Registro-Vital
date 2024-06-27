@@ -97,6 +97,9 @@
         @endforeach
         </tbody>
     </table>
+    <div class="pagination justify-content-end">
+        {{ $metas->links() }}
+    </div>
 
 @endsection
 

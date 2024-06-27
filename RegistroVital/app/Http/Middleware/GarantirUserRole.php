@@ -12,7 +12,7 @@ class GarantirUserRole
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
@@ -21,9 +21,9 @@ class GarantirUserRole
         if (!$user || $user->role !== $role) {
 
             if ($user && $user->role === 'medico') {
-                return redirect()->route('medico.dashboard')->with('error', 'Você não tem permissão para acessar as paginas de paciente página.');
+                return redirect()->route('medico.dashboard')->with('error', 'Você não tem permissão para acessar as paginas de paciente.');
             } else {
-                return redirect()->route('paciente.dashboard')->with('error', 'Você não tem permissão para acessar as paginas de medico página.');
+                return redirect()->route('paciente.dashboard')->with('error', 'Você não tem permissão para acessar as paginas de medico.');
             }
         }
 
