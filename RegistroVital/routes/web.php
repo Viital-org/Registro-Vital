@@ -30,10 +30,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+require __DIR__.'/auth.php';
 
+Route::middleware(['auth', 'role:paciente'])->group(function () {
+    Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
+});
 
-
-
+Route::middleware(['auth', 'role:medico'])->group(function () {
+    Route::get('/medico/dashboard', [ProfissionaisController::class, 'tela'])->name('medico.dashboard');
+    Route::post('/listaconsultas', [ConsultasController::class, 'show'])->name('consultas-show');
+});
 
 
 //Profissionais
