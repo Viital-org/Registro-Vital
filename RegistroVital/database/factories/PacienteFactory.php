@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Meta;
 use App\Models\Paciente;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class PacienteFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::where('role', 'paciente')->inRandomOrder()->first();
         $metas = Meta::all();
         if ($metas->count() > 0) {
             $meta = $metas->random();
@@ -26,7 +28,9 @@ class PacienteFactory extends Factory
             $metaId = null;
         }
         return [
-            'nome' => $this->faker->name,
+            'user_id' => $user->id,
+            'nome' => $user->name,
+            'email' => $user->email,
             'datanascimento' => $this->faker->date,
             'cep' => $this->faker->postcode(),
             'endereco' => $this->faker->address,

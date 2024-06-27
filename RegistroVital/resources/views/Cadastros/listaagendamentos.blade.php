@@ -46,7 +46,7 @@
         </tbody>
     </table>
     <div class="pagination justify-content-end">
-        {{ $profissionais->links() }}
+        {{ $agendamentos->links() }}
     </div>
 
 @endsection

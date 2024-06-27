@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\AtuaArea;
 use App\Models\Profissional;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,6 +21,8 @@ class ProfissionalFactory extends Factory
     {
         $atuaareaId = null;
         $especializacaoId = null;
+
+        $user = User::where('role', 'medico')->inRandomOrder()->first();
 
         $atuaareas = AtuaArea::all();
         if ($atuaareas->count() > 0) {
@@ -42,10 +45,11 @@ class ProfissionalFactory extends Factory
         }
 
         return [
+            'user_id' => $user->id,
             'areaatuacao_id' => $atuaareaId,
             'especializacao_id' => $especializacaoId,
-            'nome' => $this->faker->name,
-            'email' => $this->faker->safeEmail,
+            'nome' => $user->name,
+            'email' => $user->email,
             'enderecoatuacao' => $this->faker->address,
             'localformacao' => $this->faker->address,
             'dataformacao' => $this->faker->date,

@@ -1,6 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 
-.container-fluid{
+.container-fluid {
     min-height: 100vh; /* Garante que o contêiner ocupe pelo menos a altura total da viewport */
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
     font-size: 12px;
 }
 
-.navbar-brand{ /* Titulo */
+.navbar-brand { /* Titulo */
     margin-left: 10px;
     animation: cor-titulo 3s infinite alternate;
     font-size: 20pt;
@@ -27,12 +27,12 @@
     position: fixed;
 }
 
-.navbar-collapse{
+.navbar-collapse {
     align-items: center;
     justify-content: center;
 }
 
-.navbar .nav-link{
+.navbar .nav-link {
     font-size: 15pt;
     margin-left: 50px;
     margin-right: 50px;
@@ -66,13 +66,13 @@
     color: #333333; /* Cor de texto */
 }
 
-.hidden{
+.hidden {
     display: flex;
     max-width: 50px;
     max-height: 10px;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
@@ -81,21 +81,21 @@
 }
 
 @keyframes plano-fundo {
-    0%{
+    0% {
         background-position-x: 0%;
     }
 
-    100%{
+    100% {
         background-position-x: 100%;
     }
 }
 
-@keyframes cor-titulo{
-    0%{
+@keyframes cor-titulo {
+    0% {
         color: rgb(26, 10, 10);
     }
 
-    100%{
+    100% {
         color: rgba(132, 24, 204, 0.753);
     }
 }

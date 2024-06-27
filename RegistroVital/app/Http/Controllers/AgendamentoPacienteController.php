@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agendamento;
 use App\Models\AgendamentoPaciente;
 use Illuminate\Http\Request;
-use App\Models\Agendamento;
 
 class AgendamentoPacienteController extends Controller
 {

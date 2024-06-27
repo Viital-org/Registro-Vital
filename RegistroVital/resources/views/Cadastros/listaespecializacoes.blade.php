@@ -90,9 +90,8 @@
         </tbody>
     </table>
     <div class="pagination justify-content-end">
-        {{ $profissionais->links() }}
+        {{ $especializacoes->links() }}
     </div>
-
 
 @endsection
 

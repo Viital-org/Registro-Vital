@@ -12,9 +12,4 @@
             <label for=""></label>
         </div>
     </form>
-    <div class="pagination justify-content-end">
-        {{ $profissionais->links() }}
-    </div>
-
-
 @endsection

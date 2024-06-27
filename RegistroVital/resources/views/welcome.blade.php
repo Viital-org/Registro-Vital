@@ -6,34 +6,24 @@
 
     <br>
 
-    <div>
-        @if (Route::has('login'))
-            <nav class="-mx-3 flex flex-1 justify-end">
-                @auth
-                    <a
-                        href="{{ url('/dashboard') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                    >
-                        Dashboard
-                    </a>
-                @else
-                    <a
-                        href="{{ route('login') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                    >
-                        Log in
-                    </a>
+    @if (Route::has('login'))
+        <nav class="mb-3">
+            @auth
+                @php
+                    $dashboardUrl = Auth::user()->role === 'medico' ? url('/medico/dashboard') : url('/paciente/dashboard');
+                @endphp
+                <button onclick="window.location.href='{{ $dashboardUrl }}'" class="btn btn-primary mb-3">Seu Menu
+                </button>
+            @else
+                <button onclick="window.location.href='{{ route('login') }}'" class="btn btn-primary mb-3">Login
+                </button>
 
-                    @if (Route::has('register'))
-                        <a
-                            href="{{ route('register') }}"
-                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                        >
-                            Register
-                        </a>
-                    @endif
-                @endauth
-            </nav>
-        @endif
-    </div>
+                @if (Route::has('register'))
+                    <button onclick="window.location.href='{{ route('register') }}'" class="btn btn-primary mb-3">
+                        Registro
+                    </button>
+                @endif
+            @endauth
+        </nav>
+    @endif
 @endsection

@@ -6,6 +6,7 @@ use App\Models\AtuaArea;
 use App\Models\Especializacao;
 use App\Models\Profissional;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfissionaisController extends Controller
 {
@@ -19,7 +20,7 @@ class ProfissionaisController extends Controller
             ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
             ->orderBy('profissionais.created_at')
             ->simplePaginate(5);
-            // ->get();
+        // ->get();
 
         return view('Cadastros/listaprofissionais', ['profissionais' => $profissionais]);
     }
@@ -29,8 +30,22 @@ class ProfissionaisController extends Controller
      */
     public function store(Request $request)
     {
-        Profissional::create($request->all());
-        return redirect()->route('profissionais-index');
+        $validated = $request->validate([
+            'areaatuacao_id' => 'required|exists:atuaareas,id',
+            'especializacao_id' => 'nullable|exists:especializacoes,id',
+            'enderecoatuacao' => 'required|string|max:255',
+            'localformacao' => 'required|string|max:255',
+            'dataformacao' => 'required|date',
+            'descricaoperfil' => 'required|string|max:255',
+        ]);
+
+        $validated['user_id'] = Auth::id();
+        $validated['nome'] = Auth::user()->name;
+        $validated['email'] = Auth::user()->email;
+
+        Profissional::create($validated);
+
+        return redirect()->route('medico.dashboard')->with('success', 'Profissional cadastrado com sucesso!');
     }
 
     /**
@@ -38,14 +53,20 @@ class ProfissionaisController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         $atuaareas = AtuaArea::all();
         $especializacoes = collect();
+
         if (request()->has('areaatuacao_id')) {
             $areaId = request('areaatuacao_id');
             $especializacoes = Especializacao::where('area_id', $areaId)->get();
         }
 
-        return view('Cadastros/cadastroprofissional', ['atuaareas' => $atuaareas, 'especializacoes' => $especializacoes]);
+        return view('Cadastros/cadastroprofissional', [
+            'user' => $user,
+            'atuaareas' => $atuaareas,
+            'especializacoes' => $especializacoes
+        ]);
     }
 
     public function especializacoesPorArea($areaId)
@@ -54,10 +75,9 @@ class ProfissionaisController extends Controller
         return response()->json($especializacoes);
     }
 
-    /*
+    /**
      * Display the specified resource.
      */
-
     public function show(Request $request)
     {
         $id = $request->input('id');
@@ -75,32 +95,43 @@ class ProfissionaisController extends Controller
                 ->select('profissionais.*', 'atuaareas.area', 'especializacoes.especializacao')
                 ->orderBy('profissionais.created_at')
                 ->get();
-
         }
+
         return view('Cadastros/listaprofissionais', ['profissionais' => $profissionais]);
     }
-
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit()
     {
-        $profissional = Profissional::find($id);
+        $user = Auth::user();
+        $profissionais = Profissional::where('user_id', $user->id)->firstOrFail();
         $atuaareas = AtuaArea::all();
-        $especializacoes = Especializacao::all();
 
-        return view('Cadastros/editarprofissional', ['profissionais' => $profissional, 'atuaareas' => $atuaareas, 'especializacoes' => $especializacoes]);
+        return view('Cadastros.editarprofissional', [
+            'profissionais' => $profissionais,
+            'atuaareas' => $atuaareas,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $profissional = Profissional::findorfail($id);
-        $profissional->update($request->all());
-        return redirect()->route('profissionais-index');
+        $user = Auth::user();
+        $profissionais = Profissional::where('user_id', $user->id)->firstOrFail();
+
+        $validated = $request->validate([
+            'areaatuacao_id' => 'required|exists:atua_areas,id',
+            'especializacao_id' => 'nullable|exists:especializacoes,id',
+            'enderecoatuacao' => 'required|string|max:255',
+            'localformacao' => 'required|string|max:255',
+            'dataformacao' => 'required|date',
+            'descricaoperfil' => 'required|string|max:255',
+        ]);
+
+        $profissionais->update($validated);
+
+        return redirect()->route('medico.dashboard')->with('success', 'Dados atualizados com sucesso!');
     }
 
     /**
@@ -108,12 +139,11 @@ class ProfissionaisController extends Controller
      */
     public function destroy($id)
     {
-        {
-            $profissional = Profissional::findorfail($id);
-            $profissional->delete();
-            return redirect()->route('profissionais-index');
-        }
+        $profissional = Profissional::findOrFail($id);
+        $profissional->delete();
+        return redirect()->route('profissionais-index')->with('success', 'Profissional deletado com sucesso!');
     }
+
     public function tela()
     {
         return view('profile.medico-dashboard');
