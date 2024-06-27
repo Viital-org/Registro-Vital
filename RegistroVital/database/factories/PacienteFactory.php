@@ -19,7 +19,7 @@ class PacienteFactory extends Factory
      */
     public function definition(): array
     {
-        $user = User::where('role', 'paciente')->inRandomOrder()->first();
+        $user = User::where('role', 'paciente')->inRandomOrder()->first() ?? User::factory()->create(['role' => 'paciente']);
         $metas = Meta::all();
         if ($metas->count() > 0) {
             $meta = $metas->random();
