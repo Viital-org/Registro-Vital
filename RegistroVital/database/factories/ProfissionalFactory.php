@@ -22,7 +22,7 @@ class ProfissionalFactory extends Factory
         $atuaareaId = null;
         $especializacaoId = null;
 
-        $user = User::where('role', 'medico')->inRandomOrder()->first();
+        $user = User::where('role', 'medico')->inRandomOrder()->first() ?? User::factory()->create(['role' => 'medico']);
 
         $atuaareas = AtuaArea::all();
         if ($atuaareas->count() > 0) {

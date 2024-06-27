@@ -1,10 +1,12 @@
 @import 'bootstrap/scss/bootstrap';
 
+
+
 .container-fluid {
     min-height: 100vh; /* Garante que o contêiner ocupe pelo menos a altura total da viewport */
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(to left, rgba(157, 132, 182, 0.5), rgba(126, 3, 250, 0.500));
+    background-image: linear-gradient(to left, rgba(174, 0, 255, 0.5), rgba(126, 3, 250, 0.500));
     background-size: 500% 100%;
     animation: plano-fundo 15s infinite alternate;
 }

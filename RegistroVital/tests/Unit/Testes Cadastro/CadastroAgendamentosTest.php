@@ -50,5 +50,5 @@ test('Testa se o que se o status da criacao esta OK.', function () {
 
     $response = $this->post(route('consultas-store', $dadosCadastro));
 
-    $response->assertStatus(500);
+    $response->assertStatus(200);
 });
