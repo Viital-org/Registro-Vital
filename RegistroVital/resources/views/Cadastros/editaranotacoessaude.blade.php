@@ -1,6 +1,6 @@
 @extends('LayoutsPadrao.inicio')
 
-@section('titulo', 'Editar Anotação')
+@section('titulo', 'Editar anotação de saúde')
 
 @section('conteudo')
 
@@ -8,44 +8,41 @@
         @csrf
         @method('PUT')
 
-        <h1>Editar Dados da Anotação</h1>
+        <h1>Editar anotação de saúde</h1>
 
         <div class="mb-3">
-            <label for="paciente_id" class="form-label">Paciente</label>
-            <input type="text" name="paciente_id" id="paciente_id" class="form-control"
-                   value="{{ $anotacaosaude->paciente_id }}" readonly>
-        </div>
-
-        <div class="mb-3">
-            <label for="tipo_anot" class="form-label">Tipo de Anotação</label>
-            <select name="tipo_anot" id="tipo_anot" class="form-select" required>
-                @foreach($tipoanotacao as $item)
-                    <option value="{{ $item->id }}">{{ $item->desc_tipo }}</option>
+            <label for="tipo_anot" class="form-label">Tipo de anotação</label>
+            <select name="tipo_anot" id="tipo_anot" class="form-select">
+                @foreach ($tipoanotacoes as $tipoanotacao)
+                    <option value="{{ $tipoanotacao->id }}" @if ($tipoanotacao->id == $anotacaosaude->tipo_anot) selected @endif>
+                        {{ $tipoanotacao->desc_anotacao }}
+                    </option>
                 @endforeach
             </select>
         </div>
 
         <div class="mb-3">
+            <label for="anotacao" class="form-label">Anotação</label>
+            <textarea name="anotacao" id="anotacao" class="form-control" required>{{ $anotacaosaude->anotacao }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="data_anotacao" class="form-label">Data da anotação</label>
+            <input type="date" name="data_anotacao" id="data_anotacao" class="form-control" value="{{ $anotacaosaude->data_anotacao }}" required>
+        </div>
+
+        <div class="mb-3">
             <label for="visibilidade" class="form-label">Visibilidade</label>
             <select name="visibilidade" id="visibilidade" class="form-select">
-                <option value="Visivel">Público</option>
-                <option value="Escondido">Privado</option>
+                <option value="Visivel" @if ($anotacaosaude->visibilidade == 'Visivel') selected @endif>Público</option>
+                <option value="Escondido" @if ($anotacaosaude->visibilidade == 'Escondido') selected @endif>Privado</option>
             </select>
         </div>
 
-        <div class="mb-3">
-            <label for="data_anotacao" class="form-label">Data da Anotação</label>
-            <input type="text" name="data_anotacao" id="data_anotacao" class="form-control"
-                   value="{{ $anotacaosaude->data_anotacao }}" readonly>
-        </div>
+        <button type="submit" class="btn btn-primary">Salvar alterações</button>
 
-        <div class="mb-3">
-            <label for="anotacao" class="form-label">Anotação</label>
-            <textarea name="anotacao" id="anotacao" class="form-control">{{ $anotacaosaude->anotacao }}</textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
     </form>
 
 @endsection
+
 

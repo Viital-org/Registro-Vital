@@ -37,6 +37,15 @@ Route::middleware(['auth', 'role:paciente'])->group(function () {
     Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
     Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes-edit');
     Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
+
+    //Anotacoes
+    Route::get('/anotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
+    Route::get('/anotacoes/criar', [AnotacoesSaudeController::class, 'create'])->name('anotacoessaude-create');
+    Route::post('/anotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
+    Route::get('/anotacoes/{id}/editar', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
+    Route::put('/anotacoes/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
+    Route::delete('/anotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
+
 });
 
 Route::middleware(['auth', 'role:medico'])->group(function () {
@@ -115,15 +124,7 @@ Route::get('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'edit'])
 Route::put('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'update'])->name('tipoanotacao-update');
 Route::delete('/listatipoanotacoes/{id}', [TipoAnotacoesController::class, 'destroy'])->name('tipoanotacao-delete');
 
-//Anotacoes
-Route::resource('/cadastroanotacoes', AnotacoesSaudeController::class);
-Route::get('/listaanotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
-Route::post('/guardaranotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
-Route::post('/listaranotacoes', [AnotacoesSaudeController::class, 'show'])->name('anotacoessaude-show');
-Route::get('/cadastroanotacoes', [AnotacoesSaudeController::class, 'create']);
-Route::get('/editaranotacao/{id}', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
-Route::put('/editaranotacao/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
-Route::delete('/listaanotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
+
 
 //Dicas
 Route::resource('/cadastrodicas', DicasController::class);

@@ -27,6 +27,14 @@
                 </button>
             </form>
 
+            <div class="mb-3">
+                <button onclick="window.location.href='{{ route('anotacoessaude-create') }}'" class="btn btn-primary">Cadastrar Nova Anotação</button>
+            </div>
+
+            <div class="mb-3">
+                <button onclick="window.location.href='{{ route('anotacoessaude-index') }}'" class="btn btn-secondary">Listar Anotações</button>
+            </div>
+
         </div>
 @endsection
 

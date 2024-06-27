@@ -6,6 +6,7 @@ use App\Models\Anotacaosaude;
 use App\Models\Paciente;
 use App\Models\TipoAnotacao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnotacoesSaudeController extends Controller
 {
@@ -14,9 +15,12 @@ class AnotacoesSaudeController extends Controller
      */
     public function index()
     {
-        $anotacoessaude = Anotacaosaude::join('pacientes', 'anotacoessaude.paciente_id', '=', 'pacientes.id')
+        $user = Auth::user();
+        $paciente = Paciente::where('user_id', $user->id)->first();
+
+        $anotacoessaude = Anotacaosaude::where('paciente_id', $paciente->id)
             ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
-            ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao', 'pacientes.nome as paciente')
+            ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao')
             ->simplePaginate(5);
 
         return view('Cadastros/listaranotacoessaude', ['anotacoessaude' => $anotacoessaude]);
@@ -27,8 +31,20 @@ class AnotacoesSaudeController extends Controller
      */
     public function store(Request $request)
     {
-        Anotacaosaude::create($request->all());
-        return redirect()->route('anotacoessaude-index');
+        $user = Auth::user();
+        $paciente = Paciente::where('user_id', $user->id)->first();
+
+        $validated = $request->validate([
+            'anotacao' => 'required|string',
+            'data_anotacao' => 'required|date',
+            'tipo_anot' => 'required|exists:tipoanotacoes,id',
+            'visibilidade' => 'required|in:Visivel,Escondido',
+        ]);
+
+        $validated['paciente_id'] = $paciente->id;
+
+        Anotacaosaude::create($validated);
+        return redirect()->route('anotacoessaude-index')->with('success', 'Anotação criada com sucesso!');
     }
 
     /**
@@ -36,35 +52,11 @@ class AnotacoesSaudeController extends Controller
      */
     public function create()
     {
-        $anotacoessaude = Anotacaosaude::all();
-        $pacientes = Paciente::all();
         $tipoanotacoes = TipoAnotacao::all();
-        return view('Cadastros/cadastroanotacoessaude', ['anotacoessaude' => $anotacoessaude, 'pacientes' => $pacientes, 'tipoanotacoes' => $tipoanotacoes]);
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Request $request)
-    {
-        $id = $request->input('id');
-        $tipoanotacao = TipoAnotacao::all();
-        $paciente = Paciente::all();
-
-
-        if ($id === null) {
-            $anotacoessaude = Anotacaosaude::join('pacientes', 'anotacoessaude.paciente_id', '=', 'pacientes.id')
-                ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
-                ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao', 'pacientes.nome as paciente')
-                ->get();
-
-        } else {
-            $anotacoessaude = $anotacoessaude = Anotacaosaude::join('pacientes', 'anotacoessaude.paciente_id', '=', 'pacientes.id')
-                ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')->where('anotacoessaude.id', '=', $id)
-                ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao', 'pacientes.nome as paciente')
-                ->get();
-        }
-        return view('Cadastros/listaranotacoessaude', ['anotacoessaude' => $anotacoessaude, 'tipoanotacao' => $tipoanotacao, 'paciente' => $paciente]);
+        return view('Cadastros/cadastroanotacoessaude', [
+            'tipoanotacoes' => $tipoanotacoes
+        ]);
     }
 
     /**
@@ -72,10 +64,15 @@ class AnotacoesSaudeController extends Controller
      */
     public function edit($id)
     {
-        $anotacaosaude = Anotacaosaude::find($id);
-        $tipoanotacao = TipoAnotacao::all();
-        $paciente = Paciente::all();
-        return view('Cadastros/editaranotacoessaude', ['anotacaosaude' => $anotacaosaude, 'tipoanotacao' => $tipoanotacao, 'paciente' => $paciente]);
+        $user = Auth::user();
+        $paciente = Paciente::where('user_id', $user->id)->first();
+        $anotacaosaude = Anotacaosaude::where('paciente_id', $paciente->id)->findOrFail($id);
+        $tipoanotacoes = TipoAnotacao::all();
+
+        return view('Cadastros/editaranotacoessaude', [
+            'anotacaosaude' => $anotacaosaude,
+            'tipoanotacoes' => $tipoanotacoes
+        ]);
     }
 
     /**
@@ -83,9 +80,19 @@ class AnotacoesSaudeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $anotacaosaude = Anotacaosaude::findorfail($id);
-        $anotacaosaude->update($request->all());
-        return redirect()->route('anotacoessaude-index');
+        $user = Auth::user();
+        $paciente = Paciente::where('user_id', $user->id)->first();
+        $anotacaosaude = Anotacaosaude::where('paciente_id', $paciente->id)->findOrFail($id);
+
+        $validated = $request->validate([
+            'anotacao' => 'required|string',
+            'data_anotacao' => 'required|date',
+            'tipo_anot' => 'required|exists:tipoanotacoes,id',
+            'visibilidade' => 'required|in:Visivel,Escondido',
+        ]);
+
+        $anotacaosaude->update($validated);
+        return redirect()->route('anotacoessaude-index')->with('success', 'Anotação atualizada com sucesso!');
     }
 
     /**
@@ -93,8 +100,11 @@ class AnotacoesSaudeController extends Controller
      */
     public function destroy($id)
     {
-        $anotacaosaude = Anotacaosaude::findorfail($id);
+        $user = Auth::user();
+        $paciente = Paciente::where('user_id', $user->id)->first();
+        $anotacaosaude = Anotacaosaude::where('paciente_id', $paciente->id)->findOrFail($id);
+
         $anotacaosaude->delete();
-        return redirect()->route('anotacoessaude-index');
+        return redirect()->route('anotacoessaude-index')->with('success', 'Anotação deletada com sucesso!');
     }
 }

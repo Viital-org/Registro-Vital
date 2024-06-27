@@ -1,4 +1,4 @@
-@extends('layoutspadrao.inicio')
+@extends('LayoutsPadrao.inicio')
 
 @section('titulo', 'Cadastrar nova anotação')
 
@@ -8,15 +8,6 @@
         @csrf
 
         <h1>Cadastro de nova anotação</h1>
-
-        <div class="mb-3">
-            <label for="paciente_id" class="form-label">Paciente</label>
-            <select name="paciente_id" id="paciente_id" class="form-select">
-                @foreach ($pacientes as $paciente)
-                    <option value="{{ $paciente->id }}">{{ $paciente->nome }}</option>
-                @endforeach
-            </select>
-        </div>
 
         <div class="mb-3">
             <label for="tipo_anot" class="form-label">Tipo de anotação</label>
@@ -34,7 +25,7 @@
 
         <div class="mb-3">
             <label for="data_anotacao" class="form-label">Data da anotação</label>
-            <input type="date" name="data_anotacao" id="data_anotacao" class="form-control" required>
+            <input type="date" name="data_anotacao" id="data_anotacao" class="form-control" value="{{ $anotacaosaude->data_anotacao }}" max="{{ date('Y-m-d') }}" required>
         </div>
 
         <div class="mb-3">
@@ -50,4 +41,5 @@
     </form>
 
 @endsection
+
 
