@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <!-- Título da página dinâmico -->
     <title> @yield('titulo')</title>
 
@@ -41,35 +40,45 @@
             </div>
             <div class="navbar-collapse">
                 <ul class="navbar-nav">
-                    
-                <div class="dropdown">
-                    <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <label>{{ Auth::user()->name }}</label>
-                    </button>
+                    <!-- Dropdown para Anotações -->
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Anotações
+                        </button>
                         <ul class="dropdown-menu">
                             <li>
-                            <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">
-                                @csrf
-                                <button type="submit" onclick="event.preventDefault(); document.getElementById('edit-form').submit();"
-                                        class="dropdown-item">Editar Perfil
-                                </button>
-                            </form>
+                                <button onclick="window.location.href='{{ route('anotacoessaude-create') }}'" class="dropdown-item">Cadastrar Nova Anotação</button>
                             </li>
-
                             <li>
-                            <form method="POST" action="{{ route('logout') }}" id="logout-form">
-                                @csrf
-                                <button type="submit" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                        class="dropdown-item">Sair
-                                </button>
-                            </form>
+                                <button onclick="window.location.href='{{ route('anotacoessaude-index') }}'" class="dropdown-item">Listar Anotações</button>
                             </li>
                         </ul>
-                </div>
+                    </div>
 
-                    <li class="nav-item">
-                        
-                    </li>
+                    <!-- Dropdown para Perfil e Logout -->
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <label>{{ Auth::user()->name }}</label>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">
+                                    @csrf
+                                    <button type="submit" onclick="event.preventDefault(); document.getElementById('edit-form').submit();"
+                                            class="dropdown-item">Editar Perfil
+                                    </button>
+                                </form>
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                                    @csrf
+                                    <button type="submit" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                            class="dropdown-item">Sair
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </ul>
             </div>
         </nav>
@@ -120,7 +129,6 @@
         </div>
 
         <!-- Conteúdo principal -->
-
     </div>
     <div class="col-md-9 col-lg-9 pt-3 main-content">
         @yield('conteudo')

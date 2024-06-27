@@ -1,4 +1,4 @@
-@extends ('LayoutsPadrao.inicio')
+@extends ('LayoutsPadrao.layoutpaciente')
 
 @section('titulo', 'RegistroVital')
 
