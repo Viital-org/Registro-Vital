@@ -40,11 +40,10 @@ class AtuaAreasController extends Controller
     {
         $id = $request->input('id');
 
-
         if ($id === null) {
-            $atuaareas = AtuaArea::all();
+            $atuaareas = AtuaArea::all()->paginate(5);
         } else {
-            $atuaareas = AtuaArea::all()->where('id', '=', $id);
+            $atuaareas = AtuaArea::all()->where('id', '=', $id)->paginate(5);
         }
         return view('Cadastros/listaatuaareas', ['atuaareas' => $atuaareas]);
     }

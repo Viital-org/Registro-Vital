@@ -43,6 +43,8 @@ Route::middleware(['auth', 'layout.dinamico'])->group(function () {
     Route::get('/consultas/{id}', [ConsultasController::class, 'show'])->name('consultas.show');
     Route::delete('/consultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas.destroy');
     Route::get('/consultas/{id}/anotacoes', [ConsultasController::class, 'listAnotacoes'])->name('consultas.anotacoes');
+
+    
 });
 
 require __DIR__ . '/auth.php';
