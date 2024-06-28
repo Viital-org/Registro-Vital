@@ -1,4 +1,4 @@
-@extends ('layoutspadrao.inicio')
+@extends ($layout)
 
 @section('titulo', 'Listagem de Profissionais')
 
@@ -104,4 +104,3 @@
 @endsection
 
 
-    

@@ -38,15 +38,15 @@ class AtuaAreasController extends Controller
      */
     public function show(Request $request)
     {
-        $id = $request->input('id');
-
+        $id = $request->input('search_id');
 
         if ($id === null) {
-            $atuaareas = AtuaArea::all();
+            $atuaareas = AtuaArea::paginate(5);
         } else {
-            $atuaareas = AtuaArea::all()->where('id', '=', $id);
+            $atuaareas = AtuaArea::where('id', $id)->paginate(5);
         }
-        return view('Cadastros/listaatuaareas', ['atuaareas' => $atuaareas]);
+
+        return view('Cadastros.listaatuaareas', compact('atuaareas'));
     }
 
     /**

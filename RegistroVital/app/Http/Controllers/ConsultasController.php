@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anotacaosaude;
 use App\Models\Consulta;
 use App\Models\Paciente;
 use App\Models\Profissional;
-use App\Models\Anotacaosaude;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,19 +29,8 @@ class ConsultasController extends Controller
                 ->simplePaginate(10);
         }
 
-        $layout = $user->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : 'LayoutsPadrao.layoutpaciente';
 
-        return view('consultas.listaconsultas', compact('consultas', 'layout'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $profissionais = Profissional::all();
-        $pacientes = Paciente::all();
-        return view('consultas.cadastroconsultas', compact('profissionais', 'pacientes'));
+        return view('consultas.listaconsultas', compact('consultas'));
     }
 
     /**
@@ -63,6 +52,16 @@ class ConsultasController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $profissionais = Profissional::all();
+        $pacientes = Paciente::all();
+        return view('consultas.cadastroconsultas', compact('profissionais', 'pacientes'));
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show($id)
@@ -76,9 +75,7 @@ class ConsultasController extends Controller
         }
 
 
-        $layout = Auth::user()->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : 'LayoutsPadrao.layoutpaciente';
-
-        return view('consultas.showconsultas', compact('consulta', 'layout'));
+        return view('consultas.showconsultas', compact('consulta'));
     }
 
     /**

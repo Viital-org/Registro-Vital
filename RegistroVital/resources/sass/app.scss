@@ -1,6 +1,5 @@
 @import 'bootstrap/scss/bootstrap';
 
-
 .container-fluid {
     min-height: 100vh; /* Garante que o contêiner ocupe pelo menos a altura total da viewport */
     max-height: 100%;
@@ -81,11 +80,11 @@
     border-radius: 10px;
 }
 
-.conteudo-ajuda{
+.conteudo-ajuda {
     align-items: center;
 }
 
-.fundo-branco-texto{
+.fundo-branco-texto {
     background-color: rgba(240, 255, 255, 0.678);
     border-radius: 15px;
     padding: 5px;
