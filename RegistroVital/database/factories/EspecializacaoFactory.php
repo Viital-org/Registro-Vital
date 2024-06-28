@@ -28,7 +28,7 @@ class EspecializacaoFactory extends Factory
 
         return [
             'especializacao' => $this->faker->jobTitle,
-            'tempoespecializacao' => $this->faker->numberBetween($min = 1, $max = 100),
+            'tempoespecializacao' => $this->faker->numberBetween(1, 100),
             'area_id' => $atuaareaId,
             'descricao' => $this->faker->text,
         ];

@@ -19,16 +19,26 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/quemsomos', function () {
+    return view('Cadastros/quemsomos');
+})->name('quemsomos');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/ajuda', function () {
+    return view('Cadastros/ajuda');
+})->name('ajuda');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profile/role', [ProfileController::class, 'updateRoleInfo'])->name('profile.updateRoleInfo');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/anotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
+
+    //Consulta
+    Route::get('/consultas', [ConsultasController::class, 'index'])->name('consultas.index');
+    Route::patch('/consultas/{id}', [ConsultasController::class, 'update'])->name('consultas.update');
+    Route::get('/consultas/{id}', [ConsultasController::class, 'show'])->name('consultas.show');
+    Route::delete('/consultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas.destroy');
 });
 
 require __DIR__ . '/auth.php';
@@ -37,43 +47,60 @@ Route::middleware(['auth', 'role:paciente'])->group(function () {
     Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
     Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes-edit');
     Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
+
+    //Anotacoes
+    Route::get('/anotacoes/criar', [AnotacoesSaudeController::class, 'create'])->name('anotacoessaude-create');
+    Route::post('/anotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
+    Route::get('/anotacoes/editar', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
+    Route::put('/anotacoes', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
+    Route::delete('/anotacoes', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
+
+    //Agendamentos
+    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
+    Route::get('/agendamentos/create', [AgendamentosController::class, 'create'])->name('agendamentos.create');
+    Route::post('/agendamentos', [AgendamentosController::class, 'store'])->name('agendamentos.store');
+    Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
+    Route::get('/profissionais-by-especializacao/{especializacao_id}', [AgendamentosController::class, 'getProfissionaisByEspecializacao']);
+
 });
 
 Route::middleware(['auth', 'role:medico'])->group(function () {
     Route::get('/medico/dashboard', [ProfissionaisController::class, 'tela'])->name('medico.dashboard');
     Route::get('/cadastrarprof', [ProfissionaisController::class, 'create'])->name('cadastrarprof');
-    //Route::get('/editarprofissional/{id}', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
-    // Route::put('/editarprofissional/{id}', [ProfissionaisController::class, 'update'])->name('profissionais-update');
     Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
     Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
+
+    Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
+
 });
 
 
 //Profissionais
-Route::resource('/cadastroprofissional', ProfissionaisController::class);
+//Route::resource('/cadastroprofissional', ProfissionaisController::class);
 Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
-Route::post('/guardarprofissionais', [ProfissionaisController::class, 'store'])->name('profissionais-store');
-Route::post('/listaprofissionais', [ProfissionaisController::class, 'show'])->name('profissionais-show');
-Route::delete('/listaprofissionais/{id}', [ProfissionaisController::class, 'destroy'])->name('profissionais-delete');
-Route::get('/especializacoes/{areaId}', [ProfissionaisController::class, 'especializacoesPorArea']);
+//Route::post('/guardarprofissionais', [ProfissionaisController::class, 'store'])->name('profissionais-store');
+//Route::post('/listaprofissionais', [ProfissionaisController::class, 'show'])->name('profissionais-show');
+//Route::delete('/listaprofissionais/{id}', [ProfissionaisController::class, 'destroy'])->name('profissionais-delete');
+//Route::get('/especializacoes/{areaId}', [ProfissionaisController::class, 'especializacoesPorArea']);
 
 //Pacientes
-Route::resource('/cadastropacientes', PacientesController::class);
+//Route::resource('/cadastropacientes', PacientesController::class);
 Route::get('/listapacientes', [PacientesController::class, 'index'])->name('pacientes-index');
-Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
-Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes-show');
-Route::get('/cadastropaci', [PacientesController::class, 'create']);
-Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
+//Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
+//Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes-show');
+//Route::get('/cadastropaci', [PacientesController::class, 'create']);
+//Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
 
 //Consultas
-Route::resource('/cadastroconsultas', ConsultasController::class);
+//Route::resource('/cadastroconsultas', ConsultasController::class);
 Route::get('/listaconsultas', [ConsultasController::class, 'index'])->name('consultas-index');
-Route::post('/guardarconsultas', [ConsultasController::class, 'store'])->name('consultas-store');
-Route::post('/listaconsultas', [ConsultasController::class, 'show'])->name('consultas-show');
-Route::get('/cadastroconsul', [ConsultasController::class, 'create']);
-Route::get('/editarconsulta/{id}', [ConsultasController::class, 'edit'])->name('consultas-edit');
-Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
-Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas-delete');
+//Route::post('/guardarconsultas', [ConsultasController::class, 'store'])->name('consultas-store');
+//Route::post('/listaconsultas', [ConsultasController::class, 'show'])->name('consultas-show');
+//Route::get('/cadastroconsul', [ConsultasController::class, 'create']);
+//Route::get('/editarconsulta/{id}', [ConsultasController::class, 'edit'])->name('consultas-edit');
+//Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
+//Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas-delete');
+
 
 //Areas de atuacao
 Route::resource('/cadastroatuaareas', AtuaAreasController::class);
@@ -96,13 +123,12 @@ Route::put('/editarespecializacao/{id}', [EspecializacoesController::class, 'upd
 Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, 'destroy'])->name('especializacoes-delete');
 
 //Agendamentos
-Route::resource('/cadastroagendamentos', AgendamentosController::class);
+//Route::resource('/cadastroagendamentos', AgendamentosController::class);
 Route::get('/listaagendamentos', [AgendamentosController::class, 'index'])->name('agendamentos-index');
-Route::post('/listaagendamentos', [AgendamentosController::class, 'show'])->name('agendamentos-show');
-Route::delete('/listaagendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos-delete');
+//Route::post('/listaagendamentos', [AgendamentosController::class, 'show'])->name('agendamentos-show');
+//Route::delete('/listaagendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos-delete');
 
 //Agendamentos Paciente
-Route::resource('/agendaconsulta', AgendamentoPacienteController::class);
 Route::get('/listaagendamentopaciente', [AgendamentoPacienteController::class, 'index'])->name('agendamentos-paciente-index');
 Route::post('/listaagendamentopaciente', [AgendamentoPacienteController::class, 'show'])->name('agendamentos-paciente-show');
 Route::get('/agendaconsulta', [AgendamentoPacienteController::class, 'create'])->name('agenda-consulta-create');
@@ -117,16 +143,6 @@ Route::get('/cadastrotipanot', [TipoAnotacoesController::class, 'create'])->name
 Route::get('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'edit'])->name('tipoanotacao-edit');
 Route::put('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'update'])->name('tipoanotacao-update');
 Route::delete('/listatipoanotacoes/{id}', [TipoAnotacoesController::class, 'destroy'])->name('tipoanotacao-delete');
-
-//Anotacoes
-Route::resource('/cadastroanotacoes', AnotacoesSaudeController::class);
-Route::get('/listaanotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
-Route::post('/guardaranotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
-Route::post('/listaranotacoes', [AnotacoesSaudeController::class, 'show'])->name('anotacoessaude-show');
-Route::get('/cadastroanotacoes', [AnotacoesSaudeController::class, 'create']);
-Route::get('/editaranotacao/{id}', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
-Route::put('/editaranotacao/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
-Route::delete('/listaanotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
 
 //Dicas
 Route::resource('/cadastrodicas', DicasController::class);

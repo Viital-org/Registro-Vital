@@ -12,4 +12,6 @@ essas informações coletadas ao longo de sua vida em sua consulta com seu médi
 
 * Estágio em que se encontra:
 
-O projeto encontra-se em com os CRUDs, e alguns testes implementados.
+
+O projeto encontra-se em com os CRUDs, telas de interação básicas de usuário e testes básicos implementados.
+Autenticação funcional e interface amigável.

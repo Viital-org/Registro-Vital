@@ -1,4 +1,4 @@
-@extends ('layoutspadrao.inicio')
+@extends('LayoutsPadrao.layoutpaciente')
 
 @section('titulo', 'Listagem de Anotações')
 
@@ -8,24 +8,14 @@
     <h1>Anotações Realizadas</h1>
     <br>
 
-    <nav class="d-flex align-items-center justify-content-between" role="search">
-        <form action="{{ route('anotacoessaude-show') }}" method="post" class="d-flex w-100">
-            @csrf
-            <input class="form-control me-2 flex-grow-1" type="search" placeholder="Digite o ID" aria-label="Search">
-            <button class="btn btn-light" type="submit">Buscar</button>
-        </form>
-    </nav>
-
-    <br>
-
     <table class="table">
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Paciente</th>
             <th scope="col">Tipo de Anotação</th>
             <th scope="col">Anotação</th>
             <th scope="col">Data da Anotação</th>
+            <th scope="col">Visibilidade</th>
             <th scope="col">Editar</th>
             <th scope="col">Excluir</th>
         </tr>
@@ -34,10 +24,10 @@
         @foreach($anotacoessaude as $item)
             <tr>
                 <td>{{ $item->id }}</td>
-                <td>{{ $item->paciente }}</td>
                 <td>{{ $item->desc_anotacao }}</td>
                 <td>{{ $item->anotacao }}</td>
                 <td>{{ $item->data_anotacao }}</td>
+                <td>{{ $item->visibilidade }}</td>
                 <td>
                     <a href="{{ route('anotacoessaude-edit', ['id' => $item->id]) }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -94,4 +84,3 @@
     </div>
 
 @endsection
-

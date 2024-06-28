@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('medico.dashboard') }}">Home</a>
+                        <a class="nav-link" href="{{ route('paciente.dashboard') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('quemsomos') }}">Quem somos</a>
@@ -44,46 +44,46 @@
 
                     <!-- Dropdown para Consulta -->
                     <div class="dropdown">
-                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Agendamentos
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <button onclick="window.location.href='{{ route('consultas.index') }}'"
-                                        class="dropdown-item">lista de Consultas
-                                </button>
+                                <button onclick="window.location.href='{{ route('agendamentos.create') }}'" class="dropdown-item">Agendamento</button>
+                            </li>
+                            <li>
+                                <button onclick="window.location.href='{{ route('agendamentos.index') }}'" class="dropdown-item">Historico de Agendamentos</button>
+                            </li>
+                            <li>
+                                <button onclick="window.location.href='{{ route('consultas.index') }}'" class="dropdown-item">lista de Consultas</button>
                             </li>
                         </ul>
                     </div>
-
                     <!-- Dropdown para Anotações -->
                     <div class="dropdown">
-                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Anotações
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <button onclick="window.location.href='{{ route('anotacoessaude-index') }}'"
-                                        class="dropdown-item">Listar Anotações
-                                </button>
+                                <button onclick="window.location.href='{{ route('anotacoessaude-create') }}'" class="dropdown-item">Cadastrar Nova Anotação</button>
+                            </li>
+                            <li>
+                                <button onclick="window.location.href='{{ route('anotacoessaude-index') }}'" class="dropdown-item">Listar Anotações</button>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Dropdown para Perfil e Logout -->
                     <div class="dropdown">
-                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <label>{{ Auth::user()->name }}</label>
                         </button>
                         <ul class="dropdown-menu">
                             <li>
                                 <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">
                                     @csrf
-                                    <button type="submit"
-                                            onclick="event.preventDefault(); document.getElementById('edit-form').submit();"
+                                    <button type="submit" onclick="event.preventDefault(); document.getElementById('edit-form').submit();"
                                             class="dropdown-item">Editar Perfil
                                     </button>
                                 </form>
@@ -91,8 +91,7 @@
                             <li>
                                 <form method="POST" action="{{ route('logout') }}" id="logout-form">
                                     @csrf
-                                    <button type="submit"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                    <button type="submit" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                             class="dropdown-item">Sair
                                     </button>
                                 </form>
@@ -104,21 +103,8 @@
         </nav>
 
         <!-- Sidebar -->
-        <div class="bg-light sidebar ml-3">
+        <div class="bg-light sidebar ml-5">
             <ul class="nav flex-column">
-
-                <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Cadastros
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/cadastroarea">Areas de atuacao</a></li>
-                        <li><a class="dropdown-item" href="/cadastroespec">Especializações</a></li>
-                        <li><a class="dropdown-item" href="/cadastrotipanot">Tipos de anotação</a></li>
-                        <li><a class="dropdown-item" href="/cadastrodica">Dicas</a></li>
-                        <li><a class="dropdown-item" href="/cadastrometa">Metas</a></li>
-                    </ul>
-                </div>
 
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

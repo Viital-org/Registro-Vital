@@ -12,6 +12,7 @@ class AtuaAreaSeeder extends Seeder
      */
     public function run(): void
     {
-        AtuaArea::factory(10)->create();
+        AtuaArea::factory()->count(10)->create();
     }
 }
+

@@ -2,12 +2,15 @@
 
 use app\Models\Meta;
 use App\Models\Paciente;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 uses(TestCase::class, RefreshDatabase::class);
 
 test('Testa se os pacientes estão sendo listados', function () {
+
+    User::factory()->create();
 
     Paciente::factory()->count(3)->create();
 
@@ -24,7 +27,9 @@ test('Testa se o usuario esta sendo redirecionado para a pagina', function () {
 
 test('Testa se o que foi criado é do tipo certo', function () {
 
-    $meta = Meta::factory()->create();
+    User::factory()->create();
+
+    Meta::factory()->create();
 
     $response = Paciente::factory()->count(1)->create();
 
@@ -45,6 +50,8 @@ test('Testa se o que foi criado é do tipo certo', function () {
 });
 
 test('Testa se ao apagar o primeiro registro, ele some.', function () {
+
+    User::factory()->create();
 
     Paciente::factory()->count(3)->create();
 

@@ -2,16 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\AnotacaoSaude;
+use App\Models\Anotacaosaude;
 use App\Models\Paciente;
 use App\Models\TipoAnotacao;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<AnotacaoSaude>
+ * @extends Factory<Anotacaosaude>
  */
 class AnotacaoSaudeFactory extends Factory
 {
+    protected $model = Anotacaosaude::class;
+
     /**
      * Define the model's default state.
      *
@@ -19,29 +21,14 @@ class AnotacaoSaudeFactory extends Factory
      */
     public function definition(): array
     {
-        $pacientes = Paciente::all();
-        $tipoanotacoes = TipoAnotacao::all();
-
-        if ($pacientes->count() > 0) {
-            $paciente = $pacientes->random();
-            $pacienteid = $paciente->id;
-        } else {
-            $pacienteid = null;
-        }
-
-
-        if ($tipoanotacoes->count() > 0) {
-            $tipoanotacao = $tipoanotacoes->random();
-            $tipo_anotacao = $tipoanotacao->id;
-        } else {
-            $tipo_anotacao = null;
-        }
+        $paciente = Paciente::inRandomOrder()->first();
+        $tipoanotacao = TipoAnotacao::inRandomOrder()->first();
 
         return [
-            'paciente_id' => $pacienteid,
-            'data_anotacao' => $this->faker->date,
-            'tipo_anot' => $tipo_anotacao,
-            'visibilidade' => $this->faker->boolean(40),
+            'paciente_id' => $paciente ? $paciente->id : null,
+            'data_anotacao' => $this->faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d'),
+            'tipo_anot' => $tipoanotacao ? $tipoanotacao->id : null,
+            'visibilidade' => $this->faker->randomElement(['Visivel', 'Escondido']),
             'anotacao' => $this->faker->text,
         ];
     }

@@ -12,16 +12,13 @@ return new class extends Migration {
     {
         Schema::create('anotacoessaude', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('paciente_id');
-            $table->date('data_anotacao');
-            $table->integer('tipo_anot');
-            $table->string('visibilidade');
+            $table->foreignId('paciente_id')->constrained('pacientes')->onDelete('cascade');
             $table->text('anotacao');
-            $table->timestamps();
-            $table->softDeletes();
-
-            $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->date('data_anotacao');
+            $table->unsignedBigInteger('tipo_anot');
             $table->foreign('tipo_anot')->references('id')->on('tipoanotacoes');
+            $table->enum('visibilidade', ['Visivel', 'Escondido']);
+            $table->timestamps();
 
         });
     }

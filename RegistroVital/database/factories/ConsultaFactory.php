@@ -33,7 +33,7 @@ class ConsultaFactory extends Factory
 
         return [
             'data' => $this->faker->date(),
-            'status' => $this->faker->word,
+            'status' => $this->faker->randomElement(['agendado', 'confirmada', 'realizada', 'cancelada']),
             'profissional_id' => $profissionalId,
             'paciente_id' => $pacienteId,
             'valor' => $this->faker->randomFloat(100, 7080),

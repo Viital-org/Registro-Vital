@@ -83,6 +83,12 @@ class EspecializacoesController extends Controller
         return redirect()->route('especializacoes-index');
     }
 
+    public function getByArea($areaId)
+    {
+        $especializacoes = Especializacao::where('area_id', $areaId)->get();
+        return response()->json($especializacoes);
+    }
+
     /**
      * Remove the specified resource from storage.
      */
