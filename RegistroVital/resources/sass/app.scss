@@ -3,6 +3,7 @@
 
 .container-fluid {
     min-height: 100vh; /* Garante que o contêiner ocupe pelo menos a altura total da viewport */
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     background-image: linear-gradient(to left, rgba(174, 0, 255, 0.5), rgba(174, 0, 255, 0.5));
@@ -42,8 +43,6 @@
     color: #a347ff; /* Tom mais claro de laranja */
 }
 
-
-
 /* Sidebar */
 .sidebar {
     width: 300px;
@@ -82,6 +81,19 @@
     border-radius: 10px;
 }
 
+.conteudo-ajuda{
+    align-items: center;
+}
+
+.fundo-branco-texto{
+    background-color: rgba(240, 255, 255, 0.678);
+    border-radius: 15px;
+    padding: 5px;
+    font-family: sans-serif;
+    text-align: justify;
+    line-height: 2;
+}
+
 @keyframes plano-fundo {
     0% {
         background-position-x: 0%;
@@ -99,5 +111,15 @@
 
     100% {
         color: rgba(132, 24, 204, 0.753);
+    }
+}
+
+@keyframes slogan {
+    0% {
+        color: rgba(243, 243, 243, 0.788);
+    }
+
+    100% {
+        color: rgba(31, 19, 39, 0.863);
     }
 }
