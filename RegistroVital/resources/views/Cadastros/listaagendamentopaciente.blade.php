@@ -1,4 +1,4 @@
-@extends ('layoutspadrao.inicio')
+@extends ($layout)
 
 @section('titulo', 'Agendamentos de @nomeUser')
 

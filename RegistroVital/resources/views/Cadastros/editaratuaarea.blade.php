@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.inicio')
+@extends($layout)
 
 @section('titulo', 'Editar Informações de Área de Atuação')
 

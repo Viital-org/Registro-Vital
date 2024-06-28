@@ -1,4 +1,4 @@
-@extends ('LayoutsPadrao.inicio')
+@extends ($layout)
 
 @section('titulo', 'RegistroVital')
 
@@ -20,20 +20,22 @@
         @else
             <button onclick="window.location.href='{{ route('login') }}'" class="btn btn-primary mb-3">Login</button>
 
-            @if (Route::has('register'))
-                <button onclick="window.location.href='{{ route('register') }}'" class="btn btn-primary mb-3">Registro</button>
-            @endif
-        @endauth
-    </nav>
-    @endif
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    var errorMessage = document.getElementById('error-message');
-                    if (errorMessage) {
-                        setTimeout(function () {
-                            errorMessage.style.display = 'none';
-                        }, 3000);
-                    }
-                });
-            </script>
+                    @if (Route::has('register'))
+                        <button onclick="window.location.href='{{ route('register') }}'" class="btn btn-primary mb-3">
+                            Registro
+                        </button>
+                    @endif
+                @endauth
+            </nav>
+        @endif
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var errorMessage = document.getElementById('error-message');
+                if (errorMessage) {
+                    setTimeout(function () {
+                        errorMessage.style.display = 'none';
+                    }, 3000);
+                }
+            });
+        </script>
 @endsection
