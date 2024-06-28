@@ -16,14 +16,19 @@ class AnotacoesSaudeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $paciente = Paciente::where('user_id', $user->id)->first();
+        if ($user->role === 'paciente') {
+            $paciente = Paciente::where('user_id', $user->id)->first();
+            $anotacoessaude = Anotacaosaude::where('paciente_id', $paciente->id)
+                ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
+                ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao')
+                ->simplePaginate(5);
+        } else if ($user->role === 'medico') {
+            abort(403);
+        } else {
+            abort(403);
+        }
 
-        $anotacoessaude = Anotacaosaude::where('paciente_id', $paciente->id)
-            ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
-            ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao')
-            ->simplePaginate(5);
-
-        return view('Cadastros/listaranotacoessaude', ['anotacoessaude' => $anotacoessaude]);
+        return view('Anotacoes.listaranotacoessaude', ['anotacoessaude' => $anotacoessaude]);
     }
 
     /**
@@ -54,7 +59,7 @@ class AnotacoesSaudeController extends Controller
     {
         $tipoanotacoes = TipoAnotacao::all();
 
-        return view('Cadastros/cadastroanotacoessaude', [
+        return view('Anotacoes.cadastroanotacoessaude', [
             'tipoanotacoes' => $tipoanotacoes
         ]);
     }
@@ -69,7 +74,7 @@ class AnotacoesSaudeController extends Controller
         $anotacaosaude = Anotacaosaude::where('paciente_id', $paciente->id)->findOrFail($id);
         $tipoanotacoes = TipoAnotacao::all();
 
-        return view('Cadastros/editaranotacoessaude', [
+        return view('Anotacoes/editaranotacoessaude', [
             'anotacaosaude' => $anotacaosaude,
             'tipoanotacoes' => $tipoanotacoes
         ]);
@@ -108,3 +113,4 @@ class AnotacoesSaudeController extends Controller
         return redirect()->route('anotacoessaude-index')->with('success', 'Anotação deletada com sucesso!');
     }
 }
+

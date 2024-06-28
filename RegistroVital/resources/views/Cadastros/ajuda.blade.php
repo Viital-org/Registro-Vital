@@ -1,9 +1,9 @@
-@extends ('layoutspadrao.inicio')
+@extends ($layout)
 
 @section('titulo', 'Ajuda')
 
 @section('conteudo')
-    
+
 @csrf
 <br>
 <br>

@@ -1,9 +1,9 @@
-@extends ('layoutspadrao.inicio')
+@extends ($layout)
 
 @section('titulo', 'Quem Somos')
 
 @section('conteudo')
-    
+
 @csrf
 
 <br>
@@ -42,6 +42,6 @@ doenças, idades, gênero e região; e possibilitar o atendimento eficaz para pr
 de saúde, munindo-os de informações que muitas vezes podem ser ocultadas 
 involuntariamente e ou voluntariamente por conta do nível de sensibilidade.</p>
 
- 
+
 
 @endsection

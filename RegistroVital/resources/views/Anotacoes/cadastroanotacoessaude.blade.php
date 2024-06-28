@@ -1,4 +1,4 @@
-@extends('LayoutsPadrao.layoutpaciente')
+@extends($layout)
 
 @section('titulo', 'Cadastrar nova anotação')
 
