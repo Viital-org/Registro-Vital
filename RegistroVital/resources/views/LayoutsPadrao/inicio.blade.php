@@ -50,13 +50,6 @@
 
         </nav>
 
-        <!-- Sidebar -->
-        <div class="bg-light sidebar ml-3">
-            <ul class="nav flex-column">
-
-            </ul>
-        </div>
-
         <!-- Conteúdo principal -->
 
     </div>
