@@ -1,15 +1,15 @@
 <?php
 
-use App\Models\User;
 use app\Models\Meta;
 use App\Models\Paciente;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 uses(TestCase::class, RefreshDatabase::class);
 
 test('Testa se os pacientes estão sendo listados', function () {
-    
+
     User::factory()->create();
 
     Paciente::factory()->count(3)->create();

@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('Consultas', function (Blueprint $table) {
             $table->id();
             $table->date('data');
-            $table->string('status');
+            $table->enum('status', ['agendado', 'confirmada', 'realizada', 'cancelada'])->default('agendado');
             $table->float('valor');
             $table->foreignId('profissional_id')->constrained('Profissionais')->onDelete('cascade');
             $table->foreignId('paciente_id')->constrained('Pacientes')->onDelete('cascade');

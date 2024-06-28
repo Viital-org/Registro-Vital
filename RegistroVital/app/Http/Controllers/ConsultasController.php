@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Consulta;
-use App\Models\Paciente;
-use App\Models\Profissional;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 
 class ConsultasController extends Controller
 {
@@ -15,71 +13,33 @@ class ConsultasController extends Controller
      */
     public function index()
     {
-        $consultas = Consulta::join('profissionais', 'consultas.profissional_id', '=', 'profissionais.id')
-            ->join('pacientes', 'consultas.paciente_id', '=', 'pacientes.id')
-            ->leftJoin('especializacoes', 'profissionais.especializacao_id', '=', 'especializacoes.id')
-            ->select('consultas.*', 'profissionais.nome as nome_profissional', 'especializacoes.especializacao as especializacao', 'pacientes.nome as nome_paciente')
-            ->orderBy('consultas.created_at')
-            ->simplePaginate(5);
-        return view('Cadastros/listaconsultas', compact('consultas'), ['consultas' => $consultas]);
-    }
+        $user = Auth::user();
+        $today = date('Y-m-d');
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        Consulta::create($request->all());
-        Artisan::call('db:seed', ['class=AgendamentoSeeder']);
-        return redirect()->route('consultas-index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-
-        $profissionais = Profissional::all();
-        $pacientes = Paciente::all();
-
-        return view('Cadastros/cadastroconsultas', ['profissionais' => $profissionais, 'pacientes' => $pacientes]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Request $request)
-    {
-        $id = $request->input('id');
-
-
-        if ($id === null) {
-            $consultas = Consulta::join('profissionais', 'consultas.profissional_id', '=', 'profissionais.id')
-                ->join('pacientes', 'consultas.paciente_id', '=', 'pacientes.id')
-                ->select('consultas.*', 'profissionais.nome as nome_profissional', 'pacientes.nome as nome_paciente')
-                ->orderBy('consultas.created_at')
-                ->get();
+        if ($user->role === 'paciente') {
+            $consultas = Consulta::where('paciente_id', $user->paciente->id)
+                ->where('status', '!=', 'cancelada')
+                ->where('data', '>=', $today)
+                ->paginate(10);
+        } elseif ($user->role === 'medico') {
+            $consultas = Consulta::where('profissional_id', $user->profissional->id)
+                ->where('status', '!=', 'cancelada')
+                ->where('data', '>=', $today)
+                ->paginate(10);
         } else {
-            $consultas = Consulta::join('profissionais', 'consultas.profissional_id', '=', 'profissionais.id')
-                ->join('pacientes', 'consultas.paciente_id', '=', 'pacientes.id')
-                ->where('consultas.id', '=', $id)
-                ->select('consultas.*', 'profissionais.nome as nome_profissional', 'pacientes.nome as nome_paciente')
-                ->orderBy('consultas.created_at')
-                ->get();
+            $consultas = collect();
         }
-        return view('Cadastros/listaconsultas', ['consultas' => $consultas]);
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        $consulta = Consulta::find($id);
-        $profissionais = Profissional::all();
-        $pacientes = Paciente::all();
-        return view('Cadastros/editarconsulta', ['consultas' => $consulta, 'profissionais' => $profissionais, 'pacientes' => $pacientes]);
+        Consulta::where('data', '<', $today)
+            ->where('status', 'agendado')
+            ->update(['status' => 'cancelada']);
+
+        Consulta::where('data', '<', $today)
+            ->where('status', 'confirmada')
+            ->update(['status' => 'realizada']);
+
+        $layout = $user->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : ($user->role === 'paciente' ? 'LayoutsPadrao.layoutpaciente' : 'LayoutsPadrao.inicio');
+        return view('consultas.listaconsultas', compact('consultas', 'layout'));
     }
 
     /**
@@ -87,18 +47,41 @@ class ConsultasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $consulta = Consulta::findorfail($id);
-        $consulta->update($request->all());
-        return redirect()->route('consultas-index');
+        $user = Auth::user();
+        $consulta = Consulta::findOrFail($id);
+
+        if ($user->role === 'paciente' && $user->paciente->id === $consulta->paciente_id) {
+            $consulta->update($request->validate([
+                'status' => 'required|in:agendado,confirmada,cancelada',
+            ]));
+
+            return redirect()->route('consultas.index', $consulta->id)->with('success', 'Status atualizado com sucesso!');
+        }
+
+        return redirect()->route('consultas.index')->with('error', 'Você não tem permissão para atualizar esta consulta.');
     }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($id)
+    {
+        $user = Auth::user();
+        $consulta = Consulta::findOrFail($id);
+
+        $layout = $user->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : ($user->role === 'paciente' ? 'LayoutsPadrao.layoutpaciente' : 'LayoutsPadrao.inicio');
+        return view('consultas.showconsultas', compact('consulta', 'layout'));
+
+    }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
     {
-        $consulta = Consulta::findorfail($id);
+        $consulta = Consulta::findOrFail($id);
         $consulta->delete();
-        return redirect()->route('consultas-index');
+        return redirect()->route('consultas.listaconsultas')->with('success', 'Consulta deletada com sucesso!');
     }
 }

@@ -25,7 +25,8 @@
 
         <div class="mb-3">
             <label for="data_anotacao" class="form-label">Data da anotação</label>
-            <input type="date" name="data_anotacao" id="data_anotacao" class="form-control" max="{{ date('Y-m-d') }}" required>
+            <input type="date" name="data_anotacao" id="data_anotacao" class="form-control" max="{{ date('Y-m-d') }}"
+                   required>
         </div>
 
         <div class="mb-3">

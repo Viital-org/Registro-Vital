@@ -14,7 +14,8 @@
             <label for="tipo_anot" class="form-label">Tipo de anotação</label>
             <select name="tipo_anot" id="tipo_anot" class="form-select">
                 @foreach ($tipoanotacoes as $tipoanotacao)
-                    <option value="{{ $tipoanotacao->id }}" @if ($tipoanotacao->id == $anotacaosaude->tipo_anot) selected @endif>
+                    <option value="{{ $tipoanotacao->id }}"
+                            @if ($tipoanotacao->id == $anotacaosaude->tipo_anot) selected @endif>
                         {{ $tipoanotacao->desc_anotacao }}
                     </option>
                 @endforeach
@@ -23,12 +24,14 @@
 
         <div class="mb-3">
             <label for="anotacao" class="form-label">Anotação</label>
-            <textarea name="anotacao" id="anotacao" class="form-control" required>{{ $anotacaosaude->anotacao }}</textarea>
+            <textarea name="anotacao" id="anotacao" class="form-control"
+                      required>{{ $anotacaosaude->anotacao }}</textarea>
         </div>
 
         <div class="mb-3">
             <label for="data_anotacao" class="form-label">Data da anotação</label>
-            <input type="date" name="data_anotacao" id="data_anotacao" class="form-control" value="{{ $anotacaosaude->data_anotacao }}" max="{{ date('Y-m-d') }}" required>
+            <input type="date" name="data_anotacao" id="data_anotacao" class="form-control"
+                   value="{{ $anotacaosaude->data_anotacao }}" max="{{ date('Y-m-d') }}" required>
         </div>
 
 
@@ -36,7 +39,8 @@
             <label for="visibilidade" class="form-label">Visibilidade</label>
             <select name="visibilidade" id="visibilidade" class="form-select">
                 <option value="Visivel" @if ($anotacaosaude->visibilidade == 'Visivel') selected @endif>Público</option>
-                <option value="Escondido" @if ($anotacaosaude->visibilidade == 'Escondido') selected @endif>Privado</option>
+                <option value="Escondido" @if ($anotacaosaude->visibilidade == 'Escondido') selected @endif>Privado
+                </option>
             </select>
         </div>
 

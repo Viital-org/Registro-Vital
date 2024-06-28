@@ -20,7 +20,7 @@
     <div class="row">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Registro Vital</a>
+            <a class="navbar-brand" href="/">Registro Vital</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,6 +40,24 @@
             </div>
             <div class="navbar-collapse">
                 <ul class="navbar-nav">
+
+                    <!-- Dropdown para Consulta -->
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Agendamentos
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <button onclick="window.location.href='{{ route('agendamentos.create') }}'" class="dropdown-item">Agendamento</button>
+                            </li>
+                            <li>
+                                <button onclick="window.location.href='{{ route('agendamentos.index') }}'" class="dropdown-item">Historico de Agendamentos</button>
+                            </li>
+                            <li>
+                                <button onclick="window.location.href='{{ route('consultas.index') }}'" class="dropdown-item">lista de Consultas</button>
+                            </li>
+                        </ul>
+                    </div>
                     <!-- Dropdown para Anotações -->
                     <div class="dropdown">
                         <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

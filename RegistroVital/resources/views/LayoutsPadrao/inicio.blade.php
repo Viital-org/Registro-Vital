@@ -21,7 +21,7 @@
     <div class="row">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Registro Vital</a>
+            <a class="navbar-brand" href="/">Registro Vital</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,14 +29,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    @if (auth()->check())
-                        @if (auth()->user()->role === 'paciente')
-                            <a class="nav-link" href="{{ route('paciente.dashboard') }}">Home</a>
-                        @elseif (auth()->user()->role === 'medico')
-                            <a class="nav-link" href="{{ route('medico.dashboard') }}">Home</a>
+                        @if (auth()->check())
+                            @if (auth()->user()->role === 'paciente')
+                                <a class="nav-link" href="{{ route('paciente.dashboard') }}">Home</a>
+                            @elseif (auth()->user()->role === 'medico')
+                                <a class="nav-link" href="{{ route('medico.dashboard') }}">Home</a>
+                            @endif
                         @endif
-                    @endif
-                    
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Quem somos</a>
@@ -46,7 +46,7 @@
                     </li>
                 </ul>
             </div>
-            
+
         </nav>
 
         <!-- Sidebar -->

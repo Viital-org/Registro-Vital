@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\AtuaArea;
+use App\Models\Especializacao;
 use App\Models\Profissional;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -19,35 +20,15 @@ class ProfissionalFactory extends Factory
      */
     public function definition(): array
     {
-        $atuaareaId = null;
-        $especializacaoId = null;
-
         $user = User::where('role', 'medico')->inRandomOrder()->first() ?? User::factory()->create(['role' => 'medico']);
 
-        $atuaareas = AtuaArea::all();
-        if ($atuaareas->count() > 0) {
-
-            $atuaarea = $atuaareas->random();
-            $atuaareaId = $atuaarea->id;
-            $especializacoes = $atuaarea->especializacoes;
-
-            if ($especializacoes->count() > 0) {
-
-                $especializacao = $especializacoes->random();
-                $especializacaoId = $especializacao->id;
-
-            } else {
-                $especializacaoId = null;
-            }
-
-        } else {
-            $atuaareaId = null;
-        }
+        $atuaarea = AtuaArea::inRandomOrder()->first() ?? AtuaArea::factory()->create();
+        $especializacao = $atuaarea->especializacoes()->inRandomOrder()->first() ?? Especializacao::factory()->create(['area_id' => $atuaarea->id]);
 
         return [
             'user_id' => $user->id,
-            'areaatuacao_id' => $atuaareaId,
-            'especializacao_id' => $especializacaoId,
+            'areaatuacao_id' => $atuaarea->id,
+            'especializacao_id' => $especializacao->id,
             'nome' => $user->name,
             'email' => $user->email,
             'enderecoatuacao' => $this->faker->address,
@@ -57,3 +38,4 @@ class ProfissionalFactory extends Factory
         ];
     }
 }
+

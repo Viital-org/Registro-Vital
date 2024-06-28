@@ -28,7 +28,7 @@ class AgendamentoPacienteController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -36,7 +36,7 @@ class AgendamentoPacienteController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**

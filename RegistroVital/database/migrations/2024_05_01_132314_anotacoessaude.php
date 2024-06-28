@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->foreign('tipo_anot')->references('id')->on('tipoanotacoes');
             $table->enum('visibilidade', ['Visivel', 'Escondido']);
             $table->timestamps();
-            
+
         });
     }
 

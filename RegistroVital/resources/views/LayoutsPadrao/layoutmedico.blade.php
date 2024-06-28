@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <!-- Título da página dinâmico -->
     <title> @yield('titulo')</title>
 
@@ -21,7 +20,7 @@
     <div class="row">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Registro Vital</a>
+            <a class="navbar-brand" href="/">Registro Vital</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,55 +38,106 @@
                     </li>
                 </ul>
             </div>
-            <div class="dropdown">
-                    <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <label>{{ Auth::user()->name }}</label>
-                    </button>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav">
+
+                    <!-- Dropdown para Consulta -->
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            Agendamentos
+                        </button>
                         <ul class="dropdown-menu">
-
                             <li>
-                            <form method="GET" action="{{ route('profissionais-edit') }}" id="profissionais-edit">
-                                @csrf
-                                <button type="submit"
-                                        onclick="event.preventDefault(); document.getElementById('profissionais-edit').submit();"
-                                        class="dropdown-item">Cadastro de Profissional
+                                <button onclick="window.location.href='{{ route('consultas.index') }}'"
+                                        class="dropdown-item">lista de Consultas
                                 </button>
-                            </form>
                             </li>
-
-                            <li>
-                            <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">
-                                @csrf
-                                <button type="submit" onclick="event.preventDefault(); document.getElementById('edit-form').submit();"
-                                        class="dropdown-item">Editar Perfil
-                                </button>
-                            </form>
-                            </li>
-
-                            <li>
-                            <form method="POST" action="{{ route('logout') }}" id="logout-form">
-                                @csrf
-                                <button type="submit" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                        class="dropdown-item">Sair
-                                </button>
-                            </form>
-                            </li>
-
-                            
                         </ul>
-                </div>
+                    </div>
+
+                    <!-- Dropdown para Anotações -->
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            Anotações
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <button onclick="window.location.href='{{ route('anotacoessaude-index') }}'"
+                                        class="dropdown-item">Listar Anotações
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Dropdown para Perfil e Logout -->
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <label>{{ Auth::user()->name }}</label>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">
+                                    @csrf
+                                    <button type="submit"
+                                            onclick="event.preventDefault(); document.getElementById('edit-form').submit();"
+                                            class="dropdown-item">Editar Perfil
+                                    </button>
+                                </form>
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                                    @csrf
+                                    <button type="submit"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                            class="dropdown-item">Sair
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </ul>
             </div>
         </nav>
 
         <!-- Sidebar -->
         <div class="bg-light sidebar ml-3">
             <ul class="nav flex-column">
+
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Cadastros
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/cadastropaci">Pacientes</a></li>
+                        <li><a class="dropdown-item" href="/cadastrarprof">Profissionais</a></li>
+                        <li><a class="dropdown-item" href="/cadastroconsul">Consultas</a></li>
+                        <li><a class="dropdown-item" href="/cadastroarea">Areas de atuacao</a></li>
+                        <li><a class="dropdown-item" href="/cadastroespec">Especializações</a></li>
+                        <li><a class="dropdown-item" href="/cadastrotipanot">Tipos de anotação</a></li>
+                        <li><a class="dropdown-item" href="/cadastrodica">Dicas</a></li>
+                        <li><a class="dropdown-item" href="/cadastroanotacoes">Anotações</a></li>
+                        <li><a class="dropdown-item" href="/cadastrometa">Metas</a></li>
+                        <li><a class="dropdown-item" href="/agendaconsulta">Marcar consulta</a></li>
+                    </ul>
+                </div>
+
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Listagens
                     </a>
                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('pacientes-index') }}">Pacientes</a></li>
+                        <li><a class="dropdown-item" href="{{ route('profissionais-index') }}">Profissionais</a></li>
                         <li><a class="dropdown-item" href="{{ route('consultas-index') }}">Consultas</a></li>
+                        <li><a class="dropdown-item" href="{{ route('atuaareas-index') }}">Areas de atuacao</a></li>
+                        <li><a class="dropdown-item" href="{{ route('especializacoes-index') }}">Especializações</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('agendamentos-index') }}">Agendamentos</a></li>
+                        <li><a class="dropdown-item" href="{{ route('tipoanotacao-index') }}">Tipos de anotação</a></li>
+                        <li><a class="dropdown-item" href="{{ route('dicas-index')}}">Dicas</a></li>
                         <li><a class="dropdown-item" href="{{ route('anotacoessaude-index')}}">Anotações</a></li>
                         <li><a class="dropdown-item" href="{{ route('metas-index')}}">Metas</a></li>
                         <li><a class="dropdown-item" href="{{ route('agendamentos-paciente-index')}}">Agendamentos de
@@ -98,7 +148,6 @@
         </div>
 
         <!-- Conteúdo principal -->
-
     </div>
     <div class="col-md-9 col-lg-9 pt-3 main-content">
         @yield('conteudo')
