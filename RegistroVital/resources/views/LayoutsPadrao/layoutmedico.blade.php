@@ -31,7 +31,7 @@
                         <a class="nav-link" href="{{ route('medico.dashboard') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Quem somos</a>
+                        <a class="nav-link" href="{{ route('quemsomos') }}">Quem somos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Ajuda</a>
