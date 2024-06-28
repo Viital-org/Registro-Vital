@@ -1,6 +1,6 @@
-Vital project
+Registro Vital
 
-Team:
+Time
 
 * Bruno Marques
 * Gabriel Turcato
