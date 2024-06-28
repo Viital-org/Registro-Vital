@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Consulta;
+use App\Models\Paciente;
+use App\Models\Profissional;
+use App\Models\Anotacaosaude;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,51 +17,49 @@ class ConsultasController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $today = date('Y-m-d');
-
-        if ($user->role === 'paciente') {
-            $consultas = Consulta::where('paciente_id', $user->paciente->id)
-                ->where('status', '!=', 'cancelada')
-                ->where('data', '>=', $today)
-                ->paginate(10);
-        } elseif ($user->role === 'medico') {
+        if ($user->role === 'medico') {
             $consultas = Consulta::where('profissional_id', $user->profissional->id)
-                ->where('status', '!=', 'cancelada')
-                ->where('data', '>=', $today)
-                ->paginate(10);
+                ->with(['profissional', 'paciente'])
+                ->orderBy('data', 'desc')
+                ->simplePaginate(10);
         } else {
-            $consultas = collect();
+            $consultas = Consulta::where('paciente_id', $user->paciente->id)
+                ->with(['profissional', 'paciente'])
+                ->orderBy('data', 'desc')
+                ->simplePaginate(10);
         }
 
-        Consulta::where('data', '<', $today)
-            ->where('status', 'agendado')
-            ->update(['status' => 'cancelada']);
+        $layout = $user->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : 'LayoutsPadrao.layoutpaciente';
 
-        Consulta::where('data', '<', $today)
-            ->where('status', 'confirmada')
-            ->update(['status' => 'realizada']);
-
-        $layout = $user->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : ($user->role === 'paciente' ? 'LayoutsPadrao.layoutpaciente' : 'LayoutsPadrao.inicio');
         return view('consultas.listaconsultas', compact('consultas', 'layout'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Show the form for creating a new resource.
      */
-    public function update(Request $request, $id)
+    public function create()
     {
-        $user = Auth::user();
-        $consulta = Consulta::findOrFail($id);
+        $profissionais = Profissional::all();
+        $pacientes = Paciente::all();
+        return view('consultas.cadastroconsultas', compact('profissionais', 'pacientes'));
+    }
 
-        if ($user->role === 'paciente' && $user->paciente->id === $consulta->paciente_id) {
-            $consulta->update($request->validate([
-                'status' => 'required|in:agendado,confirmada,cancelada',
-            ]));
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'data' => 'required|date|after_or_equal:today',
+            'status' => 'required|string|max:255',
+            'profissional_id' => 'required|exists:profissionais,id',
+            'paciente_id' => 'required|exists:pacientes,id',
+            'valor' => 'required|numeric',
+        ]);
 
-            return redirect()->route('consultas.index', $consulta->id)->with('success', 'Status atualizado com sucesso!');
-        }
+        Consulta::create($validated);
 
-        return redirect()->route('consultas.index')->with('error', 'Você não tem permissão para atualizar esta consulta.');
+        return redirect()->route('consultas.index')->with('success', 'Consulta criada com sucesso!');
     }
 
     /**
@@ -66,14 +67,36 @@ class ConsultasController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
-        $consulta = Consulta::findOrFail($id);
+        $consulta = Consulta::with(['profissional', 'paciente'])->findOrFail($id);
 
-        $layout = $user->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : ($user->role === 'paciente' ? 'LayoutsPadrao.layoutpaciente' : 'LayoutsPadrao.inicio');
+        // Verifica se a consulta pertence ao usuário logado
+        if ((Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) ||
+            (Auth::user()->role === 'paciente' && $consulta->paciente_id !== Auth::user()->paciente->id)) {
+            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
+        }
+
+
+        $layout = Auth::user()->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : 'LayoutsPadrao.layoutpaciente';
+
         return view('consultas.showconsultas', compact('consulta', 'layout'));
-
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        $consulta = Consulta::findOrFail($id);
+
+        // Verifica se a consulta pertence ao usuário logado
+        if ((Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) ||
+            (Auth::user()->role === 'paciente' && $consulta->paciente_id !== Auth::user()->paciente->id)) {
+            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
+        }
+
+        $consulta->update($request->all());
+        return redirect()->route('consultas.index')->with('success', 'Consulta atualizada com sucesso!');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -81,7 +104,36 @@ class ConsultasController extends Controller
     public function destroy($id)
     {
         $consulta = Consulta::findOrFail($id);
+
+        // Verifica se a consulta pertence ao usuário logado
+        if ((Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) ||
+            (Auth::user()->role === 'paciente' && $consulta->paciente_id !== Auth::user()->paciente->id)) {
+            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
+        }
+
         $consulta->delete();
-        return redirect()->route('consultas.listaconsultas')->with('success', 'Consulta deletada com sucesso!');
+        return redirect()->route('consultas.index')->with('success', 'Consulta deletada com sucesso!');
+    }
+
+    /**
+     * Listar anotações do paciente para o médico.
+     */
+    public function listAnotacoes($id)
+    {
+        $consulta = Consulta::findOrFail($id);
+
+
+        if (Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) {
+            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta página.');
+        }
+
+        $anotacoessaude = Anotacaosaude::where('paciente_id', $consulta->paciente_id)
+            ->where('visibilidade', 'Visivel')
+            ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
+            ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao')
+            ->simplePaginate(5);
+
+        return view('Anotacoes.listaanotacoesmedico', compact('anotacoessaude', 'consulta'));
     }
 }
+

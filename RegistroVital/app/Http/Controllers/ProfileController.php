@@ -28,9 +28,7 @@ class ProfileController extends Controller
         $atuaareas = AtuaArea::all();
         $especializacoes = Especializacao::all();
 
-        $layout = $user->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : ($user->role === 'paciente' ? 'LayoutsPadrao.layoutpaciente' : 'LayoutsPadrao.inicio');
-
-        return view('profile.edit', compact('user', 'paciente', 'profissional', 'metas', 'atuaareas', 'especializacoes', 'layout'));
+        return view('profile.edit', compact('user', 'paciente', 'profissional', 'metas', 'atuaareas', 'especializacoes'));
     }
 
     /**

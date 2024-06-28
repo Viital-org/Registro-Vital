@@ -38,20 +38,16 @@
                 <div class="mb-3">
                     <label for="status" class="form-label">Status</label>
                     <select name="status" id="status" class="form-select" required>
-                        <option value="agendado" {{ $consulta->status === 'agendado' ? 'selected' : '' }}>Agendado
-                        </option>
-                        <option value="confirmada" {{ $consulta->status === 'confirmada' ? 'selected' : '' }}>
-                            Confirmada
-                        </option>
-                        <option value="cancelada" {{ $consulta->status === 'cancelada' ? 'selected' : '' }}>Cancelada
-                        </option>
+                        <option value="agendado" {{ $consulta->status === 'agendado' ? 'selected' : '' }}>Agendado</option>
+                        <option value="confirmada" {{ $consulta->status === 'confirmada' ? 'selected' : '' }}>Confirmada</option>
+                        <option value="cancelada" {{ $consulta->status === 'cancelada' ? 'selected' : '' }}>Cancelada</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Atualizar Status</button>
             </form>
         @endif
         @if(Auth::user()->role === 'medico')
-            <a href="{{ route('anotacoessaude-index') }}" class="btn btn-primary">Listar Todas as Anotações</a>
+            <a href="{{ route('consultas.anotacoes', $consulta->id) }}" class="btn btn-primary">Ver Anotações do Paciente</a>
         @endif
     </div>
 @endsection

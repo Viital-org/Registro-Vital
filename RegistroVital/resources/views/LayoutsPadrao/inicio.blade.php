@@ -16,12 +16,12 @@
 </head>
 <body>
 <!-- Conteúdo da página -->
-<div class="container-fluid">
+<div class="container-fluid conteudo-ajuda">
 
     <!-- Conteúdo principal com sidebar -->
     <div class="row">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <img src="{{ asset('/img/cruz.png') }}" style="max-width:3%; margin-left:1%"/>
             <a class="navbar-brand" href="/" >Registro Vital</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -54,7 +54,7 @@
         <!-- Conteúdo principal -->
 
     </div>
-    <div class="col-md-9 col-lg-9 pt-3 main-content ">
+    <div class="col-md-9 col-lg-9 pt-3">
         @yield('conteudo')
     </div>
         

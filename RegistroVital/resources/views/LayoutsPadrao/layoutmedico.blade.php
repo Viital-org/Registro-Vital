@@ -19,7 +19,7 @@
     <!-- Conteúdo principal com sidebar -->
     <div class="row">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <img src="{{ asset('/img/cruz.png') }}" style="max-width:3%; margin-left:1%"/>
             <a class="navbar-brand" href="/">Registro Vital</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -46,27 +46,12 @@
                     <div class="dropdown">
                         <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                            Agendamentos
+                            Consultas Marcadas
                         </button>
                         <ul class="dropdown-menu">
                             <li>
                                 <button onclick="window.location.href='{{ route('consultas.index') }}'"
                                         class="dropdown-item">lista de Consultas
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Dropdown para Anotações -->
-                    <div class="dropdown">
-                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                            Anotações
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <button onclick="window.location.href='{{ route('anotacoessaude-index') }}'"
-                                        class="dropdown-item">Listar Anotações
                                 </button>
                             </li>
                         </ul>
