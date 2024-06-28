@@ -19,7 +19,7 @@
     <!-- Conteúdo principal com sidebar -->
     <div class="row">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top h1">
             <a class="navbar-brand" href="{{ route('paciente.dashboard') }}">Registro Vital</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,7 +102,7 @@
         </nav>
 
         <!-- Sidebar -->
-        <div class="bg-light sidebar ml-3">
+        <div class="bg-light sidebar ml-5">
             <ul class="nav flex-column">
 
                 <div class="dropdown">

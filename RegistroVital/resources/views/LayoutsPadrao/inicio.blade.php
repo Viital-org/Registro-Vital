@@ -11,6 +11,7 @@
     <!-- Importação de arquivos JavaScript e CSS com Vite -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="{{ asset('resources/sass/app.css') }}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -20,7 +21,7 @@
     <!-- Conteúdo principal com sidebar -->
     <div class="row">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <a class="navbar-brand" href="{{ route('welcome') }}">Registro Vital</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +63,10 @@
     <div class="col-md-9 col-lg-9 pt-3 main-content ">
         @yield('conteudo')
     </div>
+        
+    </div>
 </div>
+
 
 </body>
 </html>

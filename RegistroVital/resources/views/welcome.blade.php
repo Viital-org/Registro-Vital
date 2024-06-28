@@ -3,9 +3,6 @@
 @section('titulo', 'RegistroVital')
 
 @section('conteudo')
-
-    <br>
-
     @if (Route::has('login'))
     <nav class="mb-3">
         @auth
