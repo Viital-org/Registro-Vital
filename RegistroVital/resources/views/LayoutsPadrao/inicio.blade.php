@@ -42,7 +42,7 @@
                         <a class="nav-link" href="{{ route('quemsomos') }}">Quem somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ajuda</a>
+                        <a class="nav-link" href="{{ route('ajuda') }}">Ajuda</a>
                     </li>
                 </ul>
             </div>

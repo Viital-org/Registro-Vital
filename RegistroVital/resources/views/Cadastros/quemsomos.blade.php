@@ -6,8 +6,9 @@
     
 @csrf
 
+<h3><i>Seu diário pessoal de saúde</i></h3>
+<br>
 <h1>Quem Somos?</h1>
-<h2><i>Seu diário pessoal de saúde</i></h2>
 <br>
 <h3>Motivação</h3>
 <p> No final do ano de 2019 iniciou-se uma cadeia de contaminação pelo vírus da 
