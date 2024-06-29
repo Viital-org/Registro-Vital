@@ -68,7 +68,7 @@ class ConsultasController extends Controller
     {
         $consulta = Consulta::with(['profissional', 'paciente'])->findOrFail($id);
 
-        // Verifica se a consulta pertence ao usuário logado
+
         if ((Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) ||
             (Auth::user()->role === 'paciente' && $consulta->paciente_id !== Auth::user()->paciente->id)) {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
@@ -85,7 +85,7 @@ class ConsultasController extends Controller
     {
         $consulta = Consulta::findOrFail($id);
 
-        // Verifica se a consulta pertence ao usuário logado
+
         if ((Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) ||
             (Auth::user()->role === 'paciente' && $consulta->paciente_id !== Auth::user()->paciente->id)) {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
@@ -102,7 +102,7 @@ class ConsultasController extends Controller
     {
         $consulta = Consulta::findOrFail($id);
 
-        // Verifica se a consulta pertence ao usuário logado
+
         if ((Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) ||
             (Auth::user()->role === 'paciente' && $consulta->paciente_id !== Auth::user()->paciente->id)) {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');

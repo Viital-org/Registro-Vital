@@ -23,9 +23,9 @@ class AnotacoesSaudeController extends Controller
                 ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao')
                 ->simplePaginate(5);
         } else if ($user->role === 'medico') {
-            abort(403);
+            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
         } else {
-            abort(403);
+            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
         }
 
         return view('Anotacoes.listaranotacoessaude', ['anotacoessaude' => $anotacoessaude]);
