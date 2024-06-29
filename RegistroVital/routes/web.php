@@ -29,13 +29,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profile/role', [ProfileController::class, 'updateRoleInfo'])->name('profile.updateRoleInfo');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/anotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
 
     //Consulta
     Route::get('/consultas', [ConsultasController::class, 'index'])->name('consultas.index');
     Route::patch('/consultas/{id}', [ConsultasController::class, 'update'])->name('consultas.update');
     Route::get('/consultas/{id}', [ConsultasController::class, 'show'])->name('consultas.show');
     Route::delete('/consultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas.destroy');
+    Route::get('/consultas/{id}/anotacoes', [ConsultasController::class, 'listAnotacoes'])->name('consultas.anotacoes');
 });
 
 require __DIR__ . '/auth.php';
@@ -46,11 +46,12 @@ Route::middleware(['auth', 'role:paciente'])->group(function () {
     Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
 
     //Anotacoes
+    Route::get('/anotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
     Route::get('/anotacoes/criar', [AnotacoesSaudeController::class, 'create'])->name('anotacoessaude-create');
     Route::post('/anotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
-    Route::get('/anotacoes/editar', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
-    Route::put('/anotacoes', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
-    Route::delete('/anotacoes', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
+    Route::get('/anotacoes/{id}/editar', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
+    Route::put('/anotacoes/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
+    Route::delete('/anotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
 
     //Agendamentos
     Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');

@@ -5,7 +5,12 @@
 @section('conteudo')
 
     <br>
-
+    <div class="container">
+        @if (session('error'))
+            <div id="error-message" class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
     @if (Route::has('login'))
     <nav class="mb-3">
         @auth
@@ -22,4 +27,14 @@
         @endauth
     </nav>
     @endif
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    var errorMessage = document.getElementById('error-message');
+                    if (errorMessage) {
+                        setTimeout(function () {
+                            errorMessage.style.display = 'none';
+                        }, 3000);
+                    }
+                });
+            </script>
 @endsection
