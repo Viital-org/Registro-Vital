@@ -38,15 +38,15 @@ class TipoAnotacoesController extends Controller
      */
     public function show(Request $request)
     {
-        $id = $request->input('id');
-
+        $id = $request->input('search_id');
 
         if ($id === null) {
-            $anotacaosaude = TipoAnotacao::all();
+            $tipoanotacao = TipoAnotacao::paginate(5);
         } else {
-            $anotacaosaude = TipoAnotacao::all()->where('id', '=', $id);
+            $tipoanotacao = TipoAnotacao::where('id', '=', $id)->paginate(5);
         }
-        return view('Cadastros/listatipoanotacoes', ['tipoanotacao' => $anotacaosaude]);
+
+        return view('Cadastros.listatipoanotacoes', ['tipoanotacao' => $tipoanotacao]);
     }
 
     /**
