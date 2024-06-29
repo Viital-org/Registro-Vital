@@ -20,10 +20,6 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('layout.dinamico')->group(function () {
 
 Route::get('/quemsomos', function () {

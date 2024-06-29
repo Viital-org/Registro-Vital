@@ -20,6 +20,7 @@
     <div class="row">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img src="{{ asset('/img/cruz.png') }}" style="max-width:3%; margin-left:1%"/>
             <a class="navbar-brand" href="/">Registro Vital</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,45 +103,21 @@
         </nav>
 
         <!-- Sidebar -->
-        <div class="bg-light sidebar ml-3">
+        <div class="bg-light sidebar ml-5">
             <ul class="nav flex-column">
-
-                <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Cadastros
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/cadastropaci">Pacientes</a></li>
-                        <li><a class="dropdown-item" href="/cadastrarprof">Profissionais</a></li>
-                        <li><a class="dropdown-item" href="/cadastroconsul">Consultas</a></li>
-                        <li><a class="dropdown-item" href="/cadastroarea">Areas de atuacao</a></li>
-                        <li><a class="dropdown-item" href="/cadastroespec">Especializações</a></li>
-                        <li><a class="dropdown-item" href="/cadastrotipanot">Tipos de anotação</a></li>
-                        <li><a class="dropdown-item" href="/cadastrodica">Dicas</a></li>
-                        <li><a class="dropdown-item" href="/cadastroanotacoes">Anotações</a></li>
-                        <li><a class="dropdown-item" href="/cadastrometa">Metas</a></li>
-                        <li><a class="dropdown-item" href="/agendaconsulta">Marcar consulta</a></li>
-                    </ul>
-                </div>
 
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Listagens
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('pacientes-index') }}">Pacientes</a></li>
-                        <li><a class="dropdown-item" href="{{ route('profissionais-index') }}">Profissionais</a></li>
-                        <li><a class="dropdown-item" href="{{ route('consultas-index') }}">Consultas</a></li>
                         <li><a class="dropdown-item" href="{{ route('atuaareas-index') }}">Areas de atuacao</a></li>
                         <li><a class="dropdown-item" href="{{ route('especializacoes-index') }}">Especializações</a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('agendamentos-index') }}">Agendamentos</a></li>
                         <li><a class="dropdown-item" href="{{ route('tipoanotacao-index') }}">Tipos de anotação</a></li>
                         <li><a class="dropdown-item" href="{{ route('dicas-index')}}">Dicas</a></li>
-                        <li><a class="dropdown-item" href="{{ route('anotacoessaude-index')}}">Anotações</a></li>
                         <li><a class="dropdown-item" href="{{ route('metas-index')}}">Metas</a></li>
-                        <li><a class="dropdown-item" href="{{ route('agendamentos-paciente-index')}}">Agendamentos de
-                                @nomeUser</a></li>
                     </ul>
                 </div>
             </ul>
