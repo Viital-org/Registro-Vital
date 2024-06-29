@@ -29,6 +29,7 @@ Route::middleware('layout.dinamico')->group(function () {
         return view('Cadastros/ajuda');
     })->name('ajuda');
 
+
     //Profissionais
 //Route::resource('/cadastroprofissional', ProfissionaisController::class);
     Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
