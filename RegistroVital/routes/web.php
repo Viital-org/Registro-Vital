@@ -15,12 +15,11 @@ use App\Http\Controllers\TipoAnotacoesController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
-
-
 Route::middleware('layout.dinamico')->group(function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('welcome');
 
 Route::get('/quemsomos', function () {
     return view('Cadastros/quemsomos');

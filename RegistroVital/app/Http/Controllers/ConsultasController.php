@@ -29,9 +29,8 @@ class ConsultasController extends Controller
                 ->simplePaginate(10);
         }
 
-        $layout = $user->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : 'LayoutsPadrao.layoutpaciente';
 
-        return view('consultas.listaconsultas', compact('consultas', 'layout'));
+        return view('consultas.listaconsultas', compact('consultas'));
     }
 
     /**
@@ -76,9 +75,9 @@ class ConsultasController extends Controller
         }
 
 
-        $layout = Auth::user()->role === 'medico' ? 'LayoutsPadrao.layoutmedico' : 'LayoutsPadrao.layoutpaciente';
 
-        return view('consultas.showconsultas', compact('consulta', 'layout'));
+
+        return view('consultas.showconsultas', compact('consulta'));
     }
 
     /**
