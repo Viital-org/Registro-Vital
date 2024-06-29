@@ -27,8 +27,15 @@ class PacientesController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'datanascimento' => 'required|date',
+            'cep' => 'required|string|max:9',
+            'endereco' => 'required|string|max:255',
+            'numcartaocred' => 'nullable|string|max:16',
+            'hobbies' => 'nullable|string|max:255',
+            'doencascronicas' => 'nullable|string|max:255',
+            'remediosregulares' => 'nullable|string|max:255',
             'meta_id' => 'nullable|exists:metas,id',
-            // Adicione outras validações conforme necessário
+
         ]);
 
         $validated['user_id'] = Auth::id();
@@ -89,7 +96,14 @@ class PacientesController extends Controller
         $paciente = Paciente::where('user_id', $user->id)->firstOrFail();
 
         $validated = $request->validate([
-            // Adicione as regras de validação para os campos que o paciente pode editar
+            'datanascimento' => 'required|date',
+            'cep' => 'required|string|max:9',
+            'endereco' => 'required|string|max:255',
+            'numcartaocred' => 'nullable|string|max:16',
+            'hobbies' => 'nullable|string|max:255',
+            'doencascronicas' => 'nullable|string|max:255',
+            'remediosregulares' => 'nullable|string|max:255',
+            'meta_id' => 'nullable|exists:metas,id',
         ]);
 
         $paciente->update($validated);

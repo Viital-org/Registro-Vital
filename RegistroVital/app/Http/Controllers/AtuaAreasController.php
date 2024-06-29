@@ -73,8 +73,13 @@ class AtuaAreasController extends Controller
      */
     public function destroy($id)
     {
-        $atuaarea = AtuaArea::findorfail($id);
-        $atuaarea->delete();
-        return redirect()->route('atuaareas-index');
+        try {
+            $atuaarea = AtuaArea::findorfail($id);
+            $atuaarea->delete();
+            return redirect()->route('atuaareas-index')->with('success', 'Área de atuação excluída com sucesso.');    
+        } catch (\Exception $e) {
+            // Se ocorrer algum erro, trata-o aqui
+            return redirect()->route('atuaareas-index')->with('error', 'Não foi possível excluir a área de atuação.');
+        }
     }
 }

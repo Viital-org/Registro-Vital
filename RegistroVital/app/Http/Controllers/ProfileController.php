@@ -63,7 +63,6 @@ class ProfileController extends Controller
 
         $user->save();
 
-        // Atualizar informações específicas da role
         if ($user->role === 'paciente') {
             $paciente = Paciente::where('user_id', $user->id)->first();
             if ($paciente) {

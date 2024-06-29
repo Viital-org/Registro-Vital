@@ -16,7 +16,7 @@
 </head>
 <body>
 <!-- Conteúdo da página -->
-<div class="container-fluid d-flex justify-content-between align-items-center">
+<div class="container-fluid conteudo-ajuda d-flex justify-content-center">
 
     <!-- Conteúdo principal com sidebar -->
     <div class="row">
@@ -54,13 +54,11 @@
         <!-- Conteúdo principal -->
 
     </div>
-    <div class="col-md-9 col-lg-9 pt-3 ">
+    <div class="col-md-9 col-lg-9 pt-3">
         @yield('conteudo')
     </div>
 
 </div>
-</div>
-
 
 </body>
 </html>
