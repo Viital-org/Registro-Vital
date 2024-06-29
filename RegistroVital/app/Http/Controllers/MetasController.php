@@ -41,10 +41,11 @@ class MetasController extends Controller
         $id = $request->input('search_id');
 
         if ($id === null) {
-            $metas = Meta::all()->toQuery()->paginate(5);
+            $metas = Meta::query()->paginate(5);
         } else {
-            $metas = Meta::all()->where('id', '=', $id)->toQuery()->paginate(5);
+            $metas = Meta::where('id', $id)->paginate(5);
         }
+
         return view('Cadastros/listametas', ['metas' => $metas]);
     }
 

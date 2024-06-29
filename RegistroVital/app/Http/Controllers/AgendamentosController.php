@@ -25,7 +25,7 @@ class AgendamentosController extends Controller
                         ->orWhere('status', 'cancelada')
                         ->orWhere('status', 'realizada');
                 })
-                ->paginate(10);
+                ->paginate(5);
         } elseif ($user->role === 'medico') {
             $agendamentos = Agendamento::where('profissional_id', $user->profissional->id)
                 ->whereHas('consulta', function ($query) use ($today) {

@@ -16,18 +16,18 @@ class TipoAnotacoesController extends Controller
         return view('Cadastros/listatipoanotacoes', ['tipoanotacao' => $tipoanotacao]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        TipoAnotacao::create($request->all());
+        $validatedData = $request->validate([
+            'tipo_anotacao' => 'required|integer',
+            'desc_anotacao' => 'required|string|max:255',
+        ]);
+
+        TipoAnotacao::create($validatedData);
+
         return redirect()->route('tipoanotacao-index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('Cadastros/cadastrotipoanotacoes');

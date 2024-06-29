@@ -66,7 +66,6 @@ Route::middleware('layout.dinamico')->group(function () {
     Route::get('/editaratuaarea/{id}', [AtuaAreasController::class, 'edit'])->name('atuaareas-edit');
     Route::put('/editaratuaarea/{id}', [AtuaAreasController::class, 'update'])->name('atuaareas-update');
     Route::delete('/listaatuaareas/{id}', [AtuaAreasController::class, 'destroy'])->name('atuaareas-delete');
-
 //Especializacoes
     Route::resource('/cadastroespecializacoes', EspecializacoesController::class);
     Route::get('/listaespecializacoes', [EspecializacoesController::class, 'index'])->name('especializacoes-index');
@@ -90,9 +89,8 @@ Route::get('/listaagendamentos', [AgendamentosController::class, 'index'])->name
     //Route::get('/guardaconsulta', [AgendamentoPacienteController::class, 'store'])->name('agenda-consulta-store');
 
 //Tipos de anotacao
-    Route::resource('/cadastrotipoanotacao', TipoAnotacoesController::class);
     Route::get('/listatipoanotacoes', [TipoAnotacoesController::class, 'index'])->name('tipoanotacao-index');
-    Route::post('/guardartioanotacao', [TipoAnotacoesController::class, 'store'])->name('tipoanotacao-store');
+    Route::post('/guardartipoanotacao', [TipoAnotacoesController::class, 'store'])->name('tipoanotacao-store');
     Route::post('/listatipoanotacoes', [TipoAnotacoesController::class, 'show'])->name('tipoanotacao-show');
     Route::get('/cadastrotipanot', [TipoAnotacoesController::class, 'create'])->name('tipoanotacao-create');
     Route::get('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'edit'])->name('tipoanotacao-edit');

@@ -10,8 +10,8 @@
         <h1>Cadastro de Tipos de Anotação</h1>
 
         <div class="mb-3">
-            <label for="cad_tipanot" class="form-label">Tipo/Código da Anotação</label>
-            <input type="number" name="cad_tipanot" id="cad_tipanot" class="form-control" required>
+            <label for="tipo_anotacao" class="form-label">Tipo/Código da Anotação</label>
+            <input type="number" name="tipo_anotacao" id="tipo_anotacao" class="form-control" required>
         </div>
 
         <div class="mb-3">
