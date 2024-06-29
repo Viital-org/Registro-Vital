@@ -1,4 +1,4 @@
-@extends('layoutspadrao.layoutpaciente')
+@extends($layout)
 
 @section('titulo', 'Meus Agendamentos')
 

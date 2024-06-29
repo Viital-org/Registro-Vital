@@ -1,4 +1,4 @@
-@extends ('LayoutsPadrao.layoutmedico')
+@extends ($layout)
 
 @section('titulo', 'RegistroVital')
 
