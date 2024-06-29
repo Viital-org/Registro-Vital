@@ -39,10 +39,10 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Quem somos</a>
+                        <a class="nav-link" href="{{ route('quemsomos') }}">Quem somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ajuda</a>
+                        <a class="nav-link" href="{{ route('ajuda') }}">Ajuda</a>
                     </li>
                 </ul>
             </div>
@@ -67,7 +67,6 @@
                         <li><a class="dropdown-item" href="/cadastrodica">Dicas</a></li>
                         <li><a class="dropdown-item" href="/cadastroanotacoes">Anotações</a></li>
                         <li><a class="dropdown-item" href="/cadastrometa">Metas</a></li>
-                        <li><a class="dropdown-item" href="/agendaconsulta">Marcar consulta</a></li>
                     </ul>
                 </div>
 
