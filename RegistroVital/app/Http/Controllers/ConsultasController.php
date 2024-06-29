@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anotacaosaude;
 use App\Models\Consulta;
 use App\Models\Paciente;
 use App\Models\Profissional;
-use App\Models\Anotacaosaude;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,16 +34,6 @@ class ConsultasController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $profissionais = Profissional::all();
-        $pacientes = Paciente::all();
-        return view('consultas.cadastroconsultas', compact('profissionais', 'pacientes'));
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -62,6 +52,16 @@ class ConsultasController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $profissionais = Profissional::all();
+        $pacientes = Paciente::all();
+        return view('consultas.cadastroconsultas', compact('profissionais', 'pacientes'));
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show($id)
@@ -73,8 +73,6 @@ class ConsultasController extends Controller
             (Auth::user()->role === 'paciente' && $consulta->paciente_id !== Auth::user()->paciente->id)) {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
         }
-
-
 
 
         return view('consultas.showconsultas', compact('consulta'));

@@ -11,7 +11,8 @@
     <nav class="d-flex align-items-center justify-content-between" role="search">
         <form action="{{ route('tipoanotacao-show') }}" method="post" class="d-flex w-100">
             @csrf
-            <input class="form-control me-2 flex-grow-1" type="search" name="search_id" placeholder="Digite o ID" aria-label="Search">
+            <input class="form-control me-2 flex-grow-1" type="search" name="search_id" placeholder="Digite o ID"
+                   aria-label="Search">
             <button class="btn btn-light" type="submit">Buscar</button>
         </form>
     </nav>

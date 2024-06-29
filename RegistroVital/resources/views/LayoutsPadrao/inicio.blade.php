@@ -23,7 +23,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <img src="{{ asset('/img/cruz.png') }}" style="max-width:3%; margin-left:1%"/>
-            <a class="navbar-brand" href="/" >Registro Vital</a>
+            <a class="navbar-brand" href="/">Registro Vital</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -57,8 +57,8 @@
     <div class="col-md-9 col-lg-9 pt-3">
         @yield('conteudo')
     </div>
-        
-    </div>
+
+</div>
 </div>
 
 

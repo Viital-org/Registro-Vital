@@ -21,13 +21,13 @@ Route::middleware('layout.dinamico')->group(function () {
         return view('welcome');
     })->name('welcome');
 
-Route::get('/quemsomos', function () {
-    return view('Cadastros/quemsomos');
-})->name('quemsomos');
+    Route::get('/quemsomos', function () {
+        return view('Cadastros/quemsomos');
+    })->name('quemsomos');
 
-Route::get('/ajuda', function () {
-    return view('Cadastros/ajuda');
-})->name('ajuda');
+    Route::get('/ajuda', function () {
+        return view('Cadastros/ajuda');
+    })->name('ajuda');
 });
 
 Route::middleware(['auth', 'layout.dinamico'])->group(function () {
@@ -43,7 +43,7 @@ Route::middleware(['auth', 'layout.dinamico'])->group(function () {
     Route::delete('/consultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas.destroy');
     Route::get('/consultas/{id}/anotacoes', [ConsultasController::class, 'listAnotacoes'])->name('consultas.anotacoes');
 
-    
+
 });
 
 require __DIR__ . '/auth.php';
