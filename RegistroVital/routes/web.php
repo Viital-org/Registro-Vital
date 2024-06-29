@@ -78,15 +78,15 @@ Route::middleware('layout.dinamico')->group(function () {
 
 //Agendamentos
 //Route::resource('/cadastroagendamentos', AgendamentosController::class);
-    Route::get('/listaagendamentos', [AgendamentosController::class, 'index'])->name('agendamentos-index');
+Route::get('/listaagendamentos', [AgendamentosController::class, 'index'])->name('agendamentos-index');
 //Route::post('/listaagendamentos', [AgendamentosController::class, 'show'])->name('agendamentos-show');
 //Route::delete('/listaagendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos-delete');
 
 //Agendamentos Paciente
-    Route::get('/listaagendamentopaciente', [AgendamentoPacienteController::class, 'index'])->name('agendamentos-paciente-index');
-    Route::post('/listaagendamentopaciente', [AgendamentoPacienteController::class, 'show'])->name('agendamentos-paciente-show');
-    Route::get('/agendaconsulta', [AgendamentoPacienteController::class, 'create'])->name('agenda-consulta-create');
-    Route::get('/guardaconsulta', [AgendamentoPacienteController::class, 'store'])->name('agenda-consulta-store');
+   // Route::get('/listaagendamentopaciente', [AgendamentoPacienteController::class, 'index'])->name('agendamentos-paciente-index');
+    //Route::post('/listaagendamentopaciente', [AgendamentoPacienteController::class, 'show'])->name('agendamentos-paciente-show');
+    //Route::get('/agendaconsulta', [AgendamentoPacienteController::class, 'create'])->name('agenda-consulta-create');
+    //Route::get('/guardaconsulta', [AgendamentoPacienteController::class, 'store'])->name('agenda-consulta-store');
 
 //Tipos de anotacao
     Route::resource('/cadastrotipoanotacao', TipoAnotacoesController::class);

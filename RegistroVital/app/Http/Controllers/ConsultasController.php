@@ -17,18 +17,29 @@ class ConsultasController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if ($user->role === 'medico') {
-            $consultas = Consulta::where('profissional_id', $user->profissional->id)
-                ->with(['profissional', 'paciente'])
-                ->orderBy('data', 'desc')
-                ->simplePaginate(10);
-        } else {
+        $today = date('Y-m-d');
+
+        if ($user->role === 'paciente') {
             $consultas = Consulta::where('paciente_id', $user->paciente->id)
-                ->with(['profissional', 'paciente'])
-                ->orderBy('data', 'desc')
-                ->simplePaginate(10);
+                ->where('status', '!=', 'cancelada')
+                ->where('data', '>=', $today)
+                ->paginate(5);
+        } elseif ($user->role === 'medico') {
+            $consultas = Consulta::where('profissional_id', $user->profissional->id)
+                ->where('status', '!=', 'cancelada')
+                ->where('data', '>=', $today)
+                ->paginate(5);
+        } else {
+            $consultas = collect();
         }
 
+        Consulta::where('data', '<', $today)
+            ->where('status', 'agendado')
+            ->update(['status' => 'cancelada']);
+
+        Consulta::where('data', '<', $today)
+            ->where('status', 'confirmada')
+            ->update(['status' => 'realizada']);
 
         return view('consultas.listaconsultas', compact('consultas'));
     }
@@ -67,13 +78,12 @@ class ConsultasController extends Controller
     public function show($id)
     {
         $consulta = Consulta::with(['profissional', 'paciente'])->findOrFail($id);
+        $user = Auth::user();
 
-        // Verifica se a consulta pertence ao usuário logado
-        if ((Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) ||
-            (Auth::user()->role === 'paciente' && $consulta->paciente_id !== Auth::user()->paciente->id)) {
-            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
+        if (($user->role === 'medico' && $consulta->profissional_id !== $user->profissional->id) ||
+            ($user->role === 'paciente' && $consulta->paciente_id !== $user->paciente->id)) {
+            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta página.');
         }
-
 
         return view('consultas.showconsultas', compact('consulta'));
     }
@@ -83,16 +93,18 @@ class ConsultasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = Auth::user();
         $consulta = Consulta::findOrFail($id);
 
-        // Verifica se a consulta pertence ao usuário logado
-        if ((Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) ||
-            (Auth::user()->role === 'paciente' && $consulta->paciente_id !== Auth::user()->paciente->id)) {
-            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
+        if ($user->role === 'paciente' && $user->paciente->id === $consulta->paciente_id) {
+            $consulta->update($request->validate([
+                'status' => 'required|in:agendado,confirmada,cancelada',
+            ]));
+
+            return redirect()->route('consultas.index', $consulta->id)->with('success', 'Status atualizado com sucesso!');
         }
 
-        $consulta->update($request->all());
-        return redirect()->route('consultas.index')->with('success', 'Consulta atualizada com sucesso!');
+        return redirect()->route('consultas.index')->with('error', 'Você não tem permissão para atualizar esta consulta.');
     }
 
     /**
@@ -101,11 +113,11 @@ class ConsultasController extends Controller
     public function destroy($id)
     {
         $consulta = Consulta::findOrFail($id);
+        $user = Auth::user();
 
-        // Verifica se a consulta pertence ao usuário logado
-        if ((Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) ||
-            (Auth::user()->role === 'paciente' && $consulta->paciente_id !== Auth::user()->paciente->id)) {
-            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
+        if (($user->role === 'medico' && $consulta->profissional_id !== $user->profissional->id) ||
+            ($user->role === 'paciente' && $consulta->paciente_id !== $user->paciente->id)) {
+            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta página.');
         }
 
         $consulta->delete();
@@ -118,9 +130,9 @@ class ConsultasController extends Controller
     public function listAnotacoes($id)
     {
         $consulta = Consulta::findOrFail($id);
+        $user = Auth::user();
 
-
-        if (Auth::user()->role === 'medico' && $consulta->profissional_id !== Auth::user()->profissional->id) {
+        if ($user->role === 'medico' && $consulta->profissional_id !== $user->profissional->id) {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta página.');
         }
 
@@ -133,4 +145,3 @@ class ConsultasController extends Controller
         return view('Anotacoes.listaanotacoesmedico', compact('anotacoessaude', 'consulta'));
     }
 }
-

@@ -18,7 +18,6 @@ class AgendamentosController extends Controller
     {
         $user = Auth::user();
         $today = date('Y-m-d');
-
         if ($user->role === 'paciente') {
             $agendamentos = Agendamento::where('paciente_id', $user->paciente->id)
                 ->whereHas('consulta', function ($query) use ($today) {
@@ -34,7 +33,7 @@ class AgendamentosController extends Controller
                         ->orWhere('status', 'cancelada')
                         ->orWhere('status', 'realizada');
                 })
-                ->paginate(10);
+                ->paginate(5);
         } else {
             $agendamentos = collect();
         }
