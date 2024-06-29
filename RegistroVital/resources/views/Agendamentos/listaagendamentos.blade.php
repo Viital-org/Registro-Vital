@@ -20,7 +20,7 @@
             @foreach($agendamentos as $agendamento)
                 <tr>
                     <td>{{ $agendamento->id }}</td>
-                    <td>{{ $agendamento->especializacao->especializacao }}</td>
+                    <td>{{ $agendamento->especializacao ? $agendamento->especializacao->especializacao : 'Especialização não encontrada' }}</td>
                     <td>{{ $agendamento->profissional->nome }}</td>
                     <td>{{ $agendamento->data_agendamento }}</td>
                     <td>{{ $agendamento->consulta->valor }}</td>

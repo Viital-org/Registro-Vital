@@ -45,6 +45,25 @@ class ConsultasController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        $user = Auth::user();
+        $consulta = Consulta::findOrFail($id);
+
+        if ($user->role === 'paciente' && $user->paciente->id === $consulta->paciente_id) {
+            $consulta->update($request->validate([
+                'status' => 'required|in:agendado,confirmada,cancelada',
+            ]));
+
+            return redirect()->route('consultas.index', $consulta->id)->with('success', 'Status atualizado com sucesso!');
+        }
+
+        return redirect()->route('consultas.index')->with('error', 'Você não tem permissão para atualizar esta consulta.');
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -86,25 +105,6 @@ class ConsultasController extends Controller
         }
 
         return view('consultas.showconsultas', compact('consulta'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        $user = Auth::user();
-        $consulta = Consulta::findOrFail($id);
-
-        if ($user->role === 'paciente' && $user->paciente->id === $consulta->paciente_id) {
-            $consulta->update($request->validate([
-                'status' => 'required|in:agendado,confirmada,cancelada',
-            ]));
-
-            return redirect()->route('consultas.index', $consulta->id)->with('success', 'Status atualizado com sucesso!');
-        }
-
-        return redirect()->route('consultas.index')->with('error', 'Você não tem permissão para atualizar esta consulta.');
     }
 
     /**

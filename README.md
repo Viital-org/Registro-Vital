@@ -17,7 +17,8 @@ Autenticação funcional e interface amigável.
 
 * Como rodar?
 
-Para rodar o projeto Registro Vital, clone o projeto, entre em seu terminal e verifique em qual pasta se encontra. Para ser possível, entre na pasta de nome 'RegistroVital'.
+Para rodar o projeto Registro Vital, clone o projeto, entre em seu terminal e verifique em qual pasta se encontra. Para
+ser possível, entre na pasta de nome 'RegistroVital'.
 
 Em seguida abra seu terminal, e dê os seguintes comandos:
 
@@ -26,6 +27,6 @@ Em seguida abra seu terminal, e dê os seguintes comandos:
 * php artisan serve (para rodar localmente)
 * npm run dev (para executar os pacotes adicionais)
 
-Após este processo, você poderá entrar em seu navegador e pesquisar por: '127.0.0.1:8000'. 
+Após este processo, você poderá entrar em seu navegador e pesquisar por: '127.0.0.1:8000'.
 
 Se o processo ocorreu com sucesso, deverá abrir em sua tela inicial.

@@ -17,15 +17,15 @@ class AtuaArea extends Model
         'descricao'
     ];
 
-    public function especializacoes()
-    {
-        return $this->hasMany(Especializacao::class, 'area_id');
-    }
-
     protected static function booted()
     {
         static::deleting(function ($atuaarea) {
             $atuaarea->especializacoes()->delete();
         });
+    }
+
+    public function especializacoes()
+    {
+        return $this->hasMany(Especializacao::class, 'area_id');
     }
 }
