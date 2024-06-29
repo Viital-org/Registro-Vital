@@ -24,6 +24,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('layout.dinamico')->group(function () {
+
 Route::get('/quemsomos', function () {
     return view('Cadastros/quemsomos');
 })->name('quemsomos');
@@ -31,8 +33,9 @@ Route::get('/quemsomos', function () {
 Route::get('/ajuda', function () {
     return view('Cadastros/ajuda');
 })->name('ajuda');
+});
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'layout.dinamico'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profile/role', [ProfileController::class, 'updateRoleInfo'])->name('profile.updateRoleInfo');
@@ -48,7 +51,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::middleware(['auth', 'role:paciente'])->group(function () {
+Route::middleware(['auth', 'role:paciente', 'layout.dinamico'])->group(function () {
     Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
     Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes-edit');
     Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
@@ -70,7 +73,7 @@ Route::middleware(['auth', 'role:paciente'])->group(function () {
 
 });
 
-Route::middleware(['auth', 'role:medico'])->group(function () {
+Route::middleware(['auth', 'role:medico', 'layout.dinamico'])->group(function () {
     Route::get('/medico/dashboard', [ProfissionaisController::class, 'tela'])->name('medico.dashboard');
     Route::get('/cadastrarprof', [ProfissionaisController::class, 'create'])->name('cadastrarprof');
     Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');

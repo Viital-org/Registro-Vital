@@ -1,9 +1,9 @@
-@extends ('layoutspadrao.inicio')
+@extends ($layout)
 
 @section('titulo', 'Quem Somos')
 
 @section('conteudo')
-    
+
 @csrf
 
 <h1>Ajuda</h1>
