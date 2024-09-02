@@ -28,4 +28,20 @@ class LoginTest extends TestCase
 
         $response->assertOk();
     }
+
+    /** @test */
+    public function paciente_nao_autenticado_loga()
+    {
+        $response = $this->get('/paciente/dashboard');
+
+        $response->assertStatus(302);
+    }
+
+    /** @test */
+    public function profissional_nao_autenticado_loga()
+    {
+        $response = $this->get('/medico/dashboard');
+
+        $response->assertStatus(302);
+    }
 }
