@@ -1,5 +1,7 @@
 Registro Vital
 
+Link do video explicativo da 2º entrega - Programação III --> https://youtu.be/WdLfSowuC44
+
 Time
 
 * Bruno Marques
