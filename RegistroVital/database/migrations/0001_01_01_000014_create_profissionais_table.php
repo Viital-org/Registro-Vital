@@ -11,10 +11,10 @@ class CreateProfissionaisTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('profissionais', function (Blueprint $table) {
-            $table->integer('id_usuario')->unsigned();
+            $table->unsignedBigInteger('usuario_id')->primary();
             $table->string('cpf', 11)->nullable();
             $table->string('cnpj', 14)->nullable();
             $table->string('registro_profissional', 30)->nullable();
@@ -24,9 +24,7 @@ class CreateProfissionaisTable extends Migration
             $table->integer('tempo_experiencia')->nullable();
             $table->dateTime('data_criacao')->nullable();
 
-            $table->primary('id_usuario');
-
-            $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
 
             $table->unique('area_atuacao');
         });
@@ -37,7 +35,7 @@ class CreateProfissionaisTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('profissionais');
     }

@@ -11,10 +11,10 @@ class CreateEspecializacoesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('especializacoes', function (Blueprint $table) {
-            $table->increments('id_especializacao');
+            $table->id()->primary();
             $table->string('descricao_especializacao', 30);
             $table->string('area_atuacao', 20);
             $table->timestamps();
@@ -26,7 +26,7 @@ class CreateEspecializacoesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('especializacoes');
     }

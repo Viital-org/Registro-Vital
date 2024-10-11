@@ -4,20 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTiposUsuariosTable extends Migration
+class CreateStatusTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('tipos_usuarios', function (Blueprint $table) {
-            $table->integer('id_tipo')->primary();
+        Schema::create('status', function (Blueprint $table) {
+            $table->id()->primary();
             $table->string('descricao', 30)->nullable();
 
-            $table->primary('id_tipo');
         });
     }
 
@@ -26,8 +25,8 @@ class CreateTiposUsuariosTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('tipos_usuarios');
+        Schema::dropIfExists('status');
     }
 }

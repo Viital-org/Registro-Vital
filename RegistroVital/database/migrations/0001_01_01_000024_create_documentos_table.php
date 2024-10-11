@@ -11,17 +11,17 @@ class CreateDocumentosTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('documentos', function (Blueprint $table) {
-            $table->increments('id_documento');
-            $table->integer('id_anotacao')->unsigned();
+            $table->id()->primary();
+            $table->unsignedBigInteger('anotacao_id')->unsigned();
             $table->string('tipo_documeto', 3)->nullable();
             $table->string('path_documento', 100);
             $table->integer('tamanho_documento_kb');
             $table->timestamps();
 
-            $table->foreign('id_anotacao')->references('id_anotacao')->on('anotacoes')->onDelete('cascade');
+            $table->foreign('anotacao_id')->references('id')->on('anotacoes')->onDelete('cascade');
         });
     }
 
@@ -30,7 +30,7 @@ class CreateDocumentosTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('documentos');
     }

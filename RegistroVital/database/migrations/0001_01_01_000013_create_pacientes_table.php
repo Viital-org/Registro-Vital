@@ -11,10 +11,10 @@ class CreatePacientesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('pacientes', function (Blueprint $table) {
-            $table->integer('id_usuario')->unsigned();
+            $table->unsignedBigInteger('usuario_id')->primary();
             $table->string('cpf', 11)->nullable();
             $table->string('rg', 15)->nullable();
             $table->date('data_nascimento')->nullable();
@@ -28,18 +28,15 @@ class CreatePacientesTable extends Migration
             $table->string('tipo_sanguineo', 2)->nullable();
             $table->dateTime('data_criacao')->nullable();
 
-            $table->primary('id_usuario');
-
-            $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->onDelete('cascade');
+            //chave estrangeira
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('pacientes');
     }

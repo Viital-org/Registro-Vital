@@ -11,11 +11,11 @@ class CreateMetasTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('metas', function (Blueprint $table) {
-            $table->increments('id_meta');
-            $table->integer('id_paciente')->unsigned();
+            $table->id()->primary();
+            $table->integer('paciente_id')->unsigned();
             $table->string('titulo_meta', 20);
             $table->string('descricao_meta', 80)->nullable();
             $table->date('data_inicio');
@@ -31,7 +31,7 @@ class CreateMetasTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('metas');
     }

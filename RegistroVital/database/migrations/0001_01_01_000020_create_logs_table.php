@@ -11,10 +11,10 @@ class CreateLogsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('logs', function (Blueprint $table) {
-            $table->increments('id_log');
+            $table->id()->primary();
             $table->string('tipo_log', 20);
             $table->string('tabela_afetada', 20)->nullable();
             $table->string('coluna_afetada', 20)->nullable();
@@ -31,7 +31,7 @@ class CreateLogsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('logs');
     }

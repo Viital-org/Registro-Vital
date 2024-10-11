@@ -11,10 +11,10 @@ class CreateEstadosCivisTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('estados_civis', function (Blueprint $table) {
-            $table->increments('id_estado_civil');
+            $table->id()->primary();
             $table->string('descricao', 15);
             $table->timestamps();
         });
@@ -25,7 +25,7 @@ class CreateEstadosCivisTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('estados_civis');
     }

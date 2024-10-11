@@ -11,14 +11,13 @@ class CreateTiposRecomendacaoTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('tipos_recomendacao', function (Blueprint $table) {
-            $table->increments('id_tipo_recomendacao');
+            $table->id()->primary();
             $table->string('DESCRICAO', 40)->nullable();
             $table->char('GERA_NOTIFICACAO', 1)->nullable();
 
-            $table->primary('id_tipo_recomendacao');
         });
     }
 
@@ -27,7 +26,7 @@ class CreateTiposRecomendacaoTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('tipos_recomendacao');
     }

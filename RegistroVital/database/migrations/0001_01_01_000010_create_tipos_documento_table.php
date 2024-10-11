@@ -11,14 +11,14 @@ class CreateTiposDocumentoTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('tipos_documento', function (Blueprint $table) {
-            $table->increments('id_tipo_documento');
+            $table->id()->primary();
             $table->string('extensao_documento', 3)->nullable();
             $table->integer('tamanho_maximo_kb');
 
-            $table->primary('id_tipo_documento');
+
         });
     }
 
@@ -27,7 +27,7 @@ class CreateTiposDocumentoTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('tipos_documento');
     }

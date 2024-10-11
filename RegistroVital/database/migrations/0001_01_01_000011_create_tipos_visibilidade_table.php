@@ -11,10 +11,10 @@ class CreateTiposVisibilidadeTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('tipos_visibilidade', function (Blueprint $table) {
-            $table->id('id_tipo_visibilidade');
+            $table->id()->primary();
             $table->string('descricao', 10)->nullable();
         });
     }
@@ -24,7 +24,7 @@ class CreateTiposVisibilidadeTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('tipos_visibilidade');
     }

@@ -11,10 +11,10 @@ class CreateAgendamentosTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('agendamentos', function (Blueprint $table) {
-            $table->increments('id_agendamento');
+            $table->id()->primary();
             $table->unsignedBigInteger('paciente');
             $table->unsignedBigInteger('profissional');
             $table->string('area_atuacao', 20);
@@ -24,7 +24,6 @@ class CreateAgendamentosTable extends Migration
             $table->integer('situacao_profissional');
             $table->unsignedBigInteger('endereco_consulta');
 
-            $table->primary('id_agendamento');
 
             $table->foreign('area_atuacao')
                 ->references('area_atuacao')
@@ -38,7 +37,7 @@ class CreateAgendamentosTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('agendamentos');
     }

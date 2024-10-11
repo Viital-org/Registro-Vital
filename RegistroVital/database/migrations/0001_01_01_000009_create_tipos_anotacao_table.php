@@ -11,13 +11,13 @@ class CreateTiposAnotacaoTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('tipos_anotacao', function (Blueprint $table) {
-            $table->increments('id_tipo_anotacao');
+            $table->id()->primary();
             $table->string('descricao_tipo', 20);
 
-            $table->primary('id_tipo_anotacao');
+
         });
     }
 
@@ -26,7 +26,7 @@ class CreateTiposAnotacaoTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('tipos_anotacao');
     }

@@ -11,23 +11,23 @@ class CreateConsultasTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('consultas', function (Blueprint $table) {
-            $table->increments('id_consulta');
+            $table->id()->primary();
             $table->integer('paciente')->unsigned();
             $table->integer('profissional')->unsigned();
-            $table->integer('id_agendamento')->unsigned();
-            $table->integer('id_area_atuacao')->unsigned();
-            $table->integer('id_especializacao')->unsigned()->nullable();
+            $table->integer('agendamento_id')->unsigned();
+            $table->integer('area_atuacao_id')->unsigned();
+            $table->integer('especializacao_id')->unsigned()->nullable();
             $table->integer('situacao');
             $table->date('data');
             $table->decimal('valor', 5, 2)->nullable();
             $table->integer('endereco_consulta')->unsigned();
 
             // Chaves estrangeiras
-            // $table->foreign('paciente')->references('id_paciente')->on('pacientes')->onDelete('cascade');
-            // $table->foreign('profissional')->references('id_profissional')->on('profissionais')->onDelete('cascade');
+            //$table->foreign('paciente')->references('id')->on('pacientes')->onDelete('cascade');
+            //$table->foreign('profissional')->references('id')->on('profissionais')->onDelete('cascade');
         });
     }
 
@@ -36,7 +36,7 @@ class CreateConsultasTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('consultas');
     }

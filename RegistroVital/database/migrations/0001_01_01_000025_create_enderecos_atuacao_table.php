@@ -11,11 +11,11 @@ class CreateEnderecosAtuacaoTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('enderecos_atuacao', function (Blueprint $table) {
-            $table->increments('id_endereco');
-            $table->integer('id_profissional')->unsigned();
+            $table->id()->primary();
+            $table->unsignedBigInteger('profissional_id');
             $table->string('area_atuacao', 20);
             $table->integer('situacao_endereco');
             $table->string('endereco', 30);
@@ -25,7 +25,7 @@ class CreateEnderecosAtuacaoTable extends Migration
             $table->string('estado', 2);
             $table->timestamps();
 
-            $table->foreign('id_profissional')->references('id_profissional')->on('profissionais')->onDelete('cascade');
+            $table->foreign('profissional_id')->references('usuario_id')->on('profissionais')->onDelete('cascade');
         });
     }
 
@@ -34,7 +34,7 @@ class CreateEnderecosAtuacaoTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('enderecos_atuacao');
     }

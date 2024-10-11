@@ -11,17 +11,15 @@ class CreateRecomendacoesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('recomendacoes', function (Blueprint $table) {
-            $table->increments('id_recomendacao');
-            $table->integer('id_consulta')->unsigned();
-            $table->integer('id_profissional')->unsigned();
-            $table->integer('id_paciente')->unsigned();
+            $table->id()->primary();
+            $table->integer('consulta_id')->unsigned();
+            $table->integer('profissional_id')->unsigned();
+            $table->integer('paciente_id')->unsigned();
             $table->integer('tipo_recomendacao')->unsigned();
             $table->string('descricao_recomendacao', 100);
-
-            $table->primary('id_recomendacao');
         });
     }
 
@@ -30,7 +28,7 @@ class CreateRecomendacoesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('recomendacoes');
     }

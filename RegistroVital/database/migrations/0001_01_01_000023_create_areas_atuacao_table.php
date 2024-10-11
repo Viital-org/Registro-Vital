@@ -11,10 +11,10 @@ class CreateAreasAtuacaoTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('areas_atuacao', function (Blueprint $table) {
-            $table->increments('id_area_atuacao');
+            $table->id()->primary();
             $table->string('descricao_area', 20);
         });
     }
@@ -24,7 +24,7 @@ class CreateAreasAtuacaoTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('areas_atuacao');
     }

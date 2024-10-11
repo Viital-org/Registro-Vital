@@ -11,14 +11,14 @@ class CreateAgendasProfissionaisTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('agendas_profissionais', function (Blueprint $table) {
-            $table->increments('id_agenda');
-            $table->unsignedBigInteger('id_profissional');
-            $table->unsignedBigInteger('id_consulta');
+            $table->id()->primary();
+            $table->unsignedBigInteger('profissional_id');
+            $table->unsignedBigInteger('consulta_id');
             $table->string('area_atuacao', 20);
-            $table->unsignedBigInteger('id_paciente');
+            $table->unsignedBigInteger('paciente_id');
             $table->unsignedBigInteger('endereco_consulta');
 
             // chaves estrangeiras
@@ -32,7 +32,7 @@ class CreateAgendasProfissionaisTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('agendas_profissionais');
     }

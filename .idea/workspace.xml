@@ -4,25 +4,35 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="1.2 - Atualização de dependências">
-      <change beforePath="$PROJECT_DIR$/.idea/Registro-Vital.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Registro-Vital.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php-test-framework.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php-test-framework.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="Criando migrations do novo banco">
+      <change afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000027_create_feedbacks_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_27_221602_pacientes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_28_201159_consultas.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_29_015649_profissionais.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_30_024617_agendamentos.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_30_033834_especializacoes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_30_040545_atuaareas.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_04_30_205016_dicas.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_05_01_041716_tipoanotacoes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_05_01_055859_metas.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_05_01_132314_anotacoessaude.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/AtuaAreaSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/EspecializacaoSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_222934_create_pacientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000013_create_pacientes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_222942_create_profissionais_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000014_create_profissionais_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_222950_create_administradores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000015_create_administradores_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_223007_create_metas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000016_create_metas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_223016_create_consultas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000005_create_consultas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_223035_create_anotacoes_saude_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000017_create_anotacoes_saude_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_223043_create_dicas_saude_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000018_create_dicas_saude_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_223049_create_agendamentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000019_create_agendamentos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_223129_create_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000020_create_logs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_223251_create_especializacoes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000021_create_especializacoes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_225036_create_agendas_profissionais_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_agendas_profissionais_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_225608_create_areas_atuacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_areas_atuacao_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_230232_create_documentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_documentos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_230528_create_enderecos_atuacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000025_create_enderecos_atuacao_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_231503_create_estados_civis_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000026_create_estados_civis_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_231821_create_feedbacks_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_232844_create_profissional_geral_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000004_create_profissional_geral_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_233140_create_recomendacoes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000006_create_recomendacoes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_233414_create_status_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000008_create_status_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_233827_create_tipos_anotacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000009_create_tipos_anotacao_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_234434_create_tipos_documento_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000010_create_tipos_documento_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_234608_create_tipos_log_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000012_create_tipos_log_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_10_234950_create_tipos_recomendacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000007_create_tipos_recomendacao_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_11_001725_create_tipos_usuarios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000003_create_tipos_usuarios_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/2024_10_11_001831_create_tipos_visibilidade_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_tipos_visibilidade_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -393,7 +403,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1724887876993</updated>
-      <workItem from="1728596301463" duration="9146000" />
+      <workItem from="1728596301463" duration="15778000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -419,7 +429,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725409842881</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Criando migrations do novo banco">
+      <option name="closed" value="true" />
+      <created>1728607512932</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728607512932</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,6 +457,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Criação do arquivo base da aplicação mobile" />
     <MESSAGE value="1.1 - Atualização de dependências" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.1 - Atualização de dependências" />
+    <MESSAGE value="Criando migrations do novo banco" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criando migrations do novo banco" />
   </component>
 </project>
