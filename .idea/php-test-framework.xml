@@ -6,21 +6,9 @@
         <settings>
           <configurations>
             <local_configuration configuration_file_path="$PROJECT_DIR$/RegistroVital/phpunit.xml" executable_path="$PROJECT_DIR$/RegistroVital/vendor/pestphp/pest/bin/pest" use_configuration_file="true" />
-            <local_configuration configuration_file_path="$PROJECT_DIR$/../example-app/phpunit.xml" executable_path="$PROJECT_DIR$/../example-app/vendor/pestphp/pest/bin/pest" use_configuration_file="true" />
           </configurations>
         </settings>
       </tool>
     </test_tools>
-  </component>
-  <component name="PhpTestFrameworkVersionCache">
-    <tools_cache>
-      <tool tool_name="PHPUnit">
-        <cache>
-          <versions>
-            <info id="LocalC:\Registro-Vital\RegistroVital\vendor\autoload.php" version="10.5.17" />
-          </versions>
-        </cache>
-      </tool>
-    </tools_cache>
   </component>
 </project>
