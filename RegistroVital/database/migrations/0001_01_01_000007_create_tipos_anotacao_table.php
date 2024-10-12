@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAreasAtuacaoTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,9 +12,11 @@ class CreateAreasAtuacaoTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('areas_atuacao', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->string('descricao_area', 20);
+        Schema::create('tipos_anotacao', function (Blueprint $table) {
+            $table->id(); // O método id() já define a chave primária
+            $table->string('descricao_tipo', 20);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,7 +27,7 @@ class CreateAreasAtuacaoTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('areas_atuacao');
+        Schema::dropIfExists('tipos_anotacao');
     }
-}
+};
 

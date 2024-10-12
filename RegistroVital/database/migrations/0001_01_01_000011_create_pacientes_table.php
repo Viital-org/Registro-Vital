@@ -4,17 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePacientesTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
         Schema::create('pacientes', function (Blueprint $table) {
-            $table->unsignedBigInteger('usuario_id')->primary();
+            $table->foreignId('usuario_id')->constrained('usuarios', 'id')->onDelete('cascade')->primary();
             $table->string('cpf', 11)->nullable();
             $table->string('rg', 15)->nullable();
             $table->date('data_nascimento')->nullable();
@@ -27,9 +24,8 @@ class CreatePacientesTable extends Migration
             $table->integer('estado_civil')->nullable();
             $table->string('tipo_sanguineo', 2)->nullable();
             $table->dateTime('data_criacao')->nullable();
-
-            //chave estrangeira
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -40,5 +36,5 @@ class CreatePacientesTable extends Migration
     {
         Schema::dropIfExists('pacientes');
     }
-}
+};
 

@@ -1,11 +1,10 @@
-<?php
+<<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTiposVisibilidadeTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,8 +13,10 @@ class CreateTiposVisibilidadeTable extends Migration
     public function up(): void
     {
         Schema::create('tipos_visibilidade', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('descricao', 10)->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,5 +29,5 @@ class CreateTiposVisibilidadeTable extends Migration
     {
         Schema::dropIfExists('tipos_visibilidade');
     }
-}
+};
 

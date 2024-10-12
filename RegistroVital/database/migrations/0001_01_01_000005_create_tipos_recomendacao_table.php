@@ -4,8 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEstadosCivisTable extends Migration
-{
+
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,10 +13,12 @@ class CreateEstadosCivisTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('estados_civis', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->string('descricao', 15);
+        Schema::create('tipos_recomendacao', function (Blueprint $table) {
+            $table->id();
+            $table->string('descricao', 40)->nullable();
+            $table->char('gera_notificacao', 1)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,7 +29,6 @@ class CreateEstadosCivisTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('estados_civis');
+        Schema::dropIfExists('tipos_recomendacao');
     }
-}
-
+};

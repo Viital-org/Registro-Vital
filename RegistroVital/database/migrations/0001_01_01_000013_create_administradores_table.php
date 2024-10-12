@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdministradoresTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,11 +13,11 @@ class CreateAdministradoresTable extends Migration
     public function up(): void
     {
         Schema::create('administradores', function (Blueprint $table) {
-            $table->unsignedBigInteger('usuario_id')->primary();
+            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade')->primary();
             $table->string('cargo', 40)->nullable();
             $table->dateTime('data_criacao')->nullable();
-
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,4 +30,4 @@ class CreateAdministradoresTable extends Migration
     {
         Schema::dropIfExists('administradores');
     }
-}
+};

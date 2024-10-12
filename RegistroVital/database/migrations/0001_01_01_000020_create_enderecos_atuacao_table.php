@@ -4,18 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEnderecosAtuacaoTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
         Schema::create('enderecos_atuacao', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->unsignedBigInteger('profissional_id');
+            $table->id();
+            $table->foreignId('profissional_id')->constrained('profissionais', 'usuario_id')->onDelete('cascade');
             $table->string('area_atuacao', 20);
             $table->integer('situacao_endereco');
             $table->string('endereco', 30);
@@ -24,18 +21,15 @@ class CreateEnderecosAtuacaoTable extends Migration
             $table->string('cidade', 32);
             $table->string('estado', 2);
             $table->timestamps();
-
-            $table->foreign('profissional_id')->references('usuario_id')->on('profissionais')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {
         Schema::dropIfExists('enderecos_atuacao');
     }
-}
+};

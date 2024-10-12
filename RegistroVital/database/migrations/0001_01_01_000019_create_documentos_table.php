@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentosTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,14 +13,13 @@ class CreateDocumentosTable extends Migration
     public function up(): void
     {
         Schema::create('documentos', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->unsignedBigInteger('anotacao_id')->unsigned();
-            $table->string('tipo_documeto', 3)->nullable();
+            $table->id();
+            $table->foreignId('anotacao_id')->constrained('anotacoes')->onDelete('cascade');
+            $table->string('tipo_documento', 3)->nullable();
             $table->string('path_documento', 100);
             $table->integer('tamanho_documento_kb');
             $table->timestamps();
-
-            $table->foreign('anotacao_id')->references('id')->on('anotacoes')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
@@ -34,5 +32,5 @@ class CreateDocumentosTable extends Migration
     {
         Schema::dropIfExists('documentos');
     }
-}
+};
 

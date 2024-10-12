@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTiposLogTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,10 +12,11 @@ class CreateTiposLogTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos_log', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->string('descricao', 20)->nullable();
-
+        Schema::create('status', function (Blueprint $table) {
+            $table->id();
+            $table->string('descricao', 30)->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateTiposLogTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos_log');
+        Schema::dropIfExists('status');
     }
-}
+};

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTiposRecomendacaoTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,11 +12,12 @@ class CreateTiposRecomendacaoTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos_recomendacao', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->string('DESCRICAO', 40)->nullable();
-            $table->char('GERA_NOTIFICACAO', 1)->nullable();
-
+        Schema::create('tipos_documento', function (Blueprint $table) {
+            $table->id();
+            $table->string('extensao_documento', 3)->nullable();
+            $table->integer('tamanho_maximo_kb');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,7 +28,7 @@ class CreateTiposRecomendacaoTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos_recomendacao');
+        Schema::dropIfExists('tipos_documento');
     }
-}
+};
 

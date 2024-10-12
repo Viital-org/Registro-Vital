@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTiposAnotacaoTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,11 +12,11 @@ class CreateTiposAnotacaoTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos_anotacao', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->string('descricao_tipo', 20);
-
-
+        Schema::create('areas_atuacao', function (Blueprint $table) {
+            $table->id();
+            $table->string('descricao_area', 20);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,7 +27,6 @@ class CreateTiposAnotacaoTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos_anotacao');
+        Schema::dropIfExists('areas_atuacao');
     }
-}
-
+};

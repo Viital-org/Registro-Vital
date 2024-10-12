@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMetasTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,8 +13,8 @@ class CreateMetasTable extends Migration
     public function up(): void
     {
         Schema::create('metas', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->integer('paciente_id')->unsigned();
+            $table->id();
+            $table->foreignId('paciente_id')->constrained('pacientes', 'usuario_id')->onDelete('cascade');
             $table->string('titulo_meta', 20);
             $table->string('descricao_meta', 80)->nullable();
             $table->date('data_inicio');
@@ -23,6 +22,7 @@ class CreateMetasTable extends Migration
             $table->integer('situacao');
             $table->boolean('notificacao_diaria');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -35,5 +35,5 @@ class CreateMetasTable extends Migration
     {
         Schema::dropIfExists('metas');
     }
-}
+};
 
