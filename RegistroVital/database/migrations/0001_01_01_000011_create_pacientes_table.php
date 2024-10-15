@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('pacientes', function (Blueprint $table) {
-            $table->foreignId('usuario_id')->constrained('usuarios', 'id')->onDelete('cascade')->primary();
+            $table->Id('usuario_id')->constrained('usuarios', 'id')->onDelete('cascade')->primary();
             $table->string('cpf', 11)->nullable();
             $table->string('rg', 15)->nullable();
             $table->date('data_nascimento')->nullable();
