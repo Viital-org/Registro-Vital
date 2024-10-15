@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('administradores', function (Blueprint $table) {
-            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade')->primary();
+            $table->id('usuario_id')->constrained('usuarios')->onDelete('cascade')->primary();
             $table->string('cargo', 40)->nullable();
             $table->dateTime('data_criacao')->nullable();
             $table->timestamps();
