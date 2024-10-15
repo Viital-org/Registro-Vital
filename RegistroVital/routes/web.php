@@ -135,7 +135,7 @@ Route::middleware(['auth', 'layout.dinamico'])->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::middleware(['auth', 'role:paciente', 'layout.dinamico'])->group(function () {
+//Route::middleware(['auth', 'role:paciente', 'layout.dinamico'])->group(function () {
     Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
     Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes-edit');
     Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
@@ -155,9 +155,9 @@ Route::middleware(['auth', 'role:paciente', 'layout.dinamico'])->group(function 
     Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
     Route::get('/profissionais-by-especializacao/{especializacao_id}', [AgendamentosController::class, 'getProfissionaisByEspecializacao']);
 
-});
+//});
 
-Route::middleware(['auth', 'role:medico', 'layout.dinamico'])->group(function () {
+//Route::middleware(['auth', 'role:medico', 'layout.dinamico'])->group(function () {
     Route::get('/medico/dashboard', [ProfissionaisController::class, 'tela'])->name('medico.dashboard');
     Route::get('/cadastrarprof', [ProfissionaisController::class, 'create'])->name('cadastrarprof');
     Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
@@ -165,4 +165,4 @@ Route::middleware(['auth', 'role:medico', 'layout.dinamico'])->group(function ()
 
     Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
 
-});
+//});

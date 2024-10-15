@@ -4,38 +4,27 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="1.2 - Atualização de dependências">
-      <change afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_consultas_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000025_create_feedbacks_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000027_create_agendas_profissionais_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#0004 - xxxxxxxx">
+      <change afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RegistroVital/resources/views/profile/administrador-dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Registro-Vital.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Registro-Vital.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000003_create_tipos_usuarios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000003_create_tipos_usuarios_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000004_create_profissional_geral_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000004_create_profissional_geral_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000005_create_consultas_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000006_create_recomendacoes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000026_create_recomendacoes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000007_create_tipos_recomendacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000005_create_tipos_recomendacao_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000008_create_status_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000006_create_status_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000009_create_tipos_anotacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000007_create_tipos_anotacao_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000010_create_tipos_documento_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000008_create_tipos_documento_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_tipos_visibilidade_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000009_create_tipos_visibilidade_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000012_create_tipos_log_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000010_create_tipos_log_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000013_create_pacientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000014_create_profissionais_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000012_create_profissionais_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000015_create_administradores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000013_create_administradores_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000016_create_metas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000014_create_metas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000017_create_anotacoes_saude_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000015_create_anotacoes_saude_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000018_create_dicas_saude_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000016_create_dicas_saude_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000019_create_agendamentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_agendamentos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000020_create_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000017_create_logs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000021_create_especializacoes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_especializacoes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_agendas_profissionais_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_areas_atuacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000018_create_areas_atuacao_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_documentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000019_create_documentos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000025_create_enderecos_atuacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000020_create_enderecos_atuacao_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000026_create_estados_civis_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000021_create_estados_civis_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000027_create_feedbacks_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/forgot-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/forgot-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/reset-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/reset-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/ajuda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/ajuda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/quemsomos.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/quemsomos.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/profile/medico-dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/profile/medico-dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/profile/paciente-dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/profile/paciente-dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +34,16 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/RegistroVital/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -68,7 +65,7 @@
     &quot;accountId&quot;: &quot;bb0eccf3-8084-4e21-aef9-57069b1f41df&quot;
   }
 }</component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\PHP-8.3.4\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/../example-app/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/../example-app/vendor/composer" />
@@ -342,6 +339,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "Flutter.Unnamed (1).executor": "Run",
     "Flutter.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -354,9 +352,13 @@
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/dart-sdk",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "dart.settings",
-    "show.migrate.to.gradle.popup": "false"
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -368,9 +370,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <method v="2" />
-    </configuration>
     <configuration name="Registro Vital" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/mobile_app/registro_vital_app/lib/main.dart" />
       <method v="2" />
@@ -380,6 +379,14 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
+        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -388,6 +395,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1724887876993</updated>
+      <workItem from="1728696634885" duration="3750000" />
+      <workItem from="1728700775712" duration="3263000" />
+      <workItem from="1728946532046" duration="8349000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -413,12 +423,24 @@
       <option name="project" value="LOCAL" />
       <updated>1725409842881</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="#0003 - modernizando e organizando todas as migrations">
+      <option name="closed" value="true" />
+      <created>1728695428932</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728695428932</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Criação do arquivo base da aplicação mobile" />
     <MESSAGE value="1.1 - Atualização de dependências" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.1 - Atualização de dependências" />
+    <MESSAGE value="#0003 - modernizando e organizando todas as migrations" />
+    <option name="LAST_COMMIT_MESSAGE" value="#0003 - modernizando e organizando todas as migrations" />
   </component>
 </project>

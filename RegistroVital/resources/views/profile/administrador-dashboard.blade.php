@@ -13,11 +13,11 @@
 
 <header>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('/img/cruz.png') }}" alt="Logo" class="img-fluid" style="max-width: 30px; margin-right: 10px;">
-                Registro Vital
+                Registro Vital - Admin
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -25,31 +25,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('paciente.dashboard') }}">Home</a>
+                        <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('quemsomos') }}">Quem somos</a>
+                        <a class="nav-link" href="{{ route('admin.quemsomos') }}">Quem somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('ajuda') }}">Ajuda</a>
+                        <a class="nav-link" href="{{ route('admin.ajuda') }}">Ajuda</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="agendamentosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Agendamentos</a>
-                        <ul class="dropdown-menu" aria-labelledby="agendamentosDropdown">
-                            <li><a class="dropdown-item" href="{{ route('agendamentos.create') }}">Agendar Consulta</a></li>
-                            <li><a class="dropdown-item" href="{{ route('agendamentos.index') }}">Histórico de Agendamentos</a></li>
-                            <li><a class="dropdown-item" href="{{ route('consultas.index') }}">Lista de Consultas</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="anotacoesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Anotações</a>
-                        <ul class="dropdown-menu" aria-labelledby="anotacoesDropdown">
-                            <li><a class="dropdown-item" href="{{ route('anotacoessaude-create') }}">Cadastrar Anotação</a></li>
-                            <li><a class="dropdown-item" href="{{ route('anotacoessaude-index') }}">Listar Anotações</a></li>
-                        </ul>
-                    </li>
                     <li class="nav-item dropdown">
                         @auth
                             <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
@@ -77,32 +62,26 @@
     </nav>
 </header>
 
-<!-- Sidebar e Conteúdo Principal -->
+<!-- Sidebar -->
 <div class="container-fluid mt-5">
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Listagens</a>
+                        <a class="nav-link active" href="#">Painel Principal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('atuaareas-index') }}">Áreas de Atuação</a>
+                        <a class="nav-link" href="{{ route('admin.usuarios') }}">Usuários</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('especializacoes-index') }}">Especializações</a>
+                        <a class="nav-link" href="{{ route('admin.consultas') }}">Consultas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('agendamentos-index') }}">Agendamentos</a>
+                        <a class="nav-link" href="{{ route('admin.dicas') }}">Dicas de Saúde</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tipoanotacao-index') }}">Tipos de Anotação</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('dicas-index') }}">Dicas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('metas-index') }}">Metas</a>
+                        <a class="nav-link" href="{{ route('admin.metadados') }}">Metas e Estatísticas</a>
                     </li>
                 </ul>
             </div>
@@ -121,5 +100,3 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
