@@ -5,25 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Paciente extends Model
+class Administrador extends Model
 {
     use HasFactory;
 
-    protected $table = 'pacientes';
+    protected $table = 'administradores';
 
     protected $fillable = [
         'usuario_id',
-        'cpf',
-        'rg',
-        'data_nascimento',
-        'rua_endereco',
-        'numero_endereco',
-        'cep',
-        'cidade',
-        'estado',
-        'genero',
-        'estado_civil',
-        'tipo_sanguineo',
+        'cargo',
         'data_criacao',
     ];
 

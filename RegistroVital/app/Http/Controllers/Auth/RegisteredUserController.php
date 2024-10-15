@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Administrador;
 use App\Models\Paciente;
 use App\Models\Profissional;
-use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,12 +27,12 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . Usuario::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required', 'string', 'in:paciente,medico'],
+            'role' => ['required', 'string', 'in:paciente,medico,administrador']
         ]);
 
-        $user = User::create([
+        $user = Usuario::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -41,26 +42,42 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
 
-        if ($user->role === 'paciente') {
-            Paciente::create([
-                'user_id' => $user->id,
-                'nome' => $user->name,
-                'email' => $user->email,
-            ]);
-        } elseif ($user->role === 'medico') {
-            Profissional::create([
-                'user_id' => $user->id,
-                'nome' => $user->name,
-                'email' => $user->email,
-            ]);
+        switch ($user->role) {
+            case 'paciente':
+                Paciente::create([
+                    'user_id' => $user->id,
+                    'nome' => $user->name,
+                    'email' => $user->email,
+                ]);
+                break;
+
+            case 'medico':
+                Profissional::create([
+                    'user_id' => $user->id,
+                    'nome' => $user->name,
+                    'email' => $user->email,
+                ]);
+                break;
+
+            case 'administrador':
+                Administrador::create([
+                    'user_id' => $user->id,
+                    'nome' => $user->name,
+                    'email' => $user->email,
+                ]);
+                break;
         }
 
         Auth::login($user);
 
-        if ($request->User()->role === 'medico') {
-            return redirect(route('medico.dashboard'));
+        switch ($user->role) {
+            case 'medico':
+                return redirect(route('medico.dashboard'));
+            case 'administrador':
+                return redirect(route('admin.dashboard'));
+            default:
+                return redirect()->intended(route('paciente.dashboard'));
         }
-        return redirect()->intended(route('paciente.dashboard'));
     }
 
     /**

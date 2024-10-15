@@ -11,30 +11,25 @@ class Profissional extends Model
 
     protected $table = 'profissionais';
 
+    protected $primaryKey = 'usuario_id';
+
     protected $fillable = [
-        'user_id',
-        'areaatuacao_id',
-        'especializacao_id',
-        'nome',
-        'email',
-        'enderecoatuacao',
-        'localformacao',
-        'dataformacao',
-        'descricaoperfil',
+        'usuario_id',
+        'cpf',
+        'cnpj',
+        'registro_profissional',
+        'area_atuacao',
+        'especializacao',
+        'genero',
+        'tempo_experiencia',
+        'data_criacao',
     ];
 
-    public function atuaarea()
+    /**
+     * Relacionamento com Usuario
+     */
+    public function usuario()
     {
-        return $this->belongsTo(AtuaArea::class, 'areaatuacao_id');
-    }
-
-    public function especializacao()
-    {
-        return $this->belongsTo(Especializacao::class, 'especializacao_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Usuario::class, 'usuario_id', 'id');
     }
 }
