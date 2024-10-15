@@ -35,13 +35,12 @@ return new class extends Migration {
         });
 
         Schema::create('sessions', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('usuarios')->onDelete('set null')->index();
-            $table->ipAddress('ip_address')->nullable();
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
-            $table->unsignedInteger('last_activity')->index();
-            $table->timestamps();
+            $table->integer('last_activity')->index();
         });
     }
 

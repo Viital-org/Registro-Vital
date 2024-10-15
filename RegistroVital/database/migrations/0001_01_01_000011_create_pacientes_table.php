@@ -11,11 +11,11 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('pacientes', function (Blueprint $table) {
-            $table->foreignId('usuario_id')->constrained('usuarios', 'id')->onDelete('cascade')->primary();
+            $table->id('usuario_id')->constrained('usuarios', 'id')->onDelete('cascade')->primary();
             $table->string('cpf', 11)->nullable();
             $table->string('rg', 15)->nullable();
             $table->date('data_nascimento')->nullable();
-            $table->string('rua_endereco', 30)->nullable();
+            $table->string('rua_endereco', 30)->nullable(); 
             $table->string('numero_endereco', 10)->nullable();
             $table->string('cep', 8)->nullable();
             $table->string('cidade', 32)->nullable();
