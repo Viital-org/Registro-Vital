@@ -45,11 +45,7 @@
 
 <!-- Conteúdo da página -->
 <div class="container-fluid conteudo-ajuda mt-5 pt-5" style="background-color: #d4e6e5; min-height: 100vh;">
-    <div class="row">
-        <div>
-            @yield('conteudo')
-        </div>
-    </div>
+        @yield('conteudo')
 </div>
 
 <!-- Scripts -->

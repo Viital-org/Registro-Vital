@@ -56,7 +56,7 @@ class PacientesController extends Controller
         $metas = Meta::all();
 
         return view('Cadastros/cadastropacientes', [
-            'user' => $user,
+            'usuarios' => $user,
             'metas' => $metas
         ]);
     }
