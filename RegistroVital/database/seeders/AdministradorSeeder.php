@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Paciente;
+use App\Models\Administrador;
 use App\Models\Usuario;
 use Illuminate\Database\Seeder;
 
-class PacienteSeeder extends Seeder
+class AdministradorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +15,10 @@ class PacienteSeeder extends Seeder
     {
 
         Usuario::factory()
-            ->count(10)
-            ->create(['tipo_usuario' => 1])
+            ->count(5)
+            ->create(['tipo_usuario' => 3])
             ->each(function ($user) {
-                Paciente::factory()->create([
+                Administrador::factory()->create([
                     'usuario_id' => $user->id,
                 ]);
             });

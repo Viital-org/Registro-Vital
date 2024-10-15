@@ -2,17 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\AtuaArea;
-use App\Models\Especializacao;
 use App\Models\Profissional;
-use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<Profissional>
- */
 class ProfissionalFactory extends Factory
 {
+    protected $model = Profissional::class;
+
     /**
      * Define the model's default state.
      *
@@ -20,21 +17,19 @@ class ProfissionalFactory extends Factory
      */
     public function definition(): array
     {
-        $user = User::where('role', 'medico')->inRandomOrder()->first() ?? User::factory()->create(['role' => 'medico']);
 
-        $atuaarea = AtuaArea::inRandomOrder()->first() ?? AtuaArea::factory()->create();
-        $especializacao = $atuaarea->especializacoes()->inRandomOrder()->first() ?? Especializacao::factory()->create(['area_id' => $atuaarea->id]);
+        $user = Usuario::where('tipo_usuario', 2)->inRandomOrder()->first() ?? Usuario::factory()->create(['tipo_usuario' => 2]);
 
         return [
-            'user_id' => $user->id,
-            'areaatuacao_id' => $atuaarea->id,
-            'especializacao_id' => $especializacao->id,
-            'nome' => $user->name,
-            'email' => $user->email,
-            'enderecoatuacao' => $this->faker->address,
-            'localformacao' => $this->faker->address,
-            'dataformacao' => $this->faker->date,
-            'descricaoperfil' => $this->faker->text,
+            'usuario_id' => $user->id,
+            'cpf' => $this->faker->numerify('###########'),
+            'cnpj' => $this->faker->numerify('##############'),
+            'registro_profissional' => $this->faker->word(),
+            'area_atuacao' => $this->faker->word(),
+            'especializacao' => $this->faker->word(),
+            'genero' => $this->faker->randomElement(['M', 'F']),
+            'tempo_experiencia' => $this->faker->numberBetween(0, 30),
+            'data_criacao' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }

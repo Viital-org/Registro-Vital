@@ -2,9 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Meta;
 use App\Models\Paciente;
-use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,26 +18,22 @@ class PacienteFactory extends Factory
      */
     public function definition(): array
     {
-        $user = User::where('role', 'paciente')->inRandomOrder()->first() ?? User::factory()->create(['role' => 'paciente']);
-        $metas = Meta::all();
-        if ($metas->count() > 0) {
-            $meta = $metas->random();
-            $metaId = $meta->id;
-        } else {
-            $metaId = null;
-        }
+        $user = Usuario::where('tipo_usuario', 1)->inRandomOrder()->first() ?? Usuario::factory()->create(['tipo_usuario' => 1]);
+
         return [
-            'user_id' => $user->id,
-            'nome' => $user->name,
-            'email' => $user->email,
-            'datanascimento' => $this->faker->date,
-            'cep' => $this->faker->postcode(),
-            'endereco' => $this->faker->address,
-            'numcartaocred' => $this->faker->creditCardNumber(),
-            'hobbies' => $this->faker->text,
-            'doencascronicas' => $this->faker->word,
-            'remediosregulares' => $this->faker->word,
-            'meta_id' => $metaId,
+            'usuario_id' => $user->id,
+            'cpf' => $this->faker->unique()->numerify('###########'), // CPF
+            'rg' => $this->faker->unique()->numerify('###########'), // RG
+            'data_nascimento' => $this->faker->date(),
+            'rua_endereco' => $this->faker->streetName(),
+            'numero_endereco' => $this->faker->numberBetween(1, 100),
+            'cep' => $this->faker->numerify('########'),
+            'cidade' => $this->faker->city(),
+            'estado' => $this->faker->stateAbbr(),
+            'genero' => $this->faker->randomElement(['M', 'F']),
+            'estado_civil' => $this->faker->numberBetween(1, 5),
+            'tipo_sanguineo' => $this->faker->randomElement(['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']),
+            'data_criacao' => now(),
         ];
     }
 }
