@@ -10,6 +10,11 @@ class Usuario extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    /**
+     * Os atributos que podem ser atribuídos em massa.
+     *
+     * @var array
+     */
     protected $fillable = [
         'nome_completo',
         'email',
@@ -50,5 +55,25 @@ class Usuario extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
         ];
+    }
+
+    public function tipoUsuario()
+    {
+        return $this->belongsTo(TipoUsuario::class, 'tipo_usuario');
+    }
+
+    public function paciente()
+    {
+        return $this->hasOne(Paciente::class, 'usuario_id');
+    }
+
+    public function profissional()
+    {
+        return $this->hasOne(Profissional::class, 'usuario_id');
+    }
+
+    public function administrador()
+    {
+        return $this->hasOne(Administrador::class, 'usuario_id');
     }
 }

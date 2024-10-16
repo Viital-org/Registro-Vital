@@ -10,27 +10,18 @@ class ProfissionalFactory extends Factory
 {
     protected $model = Profissional::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
-
-        $user = Usuario::where('tipo_usuario', 2)->inRandomOrder()->first() ?? Usuario::factory()->create(['tipo_usuario' => 2]);
-
         return [
-            'usuario_id' => $user->id,
-            'cpf' => $this->faker->numerify('###########'),
-            'cnpj' => $this->faker->numerify('##############'),
+            'usuario_id' => null,
+            'cpf' => $this->faker->unique()->numerify('###########'),
+            'cnpj' => $this->faker->unique()->numerify('############'),
             'registro_profissional' => $this->faker->word(),
             'area_atuacao' => $this->faker->word(),
             'especializacao' => $this->faker->word(),
             'genero' => $this->faker->randomElement(['M', 'F']),
             'tempo_experiencia' => $this->faker->numberBetween(0, 30),
-            'data_criacao' => $this->faker->dateTimeThisDecade(),
+            'data_criacao' => now(),
         ];
     }
 }
-

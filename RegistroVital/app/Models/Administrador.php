@@ -9,7 +9,7 @@ class Administrador extends Model
 {
     use HasFactory;
 
-    protected $table = 'administradores';
+    protected $table = "administradores";
 
     protected $fillable = [
         'usuario_id',
@@ -17,7 +17,7 @@ class Administrador extends Model
         'data_criacao',
     ];
 
-    public function user()
+    public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'usuario_id');
     }

@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profissional extends Model
 {
     use HasFactory;
-
-    protected $table = 'profissionais';
-
-    protected $primaryKey = 'usuario_id';
+    protected $table = "profissionais";
 
     protected $fillable = [
         'usuario_id',
@@ -25,11 +22,8 @@ class Profissional extends Model
         'data_criacao',
     ];
 
-    /**
-     * Relacionamento com Usuario
-     */
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'usuario_id', 'id');
+        return $this->belongsTo(Usuario::class, 'usuario_id');
     }
 }

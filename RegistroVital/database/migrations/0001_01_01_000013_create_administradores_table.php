@@ -13,8 +13,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('administradores', function (Blueprint $table) {
-            $table->id('usuario_id')->constrained('usuarios')->onDelete('cascade')->primary();
-            $table->string('cargo', 40)->nullable();
+            $table->id('usuario_id')->constrained('usuarios', 'id')->onDelete('cascade')->primary();
+            $table->string('cargo', 50)->nullable();
             $table->dateTime('data_criacao')->nullable();
             $table->timestamps();
             $table->softDeletes();

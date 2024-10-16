@@ -12,50 +12,36 @@ use Illuminate\Support\Str;
  */
 class UsuarioFactory extends Factory
 {
-    /**
-     * Define o modelo correspondente à factory.
-     *
-     * @var string
-     */
     protected $model = Usuario::class;
 
-    /**
-     * A senha padrão a ser usada pela factory.
-     */
-    protected static ?string $password;
+    public static ?string $password;
 
-    /**
-     * Define o estado padrão do modelo.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            'nome_completo' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'nome_completo' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'senha' => static::$password ??= Hash::make('password'),
-            'situacao_cadastro' => fake()->randomElement([0, 1]),
+            'situacao_cadastro' => $this->faker->randomElement([0, 1]),
             'tipo_usuario' => $this->faker->randomElement([1, 2, 3]),
-            'telefone_1' =>  $this->generatePhoneNumber(),
+            'telefone_1' => $this->generatePhoneNumber(),
             'telefone_2' => $this->faker->optional()->boolean ? $this->generatePhoneNumber() : null,
             'data_cadastro' => now(),
             'remember_token' => Str::random(10),
         ];
     }
+
     protected function generatePhoneNumber(): string
     {
-        // Gera um número de telefone no formato (XX) XXXXX-XXXX
         $ddd = $this->faker->numberBetween(11, 99);
         $prefixo = $this->faker->numberBetween(90000, 99999);
         $sufixo = $this->faker->numberBetween(1000, 9999);
 
-
         return sprintf('%02d%05d%04d', $ddd, $prefixo, $sufixo);
     }
 
-        /**
+    /**
      * Indica que o endereço de e-mail do modelo deve estar não verificado.
      */
     public function unverified(): static

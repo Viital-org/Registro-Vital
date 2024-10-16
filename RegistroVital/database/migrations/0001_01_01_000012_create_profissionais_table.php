@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('cpf', 11)->nullable();
             $table->string('cnpj', 14)->nullable();
             $table->string('registro_profissional', 30)->nullable();
-            $table->string('area_atuacao', 30)->nullable()->unique();
+            $table->string('area_atuacao', 30)->nullable();
             $table->string('especializacao', 30)->nullable();
             $table->char('genero', 1)->nullable();
             $table->integer('tempo_experiencia')->nullable();

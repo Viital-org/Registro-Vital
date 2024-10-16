@@ -9,8 +9,6 @@ class Paciente extends Model
 {
     use HasFactory;
 
-    protected $table = 'pacientes';
-
     protected $fillable = [
         'usuario_id',
         'cpf',
@@ -27,7 +25,7 @@ class Paciente extends Model
         'data_criacao',
     ];
 
-    public function user()
+    public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'usuario_id');
     }

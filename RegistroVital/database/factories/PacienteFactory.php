@@ -3,27 +3,18 @@
 namespace Database\Factories;
 
 use App\Models\Paciente;
-use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<Paciente>
- */
 class PacienteFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Paciente::class;
+
     public function definition(): array
     {
-        $user = Usuario::where('tipo_usuario', 1)->inRandomOrder()->first() ?? Usuario::factory()->create(['tipo_usuario' => 1]);
-
         return [
-            'usuario_id' => $user->id,
-            'cpf' => $this->faker->unique()->numerify('###########'), // CPF
-            'rg' => $this->faker->unique()->numerify('###########'), // RG
+            'usuario_id' => null,
+            'cpf' => $this->faker->unique()->numerify('###########'),
+            'rg' => $this->faker->unique()->numerify('###########'),
             'data_nascimento' => $this->faker->date(),
             'rua_endereco' => $this->faker->streetName(),
             'numero_endereco' => $this->faker->numberBetween(1, 100),

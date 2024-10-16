@@ -6,13 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TipoAnotacao extends Model
+class Status extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'tipos_anotacao';
+    protected $table = 'status';
 
     protected $fillable = [
-        'descricao_tipo',
+        'descricao',
     ];
+
+    protected $dates = ['deleted_at'];
 }
+
