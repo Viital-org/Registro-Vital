@@ -4,41 +4,36 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#0006 - Modificação migration ID usuarios">
-      <change afterPath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/UsuarioSeeder.php" afterDir="false" />
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#0009 - Factory e Seed dos 3 tipos de Usuario; Inicio da adequação da Autenticação ao novo tipo Administrador">
+      <change afterPath="$PROJECT_DIR$/RegistroVital/app/Models/TipoRecomendacao.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RegistroVital/database/factories/TipoRecomendacaoFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/TipoRecomendacaoSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Contracts/PacienteInterface.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/GarantirUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/GarantirUserTipo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Requests/ProfileUpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Requests/ProfileUpdateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Administrador.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Administrador.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Meta.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Paciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Paciente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Profissional.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Profissional.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/TipoAnotacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/TipoAnotacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/bootstrap/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/AdministradorFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/AdministradorFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/MetaFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/MetaFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/PacienteFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/PacienteFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/ProfissionalFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/ProfissionalFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/UserFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000003_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000003_create_tipos_usuarios_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000000_create_tipos_usuarios_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000004_create_profissional_geral_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/TipoAnotacaoFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/TipoAnotacaoFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000007_create_tipos_anotacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000007_create_tipos_anotacao_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000009_create_tipos_visibilidade_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000009_create_tipos_visibilidade_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000012_create_profissionais_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000012_create_profissionais_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000013_create_administradores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000013_create_administradores_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/AdministradorSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/AdministradorSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/MetaSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/MetaSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/PacienteSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/PacienteSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/ProfissionalSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/ProfissionalSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/UserSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/AuthenticationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/AuthenticationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/EmailVerificationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/EmailVerificationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/PasswordConfirmationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/PasswordConfirmationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/PasswordResetTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/PasswordResetTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/PasswordUpdateTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/PasswordUpdateTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/RegistrationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Feature/Auth/RegistrationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Feature/LoginTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Feature/LoginTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Feature/ProfileTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Feature/ProfileTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Unit/ListaPacientesTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Unit/ListaPacientesTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Unit/ListaProfissionaisTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Unit/ListaProfissionaisTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/TipoAnotacaoSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/TipoAnotacaoSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/UsuarioSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/UsuarioSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -414,6 +409,9 @@
       <workItem from="1728700775712" duration="3263000" />
       <workItem from="1728946532046" duration="18179000" />
       <workItem from="1729011775102" duration="3942000" />
+      <workItem from="1729036775445" duration="87000" />
+      <workItem from="1729036873691" duration="13001000" />
+      <workItem from="1729049962368" duration="8940000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -463,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728955826807</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="#0009 - Factory e Seed dos 3 tipos de Usuario; Inicio da adequação da Autenticação ao novo tipo Administrador">
+      <option name="closed" value="true" />
+      <created>1729017200840</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729017200840</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,7 +494,9 @@
     <MESSAGE value="#0007 - Modificação migration ID usuarios" />
     <MESSAGE value="#0006 - Modificação inicial telas" />
     <MESSAGE value="#0007 - Modificação migration ID usuarios" />
-    <option name="LAST_COMMIT_MESSAGE" value="#0007 - Modificação migration ID usuarios" />
+    <MESSAGE value="#0009 - Factory e Seed dos 3 tipos de Usuario; Inicio da adequação da Autenticação ao novo tipo Administrador" />
+    <MESSAGE value="#0002 Criando migrations do novo banco" />
+    <option name="LAST_COMMIT_MESSAGE" value="#0002 Criando migrations do novo banco" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

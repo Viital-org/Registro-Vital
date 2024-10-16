@@ -35,13 +35,8 @@ class Usuario extends Authenticatable
         'remember_token',
     ];
 
-    public function tipoUsuario()
-    {
-        return $this->belongsTo(TipoUsuario::class, 'tipo_usuario');
-    }
-
     /**
-     * Obtém os atributos que devem ser convertidos.
+     * Os atributos que devem ser convertidos.
      *
      * @return array<string, string>
      */
@@ -50,5 +45,25 @@ class Usuario extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
         ];
+    }
+
+    public function tipoUsuario()
+    {
+        return $this->belongsTo(TipoUsuario::class, 'tipo_usuario');
+    }
+
+    public function paciente()
+    {
+        return $this->hasOne(Paciente::class, 'usuario_id');
+    }
+
+    public function profissional()
+    {
+        return $this->hasOne(Profissional::class, 'usuario_id');
+    }
+
+    public function administrador()
+    {
+        return $this->hasOne(Administrador::class, 'usuario_id');
     }
 }

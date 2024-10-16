@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tipos_anotacao', function (Blueprint $table) {
-            $table->id(); // O método id() já define a chave primária
+            $table->id();
             $table->string('descricao_tipo', 20);
             $table->timestamps();
             $table->softDeletes();

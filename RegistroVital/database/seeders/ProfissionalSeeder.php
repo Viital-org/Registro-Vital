@@ -8,18 +8,12 @@ use Illuminate\Database\Seeder;
 
 class ProfissionalSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        $profissionais = Usuario::where('tipo_usuario', 2)->get();
 
-        foreach ($profissionais as $user) {
-            Profissional::factory()->create([
-                'usuario_id' => $user->id,
+        Usuario::factory()->count(10)->create(['tipo_usuario' => 2])->each(function ($usuario) {
 
-            ]);
-        }
+            Profissional::factory()->create(['usuario_id' => $usuario->id]);
+        });
     }
 }

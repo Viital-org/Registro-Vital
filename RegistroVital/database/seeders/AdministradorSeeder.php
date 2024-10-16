@@ -8,19 +8,14 @@ use Illuminate\Database\Seeder;
 
 class AdministradorSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
 
-        Usuario::factory()
-            ->count(5)
-            ->create(['tipo_usuario' => 3])
-            ->each(function ($user) {
-                Administrador::factory()->create([
-                    'usuario_id' => $user->id,
-                ]);
-            });
+        Usuario::factory()->count(10)->create(['tipo_usuario' => 3])->each(function ($usuario) {
+
+            Administrador::factory()->create(['usuario_id' => $usuario->id]);
+            }
+        );
     }
 }
+
