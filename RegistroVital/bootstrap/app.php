@@ -14,13 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'role' => GarantirUserTipo::class,
+            'tipo_usuario' => GarantirUserTipo::class,
             'layout.dinamico' => LayoutDinamico::class,
-        ]);
-
-        $middleware->global([
-            \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -10,11 +10,6 @@ class Usuario extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * Os atributos que podem ser atribuídos em massa.
-     *
-     * @var array
-     */
     protected $fillable = [
         'nome_completo',
         'email',
@@ -34,6 +29,11 @@ class Usuario extends Authenticatable
         'senha',
         'remember_token',
     ];
+
+    public function getAuthPassword()
+    {
+        return $this->senha; // Especifica que o campo da senha é 'senha'
+    }
 
     public function tipoUsuario()
     {

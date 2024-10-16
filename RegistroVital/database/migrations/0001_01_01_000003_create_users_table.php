@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('email', 40)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('senha', 255);
-            $table->integer('situacao_cadastro');
+            $table->integer('situacao_cadastro')->default(1);
             $table->foreignId('tipo_usuario')->constrained('tipos_usuarios')->onDelete('cascade');
             $table->string('telefone_1', 11)->nullable();
             $table->string('telefone_2', 11)->nullable();

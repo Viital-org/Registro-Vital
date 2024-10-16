@@ -59,10 +59,10 @@
 
                         <!-- Função -->
                         <div class="mb-3">
-                            <label for="role" class="form-label">Função</label>
-                            <select name="role" id="role" class="form-control @error('role') is-invalid @enderror" required>
-                                <option value="paciente">Paciente</option>
-                                <option value="medico">Médico</option>
+                            <label for="tipo_usuario" class="form-label">Tipo usuário</label>
+                            <select name="tipo_usuario" id="role" class="form-control @error('role') is-invalid @enderror" required>
+                                <option value="1">Paciente</option>
+                                <option value="2">Profissional</option>
                             </select>
                             @error('role')
                             <span class="invalid-feedback" role="alert">

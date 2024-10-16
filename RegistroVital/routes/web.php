@@ -63,16 +63,81 @@ Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function
     Route::get('/agendamentos/create', [AgendamentosController::class, 'create'])->name('agendamentos.create');
     Route::post('/agendamentos', [AgendamentosController::class, 'store'])->name('agendamentos.store');
     Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
+
+    //Dicas
+    Route::resource('/cadastrodicas', DicasController::class);
+    Route::get('/listadicas', [DicasController::class, 'index'])->name('dicas.index');
+    Route::post('/guardardicas', [DicasController::class, 'store'])->name('dicas.store');
+    Route::post('/listadicas', [DicasController::class, 'show'])->name('dicas.show');
+    Route::get('/cadastrodica', [DicasController::class, 'create']);
+    Route::get('/editardica/{id}', [DicasController::class, 'edit'])->name('dicas.edit');
+    Route::put('/editardica/{id}', [DicasController::class, 'update'])->name('dicas.update');
+    Route::delete('/listadicas/{id}', [DicasController::class, 'destroy'])->name('dicas.delete');
+
+    //Metas
+    Route::resource('/cadastrometas', MetasController::class);
+    Route::get('/listametas', [MetasController::class, 'index'])->name('metas.index');
+    Route::post('/guardarmetas', [MetasController::class, 'store'])->name('metas.store');
+    Route::post('/listametas', [MetasController::class, 'show'])->name('metas.show');
+    Route::get('/cadastrometa', [MetasController::class, 'create']);
+    Route::get('/editarmeta/{id}', [MetasController::class, 'edit'])->name('metas.edit');
+    Route::put('/editarmeta/{id}', [MetasController::class, 'update'])->name('metas.update');
+    Route::delete('/listametas/{id}', [MetasController::class, 'destroy'])->name('metas.delete');
 });
 
 // Rotas Específicas para Profissionais
 Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function () {
-    Route::get('/medico/dashboard', [ProfissionaisController::class, 'tela'])->name('medico.dashboard');
+    Route::get('/profissional/dashboard', [ProfissionaisController::class, 'tela'])->name('profissional.dashboard');
     Route::get('/cadastrarprof', [ProfissionaisController::class, 'create'])->name('cadastrarprof');
     Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
     Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
 
     Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
+
+    //Route::resource('/cadastroprofissional', ProfissionaisController::class);
+    Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
+//Route::post('/guardarprofissionais', [ProfissionaisController::class, 'store'])->name('profissionais-store');
+//Route::post('/listaprofissionais', [ProfissionaisController::class, 'show'])->name('profissionais-show');
+//Route::delete('/listaprofissionais/{id}', [ProfissionaisController::class, 'destroy'])->name('profissionais-delete');
+//Route::get('/especializacoes/{areaId}', [ProfissionaisController::class, 'especializacoesPorArea']);
+
+//Pacientes
+//Route::resource('/cadastropacientes', PacientesController::class);
+    Route::get('/listapacientes', [PacientesController::class, 'index'])->name('pacientes-index');
+//Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
+//Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes-show');
+//Route::get('/cadastropaci', [PacientesController::class, 'create']);
+//Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
+
+//Consultas
+//Route::resource('/cadastroconsultas', ConsultasController::class);
+    Route::get('/listaconsultas', [ConsultasController::class, 'index'])->name('consultas-index');
+//Route::post('/guardarconsultas', [ConsultasController::class, 'store'])->name('consultas-store');
+//Route::post('/listaconsultas', [ConsultasController::class, 'show'])->name('consultas-show');
+//Route::get('/cadastroconsul', [ConsultasController::class, 'create']);
+//Route::get('/editarconsulta/{id}', [ConsultasController::class, 'edit'])->name('consultas-edit');
+//Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
+//Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas-delete');
+
+
+//Areas de atuacao
+    Route::resource('/cadastroatuaareas', AtuaAreasController::class);
+    Route::get('/listaatuaareas', [AtuaAreasController::class, 'index'])->name('atuaareas-index');
+    Route::post('/guardaratuaareas', [AtuaAreasController::class, 'store'])->name('atuaareas-store');
+    Route::post('/listaatuaareas', [AtuaAreasController::class, 'show'])->name('atuareas-show');
+    Route::get('/cadastroarea', [AtuaAreasController::class, 'create']);
+    Route::get('/editaratuaarea/{id}', [AtuaAreasController::class, 'edit'])->name('atuaareas-edit');
+    Route::put('/editaratuaarea/{id}', [AtuaAreasController::class, 'update'])->name('atuaareas-update');
+    Route::delete('/listaatuaareas/{id}', [AtuaAreasController::class, 'destroy'])->name('atuaareas-delete');
+//Especializacoes
+    Route::resource('/cadastroespecializacoes', EspecializacoesController::class);
+    Route::get('/listaespecializacoes', [EspecializacoesController::class, 'index'])->name('especializacoes-index');
+    Route::post('/guardarespecializacao', [EspecializacoesController::class, 'store'])->name('especializacoes-store');
+    Route::post('/listaespecializacoes', [EspecializacoesController::class, 'show'])->name('especializacoes-show');
+    Route::get('/cadastroespec', [EspecializacoesController::class, 'create']);
+    Route::get('/editarespecializacao/{id}', [EspecializacoesController::class, 'edit'])->name('especializacoes-edit');
+    Route::put('/editarespecializacao/{id}', [EspecializacoesController::class, 'update'])->name('especializacoes-update');
+    Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, 'destroy'])->name('especializacoes-delete');
 });
 
 // Rotas Específicas para Administradores

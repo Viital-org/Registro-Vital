@@ -27,7 +27,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     @if (auth()->check())
-                        <a class="nav-link" href="{{ auth()->user()->role === 'paciente' ? route('paciente.dashboard') : route('medico.dashboard') }}" style="color: white;">
+                        <a class="nav-link" href="{{ auth()->user()->role === 'paciente' ? route('paciente.dashboard') : route('profissional.dashboard') }}" style="color: white;">
                             Home
                         </a>
                     @endif

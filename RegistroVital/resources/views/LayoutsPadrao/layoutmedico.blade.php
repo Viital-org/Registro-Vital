@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ route('medico.dashboard') }}">Home</a>
+                <a class="nav-link text-white" href="{{ route('profissional.dashboard') }}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="{{ route('quemsomos') }}">Quem somos</a>
@@ -43,7 +43,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                     Auth::user()->name
+                     {{Auth::user()->name}}
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Editar Perfil</a></li>
@@ -66,24 +66,12 @@
         <div class="col-md-3 sidebar bg-light py-4">
             <ul class="nav flex-column">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Cadastros</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/cadastroarea">Áreas de Atuação</a></li>
                         <li><a class="dropdown-item" href="/cadastroespec">Especializações</a></li>
                         <li><a class="dropdown-item" href="/cadastrotipanot">Tipos de Anotação</a></li>
                         <li><a class="dropdown-item" href="/cadastrodica">Dicas</a></li>
                         <li><a class="dropdown-item" href="/cadastrometa">Metas</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Listagens</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('atuaareas-index') }}">Áreas de Atuação</a></li>
-                        <li><a class="dropdown-item" href="{{ route('especializacoes-index') }}">Especializações</a></li>
-                        <li><a class="dropdown-item" href="{{ route('agendamentos-index') }}">Agendamentos</a></li>
-                        <li><a class="dropdown-item" href="{{ route('tipoanotacao-index') }}">Tipos de Anotação</a></li>
-                        <li><a class="dropdown-item" href="{{ route('dicas-index') }}">Dicas</a></li>
-                        <li><a class="dropdown-item" href="{{ route('metas-index') }}">Metas</a></li>
                     </ul>
                 </li>
             </ul>

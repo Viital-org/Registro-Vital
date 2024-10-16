@@ -87,22 +87,13 @@
                         <a class="nav-link active" href="#">Listagens</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('atuaareas-index') }}">Áreas de Atuação</a>
+                        <a class="nav-link" href="{{ route('agendamentos.index') }}">Agendamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('especializacoes-index') }}">Especializações</a>
+                        <a class="nav-link" href="{{ route('dicas.index') }}">Dicas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('agendamentos-index') }}">Agendamentos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tipoanotacao-index') }}">Tipos de Anotação</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('dicas-index') }}">Dicas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('metas-index') }}">Metas</a>
+                        <a class="nav-link" href="{{ route('metas.index') }}">Metas</a>
                     </li>
                 </ul>
             </div>
