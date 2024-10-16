@@ -17,7 +17,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => GarantirUserTipo::class,
             'layout.dinamico' => LayoutDinamico::class,
         ]);
-
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
