@@ -1,90 +1,124 @@
 @import 'bootstrap/scss/bootstrap';
 
-// Cor Principal
-$primary-color: #365e6d;
-
-// Container Principal
 .container-fluid {
-    height: 100%;
+    min-height: 100vh; /* Garante que o contêiner ocupe pelo menos a altura total da viewport */
+    max-height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    vertical-align: middle;
+    background-image: linear-gradient(to left, rgba(174, 0, 255, 0.5), rgba(174, 0, 255, 0.5));
+    background-size: 500% 100%;
+    animation: plano-fundo 15s infinite alternate;
 }
 
-// Barra de Navegação
+.main-content {
+    margin-top: 5%;
+    font-size: 12px;
+}
+
+.navbar-brand { /* Titulo */
+    margin-left: 10px;
+    animation: cor-titulo 3s infinite alternate;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+/* Navbar */
 .navbar {
-    background-color: #728e98;
     border-radius: 10px;
-    .navbar-brand {
-        margin-left: 10px;
-        color: white;
-        font-size: 20pt;
-        font-weight: bold;
-    }
-    .navbar-collapse {
-        align-items: center;
-        justify-content: center;
-    }
-    .nav-link {
-        font-size: 12pt;
-        margin: 0 30px;
-        color: white;
-        &:hover {
-            color: $primary-color;
-        }
-    }
 }
 
-// Sidebar
+.navbar-collapse {
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .nav-link {
+    font-size: 12pt;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.navbar .nav-link:hover {
+    color: #a347ff; /* Tom mais claro de laranja */
+}
+
+/* Sidebar */
 .sidebar {
     width: 300px;
     height: 85%;
     margin-top: 70px;
-    background-color: #aec4bc;
     border-radius: 10px;
     position: fixed;
-    padding: 20px;
 }
 
-// Conteúdo Principal
+.sidebar .nav-link {
+    color: black;
+}
+
+.sidebar .nav-link:hover {
+    color: #a347ff;
+}
+
+/* Conteúdo principal */
 .main-content {
+    margin-left: 25%;
     padding-top: 5%;
-    color: #333333;
-    font-size: 12pt;
+    color: #333333; /* Cor de texto */
+}
+
+.hidden {
     display: flex;
-    flex-direction: column;
-    vertical-align: middle;
+    max-width: 50px;
+    max-height: 10px;
+}
+
+.flex {
+    display: flex;
+}
+
+.relative {
+    border-radius: 10px;
+}
+
+.conteudo-ajuda {
     align-items: center;
-    width: 100%;
-    height: 100%;
 }
 
-// Botões
-.btn-primary {
-    background-color: $primary-color;
-    border-color: $primary-color;
-    &:hover {
-        background-color: darken($primary-color, 10%);
-        border-color: darken($primary-color, 10%);
-    }
-}
-
-// Conteúdo em Destaque
 .fundo-branco-texto {
     background-color: rgba(240, 255, 255, 0.678);
     border-radius: 15px;
-    padding: 15px;
+    padding: 5px;
     font-family: sans-serif;
     text-align: justify;
     line-height: 2;
 }
 
-// Rodapé
-footer {
-    margin-top: auto;
-    background-color: darken(#c2ced3, 5%);
-    padding: 15px;
-    text-align: center;
-    color: $primary-color;
+@keyframes plano-fundo {
+    0% {
+        background-position-x: 0%;
+    }
+
+    100% {
+        background-position-x: 100%;
+    }
+}
+
+@keyframes cor-titulo {
+    0% {
+        color: rgb(26, 10, 10);
+    }
+
+    100% {
+        color: rgba(132, 24, 204, 0.753);
+    }
+}
+
+@keyframes slogan {
+    0% {
+        color: rgba(243, 243, 243, 0.788);
+    }
+
+    100% {
+        color: rgba(31, 19, 39, 0.863);
+    }
 }

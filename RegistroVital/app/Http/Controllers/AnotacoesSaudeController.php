@@ -17,12 +17,12 @@ class AnotacoesSaudeController extends Controller
     {
         $user = Auth::user();
         if ($user->role === 'paciente') {
-            $paciente = Paciente::where('usuario_id', $user->id)->first();
+            $paciente = Paciente::where('user_id', $user->id)->first();
             $anotacoessaude = Anotacaosaude::where('paciente_id', $paciente->id)
-                ->join('tipos_anotacao', 'tipos_anotacao.id', '=', 'anotacoes.tipo_anotacao')
-                ->select('anotacoes.*', 'tipos_anotacao.id as tipo_anotacao', 'tipo_anotacao.descricao_tipo as desc_anotacao')
+                ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
+                ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao')
                 ->simplePaginate(5);
-        } else if ($user->role === 'profissional') {
+        } else if ($user->role === 'medico') {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
         } else {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
@@ -37,25 +37,18 @@ class AnotacoesSaudeController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $paciente = Paciente::where('usuario_id', $user->id)->first();
+        $paciente = Paciente::where('user_id', $user->id)->first();
 
         $validated = $request->validate([
             'anotacao' => 'required|string',
             'data_anotacao' => 'required|date',
-            'tipo_anot' => 'required',
-            'visibilidade' => 'required',
+            'tipo_anot' => 'required|exists:tipoanotacoes,id',
+            'visibilidade' => 'required|in:Visivel,Escondido',
         ]);
 
-        $validated['paciente_id'] = $user->id;
-
-        $validated['tipo_anotacao'] = $request->tipo_anot;
-
-        $validated['descricao_anotacao'] = $request->anotacao;
-
-        $validated['tipo_visibilidade'] = $request->visibilidade;
+        $validated['paciente_id'] = $paciente->id;
 
         Anotacaosaude::create($validated);
-
         return redirect()->route('anotacoessaude-index')->with('success', 'Anotação criada com sucesso!');
     }
 
@@ -67,7 +60,7 @@ class AnotacoesSaudeController extends Controller
         $tipoanotacoes = TipoAnotacao::all();
 
         return view('Anotacoes.cadastroanotacoessaude', [
-            'tipoanotacoes' => $tipoanotacoes,
+            'tipoanotacoes' => $tipoanotacoes
         ]);
     }
 

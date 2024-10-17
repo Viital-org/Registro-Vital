@@ -10,7 +10,7 @@ class AtuaArea extends Model
 {
     use hasfactory, softDeletes;
 
-    protected $table = 'areas_atuacao';
+    protected $table = 'atuaareas';
 
     protected $fillable = [
         'area',
@@ -26,6 +26,6 @@ class AtuaArea extends Model
 
     public function especializacoes()
     {
-        return $this->hasMany(Especializacao::class, 'id');
+        return $this->hasMany(Especializacao::class, 'area_id');
     }
 }

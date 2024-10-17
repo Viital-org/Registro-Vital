@@ -28,15 +28,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        switch ($request->user()->tipo_usuario) {
-            case 'profissional':
-                return redirect()->intended(route('profissional.dashboard'));
-            case 'administrador':
-                return redirect()->intended(route('admin.dashboard'));
-            default:
-                return redirect()->intended(route('paciente.dashboard'));
+        if ($request->User()->role === 'medico') {
+            return redirect(route('medico.dashboard'));
         }
+
+        return redirect()->intended(route('paciente.dashboard'));
     }
+
 
     /**
      * Destroy an authenticated session.

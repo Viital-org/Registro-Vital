@@ -1,14 +1,14 @@
 <?php
 
 use App\Models\Profissional;
-use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 uses(TestCase::class, RefreshDatabase::class);
 
 test('Testa se os profissionais estão sendo listados', function () {
-    Usuario::factory()->create();
+    User::factory()->create();
 
     Profissional::factory()->count(3)->create();
 
@@ -24,7 +24,7 @@ test('Testa se o usuario esta sendo redirecionado para a pagina', function () {
 });
 
 test('Testa se o que foi criado é do tipo certo', function () {
-    Usuario::factory()->create();
+    User::factory()->create();
 
     $response = Profissional::factory()->count(1)->create();
 
@@ -42,7 +42,7 @@ test('Testa se o que foi criado é do tipo certo', function () {
 
 test('Testa se ao apagar o primeiro registro, ele some.', function () {
 
-    Usuario::factory()->create();
+    User::factory()->create();
 
     Profissional::factory()->count(3)->create();
 

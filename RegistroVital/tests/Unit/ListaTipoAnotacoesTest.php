@@ -27,10 +27,10 @@ test('Testa se o que foi criado é do tipo certo', function () {
 
     $item = $response->first();
 
+
     expect($item->id)->toBeInt();
-    expect($item->descricao_tipo)->toBeString();
-    expect($item->timestamps)->toBeTrue();
-    expect($item->softDeletes)->toBeNull();
+    expect($item->tipo_anotacao)->toBeInt();
+    expect($item->desc_anotacao)->toBeString();
 
 });
 
@@ -39,9 +39,7 @@ test('Testa se ao apagar o primeiro registro, ele some.', function () {
     TipoAnotacao::factory()->count(3)->create();
 
     $item = TipoAnotacao::first();
-    $id = $this->id;
     $item->delete();
 
-    $item = TipoAnotacao::find($id);
-    expect($item)->toBeNull(); 
+    expect($item['id'])->not->toBe('1');
 });

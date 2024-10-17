@@ -22,7 +22,7 @@ test('Testa se as anotacoes estão sendo listados', function () {
 
 test('Testa se o usuario esta sendo redirecionado para a pagina', function () {
 
-    $response = $this->post(route('anotacoessaude-index'));
+    $response = $this->post(route('anotacoessaude-show'));
 
     $response->assertStatus(200);
 });
@@ -39,10 +39,10 @@ test('Testa se o que foi criado é do tipo certo', function () {
 
     expect($item->id)->toBeInt();
     expect($item->paciente_id)->toBeInt();
-    expect($item->tipo_anotacao)->toBeInt();
-    expect($item->descricao_anotacao)->toBeString();
-    expect($item->tipo_visibilidade)->toBeBool();
-    expect($item->possui_documento)->toBeBool();
+    expect($item->data_anotacao)->toBeString();
+    expect($item->tipo_anot)->toBeInt();
+    expect($item->visibilidade)->toBeBool();
+    expect($item->anotacao)->toBeString();
 
 });
 

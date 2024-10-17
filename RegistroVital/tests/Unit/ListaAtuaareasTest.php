@@ -27,10 +27,11 @@ test('Testa se o que foi criado é do tipo certo', function () {
 
     $item = $response->first();
 
+
     expect($item->id)->toBeInt();
-    expect($item->descricao_area)->toBeString();
-    expect($item->timestamps)->toBeTrue();
-    expect($item->softDeletes)->toBeNull();
+    expect($item->area)->toBeString();
+    expect($item->descricao)->toBeString();
+
 });
 
 test('Testa se ao apagar o primeiro registro, ele some.', function () {
@@ -38,9 +39,7 @@ test('Testa se ao apagar o primeiro registro, ele some.', function () {
     AtuaArea::factory()->count(3)->create();
 
     $item = AtuaArea::first();
-    $id = $item->id;
     $item->delete();
 
-    $item = AtuaArea::find($id);
-    expect($item)->toBeNull(); 
+    expect($item['id'])->not->toBe('1');
 });

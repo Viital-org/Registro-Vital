@@ -4,25 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Meta extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
-        'paciente_id',
-        'titulo_meta',
-        'descricao_meta',
+        'meta',
+        'descricao',
         'data_inicio',
         'data_fim',
-        'situacao',
-        'notificacao_diaria',
+        'status',
     ];
 
-    public function paciente(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function pacientes()
     {
-        return $this->belongsTo(Paciente::class, 'paciente_id');
+        return $this->hasMany(Paciente::class, 'meta_id');
     }
 }
 

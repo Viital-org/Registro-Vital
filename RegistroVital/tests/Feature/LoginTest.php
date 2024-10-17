@@ -1,18 +1,18 @@
-<?php
+<?php 
 namespace Tests\Feature;
 
-use App\Models\Usuario;
+use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class LoginTest extends TestCase
+class LoginTest extends TestCase 
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function paciente_autenticado_loga()
+    /** @test */ 
+    public function paciente_autenticado_loga() 
     {
-        $user = Usuario::factory()->create(['role'=>'paciente']);
+        $user = User::factory()->create(['role'=>'paciente']);
 
         $response = $this->actingAs($user)->get('/paciente/dashboard');
 
@@ -20,9 +20,9 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function profissional_autenticado_loga()
+    public function profissional_autenticado_loga() 
     {
-        $user = Usuario::factory()->create(['role'=>'medico']);
+        $user = User::factory()->create(['role'=>'medico']);
 
         $response = $this->actingAs($user)->get('/medico/dashboard');
 
