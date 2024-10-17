@@ -3,7 +3,6 @@
 use App\Models\Meta;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Carbon\Carbon;
 
 uses(TestCase::class, RefreshDatabase::class);
 
@@ -48,5 +47,5 @@ test('Testa se ao apagar o primeiro registro, ele some.', function () {
     $item->delete();
 
     $item = Meta::find($id);
-    expect($item)->toBeNull(); 
+    expect($item)->toBeNull();
 });

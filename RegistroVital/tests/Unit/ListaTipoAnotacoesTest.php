@@ -43,5 +43,5 @@ test('Testa se ao apagar o primeiro registro, ele some.', function () {
     $item->delete();
 
     $item = TipoAnotacao::find($id);
-    expect($item)->toBeNull(); 
+    expect($item)->toBeNull();
 });

@@ -42,5 +42,5 @@ test('Testa se ao apagar o primeiro registro, ele some.', function () {
     $item->delete();
 
     $item = AtuaArea::find($id);
-    expect($item)->toBeNull(); 
+    expect($item)->toBeNull();
 });
