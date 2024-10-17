@@ -18,7 +18,7 @@ class AgendamentosController extends Controller
     {
         $user = Auth::user();
         $today = date('Y-m-d');
-        if ($user->role === 'paciente') {
+        if ($user->tipo_usuario === 1) {
             $agendamentos = Agendamento::where('paciente_id', $user->paciente->id)
                 ->whereHas('consulta', function ($query) use ($today) {
                     $query->where('data', '<', $today)
@@ -26,7 +26,7 @@ class AgendamentosController extends Controller
                         ->orWhere('status', 'realizada');
                 })
                 ->paginate(5);
-        } elseif ($user->role === 'medico') {
+        } elseif ($user->tipo_usuario === 2) {
             $agendamentos = Agendamento::where('profissional_id', $user->profissional->id)
                 ->whereHas('consulta', function ($query) use ($today) {
                     $query->where('data', '<', $today)
