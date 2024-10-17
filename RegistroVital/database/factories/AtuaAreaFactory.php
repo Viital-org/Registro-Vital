@@ -18,8 +18,7 @@ class AtuaAreaFactory extends Factory
     public function definition(): array
     {
         return [
-            'area' => $this->faker->jobTitle(),
-            'descricao' => $this->faker->text(),
+            'descricao_area' => $this->faker->text(20),
         ];
     }
 }
