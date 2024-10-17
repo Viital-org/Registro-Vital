@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TipoRecomendacao;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,17 +13,24 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            UserSeeder::class,
-            PacienteSeeder::class,
-            AtuaAreaSeeder::class,
-            EspecializacaoSeeder::class,
+            TipoUsuarioSeeder::class,
+            AdministradorSeeder::class,
             ProfissionalSeeder::class,
-            MetaSeeder::class,
-            ConsultaSeeder::class,
+            PacienteSeeder::class,
+            TipoRecomendacaoSeeder::class,
             TipoAnotacaoSeeder::class,
-            DicaSeeder::class,
-            AnotacaosaudeSeeder::class,
-            AgendamentoSeeder::class,
+            TipoDocumentoSeeder::class,
+            TipoVisibilidadeSeeder::class,
+            TipoLogSeeder::class,
+            StatusSeeder::class,
+            //MetaSeeder::class,
+            //AtuaAreaSeeder::class,
+            //EspecializacaoSeeder::class,
+            //ConsultaSeeder::class,
+            //DicaSeeder::class,
+            //AnotacaosaudeSeeder::class,
+            //AgendamentoSeeder::class,
+            //UsuarioSeeder::class,
         ]);
     }
 }

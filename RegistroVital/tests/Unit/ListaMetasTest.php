@@ -3,6 +3,7 @@
 use App\Models\Meta;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Carbon\Carbon;
 
 uses(TestCase::class, RefreshDatabase::class);
 
@@ -27,12 +28,14 @@ test('Testa se o que foi criado é do tipo certo', function () {
 
     $item = $response->first();
 
-
     expect($item->id)->toBeInt();
-    expect($item->meta)->toBeString(70);
+    expect($item->paciente_id)->toBeInt();
+    expect($item->titulo_meta)->toBeString();
+    expect($item->descricao_meta)->toBeString();
     expect($item->data_inicio)->toBeString();
     expect($item->data_fim)->toBeString();
-    expect($item->descricao)->toBeString();
+    expect($item->situacao)->toBeInt();
+    expect($item->notificacao_diaria)->toBeBool();
 
 });
 
@@ -41,7 +44,9 @@ test('Testa se ao apagar o primeiro registro, ele some.', function () {
     Meta::factory()->count(3)->create();
 
     $item = Meta::first();
+    $id = $item->id;
     $item->delete();
 
-    expect($item['id'])->not->toBe('1');
+    $item = Meta::find($id);
+    expect($item)->toBeNull(); 
 });

@@ -27,6 +27,7 @@ class PacientesController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'nomecompleto'=> 'required|string|max:40',
             'datanascimento' => 'required|date',
             'cep' => 'required|string|max:9',
             'endereco' => 'required|string|max:255',
@@ -56,7 +57,7 @@ class PacientesController extends Controller
         $metas = Meta::all();
 
         return view('Cadastros/cadastropacientes', [
-            'user' => $user,
+            'usuarios' => $user,
             'metas' => $metas
         ]);
     }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\GarantirUserRole;
+use App\Http\Middleware\GarantirUserTipo;
 use App\Http\Middleware\LayoutDinamico;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -14,10 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'role' => GarantirUserRole::class,
+            'tipo_usuario' => GarantirUserTipo::class,
             'layout.dinamico' => LayoutDinamico::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
-    })->create();
+    })
+    ->create();

@@ -34,9 +34,7 @@ test('Testa se o que foi criado é do tipo certo', function () {
 
 
     expect($item->id)->toBeInt();
-    expect($item->dica)->toBeString();
-    expect($item->paciente_id)->toBeInt();
-    expect($item->descricao)->toBeString();
+    expect($item->descricao_dica)->toBeString();
 
 });
 

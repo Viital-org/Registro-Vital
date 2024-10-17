@@ -2,16 +2,27 @@
 
 namespace Database\Seeders;
 
-use App\Models\TipoAnotacao;
 use Illuminate\Database\Seeder;
+use App\Models\TipoAnotacao;
 
 class TipoAnotacaoSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        TipoAnotacao::factory(10)->create();
+        $tiposAnotacao = [
+            'alimentação',
+            'atividade física',
+            'geral',
+            'saúde',
+            'dental',
+            'medicação',
+            'descanso/sono',
+        ];
+
+        foreach ($tiposAnotacao as $tipo) {
+            TipoAnotacao::create([
+                'descricao_tipo' => $tipo,
+            ]);
+        }
     }
 }
