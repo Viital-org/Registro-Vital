@@ -16,13 +16,16 @@ class AnotacoesSaudeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if ($user->role === 'paciente') {
+
+        if ($user->tipo_usuario === 1) {
             $paciente = Paciente::where('usuario_id', $user->id)->first();
-            $anotacoessaude = Anotacaosaude::where('paciente_id', $paciente->id)
+
+            $anotacoessaude = Anotacaosaude::where('paciente_id', $user->id)
                 ->join('tipos_anotacao', 'tipos_anotacao.id', '=', 'anotacoes.tipo_anotacao')
-                ->select('anotacoes.*', 'tipos_anotacao.id as tipo_anotacao', 'tipo_anotacao.descricao_tipo as desc_anotacao')
+                ->join('tipos_visibilidade', 'tipos_visibilidade.id', '=', 'anotacoes.tipo_visibilidade')
+                ->select('anotacoes.*', 'tipos_anotacao.id as tipo_anotacao', 'anotacoes.descricao_anotacao as anotacao', 'tipos_anotacao.descricao_tipo as desc_anotacao', 'tipos_visibilidade.descricao as visibilidade')
                 ->simplePaginate(5);
-        } else if ($user->role === 'profissional') {
+        } else if ($user->tipo_usuario === '2') {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');
         } else {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta pagina.');

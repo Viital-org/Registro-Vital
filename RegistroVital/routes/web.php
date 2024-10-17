@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 Route::middleware('layout.dinamico')->group(function () {
 
+    //Anotacoes
+    Route::get('/anotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
+    Route::get('/anotacoes/criar', [AnotacoesSaudeController::class, 'create'])->name('anotacoessaude-create');
+    Route::post('/anotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
+    Route::get('/anotacoes/{id}/editar', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
+    Route::put('/anotacoes/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
+    Route::delete('/anotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
+
     Route::get('/', function () {
         return view('welcome');
     })->name('welcome');
@@ -134,18 +142,12 @@ Route::middleware(['auth', 'layout.dinamico'])->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::middleware(['auth', 'role:paciente', 'layout.dinamico'])->group(function () {
+Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function () {
     Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
     Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes-edit');
     Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
 
-    //Anotacoes
-    Route::get('/anotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
-    Route::get('/anotacoes/criar', [AnotacoesSaudeController::class, 'create'])->name('anotacoessaude-create');
-    Route::post('/anotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
-    Route::get('/anotacoes/{id}/editar', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
-    Route::put('/anotacoes/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
-    Route::delete('/anotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
+
 
     //Agendamentos
     Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');

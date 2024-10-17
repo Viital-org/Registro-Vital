@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#12- Correção do registro e do login autenticado">
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#14- Correção no cadastro de anotacoes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AnotacoesSaudeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AnotacoesSaudeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/GarantirUserTipo.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/GarantirUserTipo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Anotacaosaude.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Anotacaosaude.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000015_create_anotacoes_saude_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000015_create_anotacoes_saude_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Anotacoes/cadastroanotacoessaude.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Anotacoes/cadastroanotacoessaude.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -2969,7 +2965,7 @@
       <workItem from="1728946532046" duration="18179000" />
       <workItem from="1729011775102" duration="3942000" />
       <workItem from="1729117238172" duration="10063000" />
-      <workItem from="1729128383106" duration="729000" />
+      <workItem from="1729128383106" duration="4068000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -3051,7 +3047,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729120125571</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="#14- Correção no cadastro de anotacoes">
+      <option name="closed" value="true" />
+      <created>1729129705603</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1729129705603</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3079,7 +3083,8 @@
     <MESSAGE value="#10.1 commit complementar" />
     <MESSAGE value="#0006 - Modificação migration ID usuarios" />
     <MESSAGE value="#12- Correção do registro e do login atenticado" />
-    <option name="LAST_COMMIT_MESSAGE" value="#12- Correção do registro e do login atenticado" />
+    <MESSAGE value="#14- Correção no cadastro de anotacoes" />
+    <option name="LAST_COMMIT_MESSAGE" value="#14- Correção no cadastro de anotacoes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
