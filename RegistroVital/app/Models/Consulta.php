@@ -9,18 +9,12 @@ class Consulta extends Model
 {
     use HasFactory;
 
-    protected $table = 'consultas';
-
     protected $fillable = [
-        'paciente_id',
-        'profissional_id',
-        'agendamento_id',
-        'area_atuacao_id',
-        'especializacao_id',
-        'situacao',
         'data',
+        'status',
+        'profissional_id',
+        'paciente_id',
         'valor',
-        'endereco_consulta',
     ];
 
     public function profissional()

@@ -24,7 +24,8 @@
                         <!-- Endereço de Email -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Endereço de Email</label>
-                            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
+                            <input type="email" name="email" id="email"
+                                   class="form-control @error('email') is-invalid @enderror"
                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -35,7 +36,8 @@
 
                         <!-- Botão para Enviar o Email -->
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary btn-lg">Enviar email de recuperação da senha</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Enviar email de recuperação da senha
+                            </button>
                         </div>
                     </form>
                 </div>

@@ -17,7 +17,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #4a6572; color: white;">
     <div class="container">
-        <img src="{{ asset('/img/cruz.png') }}" alt="Logo" style="max-width: 3%;" />
+        <img src="{{ asset('/img/cruz.png') }}" alt="Logo" style="max-width: 3%;"/>
         <a class="navbar-brand" href="/" style="color: white; font-weight: bold; font-size: 20pt;">Registro Vital</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,9 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     @if (auth()->check())
-                        <a class="nav-link" href="{{ auth()->user()->role === 'paciente' ? route('paciente.dashboard') : route('profissional.dashboard') }}" style="color: white;">
+                        <a class="nav-link"
+                           href="{{ auth()->usuario()->tipo_usuario === '1' ? route('paciente.dashboard') : route('profissional.dashboard') }}"
+                           style="color: white;">
                             Home
                         </a>
                     @endif
@@ -45,7 +47,7 @@
 
 <!-- Conteúdo da página -->
 <div class="container-fluid conteudo-ajuda mt-5 pt-5" style="background-color: #d4e6e5; min-height: 100vh;">
-        @yield('conteudo')
+    @yield('conteudo')
 </div>
 
 <!-- Scripts -->

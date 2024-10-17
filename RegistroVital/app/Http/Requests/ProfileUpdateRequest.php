@@ -8,6 +8,9 @@ use Illuminate\Validation\Rule;
 
 class ProfileUpdateRequest extends FormRequest
 {
+    public mixed $email;
+    public mixed $name;
+
     /**
      * Get the validation rules that apply to the request.
      *

@@ -14,7 +14,7 @@ class AdministradorSeeder extends Seeder
         Usuario::factory()->count(10)->create(['tipo_usuario' => 3])->each(function ($usuario) {
 
             Administrador::factory()->create(['usuario_id' => $usuario->id]);
-            }
+        }
         );
     }
 }

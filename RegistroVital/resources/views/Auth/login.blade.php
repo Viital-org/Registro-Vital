@@ -65,7 +65,8 @@
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
                             @if (Route::has('password.request'))
-                                <a class="btn btn-link text-center" href="{{ route('password.request') }}">Esqueci minha senha</a>
+                                <a class="btn btn-link text-center" href="{{ route('password.request') }}">Esqueci minha
+                                    senha</a>
                             @endif
                         </div>
                     </form>

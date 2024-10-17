@@ -52,9 +52,9 @@ return [
     */
 
     'providers' => [
-        'usuarios' => [ // Alterado para 'usuarios'
+        'usuarios' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Usuario::class, // Verifique se o namespace está correto
+            'model' => App\Models\Usuario::class,
         ],
     ],
 
@@ -70,7 +70,7 @@ return [
     */
 
     'passwords' => [
-        'usuarios' => [ // Alterado para 'usuarios'
+        'usuarios' => [
             'provider' => 'usuarios',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,

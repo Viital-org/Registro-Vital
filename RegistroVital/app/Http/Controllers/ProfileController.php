@@ -8,6 +8,7 @@ use App\Models\Especializacao;
 use App\Models\Meta;
 use App\Models\Paciente;
 use App\Models\Profissional;
+use App\Models\Usuario;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,8 +23,8 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $user = $request->user();
-        $paciente = $user->role === 'paciente' ? Paciente::where('user_id', $user->id)->first() : null;
-        $profissional = $user->role === 'medico' ? Profissional::where('user_id', $user->id)->first() : null;
+        $paciente = $user->tipo_usuario === 1 ? Paciente::where('usuario_id', $user->id)->first() : null;
+        $profissional = $user->tipo_usuario === 2 ? Profissional::where('usuario_id', $user->id)->first() : null;
         $metas = Meta::all();
         $atuaareas = AtuaArea::all();
         $especializacoes = Especializacao::all();
@@ -33,16 +34,21 @@ class ProfileController extends Controller
 
     /**
      * Update the user's role-specific information.
+     *
      */
+
+
     public function updateRoleInfo(Request $request): RedirectResponse
     {
+        /** @var Usuario $user */
+
         $user = Auth::user();
 
-        if ($user->role === 'paciente') {
-            $paciente = Paciente::where('user_id', $user->id)->first();
+        if ($user->tipo_usuario === 1) {
+            $paciente = Paciente::where('usuario_id', $user->id)->first();
             $paciente->update($request->all());
-        } elseif ($user->role === 'medico') {
-            $profissional = Profissional::where('user_id', $user->id)->first();
+        } elseif ($user->tipo_usuario === 2) {
+            $profissional = Profissional::where('usuario_id', $user->id)->first();
             $profissional->update($request->all());
         }
 
@@ -63,16 +69,16 @@ class ProfileController extends Controller
 
         $user->save();
 
-        if ($user->role === 'paciente') {
-            $paciente = Paciente::where('user_id', $user->id)->first();
+        if ($user->tipo_usuario === 1) {
+            $paciente = Paciente::where('usuario_id', $user->id)->first();
             if ($paciente) {
                 $paciente->update([
                     'nome' => $request->name,
                     'email' => $request->email,
                 ]);
             }
-        } elseif ($user->role === 'medico') {
-            $profissional = Profissional::where('user_id', $user->id)->first();
+        } elseif ($user->tipo_usuario === 2) {
+            $profissional = Profissional::where('usuario_id', $user->id)->first();
             if ($profissional) {
                 $profissional->update([
                     'nome' => $request->name,
@@ -97,10 +103,10 @@ class ProfileController extends Controller
 
         Auth::logout();
 
-        if ($user->role === 'paciente') {
-            Paciente::where('user_id', $user->id)->delete();
-        } elseif ($user->role === 'medico') {
-            Profissional::where('user_id', $user->id)->delete();
+        if ($user->tipo_usuario === 1) {
+            Paciente::where('usuario_id', $user->id)->delete();
+        } elseif ($user->tipo_usuario === 2) {
+            Profissional::where('usuario_id', $user->id)->delete();
         }
 
         $user->delete();

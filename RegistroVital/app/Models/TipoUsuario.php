@@ -10,10 +10,10 @@ class TipoUsuario extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'tipos_usuarios'; // Nome da tabela
+    protected $table = 'tipos_usuarios';
 
     protected $fillable = [
-        'descricao', // Atributo que pode ser preenchido
+        'descricao',
     ];
 
     public function usuarios()

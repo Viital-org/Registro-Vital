@@ -13,19 +13,24 @@
         @endif
 
         <!-- Carousel de Imagens -->
-        <div id="carouselExampleSlidesOnly" class="carousel slide shadow-sm rounded" data-bs-ride="carousel" data-bs-interval="3500">
+        <div id="carouselExampleSlidesOnly" class="carousel slide shadow-sm rounded" data-bs-ride="carousel"
+             data-bs-interval="3500">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('img/img1.png') }}" class="d-block w-100 rounded" style="max-height: 530px; opacity: 0.75;">
+                    <img src="{{ asset('img/img1.png') }}" class="d-block w-100 rounded"
+                         style="max-height: 530px; opacity: 0.75;">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/img2.png') }}" class="d-block w-100 rounded" style="max-height: 530px; opacity: 0.75;">
+                    <img src="{{ asset('img/img2.png') }}" class="d-block w-100 rounded"
+                         style="max-height: 530px; opacity: 0.75;">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/img3.png') }}" class="d-block w-100 rounded" style="max-height: 530px; opacity: 0.75;">
+                    <img src="{{ asset('img/img3.png') }}" class="d-block w-100 rounded"
+                         style="max-height: 530px; opacity: 0.75;">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('img/img4.png') }}" class="d-block w-100 rounded" style="max-height: 530px; opacity: 0.75;">
+                    <img src="{{ asset('img/img4.png') }}" class="d-block w-100 rounded"
+                         style="max-height: 530px; opacity: 0.75;">
                 </div>
             </div>
         </div>

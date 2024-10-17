@@ -1,8 +1,9 @@
 <?php
+
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class MigrationsTest extends TestCase
 {
@@ -30,12 +31,12 @@ class MigrationsTest extends TestCase
         $this->assertTrue(\Schema::hasTable('pacientes'));
         $this->assertTrue(\Schema::hasTable('profissionais'));
         $this->assertTrue(\Schema::hasTable('administradores'));
-        $this->assertTrue(\Schema::hasTable('metas')); 
+        $this->assertTrue(\Schema::hasTable('metas'));
         $this->assertTrue(\Schema::hasTable('anotacoes'));
         $this->assertTrue(\Schema::hasTable('dicas'));
         $this->assertTrue(\Schema::hasTable('logs'));
         $this->assertTrue(\Schema::hasTable('areas_atuacao'));
-        $this->assertTrue(\Schema::hasTable('documentos')); 
+        $this->assertTrue(\Schema::hasTable('documentos'));
         $this->assertTrue(\Schema::hasTable('enderecos_atuacao'));
         $this->assertTrue(\Schema::hasTable('estados_civis'));
         $this->assertTrue(\Schema::hasTable('especializacoes'));

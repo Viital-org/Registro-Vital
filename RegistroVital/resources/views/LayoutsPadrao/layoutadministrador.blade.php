@@ -14,10 +14,12 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img src="{{ asset('/img/cruz.png') }}" alt="Logo" class="img-fluid" style="max-width: 30px; margin-right: 10px;">
+            <img src="{{ asset('/img/cruz.png') }}" alt="Logo" class="img-fluid"
+                 style="max-width: 30px; margin-right: 10px;">
             Registro Vital - Admin
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -34,7 +36,8 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
                     <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                         <li>
                             <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">

@@ -5,7 +5,8 @@
 @section('conteudo')
     <div class="container my-5">
         <!-- Animação de slogan -->
-        <h4 class="text-center text-muted" style="animation: slogan 5s infinite alternate;"><i>Seu diário pessoal de saúde</i></h4>
+        <h4 class="text-center text-muted" style="animation: slogan 5s infinite alternate;"><i>Seu diário pessoal de
+                saúde</i></h4>
 
         <!-- Título principal da página -->
         <div class="text-center mt-5">

@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -21,6 +22,7 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Handle an incoming authentication request.
+     * @throws ValidationException
      */
     public function store(LoginRequest $request): RedirectResponse
     {
@@ -29,10 +31,10 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         switch ($request->user()->tipo_usuario) {
-            case 'profissional':
+            case 2:
                 return redirect()->intended(route('profissional.dashboard'));
-            case 'administrador':
-                return redirect()->intended(route('admin.dashboard'));
+            case 3:
+                return redirect()->intended(route('administrador.dashboard'));
             default:
                 return redirect()->intended(route('paciente.dashboard'));
         }

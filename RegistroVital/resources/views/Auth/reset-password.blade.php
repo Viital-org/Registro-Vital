@@ -14,7 +14,9 @@
                         <!-- Endereço de E-mail -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $request->email) }}" required autofocus autocomplete="username">
+                            <input type="email" id="email" name="email" class="form-control"
+                                   value="{{ old('email', $request->email) }}" required autofocus
+                                   autocomplete="username">
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -25,7 +27,8 @@
                         <!-- Nova Senha -->
                         <div class="mb-3">
                             <label for="password" class="form-label">Nova Senha</label>
-                            <input type="password" id="password" name="password" class="form-control" required autocomplete="new-password">
+                            <input type="password" id="password" name="password" class="form-control" required
+                                   autocomplete="new-password">
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -36,7 +39,8 @@
                         <!-- Confirmar Nova Senha -->
                         <div class="mb-3">
                             <label for="password_confirmation" class="form-label">Confirmar Nova Senha</label>
-                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required autocomplete="new-password">
+                            <input type="password" id="password_confirmation" name="password_confirmation"
+                                   class="form-control" required autocomplete="new-password">
                             @error('password_confirmation')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

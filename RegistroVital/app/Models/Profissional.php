@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profissional extends Model
 {
     use HasFactory;
+
     protected $table = "profissionais";
 
     protected $fillable = [
@@ -21,6 +22,10 @@ class Profissional extends Model
         'tempo_experiencia',
         'data_criacao',
     ];
+
+    public static function where(string $string, $id)
+    {
+    }
 
     public function usuario()
     {

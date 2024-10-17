@@ -9,14 +9,15 @@
 
     <!-- Importação de arquivos JavaScript e CSS com Vite -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <link href="{{ asset('resources/sass/app.css') }}" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Se o Bootstrap já estiver no app.scss, remova esta linha -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #4a6572;">
-    <img src="{{ asset('/img/cruz.png') }}" alt="Logo" style="max-width: 3%; margin-left: 1%;" />
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top mb-4" style="background-color: #4a6572;">
+    <img src="{{ asset('/img/cruz.png') }}" alt="Logo" style="max-width: 3%; margin-left: 1%;"/>
     <a class="navbar-brand" href="/" style="font-size: 20px; color: white;">Registro Vital</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +35,8 @@
                 <a class="nav-link text-white" href="{{ route('ajuda') }}">Ajuda</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-expanded="false">
                     Consultas Marcadas
                 </a>
                 <ul class="dropdown-menu">
@@ -42,8 +44,9 @@
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                     {{Auth::user()->name}}
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-expanded="false">
+                    {{Auth::user()->name}}
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Editar Perfil</a></li>
@@ -65,14 +68,20 @@
         <!-- Sidebar -->
         <div class="col-md-3 sidebar bg-light py-4">
             <ul class="nav flex-column">
-                <li class="nav-item dropdown">
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/cadastroarea">Áreas de Atuação</a></li>
-                        <li><a class="dropdown-item" href="/cadastroespec">Especializações</a></li>
-                        <li><a class="dropdown-item" href="/cadastrotipanot">Tipos de Anotação</a></li>
-                        <li><a class="dropdown-item" href="/cadastrodica">Dicas</a></li>
-                        <li><a class="dropdown-item" href="/cadastrometa">Metas</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cadastroarea">Áreas de Atuação</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cadastroespec">Especializações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cadastrotipanot">Tipos de Anotação</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cadastrodica">Dicas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cadastrometa">Metas</a>
                 </li>
             </ul>
         </div>
@@ -85,8 +94,10 @@
 </div>
 
 <!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Substitua a versão do jQuery para a completa, se necessário -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

@@ -9,24 +9,28 @@ use Symfony\Component\HttpFoundation\Response;
 
 class GarantirUserTipo
 {
+    /**
+     * Handle an incoming request.
+     *
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
+     */
     public function handle(Request $request, Closure $next, int $tipo_usuario): Response
     {
-       $user = Auth::user();
+        $user = Auth::user();
+
         if (!$user || $user->tipo_usuario !== $tipo_usuario) {
             switch ($user->tipo_usuario) {
-                case 1: // Paciente
+                case 1:
                     return redirect()->route('paciente.dashboard')->with('error', 'Você não tem permissão para acessar esta página.');
-                case 2: // Profissional
+                case 2:
                     return redirect()->route('profissional.dashboard')->with('error', 'Você não tem permissão para acessar esta página.');
-                case 3: // Administrador
-                    return redirect()->route('admin.dashboard')->with('error', 'Você não tem permissão para acessar esta página.');
+                case 3:
+                    return redirect()->route('administrador.dashboard')->with('error', 'Você não tem permissão para acessar esta página.');
                 default:
                     return redirect()->route('login')->with('error', 'Por favor, faça login.');
             }
         }
 
-
         return $next($request);
     }
 }
-

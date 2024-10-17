@@ -8,7 +8,57 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AnotacoesSaudeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AnotacoesSaudeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/AuthenticatedSessionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/AuthenticatedSessionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/PacientesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/PacientesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/GarantirUserTipo.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/GarantirUserTipo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/LayoutDinamico.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/LayoutDinamico.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Requests/ProfileUpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Requests/ProfileUpdateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Anotacaosaude.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Anotacaosaude.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/AtuaArea.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/AtuaArea.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Consulta.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Consulta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Dica.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Dica.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Profissional.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Profissional.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/TipoAnotacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/TipoAnotacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/TipoUsuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/TipoUsuario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/AdministradorSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/AdministradorSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/MetaSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/MetaSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/forgot-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/forgot-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/reset-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/reset-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/ajuda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/ajuda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/quemsomos.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Cadastros/quemsomos.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/profile/administrador-dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/profile/administrador-dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/profile/medico-dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/profile/medico-dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/profile/paciente-dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/profile/paciente-dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Feature/LoginTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Feature/LoginTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Feature/MigrationsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/tests/Feature/MigrationsTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Unit/ModelsTest/PacienteModelTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Unit/ModelsTest/ProfissionalModelTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/tests/Unit/ModelsTest/UsuarioModelTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/.dart_tool/extension_discovery/devtools.json" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/.dart_tool/extension_discovery/devtools.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/.dart_tool/extension_discovery/vs_code.json" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/.dart_tool/extension_discovery/vs_code.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/analysis_options.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/android/app/src/main/res/drawable-v21/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/android/app/src/main/res/drawable-v21/launch_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registro_vital_mobile/web/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/registro_vital_mobile/web/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +100,7 @@
     &quot;accountId&quot;: &quot;74b087ef-0775-410e-a044-6e5f5c47c506&quot;
   }
 }</component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\php\php.exe">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\PHP-8.3.4\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/../example-app/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/../example-app/vendor/composer" />

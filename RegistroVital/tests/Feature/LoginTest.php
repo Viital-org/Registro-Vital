@@ -1,9 +1,10 @@
 <?php
+
 namespace Tests\Feature;
 
 use App\Models\Usuario;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
@@ -12,7 +13,7 @@ class LoginTest extends TestCase
     /** @test */
     public function paciente_autenticado_loga()
     {
-        $user = Usuario::factory()->create(['role'=>'paciente']);
+        $user = Usuario::factory()->create(['role' => 'paciente']);
 
         $response = $this->actingAs($user)->get('/paciente/dashboard');
 
@@ -22,7 +23,7 @@ class LoginTest extends TestCase
     /** @test */
     public function profissional_autenticado_loga()
     {
-        $user = Usuario::factory()->create(['role'=>'medico']);
+        $user = Usuario::factory()->create(['role' => 'medico']);
 
         $response = $this->actingAs($user)->get('/medico/dashboard');
 

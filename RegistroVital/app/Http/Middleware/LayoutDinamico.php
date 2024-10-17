@@ -17,16 +17,28 @@ class LayoutDinamico
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = Auth::user();
+        // Define layout padrão
         $layout = 'LayoutsPadrao.inicio';
-        if ($user) {
-            if ($user->role === 'medico') {
-                $layout = 'LayoutsPadrao.layoutmedico';
-            } elseif ($user->role === 'paciente') {
-                $layout = 'LayoutsPadrao.layoutpaciente';
+
+        // Verifica se o usuário está autenticado
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            // Escolhe o layout com base no tipo de usuário
+            switch ($user->tipo_usuario) {
+                case 1: // Paciente
+                    $layout = 'LayoutsPadrao.layoutpaciente';
+                    break;
+                case 2: // Profissional
+                    $layout = 'LayoutsPadrao.layoutmedico';
+                    break;
+                case 3: // Administrador
+                    $layout = 'LayoutsPadrao.layoutadministrador';
+                    break;
             }
         }
 
+        // Compartilha a variável 'layout' com as views
         view()->share('layout', $layout);
 
         return $next($request);

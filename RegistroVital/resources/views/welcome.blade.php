@@ -18,14 +18,18 @@
                 <nav class="mb-4 d-flex justify-content-center">
                     @auth
                         @php
-                            $dashboardUrl = Auth::user()->role === 'medico' ? url('/medico/dashboard') : url('/paciente/dashboard');
+                            $dashboardUrl = Auth::user()->tipo_usuario === '2' ? url('/medico/dashboard') : url('/paciente/dashboard');
                         @endphp
                         <a href="{{ $dashboardUrl }}" class="btn btn-success mx-2">Ir para o Painel</a>
                     @else
-                        <button onclick="window.location.href='{{ route('login') }}'" class="btn btn-primary mx-2">Login</button>
+                        <button onclick="window.location.href='{{ route('login') }}'" class="btn btn-primary mx-2">
+                            Login
+                        </button>
 
                         @if (Route::has('register'))
-                            <button onclick="window.location.href='{{ route('register') }}'" class="btn btn-secondary mx-2">Registro</button>
+                            <button onclick="window.location.href='{{ route('register') }}'"
+                                    class="btn btn-secondary mx-2">Registro
+                            </button>
                         @endif
                     @endauth
                 </nav>

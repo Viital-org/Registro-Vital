@@ -19,69 +19,57 @@ use Illuminate\View\View;
 class RegisteredUserController extends Controller
 {
     /**
-     * Handle an incoming registration request.
+     * Processar a solicitação de registro.
      *
      * @throws ValidationException
      */
     public function store(Request $request): RedirectResponse
     {
+        // Validação dos dados
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . Usuario::class],
+            'nome_completo' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:40', 'unique:' . Usuario::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'tipo_usuario' => ['required', 'integer','in:1,2']
+            'tipo_usuario' => ['required', 'integer', 'in:1,2,3'],
         ]);
 
+        // Criação do usuário
         $user = Usuario::create([
-            'nome_completo' => $request->name,
+            'nome_completo' => $request->nome_completo,
             'email' => $request->email,
             'senha' => Hash::make($request->password),
-            'tipo_usuario'=>$request->tipo_usuario
+            'tipo_usuario' => $request->tipo_usuario,
         ]);
 
+        // Dispara o evento de registro
         event(new Registered($user));
 
-
-        switch ($user->role) {
-            case 'paciente':
-                Paciente::create([
-                    'user_id' => $user->id,
-                    'nome' => $user->name,
-                    'email' => $user->email,
-                ]);
+        // Relacionamento com o tipo de usuário
+        switch ($user->tipo_usuario) {
+            case 1: // Paciente
+                Paciente::create(['usuario_id' => $user->id]);
                 break;
-
-            case 'medico':
-                Profissional::create([
-                    'user_id' => $user->id,
-                    'nome' => $user->name,
-                    'email' => $user->email,
-                ]);
+            case 2: // Profissional
+                Profissional::create(['usuario_id' => $user->id]);
                 break;
-
-            case 'administrador':
-                Administrador::create([
-                    'user_id' => $user->id,
-                    'nome' => $user->name,
-                    'email' => $user->email,
-                ]);
+            case 3: // Administrador
+                Administrador::create(['usuario_id' => $user->id]);
                 break;
         }
 
+        // Autentica o usuário após o registro
         Auth::login($user);
 
-        switch ($user->role) {
-            case 'medico':
-                return redirect(route('medico.dashboard'));
-            case 'administrador':
-                return redirect(route('admin.dashboard'));
-            default:
-                return redirect()->intended(route('paciente.dashboard'));
-        }
+        // Redirecionamento com base no tipo de usuário
+        return match ($user->tipo_usuario) {
+            2 => redirect()->route('profissional.dashboard'), // Profissional
+            3 => redirect()->route('administrador.dashboard'), // Administrador
+            default => redirect()->intended(route('paciente.dashboard')), // Paciente
+        };
     }
 
     /**
-     * Display the registration view.
+     * Exibir a página de registro.
      */
     public function create(): View
     {
