@@ -9,14 +9,15 @@ class Anotacaosaude extends Model
 {
     use HasFactory;
 
-    protected $table = 'anotacoessaude';
+    protected $table = 'anotacoes';
 
     protected $fillable = [
         'paciente_id',
-        'anotacao',
+        'tipo_anotacao',
+        'descricao_anotacao',
         'data_anotacao',
-        'tipo_anot',
-        'visibilidade',
+        'tipo_visibilidade',
+        'possui_documento',
     ];
 
     public function paciente()

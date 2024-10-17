@@ -13,6 +13,7 @@ class TipoAnotacao extends Model
     protected $table = 'tipos_anotacao';
 
     protected $fillable = [
+        'id',
         'descricao_tipo',
     ];
 }

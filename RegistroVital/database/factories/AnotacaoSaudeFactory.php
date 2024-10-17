@@ -25,11 +25,11 @@ class AnotacaoSaudeFactory extends Factory
         $tipoanotacao = TipoAnotacao::inRandomOrder()->first();
 
         return [
-            'paciente_id' => $paciente ? $paciente->id : null,
-            'data_anotacao' => $this->faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d'),
-            'tipo_anot' => $tipoanotacao ? $tipoanotacao->id : null,
-            'visibilidade' => $this->faker->randomElement(['Visivel', 'Escondido']),
-            'anotacao' => $this->faker->text,
+            'paciente_id' => Paciente::factory(),
+            'tipo_anotacao' => TipoAnotacao::factory(),
+            'descricao_anotacao' => $this->faker->text(100),
+            'tipo_visibilidade' => $this->faker->boolean,
+            'possui_documento' => $this->faker->boolean,
         ];
     }
 }

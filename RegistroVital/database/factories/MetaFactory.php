@@ -24,9 +24,9 @@ class MetaFactory extends Factory
         $paciente = Paciente::inRandomOrder()->first();
 
         return [
-            'paciente_id' => $paciente ? $paciente->id : null,
-            'titulo_meta' => $this->faker->words(3, true),
-            'descricao_meta' => $this->faker->optional()->sentence(),
+            'paciente_id' => Paciente::factory(),
+            'titulo_meta' => $this->faker->text(20),
+            'descricao_meta' => $this->faker->text(80),
             'data_inicio' => $dataInicio,
             'data_fim' => $dataFim,
             'situacao' => $this->faker->randomElement([0, 1]), // 0 = Incompleta, 1 = Completa
