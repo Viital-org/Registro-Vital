@@ -12,10 +12,10 @@ class TipoUsuarioFactory extends Factory
     public function definition()
     {
         return [
-            'descricao' => $this->faker->randomElement([
-                'Paciente',
-                'Profissional',
-                'Administrador',
+            'id' => $this->faker->randomElement([
+                '0',
+                '1',
+                '2',
             ]),
         ];
     }
