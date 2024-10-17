@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#0006 - Modificação migration ID usuarios">
-      <change beforePath="$PROJECT_DIR$/.idea/Registro-Vital.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Registro-Vital.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#12- Correção do registro e do login autenticado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/AuthenticatedSessionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/AuthenticatedSessionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/ConfirmablePasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/ConfirmablePasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/PacientesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/PacientesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AnotacoesSaudeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AnotacoesSaudeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/GarantirUserTipo.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/GarantirUserTipo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Anotacaosaude.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Anotacaosaude.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/bootstrap/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000003_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000003_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000015_create_anotacoes_saude_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000015_create_anotacoes_saude_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Anotacoes/cadastroanotacoessaude.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Anotacoes/cadastroanotacoessaude.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,12 +48,12 @@
     &quot;assignee&quot;: &quot;brunomqz&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Viital-org/Registro-Vital.git",
-    "accountId": "74b087ef-0775-410e-a044-6e5f5c47c506"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Viital-org/Registro-Vital.git&quot;,
+    &quot;accountId&quot;: &quot;74b087ef-0775-410e-a044-6e5f5c47c506&quot;
   }
-}]]></component>
+}</component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\php\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/../example-app/vendor/hamcrest/hamcrest-php" />
@@ -2911,6 +2902,7 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;Flutter.Unnamed (1).executor&quot;: &quot;Run&quot;,
     &quot;Flutter.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Script.GarantirUserTipo.php.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
@@ -2938,7 +2930,7 @@
       <recent name="C:\Users\bruno\StudioProjects\Registro-Vital" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHP Script.GarantirUserTipo.php">
     <configuration name="Registro Vital" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/mobile_app/registro_vital_app/lib/main.dart" />
       <method v="2" />
@@ -2947,6 +2939,14 @@
       <option name="filePath" value="$PROJECT_DIR$/registro_vital_mobile/lib/main.dart" />
       <method v="2" />
     </configuration>
+    <configuration name="GarantirUserTipo.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/GarantirUserTipo.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.GarantirUserTipo.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -2968,7 +2968,8 @@
       <workItem from="1728700775712" duration="3263000" />
       <workItem from="1728946532046" duration="18179000" />
       <workItem from="1729011775102" duration="3942000" />
-      <workItem from="1729117238172" duration="2754000" />
+      <workItem from="1729117238172" duration="10063000" />
+      <workItem from="1729128383106" duration="729000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -3042,7 +3043,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729035334516</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="#12- Correção do registro e do login atenticado">
+      <option name="closed" value="true" />
+      <created>1729120125570</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1729120125571</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3069,7 +3078,8 @@
     <MESSAGE value="#0007 - Modificação migration ID usuarios" />
     <MESSAGE value="#10.1 commit complementar" />
     <MESSAGE value="#0006 - Modificação migration ID usuarios" />
-    <option name="LAST_COMMIT_MESSAGE" value="#0006 - Modificação migration ID usuarios" />
+    <MESSAGE value="#12- Correção do registro e do login atenticado" />
+    <option name="LAST_COMMIT_MESSAGE" value="#12- Correção do registro e do login atenticado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

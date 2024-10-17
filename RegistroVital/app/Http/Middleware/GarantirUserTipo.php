@@ -9,15 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class GarantirUserTipo
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
-     */
     public function handle(Request $request, Closure $next, int $tipo_usuario): Response
     {
-        $user = Auth::user();
-
+       $user = Auth::user();
         if (!$user || $user->tipo_usuario !== $tipo_usuario) {
             switch ($user->tipo_usuario) {
                 case 1: // Paciente
@@ -31,6 +25,8 @@ class GarantirUserTipo
             }
         }
 
+
         return $next($request);
     }
 }
+

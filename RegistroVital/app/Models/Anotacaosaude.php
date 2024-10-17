@@ -13,9 +13,9 @@ class Anotacaosaude extends Model
 
     protected $fillable = [
         'paciente_id',
-        'tipo_anotacao',
         'descricao_anotacao',
         'data_anotacao',
+        'tipo_anotacao',
         'tipo_visibilidade',
         'possui_documento',
     ];

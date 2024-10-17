@@ -13,7 +13,7 @@ use App\Http\Controllers\ProfissionaisController;
 use App\Http\Controllers\TipoAnotacoesController;
 use Illuminate\Support\Facades\Route;
 
-
+require __DIR__ . '/auth.php';
 Route::middleware('layout.dinamico')->group(function () {
 
     Route::get('/', function () {
@@ -117,6 +117,7 @@ Route::post('/listaagendamentos', [AgendamentosController::class, 'show'])->name
     Route::delete('/listametas/{id}', [MetasController::class, 'destroy'])->name('metas-delete');
 });
 
+// Rotas Protegidas por Autenticação
 Route::middleware(['auth', 'layout.dinamico'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -129,8 +130,6 @@ Route::middleware(['auth', 'layout.dinamico'])->group(function () {
     Route::get('/consultas/{id}', [ConsultasController::class, 'show'])->name('consultas.show');
     Route::delete('/consultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas.destroy');
     Route::get('/consultas/{id}/anotacoes', [ConsultasController::class, 'listAnotacoes'])->name('consultas.anotacoes');
-
-
 });
 
 require __DIR__ . '/auth.php';
@@ -153,7 +152,6 @@ Route::middleware(['auth', 'role:paciente', 'layout.dinamico'])->group(function 
     Route::get('/agendamentos/create', [AgendamentosController::class, 'create'])->name('agendamentos.create');
     Route::post('/agendamentos', [AgendamentosController::class, 'store'])->name('agendamentos.store');
     Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
-<<<<<<< HEAD
 
     //Dicas
     Route::resource('/cadastrodicas', DicasController::class);
@@ -179,20 +177,11 @@ Route::middleware(['auth', 'role:paciente', 'layout.dinamico'])->group(function 
 // Rotas Específicas para Profissionais
 Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function () {
     Route::get('/profissional/dashboard', [ProfissionaisController::class, 'tela'])->name('profissional.dashboard');
-=======
-    Route::get('/profissionais-by-especializacao/{especializacao_id}', [AgendamentosController::class, 'getProfissionaisByEspecializacao']);
-
-});
-
-Route::middleware(['auth', 'role:medico', 'layout.dinamico'])->group(function () {
-    Route::get('/medico/dashboard', [ProfissionaisController::class, 'tela'])->name('medico.dashboard');
->>>>>>> Bruno
     Route::get('/cadastrarprof', [ProfissionaisController::class, 'create'])->name('cadastrarprof');
     Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
     Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
 
     Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
-<<<<<<< HEAD
 
     //Route::resource('/cadastroprofissional', ProfissionaisController::class);
     Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
@@ -245,7 +234,4 @@ Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function
     // Aqui você pode definir rotas específicas para o administrador
 });
 
-=======
->>>>>>> Bruno
 
-});

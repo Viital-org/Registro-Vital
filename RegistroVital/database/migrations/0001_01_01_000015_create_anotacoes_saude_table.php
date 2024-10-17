@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->foreignId('paciente_id')->constrained('pacientes', 'usuario_id')->onDelete('cascade');
             $table->foreignId('tipo_anotacao')->constrained('tipos_anotacao');
             $table->string('descricao_anotacao', 100);
+            $table->date('data_anotacao');
             $table->char('tipo_visibilidade', 1);
             $table->boolean('possui_documento')->nullable();
             $table->timestamps();

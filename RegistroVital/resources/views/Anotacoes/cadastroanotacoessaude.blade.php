@@ -13,7 +13,7 @@
             <label for="tipo_anot" class="form-label">Tipo de anotação</label>
             <select name="tipo_anot" id="tipo_anot" class="form-select">
                 @foreach ($tipoanotacoes as $tipoanotacao)
-                    <option value="{{ $tipoanotacao->id }}">{{ $tipoanotacao->desc_anotacao }}</option>
+                    <option value="{{ $tipoanotacao->id }}">{{ $tipoanotacao->descricao_tipo }}</option>
                 @endforeach
             </select>
         </div>
@@ -32,8 +32,8 @@
         <div class="mb-3">
             <label for="visibilidade" class="form-label">Visibilidade</label>
             <select name="visibilidade" id="visibilidade" class="form-select">
-                <option value="Visivel">Público</option>
-                <option value="Escondido">Privado</option>
+                <option value="1">Público</option>
+                <option value="2">Privado</option>
             </select>
         </div>
 
