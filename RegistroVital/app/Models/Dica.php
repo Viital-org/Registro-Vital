@@ -11,7 +11,7 @@ class Dica extends Model
 
     protected $fillable = [
         'dica',
-        'paciente_id',
+        'tipo_usuario',
         'descricao',
     ];
 
