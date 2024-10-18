@@ -10,7 +10,7 @@ class AtuaArea extends Model
 {
     use hasfactory, softDeletes;
 
-    protected $table = 'atuaareas';
+    protected $table = 'areas_atuacao';
 
     protected $fillable = [
         'area',

@@ -65,7 +65,7 @@ class MetasController extends Controller
     {
         $meta = Meta::findorfail($id);
         $meta->update($request->all());
-        return redirect()->route('metas-index');
+        return redirect()->route('metas.index');
     }
 
     /**
@@ -75,6 +75,6 @@ class MetasController extends Controller
     {
         $meta = Meta::findorfail($id);
         $meta->delete();
-        return redirect()->route('metas-index');
+        return redirect()->route('metas.index');
     }
 }

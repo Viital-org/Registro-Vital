@@ -25,13 +25,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.dashboard') }}">Painel Principal</a>
+                    <a class="nav-link" href="{{ route('administrador.dashboard') }}">Painel Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('usuarios.index') }}">Gerenciar Usuários</a>
+                    <a class="nav-link" href="{{ route('pacientes-index') }}">Gerenciar Usuários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('relatorios.index') }}">Relatórios</a>
+                    <a class="nav-link" href="{{ route('administrador.dashboard') }}">Relatórios</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -68,7 +68,7 @@
                         <a class="nav-link active" href="#">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('usuarios.index') }}">Usuários</a>
+                        <a class="nav-link" href="{{ route('administrador.dashboard') }}">Usuários</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('dicas.index') }}">Dicas de Saúde</a>
@@ -80,7 +80,7 @@
                         <a class="nav-link" href="{{ route('agendamentos.index') }}">Agendamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('relatorios.index') }}">Relatórios</a>
+                        <a class="nav-link" href="{{ route('administrador.dashboard') }}">Relatórios</a>
                     </li>
                 </ul>
             </div>
