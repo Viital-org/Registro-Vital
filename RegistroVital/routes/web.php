@@ -53,7 +53,7 @@ Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function
     Route::get('/anotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
     Route::get('/anotacoes/criar', [AnotacoesSaudeController::class, 'create'])->name('anotacoessaude-create');
     Route::post('/anotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
-    Route::get('/anotacoes/{id}/editar', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
+    Route::get('/anotacoes/editar/{id}', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
     Route::put('/anotacoes/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
     Route::delete('/anotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
 

@@ -14,9 +14,9 @@
             <label for="tipo_anot" class="form-label">Tipo de anotação</label>
             <select name="tipo_anot" id="tipo_anot" class="form-select">
                 @foreach ($tipoanotacoes as $tipoanotacao)
-                    <option value="{{ $tipoanotacao->id }}"
-                            @if ($tipoanotacao->id == $anotacaosaude->tipo_anot) selected @endif>
-                        {{ $tipoanotacao->desc_anotacao }}
+                    <option value="{{ $tipoanotacao->id}}"
+                            @if ($tipoanotacao->id == $anotacaosaude->tipo_anotacao) selected @endif>
+                        {{ $tipoanotacao->descricao_tipo }}
                     </option>
                 @endforeach
             </select>
@@ -25,7 +25,7 @@
         <div class="mb-3">
             <label for="anotacao" class="form-label">Anotação</label>
             <textarea name="anotacao" id="anotacao" class="form-control"
-                      required>{{ $anotacaosaude->anotacao }}</textarea>
+                      required>{{ $anotacaosaude->descricao_anotacao }}</textarea>
         </div>
 
         <div class="mb-3">
@@ -38,8 +38,8 @@
         <div class="mb-3">
             <label for="visibilidade" class="form-label">Visibilidade</label>
             <select name="visibilidade" id="visibilidade" class="form-select">
-                <option value="Visivel" @if ($anotacaosaude->visibilidade == 'Visivel') selected @endif>Público</option>
-                <option value="Escondido" @if ($anotacaosaude->visibilidade == 'Escondido') selected @endif>Privado
+                <option value="1" @if ($anotacaosaude->visibilidade === 1) selected @endif>Público</option>
+                <option value="2" @if ($anotacaosaude->visibilidade === 2) selected @endif>Privado
                 </option>
             </select>
         </div>

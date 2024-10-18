@@ -40,16 +40,22 @@ class AnotacoesSaudeController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $paciente = Paciente::where('user_id', $user->id)->first();
+        $paciente = Paciente::where('usuario_id', $user->id)->first();
 
         $validated = $request->validate([
             'anotacao' => 'required|string',
             'data_anotacao' => 'required|date',
-            'tipo_anot' => 'required|exists:tipoanotacoes,id',
-            'visibilidade' => 'required|in:Visivel,Escondido',
+            'tipo_anot' => 'required|exists:tipos_anotacao,id',
+            'visibilidade' => 'required|in:1,2',
         ]);
 
-        $validated['paciente_id'] = $paciente->id;
+        $validated['paciente_id'] = $paciente->usuario_id;
+        $validated['descricao_anotacao'] = $request->anotacao;
+        $validated['tipo_anotacao'] = $request->tipo_anot;
+        $validated['data_anotacao'] = $request->data_anotacao;
+        $validated['tipo_visibilidade'] = $request->visibilidade;
+
+
 
         Anotacaosaude::create($validated);
         return redirect()->route('anotacoessaude-index')->with('success', 'Anotação criada com sucesso!');
@@ -73,31 +79,36 @@ class AnotacoesSaudeController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
-        $paciente = Paciente::where('user_id', $user->id)->first();
-        $anotacaosaude = Anotacaosaude::where('paciente_id', $paciente->id)->findOrFail($id);
-        $tipoanotacoes = TipoAnotacao::all();
+        $paciente = Anotacaosaude::where('paciente_id', $user->id)->first();
+        $anotacaosaude = Anotacaosaude::where('id', $id)->first();
+        $tipoanotacoes = TipoAnotacao::select('id', 'descricao_tipo')->get();
 
-        return view('Anotacoes/editaranotacoessaude', [
+        return view('anotacoes/editaranotacoessaude', [
             'anotacaosaude' => $anotacaosaude,
-            'tipoanotacoes' => $tipoanotacoes
+            'tipoanotacoes' => $tipoanotacoes,
+
         ]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $user = Auth::user();
-        $paciente = Paciente::where('user_id', $user->id)->first();
-        $anotacaosaude = Anotacaosaude::where('paciente_id', $paciente->id)->findOrFail($id);
+        $paciente = Paciente::where('usuario_id', $user->id)->first();
+        $anotacaosaude = Anotacaosaude::where('id', $id)->first();
 
         $validated = $request->validate([
             'anotacao' => 'required|string',
             'data_anotacao' => 'required|date',
-            'tipo_anot' => 'required|exists:tipoanotacoes,id',
-            'visibilidade' => 'required|in:Visivel,Escondido',
+            'tipo_anot' => 'required|exists:tipos_anotacao,id',
+            'visibilidade' => 'required|in:1,2',
         ]);
+
+        $validated['paciente_id'] = $paciente->usuario_id;
+        $validated['descricao_anotacao'] = $request->anotacao;
+        $validated['tipo_anotacao'] = $request->tipo_anot;
+        $validated['data_anotacao'] = $request->data_anotacao;
+        $validated['tipo_visibilidade'] = $request->visibilidade;
+
+
 
         $anotacaosaude->update($validated);
         return redirect()->route('anotacoessaude-index')->with('success', 'Anotação atualizada com sucesso!');
@@ -109,8 +120,8 @@ class AnotacoesSaudeController extends Controller
     public function destroy($id)
     {
         $user = Auth::user();
-        $paciente = Paciente::where('user_id', $user->id)->first();
-        $anotacaosaude = Anotacaosaude::where('paciente_id', $paciente->id)->findOrFail($id);
+        $paciente = Paciente::where('usuario_id', $user->id)->first();
+        $anotacaosaude = Anotacaosaude::where('id', $id)->first();
 
         $anotacaosaude->delete();
         return redirect()->route('anotacoessaude-index')->with('success', 'Anotação deletada com sucesso!');
