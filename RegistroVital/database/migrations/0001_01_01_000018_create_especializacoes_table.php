@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('especializacoes', function (Blueprint $table) {
             $table->id();
-            $table->string('descricao_especializacao', 30);
+            $table->string('descricao_especializacao', 60);
             $table->foreignId('area_atuacao_id')->constrained('areas_atuacao')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();

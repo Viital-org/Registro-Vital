@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+@extends('layout')
+
+@section('titulo', 'Registro Vital - Administrador')
+
+@section('conteudo')
+    <h1>Bem-vindo ao Painel do Administrador</h1>
+    <p>Adicione aqui o conteúdo que deseja renderizar na página do dashboard.</p>
+
+    <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -96,7 +104,7 @@
         </main>
     </div>
 </div>
-
+@endsection
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>

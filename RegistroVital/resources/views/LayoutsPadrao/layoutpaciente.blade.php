@@ -62,7 +62,7 @@
                     <li class="nav-item dropdown">
                         @auth
                             <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
+                               data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->nome_completo }}</a>
                             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                                 <li>
                                     <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">

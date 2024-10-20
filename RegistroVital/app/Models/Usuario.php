@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class Usuario extends Authenticatable
 {
@@ -47,17 +48,11 @@ class Usuario extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Mutator para criptografar a senha antes de salvar no banco de dados.
-     */
     public function setSenhaAttribute($password)
     {
         $this->attributes['senha'] = bcrypt($password);
     }
 
-    /**
-     * Função para pegar a senha para autenticação.
-     */
     public function getAuthPassword()
     {
         return $this->senha;

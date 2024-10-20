@@ -8,13 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AtuaArea extends Model
 {
-    use hasfactory, softDeletes;
+    use HasFactory, SoftDeletes;
 
-    protected $table = 'atuaareas';
+    protected $table = 'areas_atuacao';
 
     protected $fillable = [
-        'area',
-        'descricao'
+        'descricao_area'
     ];
 
     protected static function booted()
@@ -23,9 +22,15 @@ class AtuaArea extends Model
             $atuaarea->especializacoes()->delete();
         });
     }
-
     public function especializacoes()
     {
-        return $this->hasMany(Especializacao::class, 'area_id');
+        return $this->hasMany(Especializacao::class, 'area_atuacao_id', 'id');
     }
+
+    public function profissionais()
+    {
+        return $this->hasMany(Profissional::class, 'area_atuacao', 'id');
+    }
+
 }
+

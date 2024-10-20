@@ -19,8 +19,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top mb-4" style="background-color: #4a6572;">
     <img src="{{ asset('/img/cruz.png') }}" alt="Logo" style="max-width: 3%; margin-left: 1%;"/>
     <a class="navbar-brand" href="/" style="font-size: 20px; color: white;">Registro Vital</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -35,8 +34,7 @@
                 <a class="nav-link text-white" href="{{ route('ajuda') }}">Ajuda</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                     Consultas Marcadas
                 </a>
                 <ul class="dropdown-menu">
@@ -44,19 +42,25 @@
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-expanded="false">
-                    {{Auth::user()->name}}
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Editar Perfil</a></li>
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="dropdown-item">Sair</button>
-                        </form>
-                    </li>
-                </ul>
+                @auth
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->nome_completo }}</a>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <li>
+                            <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Editar Perfil</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Sair</button>
+                            </form>
+                        </li>
+                    </ul>
+                @else
+                    <a class="nav-link" href="{{ route('login') }}">Entrar</a>
+                @endauth
             </li>
         </ul>
     </div>
@@ -65,39 +69,35 @@
 <!-- Layout Principal com Sidebar -->
 <div class="container-fluid mt-5 pt-4">
     <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-3 sidebar bg-light py-4">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="/cadastroarea">Áreas de Atuação</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cadastroespec">Especializações</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cadastrotipanot">Tipos de Anotação</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cadastrodica">Dicas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cadastrometa">Metas</a>
-                </li>
-            </ul>
-        </div>
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="position-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ "route('pacientes.index')" }}">Pacientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('consultas.index') }}">Consultas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ "route('anotacoes.index')" }}">Anotações</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-        <!-- Conteúdo principal -->
-        <div class="col-md-9 pt-3 main-content">
+        <!-- Conteúdo Principal -->
+        <main role="main" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             @yield('conteudo')
-        </div>
+        </main>
     </div>
 </div>
 
 <!-- Scripts -->
-<!-- Substitua a versão do jQuery para a completa, se necessário -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-

@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->string('cpf', 11)->nullable();
             $table->string('cnpj', 14)->nullable();
             $table->string('registro_profissional', 30)->nullable();
-            $table->string('area_atuacao', 30)->nullable();
-            $table->string('especializacao', 30)->nullable();
+            $table->foreignId('area_atuacao_id')->nullable()->constrained('areas_atuacao', 'id')->onDelete('set null')->onUpdate('cascade');
+            $table->foreignId('especializacao_id')->nullable()->constrained('especializacoes', 'id')->onDelete('set null')->onUpdate('cascade');
             $table->char('genero', 1)->nullable();
             $table->integer('tempo_experiencia')->nullable();
             $table->dateTime('data_criacao')->nullable();
