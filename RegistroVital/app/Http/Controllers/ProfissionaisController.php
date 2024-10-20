@@ -146,6 +146,6 @@ class ProfissionaisController extends Controller
 
     public function tela()
     {
-        return view('profile.medico-dashboard');
+        return view('profile.profissional-dashboard');
     }
 }

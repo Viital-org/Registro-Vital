@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('dicas', function (Blueprint $table) {
             $table->id();
             $table->string('descricao_dica', 100);
-            $table->foreignId('tipo_usuario')->constrained('tipo_usuarios', 'id')->onDelete('cascade');
+            $table->foreignId('tipo_usuario')->constrained('tipos_usuarios', 'id')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

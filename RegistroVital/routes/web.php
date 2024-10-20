@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\AnotacoesSaudeController;
 use App\Http\Controllers\AtuaAreasController;
@@ -138,9 +139,8 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
     Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, 'destroy'])->name('especializacoes-delete');
 });
 
-
 Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function () {
-    Route::get('/administrador/dashboard', [ProfissionaisController::class, 'tela'])->name('administrador.dashboard');
+    Route::get('/administrador/dashboard', [AdministradorController::class, 'tela'])->name('administrador.dashboard');
 });
 
 

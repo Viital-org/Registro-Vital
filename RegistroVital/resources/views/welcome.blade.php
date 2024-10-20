@@ -18,7 +18,20 @@
                 <nav class="mb-4 d-flex justify-content-center">
                     @auth
                         @php
-                            $dashboardUrl = Auth::user()->tipo_usuario === '2' ? url('/medico/dashboard') : url('/paciente/dashboard');
+                            switch (Auth::user()->tipo_usuario) {
+                                case 1:
+                                    $dashboardUrl = url('/paciente/dashboard');
+                                    break;
+                                case 2:
+                                    $dashboardUrl = url('/profissional/dashboard');
+                                    break;
+                                case 3:
+                                    $dashboardUrl = url('/administrador/dashboard');
+                                    break;
+                                default:
+                                    $dashboardUrl = url('/');
+                                    break;
+                            }
                         @endphp
                         <a href="{{ $dashboardUrl }}" class="btn btn-success mx-2">Ir para o Painel</a>
                     @else
@@ -27,8 +40,8 @@
                         </button>
 
                         @if (Route::has('register'))
-                            <button onclick="window.location.href='{{ route('register') }}'"
-                                    class="btn btn-secondary mx-2">Registro
+                            <button onclick="window.location.href='{{ route('register') }}'" class="btn btn-secondary mx-2">
+                                Registro
                             </button>
                         @endif
                     @endauth

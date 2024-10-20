@@ -18,7 +18,11 @@ class GarantirUserTipo
     {
         $user = Auth::user();
 
-        if (!$user || $user->tipo_usuario !== $tipo_usuario) {
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Por favor, faça login.');
+        }
+
+        if ($user->tipo_usuario !== $tipo_usuario) {
             switch ($user->tipo_usuario) {
                 case 1:
                     return redirect()->route('paciente.dashboard')->with('error', 'Você não tem permissão para acessar esta página.');
@@ -26,11 +30,10 @@ class GarantirUserTipo
                     return redirect()->route('profissional.dashboard')->with('error', 'Você não tem permissão para acessar esta página.');
                 case 3:
                     return redirect()->route('administrador.dashboard')->with('error', 'Você não tem permissão para acessar esta página.');
-                default:
-                    return redirect()->route('login')->with('error', 'Por favor, faça login.');
             }
         }
 
         return $next($request);
     }
+
 }
