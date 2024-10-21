@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -31,6 +32,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        Log::channel('auth')->info('Usuário ID: ' . Auth::id() . ' fez login no sistema', [
+            'user_id' => Auth::id(),
+            'action' => 'Login',
+            'ip' => request()->ip(),
+            'timestamp' => now(),
+        ]);
+
         switch ($request->user()->tipo_usuario) {
             case 2:
                 return redirect()->intended(route('profissional.dashboard'));
@@ -39,6 +47,7 @@ class AuthenticatedSessionController extends Controller
             default:
                 return redirect()->intended(route('paciente.dashboard'));
         }
+
     }
 
     /**
@@ -51,6 +60,13 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        Log::channel('auth')->info('Usuário ID: ' . Auth::id() . ' fez logout do sistema', [
+            'user_id' => Auth::id(),
+            'action' => 'Logout',
+            'ip' => request()->ip(),
+            'timestamp' => now(),
+        ]);
 
         return redirect('/');
     }

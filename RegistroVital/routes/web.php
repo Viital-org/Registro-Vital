@@ -141,6 +141,9 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
 
 Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function () {
     Route::get('/administrador/dashboard', [AdministradorController::class, 'tela'])->name('administrador.dashboard');
+    Route::get('/logs/filter', [AdministradorController::class, 'showLogs'])->name('logs.filter');
+    Route::get('/administrador/logs', [AdministradorController::class, 'showLogs'])->name('administrador.logs');
 });
+
 
 

@@ -6,6 +6,7 @@ use App\Models\Meta;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class PacientesController extends Controller
 {
@@ -111,7 +112,9 @@ class PacientesController extends Controller
         // Atualizar os dados do paciente
         $paciente->update($validated);
 
+
         return redirect()->route('paciente.dashboard')->with('success', 'Dados do paciente atualizados com sucesso!');
+
     }
 
     /**

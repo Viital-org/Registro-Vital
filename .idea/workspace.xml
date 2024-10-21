@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#14- Correção no cadastro de anotacoes">
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/RegistroVital/app/Console/Commands/TesteFraseInspiradora.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Logs/administrador-logs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Registro-Vital.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Registro-Vital.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AnotacoesSaudeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AnotacoesSaudeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Anotacaosaude.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Anotacaosaude.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Anotacoes/editaranotacoessaude.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Anotacoes/editaranotacoessaude.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AdministradorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AdministradorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/AuthenticatedSessionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/AuthenticatedSessionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/PacientesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/PacientesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/config/logging.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/config/logging.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/routes/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/console.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +60,7 @@
     &quot;accountId&quot;: &quot;74b087ef-0775-410e-a044-6e5f5c47c506&quot;
   }
 }</component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\php\php.exe">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\PHP-8.3.4\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/../example-app/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/../example-app/vendor/composer" />
@@ -2878,6 +2887,7 @@
       <path value="$PROJECT_DIR$/RegistroVital/vendor/spatie/flare-client-php" />
       <path value="$PROJECT_DIR$/RegistroVital/vendor/spatie/flare-client-php" />
       <path value="$PROJECT_DIR$/RegistroVital/vendor/laravel/breeze" />
+      <path value="$PROJECT_DIR$/RegistroVital/vendor/symfony/polyfill-php72" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -2914,13 +2924,14 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;debugger.dataViews&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Registro-Vital\RegistroVital\resources\views" />
       <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\registro_vital_mobile\lib\screen" />
       <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\mobile_app" />
       <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\web_app" />
@@ -2939,9 +2950,6 @@
     <configuration name="GarantirUserTipo.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/RegistroVital/app/Http/Middleware/GarantirUserTipo.php">
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="PHP Script.GarantirUserTipo.php" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="PHP Script.GarantirUserTipo.php" />
@@ -2951,8 +2959,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PS-242.23339.16" />
-        <option value="bundled-php-predefined-a98d8de5180a-90914f2295cb-com.jetbrains.php.sharedIndexes-PS-242.23339.16" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
+        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
       </set>
     </attachedChunks>
   </component>
@@ -2970,6 +2978,15 @@
       <workItem from="1729011775102" duration="3942000" />
       <workItem from="1729117238172" duration="10063000" />
       <workItem from="1729128383106" duration="4068000" />
+      <workItem from="1729197976715" duration="1670000" />
+      <workItem from="1729361782761" duration="11443000" />
+      <workItem from="1729384432143" duration="1324000" />
+      <workItem from="1729387754967" duration="32098000" />
+      <workItem from="1729420206960" duration="569000" />
+      <workItem from="1729457253286" duration="150000" />
+      <workItem from="1729457415173" duration="6938000" />
+      <workItem from="1729465259267" duration="13939000" />
+      <workItem from="1729490294559" duration="2202000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -3059,7 +3076,39 @@
       <option name="project" value="LOCAL" />
       <updated>1729129705603</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="#0017 - cadastro de usuario simultaneo com tipo de usuario">
+      <option name="closed" value="true" />
+      <created>1729146062160</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1729146062160</updated>
+    </task>
+    <task id="LOCAL-00013" summary="#0017.1 - adicionando inicio correção anotações do Luan aos meus arquivos">
+      <option name="closed" value="true" />
+      <created>1729199648015</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1729199648015</updated>
+    </task>
+    <task id="LOCAL-00014" summary="#0018 Correção de problema de Login referente a senha do usuario, Cadastro e Edição dos dados dos 3 Tipos de Usuarios em relação as tabelas Pacientes, Profissionais, e Administradores, população, seed e factorys das tabelas areas de atuação e especializações, relacionamento profissional x area x especializções">
+      <option name="closed" value="true" />
+      <created>1729418953803</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1729418953803</updated>
+    </task>
+    <task id="LOCAL-00015" summary="#0021 Correção do erro de garantia de usuarios, agora o erro não mais aparece ao logar com um usuario que tem permissão pra cessar o dashboard referente, apenas ao tentar entrar em uma rota sem permissão">
+      <option name="closed" value="true" />
+      <created>1729463409875</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1729463409875</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3088,18 +3137,12 @@
     <MESSAGE value="#0006 - Modificação migration ID usuarios" />
     <MESSAGE value="#12- Correção do registro e do login atenticado" />
     <MESSAGE value="#14- Correção no cadastro de anotacoes" />
-    <option name="LAST_COMMIT_MESSAGE" value="#14- Correção no cadastro de anotacoes" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php</url>
-          <line>4</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="#0017 - cadastro de usuario simultaneo com tipo de usuario" />
+    <MESSAGE value="#0017.1 - adicionando inicio correção anotações do Luan aos meus arquivos" />
+    <MESSAGE value="#0020 Correção de problema de Login referente a senha do usuario, Cadastro e Edição dos dados dos 3 Tipos de Usuarios em relação as tabelas Pacientes, Profissionais, e Administradores, população, seed e factorys das tabelas areas de atuação e especializações, relacionamento profissional x area x especializções" />
+    <MESSAGE value="#0020 Correção de problema de Login referente a senha do usuario, Cadastro e Edição dos dados dos 3 Tipos de Usuarios em relação as tabelas Pacientes, Profissionais, e Administradores, população, seed e factorys das tabelas areas de atuação e especializações, relacionamento profissional x area x especializções" />
+    <MESSAGE value="#0021 Correção do erro de garantia de usuarios, agora o erro não mais aparece ao logar com um usuario que tem permissão pra cessar o dashboard referente, apenas ao tentar entrar em uma rota sem permissão" />
+    <option name="LAST_COMMIT_MESSAGE" value="#0021 Correção do erro de garantia de usuarios, agora o erro não mais aparece ao logar com um usuario que tem permissão pra cessar o dashboard referente, apenas ao tentar entrar em uma rota sem permissão" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

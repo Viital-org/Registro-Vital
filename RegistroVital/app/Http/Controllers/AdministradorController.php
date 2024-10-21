@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Administrador;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AdministradorController extends Controller
 {
@@ -66,6 +67,51 @@ class AdministradorController extends Controller
     public function tela()
     {
         return view('profile.administrador-dashboard');
+    }
+
+    public function showLogs(Request $request)
+    {
+        $type = $request->input('type');
+
+        if ($type === 'profile-edit') {
+            $logFilePath = storage_path('logs/user_activity.log');
+        } elseif ($type === 'login-logout') {
+            $logFilePath = storage_path('logs/auth.log');
+        } else {
+            $logFilePath = storage_path('logs/laravel.log');
+        }
+
+        if (File::exists($logFilePath)) {
+            $logs = File::get($logFilePath);
+
+            $filteredLogs = collect(explode(PHP_EOL, $logs))->map(function ($log) {
+                preg_match('/\[(.*?)] (.*?): (.*)/', $log, $matches);
+
+                if (count($matches) === 4) {
+                    return [
+                        'timestamp' => $matches[1],
+                        'level' => $matches[2],
+                        'message' => $matches[3]
+                    ];
+                }
+
+                return null;
+            })->filter();
+
+            if ($type === 'profile-edit') {
+                $filteredLogs = $filteredLogs->filter(function ($log) {
+                    return str_contains($log['message'], 'Atualização de perfil');
+                });
+            } elseif ($type === 'login-logout') {
+                $filteredLogs = $filteredLogs->filter(function ($log) {
+                    return str_contains($log['message'], 'Login') || str_contains($log['message'], 'Logout');
+                });
+            }
+
+            return view('Logs.administrador-logs', ['logs' => $filteredLogs]);
+        } else {
+            return view('Logs.administrador-logs', ['logs' => collect([])]);
+        }
     }
 }
 
