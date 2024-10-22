@@ -12,13 +12,16 @@
         body {
             background-color: #ffffff;
         }
+
         .sidebar {
             background-color: #f8f9fa;
         }
+
         .nav-link.active {
             background-color: #365e6d;
             color: #ffffff;
         }
+
         .nav-link {
             color: #2c4a57;
         }
@@ -30,7 +33,8 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #b4cfd5;">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img src="{{ asset('/img/cruz.png') }}" alt="Logo" class="img-fluid" style="max-width: 30px; margin-right: 10px;">
+            <img src="{{ asset('/img/cruz.png') }}" alt="Logo" class="img-fluid"
+                 style="max-width: 30px; margin-right: 10px;">
             Registro Vital - Admin
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -47,6 +51,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('ajuda') }}">Ajuda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('relatorios_administrador') }}">Relatórios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('administrador.logs') }}">Logs</a>

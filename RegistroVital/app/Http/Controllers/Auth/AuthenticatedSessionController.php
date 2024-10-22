@@ -55,19 +55,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        $userId = Auth::id();
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        Log::channel('auth')->info('Usuário ID: ' . Auth::id() . ' fez logout do sistema', [
-            'user_id' => Auth::id(),
+        Log::channel('auth')->info('Usuário ID: ' . $userId . ' fez logout do sistema', [
+            'user_id' => $userId,
             'action' => 'Logout',
             'ip' => request()->ip(),
             'timestamp' => now(),
         ]);
 
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect('/');
     }
+
 }

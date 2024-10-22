@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Administrador;
-use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AdministradorFactory extends Factory

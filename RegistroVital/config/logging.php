@@ -2,11 +2,11 @@
 
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
-use Monolog\Processor\UidProcessor;
 use Monolog\Processor\IntrospectionProcessor;
-use Monolog\Processor\WebProcessor;
 use Monolog\Processor\MemoryUsageProcessor;
 use Monolog\Processor\PsrLogMessageProcessor;
+use Monolog\Processor\UidProcessor;
+use Monolog\Processor\WebProcessor;
 
 return [
 
@@ -55,6 +55,12 @@ return [
         'user_activity' => [
             'driver' => 'single',
             'path' => storage_path('logs/user_activity.log'),
+            'level' => 'info',
+        ],
+
+        'aceeso_anotacao' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/aceeso_anotacao.log'),
             'level' => 'info',
         ],
 

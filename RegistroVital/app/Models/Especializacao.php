@@ -23,6 +23,7 @@ class Especializacao extends Model
     {
         return $this->belongsTo(AtuaArea::class, 'area_id');
     }
+
     public function profissionais()
     {
         return $this->hasMany(Profissional::class, 'especializacao', 'id');

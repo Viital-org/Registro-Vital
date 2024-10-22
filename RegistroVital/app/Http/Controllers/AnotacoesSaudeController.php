@@ -7,6 +7,7 @@ use App\Models\Paciente;
 use App\Models\TipoAnotacao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AnotacoesSaudeController extends Controller
 {
@@ -56,6 +57,20 @@ class AnotacoesSaudeController extends Controller
         $validated['tipo_visibilidade'] = $request->visibilidade;
 
 
+        $tipoAnotacao = TipoAnotacao::find($validated['tipo_anotacao']);
+        $nomeTipoAnotacao = $tipoAnotacao ? $tipoAnotacao->descricao_tipo : 'Tipo não encontrado';
+
+        $tipoVisibilidade = ($validated['tipo_visibilidade'] == 1) ? 'Público' : 'Privado';
+
+
+        Log::channel('user_activity')->info('Usuário ID: ' . Auth::id() . ' cadastrou anotação com tipo ' . $nomeTipoAnotacao . ' e visibilidade ' . $tipoVisibilidade, [
+            'user_id' => Auth::id(),
+            'action' => 'Cadastro de Anotação',
+            'tipo_anotacao' => $nomeTipoAnotacao,
+            'tipo_visibilidade' => $tipoVisibilidade,
+            'ip' => request()->ip(),
+            'timestamp' => now(),
+        ]);
 
         Anotacaosaude::create($validated);
         return redirect()->route('anotacoessaude-index')->with('success', 'Anotação criada com sucesso!');
@@ -67,6 +82,13 @@ class AnotacoesSaudeController extends Controller
     public function create()
     {
         $tipoanotacoes = TipoAnotacao::all();
+
+        Log::channel('aceeso_anotacao')->info('Usuário ID: ' . Auth::id() . ' acessou a tela', [
+            'user_id' => Auth::id(),
+            'action' => 'Acesso',
+            'ip' => request()->ip(),
+            'timestamp' => now(),
+        ]);
 
         return view('Anotacoes.cadastroanotacoessaude', [
             'tipoanotacoes' => $tipoanotacoes
@@ -89,6 +111,7 @@ class AnotacoesSaudeController extends Controller
 
         ]);
     }
+
     public function update(Request $request, $id)
     {
         $user = Auth::user();
@@ -107,7 +130,6 @@ class AnotacoesSaudeController extends Controller
         $validated['tipo_anotacao'] = $request->tipo_anot;
         $validated['data_anotacao'] = $request->data_anotacao;
         $validated['tipo_visibilidade'] = $request->visibilidade;
-
 
 
         $anotacaosaude->update($validated);

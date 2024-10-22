@@ -6,7 +6,6 @@ use App\Models\Meta;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class PacientesController extends Controller
 {
@@ -131,4 +130,5 @@ class PacientesController extends Controller
     {
         return view('profile.paciente-dashboard');
     }
+
 }

@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Foundation\Inspiring;
 use Illuminate\Console\Command;
+use Illuminate\Foundation\Inspiring;
 
 class TesteFraseInspiradora extends Command
 {

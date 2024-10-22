@@ -11,6 +11,7 @@ use App\Http\Controllers\MetasController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfissionaisController;
+use App\Http\Controllers\RelatoriosController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
@@ -83,6 +84,9 @@ Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function
     Route::get('/editarmeta/{id}', [MetasController::class, 'edit'])->name('metas.edit');
     Route::put('/editarmeta/{id}', [MetasController::class, 'update'])->name('metas.update');
     Route::delete('/listametas/{id}', [MetasController::class, 'destroy'])->name('metas.delete');
+
+    //Relatorios
+    Route::get('/relatorios_paciente', [RelatoriosController::class, 'relatorios_paciente'])->name('relatorios_paciente');
 });
 
 // Rotas Específicas para Profissionais
@@ -128,6 +132,7 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
     Route::get('/editaratuaarea/{id}', [AtuaAreasController::class, 'edit'])->name('atuaareas-edit');
     Route::put('/editaratuaarea/{id}', [AtuaAreasController::class, 'update'])->name('atuaareas-update');
     Route::delete('/listaatuaareas/{id}', [AtuaAreasController::class, 'destroy'])->name('atuaareas-delete');
+
 //Especializacoes
     Route::resource('/cadastroespecializacoes', EspecializacoesController::class);
     Route::get('/listaespecializacoes', [EspecializacoesController::class, 'index'])->name('especializacoes-index');
@@ -143,6 +148,10 @@ Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function
     Route::get('/administrador/dashboard', [AdministradorController::class, 'tela'])->name('administrador.dashboard');
     Route::get('/logs/filter', [AdministradorController::class, 'showLogs'])->name('logs.filter');
     Route::get('/administrador/logs', [AdministradorController::class, 'showLogs'])->name('administrador.logs');
+
+    //Relatorios
+    Route::get('/relatorios_administrador', [RelatoriosController::class, 'relatorios_administrador'])->name('relatorios_administrador');
+
 });
 
 

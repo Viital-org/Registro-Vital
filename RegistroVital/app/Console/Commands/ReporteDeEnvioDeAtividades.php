@@ -2,11 +2,10 @@
 
 namespace App\Console\Commands;
 
+use Exception;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Exception;
 
 class ReporteDeEnvioDeAtividades extends Command
 {
@@ -29,25 +28,30 @@ class ReporteDeEnvioDeAtividades extends Command
      */
     public function handle()
     {
-        ini_set('memory_limit', '1024M');
 
-        $relatorio = "Relatório de atividades dos últimos 7 dias:\n\n";
+        $logFilePath = storage_path('logs/auth.log');
 
-        /* temos que configurar a tabela de logs depois
-         * DB::table('logs')
-            ->where('created_at', '>=', now()->subDays(7))
-            ->orderBy('created_at', 'asc')
-            ->chunk(100, function ($atividades) use (&$relatorio) {
-                foreach ($atividades as $atividade) {
-                    $relatorio .= "Usuário ID: {$atividade->user_id}, Ação: {$atividade->action}, Data: {$atividade->created_at}\n";
-                }
-            });
-        */
+        if (!file_exists($logFilePath)) {
+            $this->error('Arquivo de log não encontrado.');
+            return;
+        }
+
+
+        $logLines = file($logFilePath);
+
+        $relatorio = "Relatório de atividades dos últimos 30 dias:\n\n";
+        $dataLimite = now()->subDays(30);
+
+        foreach ($logLines as $linha) {
+            if ($this->isLinhaRecente($linha, $dataLimite)) {
+                $relatorio .= $linha;
+            }
+        }
 
         try {
             Mail::raw($relatorio, function ($message) {
                 $message->from('no-reply@sistema.com', 'Sistema Registro Vital');
-                $message->to('')->subject('Relatório de Atividades');
+                $message->to('@gmail.com')->subject('Relatório de Atividades');
             });
 
             Log::info('Relatório de atividades gerado e enviado com sucesso.');
@@ -56,5 +60,22 @@ class ReporteDeEnvioDeAtividades extends Command
         }
 
         $this->info('Relatório de atividades foi gerado e enviado com sucesso.');
+    }
+
+    /**
+     * Verifica se a linha do log é recente (dentro dos últimos 30 dias).
+     *
+     * @param string $linha
+     * @param \Carbon\Carbon $dataLimite
+     * @return bool
+     */
+    private function isLinhaRecente(string $linha, $dataLimite): bool
+    {
+        if (preg_match('/^\[([^\]]+)\]/', $linha, $matches)) {
+            $dataLinha = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', trim($matches[1]));
+            return $dataLinha && $dataLinha->greaterThanOrEqualTo($dataLimite);
+        }
+
+        return false;
     }
 }

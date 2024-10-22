@@ -19,7 +19,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top mb-4" style="background-color: #4a6572;">
     <img src="{{ asset('/img/cruz.png') }}" alt="Logo" style="max-width: 3%; margin-left: 1%;"/>
     <a class="navbar-brand" href="/" style="font-size: 20px; color: white;">Registro Vital</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -34,7 +35,8 @@
                 <a class="nav-link text-white" href="{{ route('ajuda') }}">Ajuda</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-expanded="false">
                     Consultas Marcadas
                 </a>
                 <ul class="dropdown-menu">
@@ -43,7 +45,8 @@
             </li>
             <li class="nav-item dropdown">
                 @auth
-                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->nome_completo }}</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->nome_completo }}</a>
                     <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                         <li>
                             <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">

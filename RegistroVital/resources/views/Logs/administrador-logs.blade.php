@@ -7,8 +7,10 @@
         <h2>Logs de Atividades</h2>
 
         <div class="mb-4">
-            <a href="{{ route('logs.filter', ['type' => 'profile-edit']) }}" class="btn btn-primary">Logs de Edição de Perfil</a>
-            <a href="{{ route('logs.filter', ['type' => 'login-logout']) }}" class="btn btn-secondary">Logs de Login/Logout</a>
+            <a href="{{ route('logs.filter', ['type' => 'profile-edit']) }}" class="btn btn-primary">Logs de Edição de
+                Perfil</a>
+            <a href="{{ route('logs.filter', ['type' => 'login-logout']) }}" class="btn btn-secondary">Logs de
+                Login/Logout</a>
             <a href="{{ route('administrador.logs') }}" class="btn btn-success">Mostrar Todos os Logs</a>
         </div>
 

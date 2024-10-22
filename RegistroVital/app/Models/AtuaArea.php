@@ -22,6 +22,7 @@ class AtuaArea extends Model
             $atuaarea->especializacoes()->delete();
         });
     }
+
     public function especializacoes()
     {
         return $this->hasMany(Especializacao::class, 'area_atuacao_id', 'id');

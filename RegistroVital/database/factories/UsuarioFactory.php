@@ -12,9 +12,8 @@ use Illuminate\Support\Str;
  */
 class UsuarioFactory extends Factory
 {
-    protected $model = Usuario::class;
-
     public static ?string $password;
+    protected $model = Usuario::class;
 
     public function definition(): array
     {

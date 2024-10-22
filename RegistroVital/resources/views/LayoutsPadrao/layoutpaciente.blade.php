@@ -35,6 +35,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('ajuda') }}">Ajuda</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('relatorios_paciente') }}">Relatórios</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">

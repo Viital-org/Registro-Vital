@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\AtuaArea;
 use App\Models\Especializacao;
 use Illuminate\Database\Seeder;
-use App\Models\AtuaArea;
 
 class EspecializacaoSeeder extends Seeder
 {

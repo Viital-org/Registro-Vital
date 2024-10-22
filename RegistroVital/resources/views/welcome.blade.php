@@ -40,7 +40,8 @@
                         </button>
 
                         @if (Route::has('register'))
-                            <button onclick="window.location.href='{{ route('register') }}'" class="btn btn-secondary mx-2">
+                            <button onclick="window.location.href='{{ route('register') }}'"
+                                    class="btn btn-secondary mx-2">
                                 Registro
                             </button>
                         @endif

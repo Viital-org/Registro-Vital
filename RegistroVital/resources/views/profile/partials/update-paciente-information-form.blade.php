@@ -158,7 +158,8 @@
 
         {{-- Botão de Salvar --}}
         <div class="flex justify-end">
-            <button class="px-4 py-2 bg-primary text-white font-bold rounded-md shadow hover:bg-primary-dark transition ease-in-out duration-150">
+            <button
+                class="px-4 py-2 bg-primary text-white font-bold rounded-md shadow hover:bg-primary-dark transition ease-in-out duration-150">
                 Salvar Alterações
             </button>
         </div>

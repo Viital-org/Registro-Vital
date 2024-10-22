@@ -4,7 +4,7 @@
         <p class="mb-3">Garanta que sua conta esta usando uma senha, longa e forte, para mante-la segura</p>
     </header>
     <form method="post" action="{{ route('password.update') }}" class="mb-3">
-    @csrf
+        @csrf
         @method('put')
         <div>
             <x-input-label for="update_password_current_password" :value="'Senha Atual'"/>
