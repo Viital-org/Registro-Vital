@@ -79,13 +79,13 @@
                         <a class="nav-link active" href="#">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ "route('pacientes.index')" }}">Pacientes</a>
+                        <a class="nav-link" href="{{ route('pacientes.index') }}">Pacientes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('consultas.index') }}">Consultas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ "route('anotacoes.index')" }}">Anotações</a>
+                        <a class="nav-link" href="{{ route('anotacoessaude-index') }}">Anotações</a>
                     </li>
                 </ul>
             </div>
