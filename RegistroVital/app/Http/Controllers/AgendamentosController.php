@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agendamento;
+use App\Models\AtuaArea;
 use App\Models\Consulta;
 use App\Models\Especializacao;
 use App\Models\Profissional;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,16 +24,16 @@ class AgendamentosController extends Controller
             $agendamentos = Agendamento::where('paciente_id', $user->paciente->id)
                 ->whereHas('consulta', function ($query) use ($today) {
                     $query->where('data', '<', $today)
-                        ->orWhere('status', 'cancelada')
-                        ->orWhere('status', 'realizada');
+                        ->orWhere('situacao', 1)
+                        ->orWhere('situacao', 2);
                 })
                 ->paginate(5);
         } elseif ($user->tipo_usuario === 2) {
             $agendamentos = Agendamento::where('profissional_id', $user->profissional->id)
                 ->whereHas('consulta', function ($query) use ($today) {
                     $query->where('data', '<', $today)
-                        ->orWhere('status', 'cancelada')
-                        ->orWhere('status', 'realizada');
+                        ->orWhere('situacao', 1)
+                        ->orWhere('situacao', 2);
                 })
                 ->paginate(5);
         } else {
@@ -48,23 +50,25 @@ class AgendamentosController extends Controller
     {
         $validated = $request->validate([
             'especializacao_id' => 'required|exists:especializacoes,id',
-            'profissional_id' => 'required|exists:profissionais,id',
+            'area_atuacao_id' => 'required|exists:areas_atuacao,id',
+            'profissional_id' => 'required|exists:profissionais,usuario_id',
             'data_agendamento' => 'required|date|after_or_equal:today',
         ]);
+        $validated['paciente_id'] = Auth::user()->id;
+        $validated['situacao_paciente'] = 1;
+        $validated['situacao_profissional'] = 1;
+        $validated['endereco_consulta']= 'Rua dos patos, 8000';
 
-        $validated['paciente_id'] = Auth::user()->paciente->id;
+        $agendamento = Agendamento::create($validated);
 
         $consulta = Consulta::create([
+            'agenadmento_id'=> 1,
             'data' => $validated['data_agendamento'],
-            'status' => 'agendado',
+            'situacao' => '1',
             'profissional_id' => $validated['profissional_id'],
             'paciente_id' => $validated['paciente_id'],
             'valor' => 100.0,
         ]);
-
-        $validated['consulta_id'] = $consulta->id;
-
-        Agendamento::create($validated);
 
         return redirect()->route('consultas.index')->with('success', 'Agendamento criado com sucesso!');
     }
@@ -74,13 +78,15 @@ class AgendamentosController extends Controller
      */
     public function create()
     {
-        $especializacoes = Especializacao::all();
-        return view('agendamentos.agendaconsulta', compact('especializacoes'));
+        $areas_atuacao = AtuaArea::all();
+        foreach ($areas_atuacao as $area) {
+            $especializacoes[$area->id] = Especializacao::where('area_atuacao_id', $area->id)->get();
+        };
+        $profissionais = Usuario::where('tipo_usuario', '2')->get();
+        return view('agendamentos.agendaconsulta', compact('areas_atuacao', 'especializacoes', 'profissionais', 'areas_atuacao'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy($id)
     {
         $agendamento = Agendamento::findOrFail($id);
@@ -88,9 +94,6 @@ class AgendamentosController extends Controller
         return redirect()->route('agendamentos.index')->with('success', 'Agendamento deletado com sucesso!');
     }
 
-    /**
-     * Get professionals based on specialization.
-     */
     public function getProfissionaisByEspecializacao($especializacao_id)
     {
         $profissionais = Profissional::where('especializacao_id', $especializacao_id)->get();

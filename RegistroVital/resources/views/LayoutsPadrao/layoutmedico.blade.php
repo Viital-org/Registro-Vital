@@ -68,30 +68,7 @@
         </ul>
     </div>
 </nav>
-
-<!-- Layout Principal com Sidebar -->
-<div class="container-fluid mt-5 pt-4">
-    <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-            <div class="position-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('pacientes.index') }}">Pacientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('consultas.index') }}">Consultas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('anotacoessaude-index') }}">Anotações</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Conteúdo Principal -->
+<!-- Conteúdo Principal -->
         <main role="main" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             @yield('conteudo')
         </main>

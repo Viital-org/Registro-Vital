@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_consulta')->constrained('consultas')->onDelete('cascade');
+            $table->foreignId('consulta_id')->contrained('consultas')->onDelete('cascade');
             $table->foreignId('usuario_avaliador')->constrained('usuarios')->onDelete('cascade');
             $table->foreignId('usuario_avaliado')->constrained('usuarios')->onDelete('cascade');
             $table->tinyInteger('nota_feedback')->checkBetween(0, 10);

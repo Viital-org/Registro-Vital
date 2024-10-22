@@ -86,33 +86,7 @@
         </div>
     </div>
 </nav>
-
-<!-- Sidebar -->
-<div class="container-fluid mt-5">
-    <div class="row">
-        <nav class="col-md-2 d-none d-md-block sidebar">
-            <div class="position-sticky pt-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Painel Principal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ "route('admin.usuarios')" }}">Usuários</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ "route('admin.consultas')" }}">Consultas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ "route('admin.dicas')" }}">Dicas de Saúde</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ "route('admin.metadados')" }}">Metas e Estatísticas</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Conteúdo Principal -->
+<!-- Conteúdo Principal -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
             @yield('conteudo')
         </main>

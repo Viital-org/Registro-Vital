@@ -12,11 +12,15 @@ class Agendamento extends Model
     protected $table = 'agendamentos';
 
     protected $fillable = [
+        'area_atuacao_id',
         'especializacao_id',
         'profissional_id',
         'paciente_id',
         'data_agendamento',
         'consulta_id',
+        'situacao_paciente',
+        'situacao_profissional',
+        'endereco_consulta'
     ];
 
     public function consulta()

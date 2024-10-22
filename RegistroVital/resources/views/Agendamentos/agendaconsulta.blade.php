@@ -8,18 +8,29 @@
         <form action="{{ route('agendamentos.store') }}" method="POST">
             @csrf
             <div class="mb-3">
+                <label for="area_atuacao_id" class="form-label">Área de atuação</label>
+                <select name="area_atuacao_id" id="area_atuacao_id" class="form-select" required>
+                    @foreach($areas_atuacao as $area_atuacao)
+                        <option value="{{ $area_atuacao->id}}">{{ $area_atuacao->descricao_area }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="especializacao_id" class="form-label">Especialização</label>
                 <select name="especializacao_id" id="especializacao_id" class="form-select" required>
-                    <option value="">Selecione uma Especialização</option>
-                    @foreach($especializacoes as $especializacao)
-                        <option value="{{ $especializacao->id }}">{{ $especializacao->especializacao }}</option>
+                    @foreach($areas_atuacao as $area)
+                            @foreach($area->especializacoes as $especializacao)
+                                <option value="{{ $especializacao->id }}">{{ $especializacao->descricao_especializacao }}</option>
+                            @endforeach
                     @endforeach
                 </select>
             </div>
             <div class="mb-3">
                 <label for="profissional_id" class="form-label">Profissional</label>
                 <select name="profissional_id" id="profissional_id" class="form-select" required>
-                    <option value="">Selecione um Profissional</option>
+                    @foreach($profissionais as $profissional)
+                        <option value="{{$profissional->id}}"> {{ $profissional->nome_completo}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="mb-3">

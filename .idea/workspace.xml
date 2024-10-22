@@ -5,20 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RegistroVital/app/Console/Commands/TesteFraseInspiradora.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Logs/administrador-logs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Registro-Vital.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Registro-Vital.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AdministradorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AdministradorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/AuthenticatedSessionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/AuthenticatedSessionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/PacientesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/PacientesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/config/logging.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/config/logging.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ConsultasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ConsultasController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Agendamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Agendamento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_agendamentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_agendamentos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_consultas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_consultas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000025_create_feedbacks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000025_create_feedbacks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000026_create_recomendacoes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000026_create_recomendacoes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Agendamentos/agendaconsulta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Agendamentos/agendaconsulta.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/routes/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/console.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +58,7 @@
     &quot;accountId&quot;: &quot;74b087ef-0775-410e-a044-6e5f5c47c506&quot;
   }
 }</component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\PHP-8.3.4\php.exe">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\php\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/../example-app/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/../example-app/vendor/composer" />
@@ -2959,8 +2957,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
-        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PS-242.23339.16" />
+        <option value="bundled-php-predefined-a98d8de5180a-90914f2295cb-com.jetbrains.php.sharedIndexes-PS-242.23339.16" />
       </set>
     </attachedChunks>
   </component>
@@ -2987,6 +2985,7 @@
       <workItem from="1729457415173" duration="6938000" />
       <workItem from="1729465259267" duration="13939000" />
       <workItem from="1729490294559" duration="2202000" />
+      <workItem from="1729551664562" duration="13732000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -3143,6 +3142,17 @@
     <MESSAGE value="#0020 Correção de problema de Login referente a senha do usuario, Cadastro e Edição dos dados dos 3 Tipos de Usuarios em relação as tabelas Pacientes, Profissionais, e Administradores, população, seed e factorys das tabelas areas de atuação e especializações, relacionamento profissional x area x especializções" />
     <MESSAGE value="#0021 Correção do erro de garantia de usuarios, agora o erro não mais aparece ao logar com um usuario que tem permissão pra cessar o dashboard referente, apenas ao tentar entrar em uma rota sem permissão" />
     <option name="LAST_COMMIT_MESSAGE" value="#0021 Correção do erro de garantia de usuarios, agora o erro não mais aparece ao logar com um usuario que tem permissão pra cessar o dashboard referente, apenas ao tentar entrar em uma rota sem permissão" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_consultas_table.php</url>
+          <line>2</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

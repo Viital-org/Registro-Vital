@@ -14,14 +14,15 @@ return new class extends Migration {
     {
         Schema::create('agendamentos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('paciente')->constrained('pacientes', 'usuario_id')->onDelete('cascade');
-            $table->foreignId('profissional')->constrained('profissionais', 'usuario_id')->onDelete('cascade');
+            $table->foreignId('paciente_id')->constrained('pacientes', 'usuario_id')->onDelete('cascade');
+            $table->foreignId('profissional_id')->constrained('profissionais', 'usuario_id')->onDelete('cascade');
             $table->foreignId('area_atuacao_id')->constrained('areas_atuacao')->onDelete('cascade');
-            $table->string('especializacao', 30)->nullable();
+            $table->string('especializacao_id', 30)->nullable();
             $table->date('data_agendamento');
             $table->integer('situacao_paciente');
             $table->integer('situacao_profissional');
-            $table->foreignId('endereco_consulta')->constrained('enderecos_atuacao')->onDelete('cascade');
+            $table->string('endereco_consulta',60);
+            #$table->foreignId('endereco_consulta')->constrained('enderecos_atuacao')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
