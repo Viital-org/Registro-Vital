@@ -47,7 +47,7 @@ Route::middleware(['auth', 'layout.dinamico'])->group(function () {
 // Rotas Específicas para Pacientes
 Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function () {
     Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
-    Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes-edit');
+    Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes.edit');
     Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
 
     // Anotações
@@ -103,9 +103,9 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
 
 //Pacientes
 //Route::resource('/cadastropacientes', PacientesController::class);
-    Route::get('/listapacientes', [PacientesController::class, 'index'])->name('pacientes-index');
+    Route::get('/listapacientes', [PacientesController::class, 'index'])->name('pacientes.index');
 //Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
-//Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes-show');
+Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes.show');
 //Route::get('/cadastropaci', [PacientesController::class, 'create']);
 //Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
 
