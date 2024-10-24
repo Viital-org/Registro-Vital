@@ -16,6 +16,7 @@ class PacienteFactory extends Factory
             'cpf' => $this->faker->unique()->numerify('###########'),
             'rg' => $this->faker->unique()->numerify('###########'),
             'data_nascimento' => $this->faker->date(),
+            'bairro'=>$this->faker->streetName(),
             'rua_endereco' => $this->faker->streetName(),
             'numero_endereco' => $this->faker->numberBetween(1, 100),
             'cep' => $this->faker->numerify('########'),

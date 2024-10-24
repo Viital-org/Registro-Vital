@@ -10,16 +10,18 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('enderecos_atuacao', function (Blueprint $table) {
+        Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profissional_id')->constrained('profissionais', 'usuario_id')->onDelete('cascade');
-            $table->string('area_atuacao', 20);
+            $table->foreignId('usuario_id')->constrained('usuario');
             $table->integer('situacao_endereco');
-            $table->string('endereco', 30);
-            $table->string('numero_endereco', 10);
             $table->string('cep', 8);
-            $table->string('cidade', 32);
+            $table->string('tipo_endereco');
             $table->string('estado', 2);
+            $table->string('cidade');
+            $table->string('bairro');
+            $table->string('endereco');
+            $table->string('complemento');
+            $table->string('numero_endereco');
             $table->timestamps();
             $table->softDeletes();
         });

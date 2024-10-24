@@ -28,6 +28,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'nome_completo' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:40', 'unique:' . Usuario::class],
+            'cpf'=>['required','string','size:11', 'unique:'. Paciente::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'tipo_usuario' => ['required', 'integer', 'in:1,2,3'],
         ]);
@@ -46,7 +47,7 @@ class RegisteredUserController extends Controller
         // Relacionamento com o tipo de usuário
         switch ($user->tipo_usuario) {
             case 1: // Paciente
-                Paciente::create(['usuario_id' => $user->id]);
+                Paciente::create(['usuario_id' => $user->id, 'cpf' => $request->cpf]);
                 break;
             case 2: // Profissional
                 Profissional::create(['usuario_id' => $user->id]);

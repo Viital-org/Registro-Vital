@@ -22,7 +22,6 @@ return new class extends Migration {
             $table->integer('situacao_paciente');
             $table->integer('situacao_profissional');
             $table->string('endereco_consulta',60);
-            #$table->foreignId('endereco_consulta')->constrained('enderecos_atuacao')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

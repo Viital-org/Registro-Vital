@@ -57,35 +57,29 @@ class Usuario extends Authenticatable
         return $this->senha;
     }
 
-    /**
-     * Relacionamento com o tipo de usuário.
-     */
     public function tipoUsuario()
     {
         return $this->belongsTo(TipoUsuario::class, 'tipo_usuario');
     }
 
-    /**
-     * Relacionamento com o modelo Paciente.
-     */
+
     public function paciente()
     {
         return $this->hasOne(Paciente::class, 'usuario_id');
     }
 
-    /**
-     * Relacionamento com o modelo Profissional.
-     */
     public function profissional()
     {
         return $this->hasOne(Profissional::class, 'usuario_id');
     }
 
-    /**
-     * Relacionamento com o modelo Administrador.
-     */
     public function administrador()
     {
         return $this->hasOne(Administrador::class, 'usuario_id');
+    }
+
+    public function endereco()
+    {
+        return $this->hasMany(Endereco::class,'usuario_id');
     }
 }

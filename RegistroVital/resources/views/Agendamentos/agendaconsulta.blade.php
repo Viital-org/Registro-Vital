@@ -31,6 +31,17 @@
                 </select>
             </div>
 
+            <div class ="mb-3">
+                <label for="endereco_id" class="form-label">Endereço</label>
+                <select name="endereco_id" id="endereco_id" class="form-select" required>
+                    <option value="">Selecione o endereço da consulta</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <input type="text" aria-hidden="true" class="form-control" readonly>
+            </div>
+
             <div class="mb-3">
                 <label for="data_agendamento" class="form-label">Data do Agendamento</label>
                 <input type="date" name="data_agendamento" id="data_agendamento" class="form-control" required
@@ -40,7 +51,7 @@
         </form>
     </div>
 
-    <!-- Inclua a versão completa do jQuery -->
+    <!-- Include do jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- BUSCA A ESPECIALIZAÇÃO CONFORME A ÁREA DE ATUAÇÃO SELECIONADA **ALELUIA** -->
@@ -94,5 +105,7 @@
             });
         });
     </script>
+
+    <!-- API DOS CORREIOS PRA BUSCAR O CEP FICARÁ AQUI-->
 
 @endsection

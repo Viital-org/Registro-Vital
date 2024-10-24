@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#26 Configuração dos agendamentos">
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#27 Seleção de especialização de acordo com a área de atuação e profissional conforme especialização.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Agendamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Agendamento.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Especializacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Especializacao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/UsuarioSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/UsuarioSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Usuario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/PacienteFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/PacienteFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_enderecos_atuacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_enderecos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_agendamentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_agendamentos_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Agendamentos/agendaconsulta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Agendamentos/agendaconsulta.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +59,9 @@
     &quot;accountId&quot;: &quot;74b087ef-0775-410e-a044-6e5f5c47c506&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/RegistroVital/app/Models/Endereco.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\php\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/../example-app/vendor/hamcrest/hamcrest-php" />
@@ -2900,38 +2906,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Flutter.Unnamed (1).executor&quot;: &quot;Run&quot;,
-    &quot;Flutter.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;PHP Script.GarantirUserTipo.php.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/dart-sdk&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;debugger.dataViews&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Flutter.Unnamed (1).executor": "Run",
+    "Flutter.Unnamed.executor": "Run",
+    "PHP Script.GarantirUserTipo.php.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "io.flutter.reload.alreadyRun": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/luan_/Registro-Vital/RegistroVital/resources/sass",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "debugger.dataViews",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\resources\sass" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\resources\sass" />
       <recent name="C:\Registro-Vital\RegistroVital\resources\views" />
       <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\registro_vital_mobile\lib\screen" />
       <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\mobile_app" />
       <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\web_app" />
-      <recent name="C:\Users\bruno\StudioProjects\Registro-Vital" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Script.GarantirUserTipo.php">
@@ -2984,7 +2993,7 @@
       <workItem from="1729465259267" duration="13939000" />
       <workItem from="1729490294559" duration="2202000" />
       <workItem from="1729551664562" duration="15188000" />
-      <workItem from="1729722492403" duration="11807000" />
+      <workItem from="1729722492403" duration="19104000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -3114,7 +3123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729565856518</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="#27 Seleção de especialização de acordo com a área de atuação e profissional conforme especialização.">
+      <option name="closed" value="true" />
+      <created>1729736226431</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1729736226431</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3149,7 +3166,8 @@
     <MESSAGE value="#0020 Correção de problema de Login referente a senha do usuario, Cadastro e Edição dos dados dos 3 Tipos de Usuarios em relação as tabelas Pacientes, Profissionais, e Administradores, população, seed e factorys das tabelas areas de atuação e especializações, relacionamento profissional x area x especializções" />
     <MESSAGE value="#0021 Correção do erro de garantia de usuarios, agora o erro não mais aparece ao logar com um usuario que tem permissão pra cessar o dashboard referente, apenas ao tentar entrar em uma rota sem permissão" />
     <MESSAGE value="#26 Configuração dos agendamentos" />
-    <option name="LAST_COMMIT_MESSAGE" value="#26 Configuração dos agendamentos" />
+    <MESSAGE value="#27 Seleção de especialização de acordo com a área de atuação e profissional conforme especialização." />
+    <option name="LAST_COMMIT_MESSAGE" value="#27 Seleção de especialização de acordo com a área de atuação e profissional conforme especialização." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
