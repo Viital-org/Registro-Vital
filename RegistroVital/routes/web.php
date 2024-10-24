@@ -28,6 +28,7 @@ Route::middleware('layout.dinamico')->group(function () {
     Route::get('/ajuda', function () {
         return view('Cadastros/ajuda');
     })->name('ajuda');
+
 });
 
 // Rotas Protegidas por Autenticação
@@ -43,6 +44,7 @@ Route::middleware(['auth', 'layout.dinamico'])->group(function () {
     Route::get('/consultas/{id}', [ConsultasController::class, 'show'])->name('consultas.show');
     Route::delete('/consultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas.destroy');
     Route::get('/consultas/{id}/anotacoes', [ConsultasController::class, 'listAnotacoes'])->name('consultas.anotacoes');
+
 });
 
 // Rotas Específicas para Pacientes
@@ -64,6 +66,8 @@ Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function
     Route::get('/agendamentos/create', [AgendamentosController::class, 'create'])->name('agendamentos.create');
     Route::post('/agendamentos', [AgendamentosController::class, 'store'])->name('agendamentos.store');
     Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
+    Route::get('/agendamentos/{area_atuacao_id}', [AgendamentosController::class, 'getEspecializacoes']);
+    Route::get('/agendamentosprofissionais/{especializacao_id}', [AgendamentosController::class, 'getProfissional']);
 
     //Dicas
     Route::resource('/cadastrodicas', DicasController::class);
@@ -142,6 +146,7 @@ Route::post('/listapacientes', [PacientesController::class, 'show'])->name('paci
     Route::get('/editarespecializacao/{id}', [EspecializacoesController::class, 'edit'])->name('especializacoes-edit');
     Route::put('/editarespecializacao/{id}', [EspecializacoesController::class, 'update'])->name('especializacoes-update');
     Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, 'destroy'])->name('especializacoes-delete');
+
 });
 
 Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function () {

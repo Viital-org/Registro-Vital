@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="">
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#26 Configuração dos agendamentos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ConsultasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ConsultasController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Agendamento.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Agendamento.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_agendamentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_agendamentos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_consultas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_consultas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000025_create_feedbacks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000025_create_feedbacks_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000026_create_recomendacoes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000026_create_recomendacoes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Especializacao.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Especializacao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/UsuarioSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/UsuarioSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Agendamentos/agendaconsulta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Agendamentos/agendaconsulta.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutadministrador.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -2985,7 +2983,8 @@
       <workItem from="1729457415173" duration="6938000" />
       <workItem from="1729465259267" duration="13939000" />
       <workItem from="1729490294559" duration="2202000" />
-      <workItem from="1729551664562" duration="13732000" />
+      <workItem from="1729551664562" duration="15188000" />
+      <workItem from="1729722492403" duration="11807000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -3107,7 +3106,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729463409875</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="#26 Configuração dos agendamentos">
+      <option name="closed" value="true" />
+      <created>1729565856518</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1729565856518</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3141,7 +3148,8 @@
     <MESSAGE value="#0020 Correção de problema de Login referente a senha do usuario, Cadastro e Edição dos dados dos 3 Tipos de Usuarios em relação as tabelas Pacientes, Profissionais, e Administradores, população, seed e factorys das tabelas areas de atuação e especializações, relacionamento profissional x area x especializções" />
     <MESSAGE value="#0020 Correção de problema de Login referente a senha do usuario, Cadastro e Edição dos dados dos 3 Tipos de Usuarios em relação as tabelas Pacientes, Profissionais, e Administradores, população, seed e factorys das tabelas areas de atuação e especializações, relacionamento profissional x area x especializções" />
     <MESSAGE value="#0021 Correção do erro de garantia de usuarios, agora o erro não mais aparece ao logar com um usuario que tem permissão pra cessar o dashboard referente, apenas ao tentar entrar em uma rota sem permissão" />
-    <option name="LAST_COMMIT_MESSAGE" value="#0021 Correção do erro de garantia de usuarios, agora o erro não mais aparece ao logar com um usuario que tem permissão pra cessar o dashboard referente, apenas ao tentar entrar em uma rota sem permissão" />
+    <MESSAGE value="#26 Configuração dos agendamentos" />
+    <option name="LAST_COMMIT_MESSAGE" value="#26 Configuração dos agendamentos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

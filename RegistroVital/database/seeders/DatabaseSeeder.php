@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             //DicaSeeder::class,
             //AnotacaosaudeSeeder::class,
             //AgendamentoSeeder::class,
-            //UsuarioSeeder::class,
+            UsuarioSeeder::class,
         ]);
     }
 }

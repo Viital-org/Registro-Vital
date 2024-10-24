@@ -9,13 +9,11 @@ use App\Models\Especializacao;
 use App\Models\Profissional;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 class AgendamentosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $user = Auth::user();
@@ -43,9 +41,7 @@ class AgendamentosController extends Controller
         return view('agendamentos.listaagendamentos', compact('agendamentos'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -54,15 +50,16 @@ class AgendamentosController extends Controller
             'profissional_id' => 'required|exists:profissionais,usuario_id',
             'data_agendamento' => 'required|date|after_or_equal:today',
         ]);
+
         $validated['paciente_id'] = Auth::user()->id;
         $validated['situacao_paciente'] = 1;
         $validated['situacao_profissional'] = 1;
-        $validated['endereco_consulta']= 'Rua dos patos, 8000';
+        $validated['endereco_consulta'] = 'Rua dos patos, 8000';
 
         $agendamento = Agendamento::create($validated);
 
         $consulta = Consulta::create([
-            'agenadmento_id'=> 1,
+            'agenadmento_id' => $agendamento->id, // Corrigido para usar o id correto
             'data' => $validated['data_agendamento'],
             'situacao' => '1',
             'profissional_id' => $validated['profissional_id'],
@@ -78,14 +75,10 @@ class AgendamentosController extends Controller
      */
     public function create()
     {
-        $areas_atuacao = AtuaArea::all();
-        foreach ($areas_atuacao as $area) {
-            $especializacoes[$area->id] = Especializacao::where('area_atuacao_id', $area->id)->get();
-        };
-        $profissionais = Usuario::where('tipo_usuario', '2')->get();
-        return view('agendamentos.agendaconsulta', compact('areas_atuacao', 'especializacoes', 'profissionais', 'areas_atuacao'));
+        $areasAtuacao = AtuaArea::all();
+        return view('agendamentos.agendaconsulta', compact('areasAtuacao'));
+        dd($especializacoes);
     }
-
 
     public function destroy($id)
     {
@@ -94,9 +87,23 @@ class AgendamentosController extends Controller
         return redirect()->route('agendamentos.index')->with('success', 'Agendamento deletado com sucesso!');
     }
 
-    public function getProfissionaisByEspecializacao($especializacao_id)
+    public function getEspecializacoes($area_atuacao_id): JsonResponse
     {
-        $profissionais = Profissional::where('especializacao_id', $especializacao_id)->get();
-        return response()->json($profissionais);
+        $especializacoes = Especializacao::where('area_atuacao_id', $area_atuacao_id)->get();
+        return response()->json($especializacoes);
+
     }
+
+    public function getProfissional($especializaco_id): JsonResponse
+    {
+        $profissionais = Profissional::where('especializacao_id', $especializaco_id)->get();
+        $identificacao = $profissionais->map(function($profissional) {
+            return [
+                'id' => $profissional->id,
+                'nome_completo' => Usuario::find($profissional->usuario_id)->nome_completo // ou outro campo que você precise
+            ];
+        });
+        return response()->json($identificacao);
+    }
+
 }

@@ -28,14 +28,14 @@ class Agendamento extends Model
         return $this->belongsTo(Consulta::class, 'consulta_id');
     }
 
-    public function especializacao()
+    public function especializacoes()
     {
-        return $this->belongsTo(Especializacao::class, 'especializacao_id');
+        return $this->hasMany(Especializacao::class, 'area_atuacao_id');
     }
 
-    public function profissional()
+    public function profissionais()
     {
-        return $this->belongsTo(Profissional::class, 'profissional_id');
+        return $this->hasMany(Profissional::class, 'especializacao_id');
     }
 
     public function paciente()
