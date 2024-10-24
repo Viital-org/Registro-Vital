@@ -25,7 +25,8 @@ class PacienteFactory extends Factory
             'genero' => $this->faker->randomElement(['M', 'F']),
             'estado_civil' => $this->faker->numberBetween(1, 5),
             'tipo_sanguineo' => $this->faker->randomElement(['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']),
-            'data_criacao' => now(),
+            'created_at'=> now(),
+            'updated_at'=> now(),
         ];
     }
 }

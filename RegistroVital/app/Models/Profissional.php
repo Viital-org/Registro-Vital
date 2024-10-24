@@ -21,7 +21,6 @@ class Profissional extends Model
         'especializacao_id',
         'genero',
         'tempo_experiencia',
-        'data_criacao',
     ];
 
     public function usuario()

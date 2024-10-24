@@ -24,7 +24,6 @@ class Paciente extends Model
         'genero',
         'estado_civil',
         'tipo_sanguineo',
-        'data_criacao',
     ];
 
     public function usuario()

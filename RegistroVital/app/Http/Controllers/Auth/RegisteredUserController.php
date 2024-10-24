@@ -47,10 +47,10 @@ class RegisteredUserController extends Controller
         // Relacionamento com o tipo de usuário
         switch ($user->tipo_usuario) {
             case 1: // Paciente
-                Paciente::create(['usuario_id' => $user->id, 'cpf' => $request->cpf]);
+                Paciente::create(['usuario_id' => $user->id, 'cpf' => $request->cpf, 'data_nascimento'=> $request->data_nascimento, 'estado_civil'=> $request->estado_civil, 'genero'=>$request->genero]);
                 break;
             case 2: // Profissional
-                Profissional::create(['usuario_id' => $user->id]);
+                Profissional::create(['usuario_id' => $user->id,'cpf' => $request->cpf, 'genero'=>$request->genero, 'cnpj'=>$request->cnpj, 'registro_profissional'=>$request->registro_profissional, 'tempo_experiencia'=>$request->tempo_experiencia]);
                 break;
             case 3: // Administrador
                 Administrador::create(['usuario_id' => $user->id]);

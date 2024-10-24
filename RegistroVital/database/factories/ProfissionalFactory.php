@@ -26,7 +26,6 @@ class ProfissionalFactory extends Factory
             'especializacao_id' => $especializacao ? $especializacao->id : null,
             'genero' => $this->faker->randomElement(['M', 'F']),
             'tempo_experiencia' => $this->faker->numberBetween(0, 30),
-            'data_criacao' => now(),
         ];
     }
 }

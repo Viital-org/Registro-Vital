@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->integer('situacao');
             $table->date('data');
             $table->decimal('valor', 5, 2)->nullable();
-            $table->foreignId('endereco_consulta')->constrained('enderecos_atuacao')->onDelete('cascade');
+            $table->foreignId('endereco_consulta')->constrained('enderecos')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

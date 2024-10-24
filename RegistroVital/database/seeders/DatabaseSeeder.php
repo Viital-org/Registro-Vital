@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\EstadoCivil;
 use App\Models\TipoRecomendacao;
 use Illuminate\Database\Seeder;
 
@@ -19,18 +20,20 @@ class DatabaseSeeder extends Seeder
             TipoDocumentoSeeder::class,
             TipoVisibilidadeSeeder::class,
             TipoLogSeeder::class,
+            EstadoCivilSeeder::class,
             AtuaAreaSeeder::class,
             EspecializacaoSeeder::class,
             AdministradorSeeder::class,
             ProfissionalSeeder::class,
             PacienteSeeder::class,
             StatusSeeder::class,
+            UsuarioSeeder::class,
             //MetaSeeder::class,
             //ConsultaSeeder::class,
             //DicaSeeder::class,
             //AnotacaosaudeSeeder::class,
             //AgendamentoSeeder::class,
-            UsuarioSeeder::class,
+
         ]);
     }
 }

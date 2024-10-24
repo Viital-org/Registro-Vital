@@ -19,7 +19,6 @@ return new class extends Migration {
             $table->foreignId('especializacao_id')->nullable()->constrained('especializacoes', 'id')->onDelete('set null')->onUpdate('cascade');
             $table->char('genero', 1)->nullable();
             $table->integer('tempo_experiencia')->nullable();
-            $table->dateTime('data_criacao')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

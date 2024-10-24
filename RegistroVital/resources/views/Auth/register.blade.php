@@ -65,7 +65,7 @@
                             <label for="cnpj" class="form-label">CNPJ</label>
                             <input type="text" name="cnpj" id="cnpj"
                                    class="form-control @error('cnpj') is-invalid @enderror"
-                                   value="{{ old('cnpj') }}" required autocomplete="cnpj" autofocus
+                                   value="{{ old('cnpj') }}"
                                    placeholder="CNPJ">
                             @error('cnpj')
                             <span id="nameHelp" class="invalid-feedback" role="alert">
@@ -78,7 +78,7 @@
                         <div class="mb-3 campoprofissional">
                             <label for="tempo_experiencia" class="form-label">Tempo de experiência (Em anos)</label>
                             <input type="NUMBER" name="tempo_experiencia" id="tempo_experiencia"
-                                   class="form-control" required autocomplete="tempo_experiencia" autofocus
+                                   class="form-control"
                                    placeholder="Ex: 2">
                         </div>
 
@@ -87,8 +87,8 @@
                             <label for="registro_profissional" class="form-label">Registro profissional</label>
                             <input type="text" name="registro_profissional" id="registro_profissional"
                                    class="form-control @error('registro_profissional') is-invalid @enderror"
-                                   value="{{ old('registro_profissional') }}" required autocomplete="registro_profissional" autofocus
-                                   placeholder="CNPJ">
+                                   value="{{ old('registro_profissional') }}"
+                                   placeholder="Registro profissional">
                             @error('registro_profissional')
                             <span id="nameHelp" class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -101,7 +101,7 @@
                             <label for="area_atuacao" class="form-label">Área de atuação</label>
                             <input type="text" name="area_atuacao" id="area_atuacao"
                                    class="form-control @error('area_atuacao') is-invalid @enderror"
-                                   value="{{ old('area_atuacao') }}" required autocomplete="area_atuacao" autofocus
+                                   value="{{ old('area_atuacao') }}"
                                    placeholder="Área de atuação">
                             @error('area_atuacao')
                             <span id="nameHelp" class="invalid-feedback" role="alert">
@@ -115,7 +115,7 @@
                             <label for="data_nascimento" class="form-label">Data de nascimento</label>
                             <input type="date" name="data_nascimento" id="data_Nascimento"
                                    class="form-control @error('data_nascimento') is-invalid @enderror"
-                                   value="{{ old('data_nascimento') }}" required autocomplete="data_nascimento" autofocus
+                                   value="{{ old('data_nascimento') }}"
                                    placeholder="Data de nascimento">
                             @error('data_nascimento')
                             <span id="nameHelp" class="invalid-feedback" role="alert">
@@ -126,8 +126,8 @@
 
                         <!-- GENERO  -->
                         <div class="mb-3">
-                            <label for="data_nascimento" class="form-label">Genero</label>
-                            <select required autofocus class="form-control" name="genero" id="genero">
+                            <label for="genero" class="form-label">Genero</label>
+                            <select required class="form-control" name="genero" id="genero">
                                 <option value="F">Feminino</option>
                                 <option value="M">Masculino</option>
                             </select>
@@ -141,14 +141,14 @@
                         <!-- ESTADO CIVIL - PACIENTE -->
                         <div class="mb-3 campopaciente">
                             <label for="estado_civil" class="form-label">Estado civil</label>
-                            <select required autofocus class="form-control" name="estado_civil" id="estado_civil">
-                                <option value="Solteiro(a)">Solteiro(a)</option>
-                                <option value="Casado(a)">Casado(a)</option>
-                                <option value="Divorciado(a)">Divorciado(a)</option>
-                                <option value="Viúvo(a)">Viúvo(a)</option>
-                                <option value="União estável">União estável</option>
+                            <select class="form-control" name="estado_civil" id="estado_civil">
+                                <option value="1">Solteiro(a)</option>
+                                <option value="2">Casado(a)</option>
+                                <option value="3">Divorciado(a)</option>
+                                <option value="4">Viúvo(a)</option>
+                                <option value="5">União estável</option>
                             </select>
-                            @error('genero')
+                            @error('estado_civil')
                             <span id="nameHelp" class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -223,6 +223,13 @@
     <!-- Script para esconder e mostrar campos -->
     <script>
         $(document).ready(function() {
+            let cnpj = document.getElementById('cnpj');
+            let registro_profissional = document.getElementById('registro_profissional');
+            let area_atuacao = document.getElementById('area_atuacao');
+            let estado_civil = document.getElementById('estado_civil');
+            let data_nascimento = document.getElementById('data_Nascimento');
+
+
             function toggleFields(tipoUsuario) {
                 // Esconde todos os campos primeiro
                 $('.campopaciente').hide();
@@ -230,8 +237,13 @@
 
                 if (tipoUsuario == '1') {
                     $('.campopaciente').show();
+                    estado_civil.setAttribute('required', 'required');
+                    data_nascimento.setAttribute('required', 'required');
                 } else if (tipoUsuario == '2') {
                     $('.campoprofissional').show();
+                    cnpj.setAttribute('required', 'required');
+                    registro_profissional.setAttribute('required', 'required');
+                    area_atuacao.setAttribute('required', 'required');
                 } else{
                     $('.campopaciente').hide();
                     $('.campoprofissional').hide();
