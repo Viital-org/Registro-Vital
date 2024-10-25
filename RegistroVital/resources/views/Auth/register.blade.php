@@ -169,6 +169,49 @@
                             @enderror
                         </div>
 
+                        <!-- CEP -->
+                        <div class="mb-3">
+                            <label for="CEP" class="form-label">CEP</label>
+                            <input type="text" name="cep" id="cep" class="form-control" onblur="pesquisacep(this.value);">
+                        </div>
+
+                        <!-- ESTADO -->
+                        <div class="mb-3">
+                            <label for="uf" class="form-label">UF</label>
+                            <input type="text" name="uf" id="uf" class="form-control" readonly>
+                        </div>
+
+                        <!-- CIDADE -->
+                        <div class="mb-3">
+                            <label for="cidade" class="form-label">Cidade</label>
+                            <input type="text" name="cidade" id="cidade" class="form-control" readonly>
+                        </div>
+
+                        <!-- BAIRRO -->
+                        <div class="mb-3">
+                            <label for="bairro" class="form-label">Bairro</label>
+                            <input type="text" name="bairro" id="bairro" class="form-control" readonly>
+                        </div>
+
+                        <!-- RUA -->
+                        <div class="mb-3">
+                            <label for="rua" class="form-label">Rua</label>
+                            <input type="text" name="rua" id="rua" class="form-control" readonly>
+                        </div>
+
+                        <!-- COMPLEMENTO -->
+                        <div class="mb-3">
+                            <label for="complemento" class="form-label">Complemento</label>
+                            <input type="text" name="complemento" id="complemento" class="form-control">
+                        </div>
+
+                        <!-- NÚMERO -->
+                        <div class="mb-3">
+                            <label for="numero" class="form-label">Número</label>
+                            <input type="text" name="numero" id="numero" class="form-control">
+                        </div>
+
+
                         <!-- Campo de Senha -->
                         <div class="mb-3" id="geral">
                             <label for="password" class="form-label">Senha</label>

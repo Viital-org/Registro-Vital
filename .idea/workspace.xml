@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#28 Registro com layout dinâmico por tipo de usuário e preparação para cadastro de endereço receber API.">
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#30 Ajuste no registro dinâmico(salvar no banco). Ajustes nas migrations e seeders. Criação dos estados civis.">
+      <change afterPath="$PROJECT_DIR$/RegistroVital/public/js/BuscaCep.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Paciente.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Paciente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/Profissional.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Models/Profissional.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/PacienteFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/PacienteFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/ProfissionalFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/ProfissionalFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000020_create_profissionais_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000020_create_profissionais_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000021_create_estados_civis_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000021_create_estados_civis_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_enderecos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_enderecos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_consultas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_consultas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000027_create_agendas_profissionais_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000027_create_agendas_profissionais_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -2995,7 +2986,7 @@
       <workItem from="1729490294559" duration="2202000" />
       <workItem from="1729551664562" duration="15188000" />
       <workItem from="1729722492403" duration="19363000" />
-      <workItem from="1729809012533" duration="4410000" />
+      <workItem from="1729809012533" duration="7954000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -3141,7 +3132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729743650815</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="#30 Ajuste no registro dinâmico(salvar no banco). Ajustes nas migrations e seeders. Criação dos estados civis.">
+      <option name="closed" value="true" />
+      <created>1729813550306</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1729813550307</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3178,7 +3177,8 @@
     <MESSAGE value="#26 Configuração dos agendamentos" />
     <MESSAGE value="#27 Seleção de especialização de acordo com a área de atuação e profissional conforme especialização." />
     <MESSAGE value="#28 Registro com layout dinâmico por tipo de usuário e preparação para cadastro de endereço receber API." />
-    <option name="LAST_COMMIT_MESSAGE" value="#28 Registro com layout dinâmico por tipo de usuário e preparação para cadastro de endereço receber API." />
+    <MESSAGE value="#30 Ajuste no registro dinâmico(salvar no banco). Ajustes nas migrations e seeders. Criação dos estados civis." />
+    <option name="LAST_COMMIT_MESSAGE" value="#30 Ajuste no registro dinâmico(salvar no banco). Ajustes nas migrations e seeders. Criação dos estados civis." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

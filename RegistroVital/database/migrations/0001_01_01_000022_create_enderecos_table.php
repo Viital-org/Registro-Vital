@@ -13,14 +13,13 @@ return new class extends Migration {
         Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('usuario_id')->constrained('usuarios');
-            $table->integer('situacao_endereco');
+            $table->string('situacao_endereco');
             $table->string('cep', 8);
-            $table->string('tipo_endereco');
-            $table->string('estado', 2);
-            $table->string('cidade');
-            $table->string('bairro');
-            $table->string('endereco');
+            $table->string('rua');
             $table->string('complemento');
+            $table->string('bairro');
+            $table->string('Cidade');
+            $table->string('UF');
             $table->string('numero_endereco');
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +31,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('enderecos_atuacao');
+        Schema::dropIfExists('enderecos');
     }
 };
