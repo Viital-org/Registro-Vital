@@ -51,7 +51,7 @@
                             <label for="cpf" class="form-label">CPF</label>
                             <input type="text" name="cpf" id="cpf"
                                    class="form-control @error('cpf') is-invalid @enderror"
-                                   value="{{ old('cpf') }}" required autocomplete="cpf" autofocus
+                                   value="{{ old('cpf') }}" required autocomplete="cpf"
                                    placeholder="CPF">
                             @error('cpf')
                             <span id="nameHelp" class="invalid-feedback" role="alert">
@@ -99,7 +99,7 @@
                         <!-- ÁREA DE ATUAÇÃO - PROFISSIONAL -->
                         <div class="mb-3 campoprofissional" >
                             <label for="area_atuacao_id" class="form-label">Área de Atuação</label>
-                            <select name="area_atuacao_id" id="area_atuacao_id" class="form-select" required>
+                            <select name="area_atuacao_id" id="area_atuacao_id" class="form-select">
                                 <option value="">Selecione a Área de Atuação</option>
                                 @foreach($areasAtuacao as $area)
                                     <option value="{{ $area->id }}">{{ $area->descricao_area }}</option>
@@ -110,7 +110,7 @@
                         <!-- ESPECIALIZAÇÃO - PROFISSIONAL -->
                         <div class="mb-3 campoprofissional">
                             <label for="especializacao_id" class="form-label">Especialização</label>
-                            <select name="especializacao_id" id="especializacao_id" class="form-select" required>
+                            <select name="especializacao_id" id="especializacao_id" class="form-select">
                                 <option value="">Selecione a Especialização</option>
                             </select>
                         </div>

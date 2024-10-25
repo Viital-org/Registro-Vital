@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Administrador;
 use App\Models\AtuaArea;
+use App\Models\Endereco;
 use App\Models\Especializacao;
 use App\Models\Paciente;
 use App\Models\Profissional;
@@ -75,6 +76,18 @@ class RegisteredUserController extends Controller
                 Administrador::create(['usuario_id' => $user->id]);
                 break;
         }
+
+        Endereco::create([
+            'usuario_id'=> $user->id,
+            'situacao_endereco'=> 'ativo',
+            'cep'=> $request->cep,
+            'rua'=> $request->rua,
+            'complemento'=> $request->complemento,
+            'bairro'=> $request->bairro,
+            'cidade'=>$request->cidade,
+            'uf'=>$request->uf,
+            'numero_endereco'=>$request->numero,
+        ]);
 
         // Autentica o usuário após o registro
         Auth::login($user);

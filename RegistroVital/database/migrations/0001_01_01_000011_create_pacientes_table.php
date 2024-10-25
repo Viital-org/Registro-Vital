@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->string('estado', 2)->nullable();
             $table->char('genero', 1)->nullable();
             $table->integer('estado_civil')->nullable();
-            $table->string('tipo_sanguineo');
+            $table->string('tipo_sanguineo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
