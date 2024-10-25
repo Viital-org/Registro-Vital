@@ -15,7 +15,7 @@
 
                         <!-- Função -->
                         <div class="mb-3">
-                            <label for="tipo_usuario" class="form-label">Tipo de usuário</label>
+                            <label for="tipo_usuario" class="form-label">Como deseja se cadastrar?</label>
                             <select name="tipo_usuario" id="tipo_usuario" autocomplete="off"
                                     class="form-control @error('tipo_usuario') is-invalid @enderror" required>
                                 <option value="" disabled selected>Escolha o tipo de usuário</option>
@@ -32,7 +32,7 @@
                         </div>
 
                         <!-- Nome -->
-                        <div class="mb-3" id="geral">
+                        <div class="mb-3 campopaciente campoprofissional" >
                             <label for="nome_completo" class="form-label">Nome Completo</label>
                             <input type="text" name="nome_completo" id="nome_completo" aria-describedby="nameHelp"
                                    class="form-control @error('name') is-invalid @enderror"
@@ -47,7 +47,7 @@
 
 
                         <!-- CPF  -->
-                        <div class="mb-3" id="geral">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="cpf" class="form-label">CPF</label>
                             <input type="text" name="cpf" id="cpf"
                                    class="form-control @error('cpf') is-invalid @enderror"
@@ -130,7 +130,7 @@
                         </div>
 
                         <!-- GENERO  -->
-                        <div class="mb-3">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="genero" class="form-label">Genero</label>
                             <select required class="form-control" name="genero" id="genero">
                                 <option value="F">Feminino</option>
@@ -161,7 +161,7 @@
                         </div>
 
                         <!-- Email -->
-                        <div class="mb-3" id="geral">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="email" class="form-label">Endereço de Email</label>
                             <input type="email" name="email" id="email" aria-describedby="emailHelp"
                                    class="form-control @error('email') is-invalid @enderror"
@@ -175,50 +175,50 @@
                         </div>
 
                         <!-- CEP -->
-                        <div class="mb-3">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="CEP" class="form-label">CEP</label>
                             <input type="text" name="cep" id="cep" class="form-control" onblur="pesquisacep(this.value);">
                         </div>
 
                         <!-- ESTADO -->
-                        <div class="mb-3">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="uf" class="form-label">UF</label>
                             <input type="text" name="uf" id="uf" class="form-control" readonly>
                         </div>
 
                         <!-- CIDADE -->
-                        <div class="mb-3">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="cidade" class="form-label">Cidade</label>
                             <input type="text" name="cidade" id="cidade" class="form-control" readonly>
                         </div>
 
                         <!-- BAIRRO -->
-                        <div class="mb-3">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="bairro" class="form-label">Bairro</label>
                             <input type="text" name="bairro" id="bairro" class="form-control" readonly>
                         </div>
 
                         <!-- RUA -->
-                        <div class="mb-3">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="rua" class="form-label">Rua</label>
                             <input type="text" name="rua" id="rua" class="form-control" readonly>
                         </div>
 
                         <!-- COMPLEMENTO -->
-                        <div class="mb-3">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="complemento" class="form-label">Complemento</label>
                             <input type="text" name="complemento" id="complemento" class="form-control">
                         </div>
 
                         <!-- NÚMERO -->
-                        <div class="mb-3">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="numero" class="form-label">Número</label>
                             <input type="text" name="numero" id="numero" class="form-control">
                         </div>
 
 
-                        <!-- Campo de Senha -->
-                        <div class="mb-3" id="geral">
+                        <!-- CAMPO DE SENHA-->
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="password" class="form-label">Senha</label>
                             <input type="password" name="password" id="password"
                                    class="form-control @error('password') is-invalid @enderror" required
@@ -231,7 +231,7 @@
                         </div>
 
                         <!-- Campo de Confirmação de Senha -->
-                        <div class="mb-3" id="geral">
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="password-confirm" class="form-label">Confirmar Senha</label>
                             <input type="password" name="password_confirmation" id="password-confirm"
                                    class="form-control @error('password_confirmation') is-invalid @enderror" required
@@ -245,12 +245,15 @@
 
                         <!-- Botão de Registro -->
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary btn-lg w-100">Registrar</button>
+                            <button type="submit" class="btn btn-primary btn-lg w-100 campopaciente campoprofissional">Registrar</button>
                         </div>
                     </form>
 
                     <!-- Link para login -->
                     <p class="text-center mt-3">Já tem uma conta? <a href="{{ route('login') }}">Faça login aqui</a></p>
+
+                    <!-- Link para redefinição de senha -->
+                    <p class="text-center mt-3">Esqueceu sua senha? <a href="{{ route('password.request') }}">Redefinir</a></p>
                 </div>
             </div>
         </div>
@@ -310,8 +313,6 @@
             });
         });
     </script>
-
-
 
     <!-- BUSCA A ESPECIALIZAÇÃO CONFORME A ÁREA DE ATUAÇÃO SELECIONADA **ALELUIA** -->
     <script>

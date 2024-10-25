@@ -68,6 +68,9 @@
                                 <a class="btn btn-link text-center" href="{{ route('password.request') }}">Esqueci minha
                                     senha</a>
                             @endif
+                            @if (Route::has('register'))
+                                <a class="btn btn-link text-center" href="{{ route('register') }}">Cadastre-se</a>
+                            @endif
                         </div>
                     </form>
                 </div>
