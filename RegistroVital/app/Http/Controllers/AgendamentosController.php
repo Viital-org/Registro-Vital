@@ -77,7 +77,6 @@ class AgendamentosController extends Controller
     {
         $areasAtuacao = AtuaArea::all();
         return view('agendamentos.agendaconsulta', compact('areasAtuacao'));
-        dd($especializacoes);
     }
 
     public function destroy($id)

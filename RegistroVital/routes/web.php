@@ -15,6 +15,8 @@ use App\Http\Controllers\RelatoriosController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
+
+Route::get('/registroprofissional/{especializacao_id}', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'getEspecializacoes']);
 Route::middleware('layout.dinamico')->group(function () {
 
     Route::get('/', function () {

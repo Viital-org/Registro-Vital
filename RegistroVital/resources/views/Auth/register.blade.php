@@ -97,17 +97,22 @@
                         </div>
 
                         <!-- ÁREA DE ATUAÇÃO - PROFISSIONAL -->
+                        <div class="mb-3 campoprofissional" >
+                            <label for="area_atuacao_id" class="form-label">Área de Atuação</label>
+                            <select name="area_atuacao_id" id="area_atuacao_id" class="form-select" required>
+                                <option value="">Selecione a Área de Atuação</option>
+                                @foreach($areasAtuacao as $area)
+                                    <option value="{{ $area->id }}">{{ $area->descricao_area }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- ESPECIALIZAÇÃO - PROFISSIONAL -->
                         <div class="mb-3 campoprofissional">
-                            <label for="area_atuacao" class="form-label">Área de atuação</label>
-                            <input type="text" name="area_atuacao" id="area_atuacao"
-                                   class="form-control @error('area_atuacao') is-invalid @enderror"
-                                   value="{{ old('area_atuacao') }}"
-                                   placeholder="Área de atuação">
-                            @error('area_atuacao')
-                            <span id="nameHelp" class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <label for="especializacao_id" class="form-label">Especialização</label>
+                            <select name="especializacao_id" id="especializacao_id" class="form-select" required>
+                                <option value="">Selecione a Especialização</option>
+                            </select>
                         </div>
 
                         <!-- DATA NASCIMENTO - PACIENTE -->
@@ -261,14 +266,16 @@
         </div>
     @endif
 
-
+    <!-- INCLUDE DO JQUERY -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Script para esconder e mostrar campos -->
     <script>
         $(document).ready(function() {
             let cnpj = document.getElementById('cnpj');
             let registro_profissional = document.getElementById('registro_profissional');
-            let area_atuacao = document.getElementById('area_atuacao');
+            let area_atuacao = document.getElementById('area_atuacao_id');
+            let especializacao = document.getElementById('especializacao_id');
             let estado_civil = document.getElementById('estado_civil');
             let data_nascimento = document.getElementById('data_Nascimento');
 
@@ -287,6 +294,7 @@
                     cnpj.setAttribute('required', 'required');
                     registro_profissional.setAttribute('required', 'required');
                     area_atuacao.setAttribute('required', 'required');
+                    especializacao.setAttribute('required', 'required');
                 } else{
                     $('.campopaciente').hide();
                     $('.campoprofissional').hide();
@@ -303,6 +311,32 @@
         });
     </script>
 
+
+
+    <!-- BUSCA A ESPECIALIZAÇÃO CONFORME A ÁREA DE ATUAÇÃO SELECIONADA **ALELUIA** -->
+    <script>
+        $(document).ready(function() {
+            $('#area_atuacao_id').on('change', function() {
+                var areaAtuacaoId = $(this).val();
+                $('#especializacao_id').html('<option value="">Selecione a Especialização</option>');
+                if (areaAtuacaoId) {
+                    $.ajax({
+                        url: '/registroprofissional/' + areaAtuacaoId, // A rota correta
+                        type: 'GET',
+                        success: function(response) {
+                            response.forEach(function(especializacao) {
+                                $('#especializacao_id').append('<option value="' + especializacao.id + '">' + especializacao.descricao_especializacao + '</option>');
+                            });
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.error('Erro na requisição:', textStatus, errorThrown);
+                            console.log('Resposta:', jqXHR.responseText); // Para ver o que está sendo retornado em caso de erro
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 
 @endsection
 

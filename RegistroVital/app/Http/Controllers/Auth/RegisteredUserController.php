@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Administrador;
+use App\Models\AtuaArea;
+use App\Models\Especializacao;
 use App\Models\Paciente;
 use App\Models\Profissional;
 use App\Models\Usuario;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,11 +20,6 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Processar a solicitação de registro.
-     *
-     * @throws ValidationException
-     */
     public function store(Request $request): RedirectResponse
     {
         // Validação dos dados
@@ -47,10 +45,31 @@ class RegisteredUserController extends Controller
         // Relacionamento com o tipo de usuário
         switch ($user->tipo_usuario) {
             case 1: // Paciente
-                Paciente::create(['usuario_id' => $user->id, 'cpf' => $request->cpf, 'data_nascimento'=> $request->data_nascimento, 'estado_civil'=> $request->estado_civil, 'genero'=>$request->genero]);
+                Paciente::create([
+                    'usuario_id' => $user->id,
+                    'cpf' => $request->cpf,
+                    'data_nascimento'=> $request->data_nascimento,
+                    'estado_civil'=> $request->estado_civil,
+                    'genero'=>$request->genero,
+                    'bairro'=>$request->bairro,
+                    'rua_endereco'=>$request->rua,
+                    'numero_endereco'=>$request->numero,
+                    'cep'=>$request->cep,
+                    'cidade'=>$request->cidade,
+                    'estado'=>$request->estado,
+                ]);
                 break;
             case 2: // Profissional
-                Profissional::create(['usuario_id' => $user->id,'cpf' => $request->cpf, 'genero'=>$request->genero, 'cnpj'=>$request->cnpj, 'registro_profissional'=>$request->registro_profissional, 'tempo_experiencia'=>$request->tempo_experiencia]);
+                Profissional::create([
+                    'usuario_id' => $user->id,
+                    'genero'=>$request->genero,
+                    'cpf' => $request->cpf,
+                    'cnpj'=>$request->cnpj,
+                    'registro_profissional'=>$request->registro_profissional,
+                    'tempo_experiencia'=>$request->tempo_experiencia,
+                    'area_atuacao_id'=>$request->area_atuacao_id,
+                    'especializacao_id'=>$request->especializacao_id
+                ]);
                 break;
             case 3: // Administrador
                 Administrador::create(['usuario_id' => $user->id]);
@@ -68,11 +87,16 @@ class RegisteredUserController extends Controller
         };
     }
 
-    /**
-     * Exibir a página de registro.
-     */
     public function create(): View
     {
-        return view('auth.register');
+        $areasAtuacao = AtuaArea::all();
+        return view('auth.register', compact('areasAtuacao'));
+    }
+
+    public function getEspecializacoes($area_atuacao_id): JsonResponse
+    {
+        $especializacoes = Especializacao::where('area_atuacao_id', $area_atuacao_id)->get();
+        return response()->json($especializacoes);
+
     }
 }

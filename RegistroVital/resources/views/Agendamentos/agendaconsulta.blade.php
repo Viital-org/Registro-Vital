@@ -51,7 +51,7 @@
         </form>
     </div>
 
-    <!-- Include do jQuery-->
+    <!-- INCLUDE DO JQUERY -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- BUSCA A ESPECIALIZAÇÃO CONFORME A ÁREA DE ATUAÇÃO SELECIONADA **ALELUIA** -->
@@ -105,7 +105,5 @@
             });
         });
     </script>
-
-    <!-- API DOS CORREIOS PRA BUSCAR O CEP FICARÁ AQUI-->
 
 @endsection
