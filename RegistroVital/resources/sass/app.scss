@@ -1,7 +1,19 @@
 @import 'bootstrap/scss/bootstrap';
 
 // Cor Principal
-$primary-color: #365e6d;
+$primaria: #007BFF;
+$secundária: #A0D3E8;
+$cinza-claro: #F5F5F5;
+$verde: #6CCB3A;
+$branco: #FFFFFF;
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    height: 3rem;
+}
 
 // Container Principal
 .container-fluid {
@@ -14,12 +26,12 @@ $primary-color: #365e6d;
 
 // Barra de Navegação
 .navbar {
-    background-color: #728e98;
+    background-color: $primaria;
     border-radius: 10px;
+    margin: .7rem;
 
     .navbar-brand {
         margin-left: 10px;
-        color: white;
         font-size: 20pt;
         font-weight: bold;
     }
@@ -35,7 +47,7 @@ $primary-color: #365e6d;
         color: white;
 
         &:hover {
-            color: $primary-color;
+            color: $primaria;
         }
     }
 }
@@ -49,7 +61,7 @@ $primary-color: #365e6d;
     border-radius: 10px;
     position: fixed;
     padding: 20px;
-}
+} 
 
 // Conteúdo Principal
 .main-content {
@@ -66,12 +78,12 @@ $primary-color: #365e6d;
 
 // Botões
 .btn-primary {
-    background-color: $primary-color;
-    border-color: $primary-color;
+    background-color: $primaria;
+    border-color: $primaria;
 
     &:hover {
-        background-color: darken($primary-color, 10%);
-        border-color: darken($primary-color, 10%);
+        background-color: darken($primaria, 10%);
+        border-color: darken($primaria, 10%);
     }
 }
 
@@ -80,7 +92,7 @@ $primary-color: #365e6d;
     background-color: rgba(240, 255, 255, 0.678);
     border-radius: 15px;
     padding: 15px;
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: justify;
     line-height: 2;
 }
@@ -91,5 +103,5 @@ footer {
     background-color: darken(#c2ced3, 5%);
     padding: 15px;
     text-align: center;
-    color: $primary-color;
+    color: $primaria;
 }
