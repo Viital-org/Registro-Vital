@@ -8,29 +8,11 @@
     <!-- Importação de arquivos JavaScript e CSS com Vite -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #ffffff;
-        }
-
-        .sidebar {
-            background-color: #f8f9fa;
-        }
-
-        .nav-link.active {
-            background-color: #365e6d;
-            color: #ffffff;
-        }
-
-        .nav-link {
-            color: #2c4a57;
-        }
-    </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #b4cfd5;">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="{{ asset('/img/cruz.png') }}" alt="Logo" class="img-fluid"
