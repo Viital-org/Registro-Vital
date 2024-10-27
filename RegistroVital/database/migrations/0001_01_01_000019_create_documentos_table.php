@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('anotacao_id')->constrained('anotacoes')->onDelete('cascade');
             $table->string('tipo_documento', 3)->nullable();
-            $table->string('path_documento', 100);
+            $table->string('path_documento');
             $table->integer('tamanho_documento_kb');
             $table->timestamps();
             $table->softDeletes();

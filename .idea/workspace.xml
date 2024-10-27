@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#37 Criação de profissional e paciente padrão">
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#38 API CEP na edição dos pacientes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/profile/partials/update-paciente-information-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/profile/partials/update-paciente-information-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000008_create_tipos_documento_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000008_create_tipos_documento_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000012_create_areas_atuacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000012_create_areas_atuacao_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000019_create_documentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000019_create_documentos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_enderecos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_enderecos_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3180,7 +3183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730040552073</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="#38 API CEP na edição dos pacientes">
+      <option name="closed" value="true" />
+      <created>1730042016381</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1730042016381</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3198,7 +3209,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Criação do arquivo base da aplicação mobile" />
     <MESSAGE value="1.1 - Atualização de dependências" />
     <MESSAGE value="#0003 - modernizando e organizando todas as migrations" />
     <MESSAGE value="#0006 - Modificação inicial telas" />
@@ -3223,7 +3233,8 @@
     <MESSAGE value="#33 Correções de rota para login e registro." />
     <MESSAGE value="#34 Ajuste no registro. Agora o endereço cadastrado é criado na tabela de endereços juntamente com a identificação do usuário." />
     <MESSAGE value="#37 Criação de profissional e paciente padrão" />
-    <option name="LAST_COMMIT_MESSAGE" value="#37 Criação de profissional e paciente padrão" />
+    <MESSAGE value="#38 API CEP na edição dos pacientes" />
+    <option name="LAST_COMMIT_MESSAGE" value="#38 API CEP na edição dos pacientes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

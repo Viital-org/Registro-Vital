@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('areas_atuacao', function (Blueprint $table) {
             $table->id();
-            $table->string('descricao_area', 20);
+            $table->string('descricao_area', 30);
             $table->timestamps();
             $table->softDeletes();
         });

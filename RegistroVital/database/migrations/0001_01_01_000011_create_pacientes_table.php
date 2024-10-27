@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('cpf', 11)->nullable();
             $table->string('rg', 15)->nullable();
             $table->date('data_nascimento')->nullable();
-            $table->string('bairro')->nullable();
+            $table->string('bairro',60)->nullable();
             $table->string('rua_endereco', 30)->nullable();
             $table->string('numero_endereco', 10)->nullable();
             $table->string('cep', 8)->nullable();
@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->string('estado', 2)->nullable();
             $table->char('genero', 1)->nullable();
             $table->integer('estado_civil')->nullable();
-            $table->string('tipo_sanguineo')->nullable();
+            $table->string('tipo_sanguineo',5)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

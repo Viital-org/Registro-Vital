@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('tipos_documento', function (Blueprint $table) {
             $table->id();
-            $table->string('extensao_documento', 3)->nullable();
+            $table->string('extensao_documento', 5)->nullable();
             $table->integer('tamanho_maximo_kb');
             $table->timestamps();
             $table->softDeletes();
