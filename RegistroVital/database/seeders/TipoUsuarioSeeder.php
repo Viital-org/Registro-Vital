@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\TipoUsuario;
+use Illuminate\Database\Seeder;
 
 class TipoUsuarioSeeder extends Seeder
 {

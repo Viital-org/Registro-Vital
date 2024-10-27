@@ -30,7 +30,7 @@ class AtuaArea extends Model
 
     public function profissionais()
     {
-        return $this->hasMany(Profissional::class, 'area_atuacao', 'id');
+        return $this->hasMany(Profissional::class, 'area_atuacao_id', 'id');
     }
 
 }

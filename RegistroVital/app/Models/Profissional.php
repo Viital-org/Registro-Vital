@@ -25,7 +25,7 @@ class Profissional extends Model
 
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'usuario_id');
+        return $this->belongsTo(Usuario::class, 'usuario_id', 'id');
     }
 
     public function AtuaArea()

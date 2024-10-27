@@ -63,6 +63,14 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="metasDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">Metas</a>
+                        <ul class="dropdown-menu" aria-labelledby="metasDropdown">
+                            <li><a class="dropdown-item" href="{{ route('metas.create') }}">Cadastrar Meta</a></li>
+                            <li><a class="dropdown-item" href="{{ route('metas.index') }}">Listar Metas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
                         @auth
                             <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->nome_completo }}</a>
@@ -90,12 +98,11 @@
     </nav>
 </header>
 
-        <!-- Conteúdo Principal -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
-            @yield('conteudo')
-        </main>
-    </div>
-</div>
+<!-- Conteúdo Principal -->
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+    @yield('conteudo')
+</main>
+
 
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

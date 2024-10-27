@@ -3,7 +3,6 @@
 @section('titulo', 'Login')
 
 @section('conteudo')
-
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -28,8 +27,8 @@
                                 autofocus>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
 
@@ -45,8 +44,8 @@
                                 autocomplete="current-password">
                             @error('password')
                             <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
 
@@ -64,13 +63,8 @@
                         <!-- Botões -->
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
-                            @if (Route::has('password.request'))
-                                <a class="btn btn-link text-center" href="{{ route('password.request') }}">Esqueci minha
-                                    senha</a>
-                            @endif
-                            @if (Route::has('register'))
-                                <a class="btn btn-link text-center" href="{{ route('register') }}">Cadastre-se</a>
-                            @endif
+                            <a class="btn btn-link text-center" href="{{ route('password.request') }}">Esqueci minha senha</a>
+                            <a class="btn btn-link text-center" href="{{ route('register') }}">Ainda não tem uma conta? Cadastre-se</a>
                         </div>
                     </form>
                 </div>
@@ -104,6 +98,4 @@
             text-decoration: underline;
         }
     </style>
-
 @endsection
-

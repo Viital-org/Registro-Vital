@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\TipoLog;
+use App\Models\TipoMeta;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TipoLogFactory extends Factory
 {
-    protected $model = TipoLog::class;
+    protected $model = TipoMeta::class;
 
     public function definition(): array
     {

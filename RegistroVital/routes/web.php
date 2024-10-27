@@ -82,14 +82,10 @@ Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function
     Route::delete('/listadicas/{id}', [DicasController::class, 'destroy'])->name('dicas.delete');
 
     //Metas
-    Route::resource('/cadastrometas', MetasController::class);
-    Route::get('/listametas', [MetasController::class, 'index'])->name('metas.index');
-    Route::post('/guardarmetas', [MetasController::class, 'store'])->name('metas.store');
-    Route::post('/listametas', [MetasController::class, 'show'])->name('metas.show');
-    Route::get('/cadastrometa', [MetasController::class, 'create']);
-    Route::get('/editarmeta/{id}', [MetasController::class, 'edit'])->name('metas.edit');
-    Route::put('/editarmeta/{id}', [MetasController::class, 'update'])->name('metas.update');
-    Route::delete('/listametas/{id}', [MetasController::class, 'destroy'])->name('metas.delete');
+    Route::resource('metas', MetasController::class);
+    Route::put('metas/{meta}/complete', [MetasController::class, 'complete'])->name('metas.complete');
+    Route::put('metas/{meta}/increment', [MetasController::class, 'increment'])->name('metas.increment');
+    Route::put('metas/{meta}/start', [MetasController::class, 'start'])->name('metas.start');
 
     //Relatorios
     Route::get('/relatorios_paciente', [RelatoriosController::class, 'relatorios_paciente'])->name('relatorios_paciente');
@@ -115,7 +111,7 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
 //Route::resource('/cadastropacientes', PacientesController::class);
     Route::get('/listapacientes', [PacientesController::class, 'index'])->name('pacientes.index');
 //Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
-Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes.show');
+    Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes.show');
 //Route::get('/cadastropaci', [PacientesController::class, 'create']);
 //Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
 

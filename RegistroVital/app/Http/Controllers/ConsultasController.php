@@ -30,7 +30,7 @@ class ConsultasController extends Controller
                 ->where('data', '>=', $today)
                 ->paginate(5);
         } else {
-            $consultas = Consulta::whereRaw('1=0')->paginate(5); ;
+            $consultas = Consulta::whereRaw('1=0')->paginate(5);;
         }
 
         Consulta::where('data', '<', $today)

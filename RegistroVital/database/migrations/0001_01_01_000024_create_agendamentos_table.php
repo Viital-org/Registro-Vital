@@ -12,15 +12,16 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('metas', function (Blueprint $table) {
+        Schema::create('agendamentos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('paciente_id')->constrained('pacientes', 'usuario_id')->onDelete('cascade');
-            $table->string('titulo_meta', 20);
-            $table->string('descricao_meta', 80)->nullable();
-            $table->date('data_inicio');
-            $table->date('data_fim')->nullable();
-            $table->integer('situacao');
-            $table->boolean('notificacao_diaria');
+            $table->foreignId('profissional_id')->constrained('profissionais', 'usuario_id')->onDelete('cascade');
+            $table->foreignId('area_atuacao_id')->constrained('areas_atuacao')->onDelete('cascade');
+            $table->string('especializacao_id', 30)->nullable();
+            $table->date('data_agendamento');
+            $table->integer('situacao_paciente');
+            $table->integer('situacao_profissional');
+            $table->string('endereco_consulta', 60);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,7 +34,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('metas');
+        Schema::dropIfExists('agendamentos');
     }
 };
-
