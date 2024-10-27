@@ -6,7 +6,6 @@ use App\Models\Especializacao;
 use App\Models\Usuario;
 use App\Models\AtuaArea;
 use App\Models\Profissional;
-use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProfissionalFactory extends Factory
