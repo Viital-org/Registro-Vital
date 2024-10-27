@@ -36,8 +36,9 @@ class UsuarioFactory extends Factory
             return [
                 'nome_completo' => 'Paciente',
                 'email' => 'paciente@paciente.com',
+                'situacao_cadastro'=> 1,
                 'tipo_usuario' => 1,
-                'senha' => Hash::make('123123123'),
+                'senha' => '123123123',
             ];
         })->afterCreating(function (Usuario $usuario) {
             Paciente::factory()->create(['usuario_id' => $usuario->id]);
@@ -50,8 +51,9 @@ class UsuarioFactory extends Factory
             return [
                 'nome_completo' => 'Profissional',
                 'email' => 'profissional@profissional.com',
+                'situacao_cadastro'=> 1,
                 'tipo_usuario' => 2,
-                'senha' => Hash::make('123123123'),
+                'senha' => '123123123',
             ];
         })->afterCreating(function (Usuario $usuario) {
             Profissional::factory()->create(['usuario_id' => $usuario->id]);

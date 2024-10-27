@@ -2,6 +2,7 @@
     <header class="mb-6">
         <h2 class="text-2xl font-bold text-primary mb-2">Informações do Paciente</h2>
         <p class="text-gray-600">Atualize suas informações de paciente</p>
+        <script src="{{asset("js/BuscaCep.js")}}"></script>
     </header>
 
     <form method="post" action="{{ route('profile.updateRoleInfo') }}" class="space-y-6">
@@ -47,31 +48,6 @@
             <x-input-error :messages="$errors->get('data_nascimento')" class="mt-2 text-red-500"/>
         </div>
 
-        {{-- Endereço (Rua e Número) --}}
-        <div class="flex flex-col">
-            <x-input-label for="rua_endereco" :value="'Endereço (Rua)'" class="font-semibold text-gray-700"/>
-            <x-text-input
-                id="rua_endereco"
-                name="rua_endereco"
-                type="text"
-                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
-                :value="$paciente->rua_endereco"
-                required/>
-            <x-input-error :messages="$errors->get('rua_endereco')" class="mt-2 text-red-500"/>
-        </div>
-
-        <div class="flex flex-col">
-            <x-input-label for="numero_endereco" :value="'Número do Endereço'" class="font-semibold text-gray-700"/>
-            <x-text-input
-                id="numero_endereco"
-                name="numero_endereco"
-                type="text"
-                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
-                :value="$paciente->numero_endereco"
-                required/>
-            <x-input-error :messages="$errors->get('numero_endereco')" class="mt-2 text-red-500"/>
-        </div>
-
         {{-- CEP --}}
         <div class="flex flex-col">
             <x-input-label for="cep" :value="'CEP'" class="font-semibold text-gray-700"/>
@@ -79,6 +55,7 @@
                 id="cep"
                 name="cep"
                 type="text"
+                onblur="pesquisacep(this.value)"
                 class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
                 :value="$paciente->cep"
                 required/>
@@ -101,13 +78,50 @@
         <div class="flex flex-col">
             <x-input-label for="estado" :value="'Estado'" class="font-semibold text-gray-700"/>
             <x-text-input
-                id="estado"
+                id="uf"
                 name="estado"
                 type="text"
                 class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
                 :value="$paciente->estado"
                 required/>
             <x-input-error :messages="$errors->get('estado')" class="mt-2 text-red-500"/>
+        </div>
+
+        <div class="flex flex-col">
+            <x-input-label for="bairro" :value="'Bairro'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="bairro"
+                name="bairro"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->bairro"
+                required/>
+            <x-input-error :messages="$errors->get('bairro')" class="mt-2 text-red-500"/>
+        </div>
+
+        {{-- Endereço (Rua e Número) --}}
+        <div class="flex flex-col">
+            <x-input-label for="rua_endereco" :value="'Endereço (Rua)'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="rua"
+                name="rua_endereco"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->rua_endereco"
+                required/>
+            <x-input-error :messages="$errors->get('rua_endereco')" class="mt-2 text-red-500"/>
+        </div>
+
+        <div class="flex flex-col">
+            <x-input-label for="numero_endereco" :value="'Número do Endereço'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="numero"
+                name="numero_endereco"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->numero_endereco"
+                required/>
+            <x-input-error :messages="$errors->get('numero_endereco')" class="mt-2 text-red-500"/>
         </div>
 
         {{-- Gênero --}}
@@ -175,4 +189,6 @@
             </div>
         @endif
     </form>
+
+
 </section>

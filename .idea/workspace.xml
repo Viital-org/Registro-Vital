@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#34 Ajuste no registro. Agora o endereço cadastrado é criado na tabela de endereços juntamente com a identificação do usuário.">
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#37 Criação de profissional e paciente padrão">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/PacienteFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/PacienteFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/ProfissionalFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/ProfissionalFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/factories/UsuarioFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/seeders/UsuarioSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/seeders/UsuarioSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/inicio.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/profile/partials/update-paciente-information-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/profile/partials/update-paciente-information-form.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3177,7 +3172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729827095004</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="#37 Criação de profissional e paciente padrão">
+      <option name="closed" value="true" />
+      <created>1730040552072</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1730040552073</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3219,7 +3222,8 @@
     <MESSAGE value="#32 Implementada a seleção de área de atuação e especialização no cadastro do profissional" />
     <MESSAGE value="#33 Correções de rota para login e registro." />
     <MESSAGE value="#34 Ajuste no registro. Agora o endereço cadastrado é criado na tabela de endereços juntamente com a identificação do usuário." />
-    <option name="LAST_COMMIT_MESSAGE" value="#34 Ajuste no registro. Agora o endereço cadastrado é criado na tabela de endereços juntamente com a identificação do usuário." />
+    <MESSAGE value="#37 Criação de profissional e paciente padrão" />
+    <option name="LAST_COMMIT_MESSAGE" value="#37 Criação de profissional e paciente padrão" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
