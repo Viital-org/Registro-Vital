@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#33 Correções de rota para login e registro.">
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#34 Ajuste no registro. Agora o endereço cadastrado é criado na tabela de endereços juntamente com a identificação do usuário.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/Auth/RegisteredUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Auth/register.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -2985,7 +2982,9 @@
       <workItem from="1729490294559" duration="2202000" />
       <workItem from="1729551664562" duration="15188000" />
       <workItem from="1729722492403" duration="19363000" />
-      <workItem from="1729809012533" duration="14219000" />
+      <workItem from="1729809012533" duration="14433000" />
+      <workItem from="1729827382873" duration="367000" />
+      <workItem from="1730030575336" duration="2882000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -3163,7 +3162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729823990154</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="#34 Ajuste no registro. Agora o endereço cadastrado é criado na tabela de endereços juntamente com a identificação do usuário.">
+      <option name="closed" value="true" />
+      <created>1729827095004</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1729827095004</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3204,7 +3211,8 @@
     <MESSAGE value="#31 Implementação da API do VIACEP para buscar informações de endereço automaticamente no cadastro." />
     <MESSAGE value="#32 Implementada a seleção de área de atuação e especialização no cadastro do profissional" />
     <MESSAGE value="#33 Correções de rota para login e registro." />
-    <option name="LAST_COMMIT_MESSAGE" value="#33 Correções de rota para login e registro." />
+    <MESSAGE value="#34 Ajuste no registro. Agora o endereço cadastrado é criado na tabela de endereços juntamente com a identificação do usuário." />
+    <option name="LAST_COMMIT_MESSAGE" value="#34 Ajuste no registro. Agora o endereço cadastrado é criado na tabela de endereços juntamente com a identificação do usuário." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
