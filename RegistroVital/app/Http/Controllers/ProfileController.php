@@ -31,10 +31,10 @@ class ProfileController extends Controller
         $profissional = $user->tipo_usuario === 2 ? Profissional::where('usuario_id', $user->id)->first() : null;
         $administrador = $user->tipo_usuario === 3 ? Administrador::where('usuario_id', $user->id)->first() : null;
 
-
         $metas = $paciente ? Meta::where('paciente_id', $paciente->usuario_id)->get() : null;
         $areasAtuacao = $profissional ? AtuaArea::all() : null;
         $especializacoes = $profissional ? Especializacao::all() : null;
+
 
         return view('profile.edit', compact('user', 'paciente', 'profissional', 'administrador', 'metas', 'areasAtuacao', 'especializacoes'));
     }

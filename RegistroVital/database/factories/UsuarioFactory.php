@@ -2,14 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Paciente;
+use App\Models\Profissional;
 use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-/**
- * @extends Factory<Usuario>
- */
 class UsuarioFactory extends Factory
 {
     public static ?string $password;
@@ -23,7 +22,7 @@ class UsuarioFactory extends Factory
             'email_verified_at' => now(),
             'senha' => static::$password ??= Hash::make('password'),
             'situacao_cadastro' => $this->faker->randomElement([0, 1]),
-            'tipo_usuario' => $this->faker->randomElement([1, 2, 3]), // 1 = Paciente, 2 = Profissional, 3 = Admin
+            'tipo_usuario' => $this->faker->randomElement([1, 2]), // 1 = Paciente, 2 = Profissional, 3 = Admin
             'telefone_1' => $this->generatePhoneNumber(),
             'telefone_2' => $this->faker->optional()->boolean ? $this->generatePhoneNumber() : null,
             'data_cadastro' => now(),
@@ -33,32 +32,30 @@ class UsuarioFactory extends Factory
 
     public function pacientePadrao(): static
     {
-        return $this->state(fn(array $attributes) => [
-            'nome_completo' => 'Paciente',
-            'email' => 'paciente@paciente.com',
-            'tipo_usuario' => 1,
-            'senha' => '123123123',
-        ]);
+        return $this->state(function(array $attributes) {
+            return [
+                'nome_completo' => 'Paciente',
+                'email' => 'paciente@paciente.com',
+                'tipo_usuario' => 1,
+                'senha' => Hash::make('123123123'),
+            ];
+        })->afterCreating(function (Usuario $usuario) {
+            Paciente::factory()->create(['usuario_id' => $usuario->id]);
+        });
     }
 
     public function profissionalPadrao(): static
     {
-        return $this->state(fn(array $attributes) => [
-            'nome_completo' => 'Profissional',
-            'email' => 'profissional@paciente.com',
-            'tipo_usuario' => 2,
-            'senha' =>'123123123',
-        ]);
-    }
-
-    public function adminPadrao(): static
-    {
-        return $this->state(fn(array $attributes) => [
-            'nome_completo' => 'Administrador',
-            'email' => 'administrador@paciente.com',
-            'tipo_usuario' => 3,
-            'senha' =>'123123123',
-        ]);
+        return $this->state(function (array $attributes) {
+            return [
+                'nome_completo' => 'Profissional',
+                'email' => 'profissional@profissional.com',
+                'tipo_usuario' => 2,
+                'senha' => Hash::make('123123123'),
+            ];
+        })->afterCreating(function (Usuario $usuario) {
+            Profissional::factory()->create(['usuario_id' => $usuario->id]);
+        });
     }
 
     protected function generatePhoneNumber(): string

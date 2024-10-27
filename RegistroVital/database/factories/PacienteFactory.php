@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Paciente;
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PacienteFactory extends Factory

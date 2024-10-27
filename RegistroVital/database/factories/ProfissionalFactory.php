@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\AtuaArea;
 use App\Models\Profissional;
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProfissionalFactory extends Factory
@@ -17,8 +18,10 @@ class ProfissionalFactory extends Factory
 
         $especializacao = $areaAtuacao ? $areaAtuacao->especializacoes()->inRandomOrder()->first() : null;
 
+        $usuario = Usuario::where('tipo_usuario',2)->InRandomOrder()->first();
+
         return [
-            'usuario_id' => null,
+            'usuario_id' => $usuario->id,
             'cpf' => $this->faker->unique()->numerify('###########'),
             'cnpj' => $this->faker->unique()->numerify('############'),
             'registro_profissional' => $this->faker->word(),
