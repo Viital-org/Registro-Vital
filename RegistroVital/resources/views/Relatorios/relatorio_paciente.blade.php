@@ -9,13 +9,18 @@
 
         <canvas id="graficoAnotacoes" width="400" height="200"></canvas>
 
-        <button id="downloadButton" class="btn btn-primary mt-3">Baixar Gráfico</button>
+        <h2 class="text-center mt-5">Relatório de Metas</h2>
+
+        <canvas id="graficoMetas" width="400" height="200"></canvas>
+
+        <button id="downloadButtonAnotacoes" class="btn btn-primary mt-3">Baixar Gráfico de Anotações</button>
+        <button id="downloadButtonMetas" class="btn btn-primary mt-3">Baixar Gráfico de Metas</button>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
-            const ctx = document.getElementById('graficoAnotacoes').getContext('2d');
-
-            const data = {
+            // Gráfico de Anotações
+            const ctxAnotacoes = document.getElementById('graficoAnotacoes').getContext('2d');
+            const dataAnotacoes = {
                 labels: [
                     @foreach($anotacoes as $anotacao)
                         "{{ $anotacao->descricao_tipo }}",
@@ -46,9 +51,9 @@
                 }]
             };
 
-            const config = {
+            const configAnotacoes = {
                 type: 'bar',
-                data: data,
+                data: dataAnotacoes,
                 options: {
                     scales: {
                         y: {
@@ -58,12 +63,56 @@
                 }
             };
 
-            const graficoAnotacoes = new Chart(ctx, config);
+            const graficoAnotacoes = new Chart(ctxAnotacoes, configAnotacoes);
 
-            document.getElementById('downloadButton').addEventListener('click', function () {
+            document.getElementById('downloadButtonAnotacoes').addEventListener('click', function () {
                 const link = document.createElement('a');
                 link.href = graficoAnotacoes.toBase64Image();
                 link.download = 'grafico-anotacoes.png';
+                link.click();
+            });
+
+            // Gráfico de Metas
+            const ctxMetas = document.getElementById('graficoMetas').getContext('2d');
+            const dataMetas = {
+                labels: ['Pendente', 'Iniciada', 'Concluída'],
+                datasets: [{
+                    label: 'Quantidade de Metas',
+                    data: [
+                        @foreach($metas as $meta)
+                            {{ $meta->situacao == 0 ? $meta->total : 0 }},
+                        {{ $meta->situacao == 1 ? $meta->total : 0 }},
+                        {{ $meta->situacao == 2 ? $meta->total : 0 }},
+                        @endforeach
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const configMetas = {
+                type: 'pie',
+                data: dataMetas,
+                options: {
+                    responsive: true,
+                }
+            };
+
+            const graficoMetas = new Chart(ctxMetas, configMetas);
+
+            document.getElementById('downloadButtonMetas').addEventListener('click', function () {
+                const link = document.createElement('a');
+                link.href = graficoMetas.toBase64Image();
+                link.download = 'grafico-metas.png';
                 link.click();
             });
         </script>
@@ -76,6 +125,19 @@
                     {{ $anotacao->total }} anotações ({{ $anotacao->percentual }}%)
                 </li>
             @endforeach
+        </ul>
+
+        <h3 class="mt-5">Total de Metas: {{ $totalMetas }}</h3>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Pendente:</strong> {{ $metas->where('situacao', 0)->sum('total') }}
+            </li>
+            <li class="list-group-item">
+                <strong>Iniciada:</strong> {{ $metas->where('situacao', 1)->sum('total') }}
+            </li>
+            <li class="list-group-item">
+                <strong>Concluída:</strong> {{ $metas->where('situacao', 2)->sum('total') }}
+            </li>
         </ul>
     </div>
 

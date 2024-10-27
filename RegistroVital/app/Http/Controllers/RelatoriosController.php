@@ -3,72 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anotacaosaude;
+use App\Models\Paciente;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class RelatoriosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 
     public function relatorios_paciente()
     {
         $pacienteId = auth()->user()->id;
 
+        // Relatório de Anotações
         $anotacoes = DB::table('anotacoes')
             ->select('tipos_anotacao.descricao_tipo', DB::raw('count(anotacoes.id) as total'))
             ->join('tipos_anotacao', 'anotacoes.tipo_anotacao', '=', 'tipos_anotacao.id')
@@ -82,7 +29,20 @@ class RelatoriosController extends Controller
             $anotacao->percentual = round(($anotacao->total / $totalAnotacoes) * 100, 2);
         });
 
-        return view('Relatorios.relatorio_paciente', compact('anotacoes', 'totalAnotacoes'));
+        // Relatório de Metas
+        $metas = DB::table('metas')
+            ->select('situacao', DB::raw('count(id) as total'))
+            ->where('paciente_id', Paciente::where('usuario_id', $pacienteId)->firstOrFail()->usuario_id)
+            ->groupBy('situacao')
+            ->get();
+
+        $totalMetas = $metas->sum('total');
+
+        $metas->each(function ($meta) use ($totalMetas) {
+            $meta->percentual = round(($meta->total / $totalMetas) * 100, 2);
+        });
+
+        return view('Relatorios.relatorio_paciente', compact('anotacoes', 'totalAnotacoes', 'metas', 'totalMetas'));
     }
 
     public function relatorios_administrador()
