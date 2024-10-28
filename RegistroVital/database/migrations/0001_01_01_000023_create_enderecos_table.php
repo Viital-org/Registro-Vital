@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('usuario_id')->constrained('usuarios');
-            $table->int('situacao_endereco');
+            $table->integer('situacao_endereco');
             $table->string('cep', 8);
             $table->string('rua',50);
             $table->string('complemento',60);

@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#38 API CEP na edição dos pacientes">
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#39 Ajuste dos campos no banco de dados (tamanho e tipo)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000008_create_tipos_documento_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000008_create_tipos_documento_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000011_create_pacientes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000012_create_areas_atuacao_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000012_create_areas_atuacao_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000019_create_documentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000019_create_documentos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_enderecos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000022_create_enderecos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentoPacienteController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Models/AgendamentoPaciente.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/factories/AgendamentoPacienteFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_enderecos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000023_create_enderecos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000028_create_agendas_profissionais_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -2929,11 +2931,11 @@
       <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\resources\sass" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\resources\views\Cadastros" />
       <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\resources\sass" />
       <recent name="C:\Registro-Vital\RegistroVital\resources\views" />
       <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\registro_vital_mobile\lib\screen" />
       <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\mobile_app" />
-      <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\web_app" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Script.GarantirUserTipo.php">
@@ -2990,6 +2992,8 @@
       <workItem from="1729809012533" duration="14433000" />
       <workItem from="1729827382873" duration="367000" />
       <workItem from="1730030575336" duration="2882000" />
+      <workItem from="1730046463973" duration="596000" />
+      <workItem from="1730155379655" duration="1883000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -3191,7 +3195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730042016381</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="#39 Ajuste dos campos no banco de dados (tamanho e tipo)">
+      <option name="closed" value="true" />
+      <created>1730042545107</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1730042545107</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3209,7 +3221,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1.1 - Atualização de dependências" />
     <MESSAGE value="#0003 - modernizando e organizando todas as migrations" />
     <MESSAGE value="#0006 - Modificação inicial telas" />
     <MESSAGE value="#0007 - Modificação migration ID usuarios" />
@@ -3234,18 +3245,8 @@
     <MESSAGE value="#34 Ajuste no registro. Agora o endereço cadastrado é criado na tabela de endereços juntamente com a identificação do usuário." />
     <MESSAGE value="#37 Criação de profissional e paciente padrão" />
     <MESSAGE value="#38 API CEP na edição dos pacientes" />
-    <option name="LAST_COMMIT_MESSAGE" value="#38 API CEP na edição dos pacientes" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000024_create_consultas_table.php</url>
-          <line>2</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="#39 Ajuste dos campos no banco de dados (tamanho e tipo)" />
+    <option name="LAST_COMMIT_MESSAGE" value="#39 Ajuste dos campos no banco de dados (tamanho e tipo)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

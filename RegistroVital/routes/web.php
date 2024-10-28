@@ -97,8 +97,10 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
     Route::get('/cadastrarprof', [ProfissionaisController::class, 'create'])->name('cadastrarprof');
     Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
     Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
+    Route::get('especializacaoprofissional/{id}', [EspecializacoesController::class, 'especializacoes'])->name('profissional.especializacoes');
 
     Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
+
 
     //Route::resource('/cadastroprofissional', ProfissionaisController::class);
     Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
