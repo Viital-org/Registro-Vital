@@ -12,7 +12,7 @@ class EspecializacaoProfissionalController extends Controller
      */
     public function index()
     {
-        return
+        //
     }
 
     /**

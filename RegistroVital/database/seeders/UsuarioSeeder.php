@@ -14,6 +14,7 @@ class UsuarioSeeder extends Seeder
 
         Usuario::factory()->pacientePadrao()->create();
         Usuario::factory()->profissionalPadrao()->create();
+        Usuario::factory()->administradorPadrao()->create();
 
         Usuario::factory()->count(30)->create()->each(function (Usuario $usuario) {
 

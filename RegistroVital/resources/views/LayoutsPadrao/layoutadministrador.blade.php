@@ -35,6 +35,9 @@
                     <a class="nav-link" href="{{ route('ajuda') }}">Ajuda</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('administrador.profissionais') }}">Profissionais</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('relatorios_administrador') }}">Relatórios</a>
                 </li>
                 <li class="nav-item">
