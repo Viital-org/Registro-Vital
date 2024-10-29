@@ -41,37 +41,13 @@
                     <a class="nav-link" href="{{ route('administrador.logs') }}">Logs</a>
                 </li>
             </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    @auth
-                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->nome_completo }}</a>
-                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                            <li>
-                                <form method="GET" action="{{ route('profile.edit') }}" id="edit-form">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">Editar Perfil</button>
-                                </form>
-                            </li>
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}" id="logout-form">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">Sair</button>
-                                </form>
-                            </li>
-                        </ul>
-                    @else
-                        <a class="nav-link" href="{{ route('login') }}">Entrar</a>
-                    @endauth
-                </li>
-            </ul>
         </div>
     </div>
 </nav>
 
-<div class="nav2 col-md-3 ms-sm-auto">
+<!-- <div class="nav2 col-md-3 ms-sm-auto">
     <p>Teste</p>
-</div>
+</div> -->
 
 <!-- Conteúdo Principal -->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
