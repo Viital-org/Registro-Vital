@@ -43,25 +43,39 @@
                     </button>
 
                     @if ($usuario->tipo_usuario == 2)
-                        <form action="{{ route('administrador.transformar', $usuario->id) }}" method="POST" onsubmit="return confirm('Você tem certeza que deseja transformar este profissional de saúde em um administrador do sistema? Esta ação é irreversível. Caso deseje cadastrar este profissional de saúde novamente, um novo registro deverá ser feito.')">
-                            @csrf
-                            @method('PUT')
+                        <!-- Botão para abrir o modal -->
+                        <button type="button" class="btn btn-warning mt-2" data-bs-toggle="modal" data-bs-target="#transformModal-{{ $usuario->id }}">
+                            Transformar em Administrador
+                        </button>
 
-                            <!-- Checkbox para mostrar campos adicionais -->
-                            <div class="form-check mt-3">
-                                <input type="checkbox" class="form-check-input" id="alterarTipoCheckbox-{{ $usuario->id }}" onclick="toggleTransformForm({{ $usuario->id }})">
-                                <label class="form-check-label" for="alterarTipoCheckbox-{{ $usuario->id }}">Alterar tipo de usuário</label>
-                            </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="transformModal-{{ $usuario->id }}" tabindex="-1" aria-labelledby="transformModalLabel-{{ $usuario->id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="transformModalLabel-{{ $usuario->id }}">Transformar em Administrador</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ route('administrador.transformar', $usuario->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
 
-                            <!-- Campos de cargo e botão de transformação (ocultos por padrão) -->
-                            <div id="transformForm-{{ $usuario->id }}" style="display: none;">
-                                <div class="form-group mt-3">
-                                    <label for="cargo">Cargo</label>
-                                    <input type="text" name="cargo" class="form-control" required>
+                                            <p align="justify">Você tem certeza que deseja <b>transformar este profissional de saúde em um administrador</b> do sistema? Esta ação é <b>irreversível</b>. Caso deseje cadastrar este profissional de saúde novamente, um novo registro deverá ser feito.</p>
+
+                                            <div class="form-group">
+                                                <label for="cargo">Cargo Do Aministrador:</label>
+                                                <input type="text" name="cargo" class="form-control" required>
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-warning">Transformar em Administrador</button>
+                                    </div>
+                                    </form>
                                 </div>
-                                <button type="submit" class="btn btn-warning mt-2">Transformar em Administrador</button>
                             </div>
-                        </form>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -81,13 +95,3 @@
         {{ session('success') }}
     </div>
 @endif
-
-<!-- JavaScript para mostrar/ocultar os campos de cargo e botão -->
-<script>
-    function toggleTransformForm(id) {
-        const formSection = document.getElementById(`transformForm-${id}`);
-        const checkbox = document.getElementById(`alterarTipoCheckbox-${id}`);
-
-        formSection.style.display = checkbox.checked ? 'block' : 'none';
-    }
-</script>
