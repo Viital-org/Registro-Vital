@@ -1,7 +1,7 @@
 @import 'bootstrap/scss/bootstrap';
 
 // Cor Principal
-$primaria-admin: #365b6d;
+$primaria-admin: #000000;
 $primaria-medico: #006adb;
 $primaria-paciente: #A0D3E8;
 $secundaria: #A0D3E8;
@@ -15,7 +15,6 @@ body {
 }
 
 .perfil {
-    margin-top: 70%;
     text-align: center;
 }
 
@@ -26,22 +25,21 @@ body {
 .nav-link {
     color: white;
     text-decoration: none; 
-    transition: background-color 0.3s; 
+    transition: background-color .8s; 
     width: 100%;
     padding: 100%;
+    font-weight: 500;
     text-align: center;
-    align-items: center;
 }
 
 .nav-link:hover {
     background-color: $branco;
-    color: #006adb;
+    color: $primaria-admin;
 }
 
 .userImg {
     width: 30px;
 }
-
 
 .marca {
     margin-top: 4%;
@@ -58,7 +56,6 @@ body {
 }
 
 .links {
-    // margin-left: 5%;
     font-weight: 400;
 }
 
@@ -83,12 +80,10 @@ body {
 // }
 
 .navbar {
-    background-color: $primaria-admin;
-    border-radius: 10px;
-    margin: .7rem;
+    background-color: $primaria-medico;
 
     .navbar-brand {
-        margin-left: 10px;
+        margin-left: 1rem;
         font-size: 20pt;
         font-weight: bold;
     }
@@ -110,8 +105,8 @@ body {
 }
 
 // Sidebar
-.sidebar {
-    width: 20%;
+.sidebar-admin {
+    width: 18%;
     height: 100%;
     background-color: $primaria-admin;
     position: fixed;
@@ -119,21 +114,16 @@ body {
     transform: translateX(-90%);
 } 
 
-.sidebar:hover {
+.sidebar-admin:hover {
     transform: translateX(0%);
 }
 
 // Conteúdo Principal
 .main-content {
-    padding-top: 5%;
     color: #333333;
     font-size: 12pt;
     display: flex;
     flex-direction: column;
-    vertical-align: middle;
-    align-items: center;
-    width: 80%;
-    height: 100%;
 }
 
 // Botões
