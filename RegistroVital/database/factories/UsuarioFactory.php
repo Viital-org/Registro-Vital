@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Administrador;
 use App\Models\Paciente;
 use App\Models\Profissional;
 use App\Models\Usuario;
@@ -57,6 +58,20 @@ class UsuarioFactory extends Factory
             ];
         })->afterCreating(function (Usuario $usuario) {
             Profissional::factory()->create(['usuario_id' => $usuario->id]);
+        });
+    }
+    public function administradorPadrao(): static
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'nome_completo' => 'Administrador',
+                'email' => 'administrador@administrador.com',
+                'situacao_cadastro'=> 1,
+                'tipo_usuario' => 3,
+                'senha' => '123123123',
+            ];
+        })->afterCreating(function (Usuario $usuario) {
+            Administrador::factory()->create(['usuario_id' => $usuario->id]);
         });
     }
 

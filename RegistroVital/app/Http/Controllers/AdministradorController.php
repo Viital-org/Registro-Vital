@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Administrador;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -67,6 +68,32 @@ class AdministradorController extends Controller
     public function tela()
     {
         return view('profile.administrador-dashboard');
+    }
+    public function listarProfissionais(Request $request)
+    {
+        $tipoUsuario = $request->input('tipo_usuario');
+
+        $usuarios = Usuario::when($tipoUsuario, function ($query, $tipoUsuario) {
+            return $query->where('tipo_usuario', $tipoUsuario);
+        })->paginate(10);
+
+        return view('Cadastros.Administrador.listaprofissionais', compact('usuarios', 'tipoUsuario'));
+    }
+
+    public function transformarEmAdministrador(Request $request, $id)
+    {
+        $profissional = Usuario::where('id', $id)->where('tipo_usuario', 2)->firstOrFail();
+
+        $profissional->tipo_usuario = 3;
+        $profissional->save();
+
+        Administrador::create([
+            'usuario_id' => $profissional->id,
+            'data_criacao' => now(),
+            'cargo' => $request->input('cargo'),
+        ]);
+
+        return redirect()->route('administrador.profissionais', ['tipo_usuario' => 2])->with('success', 'Profissional transformado em administrador com sucesso.');
     }
 
     public function showLogs(Request $request)

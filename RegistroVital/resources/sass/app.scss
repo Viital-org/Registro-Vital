@@ -1,9 +1,12 @@
 @import 'bootstrap/scss/bootstrap';
 
 // Cor Principal
-$primaria: #007BFF;
-$secundária: #A0D3E8;
+$primaria-admin: #365b6d;
+$primaria-medico: #006adb;
+$primaria-paciente: #A0D3E8;
+$secundaria: #A0D3E8;
 $cinza-claro: #F5F5F5;
+$cinza: #edebeb;
 $verde: #6CCB3A;
 $branco: #FFFFFF;
 
@@ -11,22 +14,76 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-header {
-    height: 3rem;
+.perfil {
+    margin-top: 70%;
+    text-align: center;
+}
+
+.dropdown-menu {
+    appearance: none;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none; 
+    transition: background-color 0.3s; 
+    width: 100%;
+    padding: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+.nav-link:hover {
+    background-color: $branco;
+    color: #006adb;
+}
+
+.userImg {
+    width: 30px;
+}
+
+
+.marca {
+    margin-top: 4%;
+}
+
+.titulo {
+    color: $branco;
+    text-decoration: none;
+}
+
+.logo {
+    max-height: 2.5rem;
+    max-width: 2.5rem;
+}
+
+.links {
+    // margin-left: 5%;
+    font-weight: 400;
+}
+
+.userImg {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.user {
+    list-style-type: none;
+    width: 100%;
+    padding: none;
 }
 
 // Container Principal
-.container-fluid {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    vertical-align: middle;
-}
+// .container-fluid {
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     vertical-align: middle;
+// }
 
-// Barra de Navegação
 .navbar {
-    background-color: $primaria;
+    background-color: $primaria-admin;
     border-radius: 10px;
     margin: .7rem;
 
@@ -47,21 +104,24 @@ header {
         color: white;
 
         &:hover {
-            color: $primaria;
+            color: $primaria-admin;
         }
     }
 }
 
 // Sidebar
 .sidebar {
-    width: 300px;
-    height: 85%;
-    margin-top: 70px;
-    background-color: #aec4bc;
-    border-radius: 10px;
-    position: fixed;
-    padding: 20px;
+    width: 20%;
+    height: 100%;
+    background-color: $primaria-admin;
+    position: absolute;
+    transition: transform .5s ease;
+    transform: translateX(-90%);
 } 
+
+.sidebar:hover {
+    transform: translateX(0%);
+}
 
 // Conteúdo Principal
 .main-content {
@@ -72,18 +132,18 @@ header {
     flex-direction: column;
     vertical-align: middle;
     align-items: center;
-    width: 100%;
+    width: 80%;
     height: 100%;
 }
 
 // Botões
 .btn-primary {
-    background-color: $primaria;
-    border-color: $primaria;
+    background-color: $primaria-admin;
+    border-color: $primaria-admin;
 
     &:hover {
-        background-color: darken($primaria, 10%);
-        border-color: darken($primaria, 10%);
+        background-color: darken($primaria-admin, 10%);
+        border-color: darken($primaria-admin, 10%);
     }
 }
 
@@ -103,5 +163,5 @@ footer {
     background-color: darken(#c2ced3, 5%);
     padding: 15px;
     text-align: center;
-    color: $primaria;
+    color: $primaria-admin;
 }
