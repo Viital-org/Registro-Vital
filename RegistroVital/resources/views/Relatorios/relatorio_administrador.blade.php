@@ -16,7 +16,9 @@
             </div>
 
             <div class="col-md-10">
-                <canvas id="graficoUsuarios" width="400" height="200"></canvas>
+                <div class="graficoUsuarios">
+                    <canvas id="graficoUsuarios"></canvas>
+                </div>
                 <canvas id="graficoTopUsuarios" width="400" height="200" style="display: none;"></canvas>
                 <canvas id="graficoTiposAnotacoes" width="400" height="200" style="display: none;"></canvas>
 
