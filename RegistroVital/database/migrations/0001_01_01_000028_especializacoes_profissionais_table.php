@@ -16,8 +16,9 @@ return new class extends Migration
             $table->foreignId('profissional_id')->constrained('profissionais', 'usuario_id')->onDelete('cascade');
             $table->integer('area_atuacao_id')->constrained('profissionais','area_atuacao_id')->onDelete('cascade');
             $table->foreignId('especializacao_id')->constrained('especializacoes')->onDelete('cascade');
-            $table->foreignId('enderecos_atuacao_id')->constrained('enderecos')->onDelete('cascade');
-            $table->foreignId('valor_atendimento')->constrained('areas_atuacao')->onDelete('cascade');
+            $table->foreignId('endereco_atuacao_id')->constrained('enderecos')->onDelete('cascade');
+            $table->float('valor_atendimento');
+            $table->string('rqe',7);
             $table->timestamps();
             $table->softDeletes();
         });

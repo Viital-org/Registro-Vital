@@ -41,7 +41,6 @@ class AgendamentosController extends Controller
         return view('agendamentos.listaagendamentos', compact('agendamentos'));
     }
 
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -70,9 +69,6 @@ class AgendamentosController extends Controller
         return redirect()->route('consultas.index')->with('success', 'Agendamento criado com sucesso!');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $areasAtuacao = AtuaArea::all();

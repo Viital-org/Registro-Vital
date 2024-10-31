@@ -18,8 +18,8 @@ return new class extends Migration {
             $table->string('rua',50);
             $table->string('complemento',60);
             $table->string('bairro',50);
-            $table->string('Cidade',50);
-            $table->string('UF',2);
+            $table->string('cidade',50);
+            $table->string('uf',2);
             $table->string('numero_endereco',10);
             $table->timestamps();
             $table->softDeletes();

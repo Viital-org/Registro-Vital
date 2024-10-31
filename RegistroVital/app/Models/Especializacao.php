@@ -28,5 +28,6 @@ class Especializacao extends Model
     {
         return $this->hasMany(Profissional::class, 'especializacao', 'id');
     }
+
 }
 

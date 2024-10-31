@@ -32,7 +32,7 @@
                 <a class="nav-link text-white" href="{{ route('quemsomos') }}">Quem somos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ route('profissional.especializacoes') }}">Minhas especializações</a>
+                <a class="nav-link text-white" href="{{ route('minhasespecializacoes.index')}}">Minhas especializações</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"

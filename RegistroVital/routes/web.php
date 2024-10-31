@@ -97,10 +97,14 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
     Route::get('/cadastrarprof', [ProfissionaisController::class, 'create'])->name('cadastrarprof');
     Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
     Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
-    Route::get('especializacaoprofissional/{id}', [EspecializacoesController::class, 'especializacoes'])->name('profissional.especializacoes');
+
 
     Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
-
+    Route::get('/especializacaoprofissional', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'create'])->name('profissional.especializacoes');
+    Route::get('/especializacaoprofissional/{area_atuacao_id}', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'getEspecializacoes']);
+    Route::post('/cadastraespecializacao', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'store'])->name('especializacao-profissional-store');
+    Route::get('/minhasespecializacoes', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'index'])->name('minhasespecializacoes.index');
+    Route::delete('/excluirespecializacao/{id}', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'destroy'])->name('excluirespecializacao.destroy');
 
     //Route::resource('/cadastroprofissional', ProfissionaisController::class);
     Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');

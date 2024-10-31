@@ -2,64 +2,85 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agendamento;
+use App\Models\AtuaArea;
+use App\Models\Endereco;
+use App\Models\Especializacao;
 use App\Models\EspecializacaoProfissional;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EspecializacaoProfissionalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return
+        $user = Auth::user();
+        $especializacoesprofissional = EspecializacaoProfissional::where('profissional_id', $user->id)
+            ->with(['especializacoes', 'areas_atuacao', 'enderecos'])
+            ->paginate(5);
+
+        return view('EspecializacoesProfissionais.ListaEspecializacoesProfissionais', compact('especializacoesprofissional'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        $areas_atuacao= EspecializacaoProfissional::getAreaAtuacao();
+
+        return view('Especializacoesprofissionais.especializacoesprofissional', compact('areas_atuacao'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $validated = $request->validate([
+            'area_atuacao_id' => 'required|exists:areas_atuacao,id',
+            'especializacao_id' => 'required|exists:especializacoes,id',
+            'rqe' => 'required|string',
+            'valor_consulta' => 'required|numeric',
+            'cep' => 'required|string',
+            'uf' => 'required|string',
+            'cidade' => 'required|string',
+            'bairro' => 'required|string',
+            'rua' => 'required|string',
+            'numero' => 'required|numeric']);
+
+        EspecializacaoProfissional::cadastraEndereco($user, $validated, $request);
+
+        return redirect()->route('minhasespecializacoes.index')->with('success', 'Agendamento criado com sucesso!');
+
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(EspecializacaoProfissional $especializacaoProfissional)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(EspecializacaoProfissional $especializacaoProfissional)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, EspecializacaoProfissional $especializacaoProfissional)
+    public function getEspecializacoes($area_atuacao_id): JsonResponse
     {
-        //
+        $especializacoes = Especializacao::where('area_atuacao_id', $area_atuacao_id)->get();
+        return response()->json($especializacoes);
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(EspecializacaoProfissional $especializacaoProfissional)
+    public function update(Request $request, EspecializacaoProfissional $especializacaoProfissional)
     {
-        //
+
+    }
+
+
+    public function destroy($id)
+    {
+        $especializacaoProfissional = EspecializacaoProfissional::findOrFail($id);
+        $especializacaoProfissional->delete();
+        return redirect()->route('minhasespecializacoes.index')->with('success', 'Especialização deletada com sucesso!');
     }
 }
