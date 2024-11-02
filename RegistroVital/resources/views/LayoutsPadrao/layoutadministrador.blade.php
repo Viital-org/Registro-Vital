@@ -65,10 +65,9 @@
     </aside>
 
     <!-- Conteúdo Principal -->
-    <div class="container">
-        <main class="main-content">
-            @yield('conteudo')
-        </main>
-    </div>
+    <main class="main-content">
+        @yield('conteudo')
+    </main>
+    
 </body>
 </html>

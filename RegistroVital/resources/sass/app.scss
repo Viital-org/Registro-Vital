@@ -112,9 +112,30 @@ body {
     position: fixed;
     transition: transform .5s ease;
     transform: translateX(-90%);
+    z-index: 1;
 }
 
-.sidebar-admin:hover {
+.sidebar-paciente {
+    width: 18%;
+    height: 100%;
+    background-color: $primaria-paciente;
+    position: fixed;
+    transition: transform .5s ease;
+    transform: translateX(-90%);
+    z-index: 1;
+}
+
+.sidebar-profissional {
+    width: 18%;
+    height: 100%;
+    background-color: $primaria-medico;
+    position: fixed;
+    transition: transform .5s ease;
+    transform: translateX(-90%);
+    z-index: 1;
+}
+
+.sidebar-admin:hover, .sidebar-paciente:hover, .sidebar-profissional:hover {
     transform: translateX(0%);
 }
 
@@ -124,6 +145,14 @@ body {
     font-size: 12pt;
     display: flex;
     flex-direction: column;
+    transition: transform .5s ease;
+    transform: translateX(9%);
+    height: 100%;
+    vertical-align: middle;
+}
+
+.main-content:hover {
+    transform:translateX(0%)
 }
 
 // Botões
