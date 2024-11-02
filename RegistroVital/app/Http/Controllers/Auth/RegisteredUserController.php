@@ -79,7 +79,7 @@ class RegisteredUserController extends Controller
 
         Endereco::create([
             'usuario_id'=> $user->id,
-            'situacao_endereco'=> 'ativo',
+            'situacao_endereco'=> '1',
             'cep'=> $request->cep,
             'rua'=> $request->rua,
             'complemento'=> $request->complemento,

@@ -70,6 +70,7 @@ Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function
     Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
     Route::get('/agendamentos/{area_atuacao_id}', [AgendamentosController::class, 'getEspecializacoes']);
     Route::get('/agendamentosprofissionais/{especializacao_id}', [AgendamentosController::class, 'getProfissional']);
+    Route::get('/enderecosagendamento/{profissional_id}/{especializacao_id}', [AgendamentosController::class, 'getEnderecos']);
 
     //Dicas
     Route::resource('/cadastrodicas', DicasController::class);
@@ -98,6 +99,8 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
     Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
     Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
 
+
+    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
 
     Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
     Route::get('/especializacaoprofissional', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'create'])->name('profissional.especializacoes');

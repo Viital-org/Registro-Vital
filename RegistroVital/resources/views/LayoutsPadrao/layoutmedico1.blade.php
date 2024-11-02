@@ -40,7 +40,7 @@
                     Consultas Marcadas
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('consultas.index') }}">Lista de Consultas</a></li>
+                    <li><a class="dropdown-item" href="{{ route('agendamentos.index') }}">Lista de Consultas</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">
@@ -76,7 +76,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

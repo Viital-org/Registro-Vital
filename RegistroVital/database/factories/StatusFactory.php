@@ -12,7 +12,7 @@ class StatusFactory extends Factory
     public function definition(): array
     {
         return [
-            'descricao' => $this->faker->randomElement(['confirmado', 'cancelado']),
+            'descricao' => $this->faker->randomElement(['confirmado', 'cancelado', 'pendente']),
             'created_at' => now(),
             'updated_at' => now(),
         ];

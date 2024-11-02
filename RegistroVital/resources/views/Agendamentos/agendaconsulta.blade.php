@@ -38,10 +38,6 @@
                 </select>
             </div>
 
-            <div class="input-group">
-                <input type="text" aria-hidden="true" class="form-control" readonly>
-            </div>
-
             <div class="mb-3">
                 <label for="data_agendamento" class="form-label">Data do Agendamento</label>
                 <input type="date" name="data_agendamento" id="data_agendamento" class="form-control" required
@@ -91,9 +87,8 @@
                         url: '/agendamentosprofissionais/' + especializacaoid, // A rota correta
                         type: 'GET',
                         success: function(response) {
-                            console.log('Resposta da requisição:', response);
                             response.forEach(function(identificacao) {
-                                $('#profissional_id').append('<option value="' + identificacao.id + '">' + identificacao.nome_completo + '</option>');
+                                $('#profissional_id').append('<option value="' + identificacao.usuario_id + '">' + identificacao.nome_completo + '</option>');
                             });
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
@@ -105,5 +100,42 @@
             });
         });
     </script>
+
+
+    <!-- BUSCA OS ENDEREÇOS PARA O PROFISSIONAL SELECIONADO -->
+    <script>
+        $(document).ready(function() {
+            var especializacaoid; // Declara a variável no escopo
+
+            // Atualiza o valor de especializacaoid quando a especialização é selecionada
+            $('#especializacao_id').on('change', function() {
+                especializacaoid = $(this).val(); // Captura o valor da especialização selecionada
+                console.log('Especializacao ID:', especializacaoid); // Debug
+            });
+
+            $('#profissional_id').on('change', function() {
+                var profissionalid = $(this).val();
+                console.log('Profissional ID:', profissionalid); // Debug
+                $('#endereco_id').html('<option value="">Selecione o endereço</option>');
+
+                if (especializacaoid && profissionalid) {
+                    $.ajax({
+                        url: '/enderecosagendamento/' + profissionalid + '/' + especializacaoid,
+                        type: 'GET',
+                        success: function(response) {
+                            response.forEach(function(identificacao) {
+                                if (identificacao) {
+                                    $('#endereco_id').append('<option value="' + identificacao.id + '">' + identificacao.rua + ', ' + identificacao.numero_endereco + identificacao.bairro + ', ' +' - ' + identificacao.cidade + '/' + identificacao.uf + '</option>');
+                                }
+                            });
+                        },
+
+                    });
+                }
+            });
+        });
+    </script>
+
+
 
 @endsection

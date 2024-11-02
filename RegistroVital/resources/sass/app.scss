@@ -24,8 +24,8 @@ body {
 
 .nav-link {
     color: white;
-    text-decoration: none; 
-    transition: background-color .8s; 
+    text-decoration: none;
+    transition: background-color .8s;
     width: 100%;
     padding: 100%;
     font-weight: 500;
@@ -112,7 +112,7 @@ body {
     position: fixed;
     transition: transform .5s ease;
     transform: translateX(-90%);
-} 
+}
 
 .sidebar-admin:hover {
     transform: translateX(0%);

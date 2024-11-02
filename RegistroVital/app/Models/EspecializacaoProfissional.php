@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\ProfissionaisController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
@@ -38,6 +39,11 @@ class EspecializacaoProfissional extends Model
         return $this->belongsTo(Endereco::class, 'endereco_atuacao_id');
     }
 
+    public function profissionais()
+    {
+        return $this->belongsTo(Profissional::class, 'profissional_id');
+    }
+
     public static function getAreaAtuacao() {
 
         $AreaAtuacao = AtuaArea::all();
@@ -46,6 +52,13 @@ class EspecializacaoProfissional extends Model
 
     }
 
+    public static function getValorAtendimento($profissional, $especializacao){
+        $valor = EspecializacaoProfissional::where('profissional_id', $profissional)
+            ->where('especializacao_id', $especializacao)
+            ->value('valor_atendimento');
+
+        return $valor;
+    }
     public static function cadastraEndereco($user, $validated, $request){
         $endereco = Endereco::create([
             'usuario_id'=> $user->id,

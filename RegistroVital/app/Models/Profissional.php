@@ -37,4 +37,9 @@ class Profissional extends Model
     {
         return $this->belongsTo(Especializacao::class, 'especializacao_id', 'id');
     }
+
+    public function enderecos()
+    {
+        return $this->hasMany(Endereco::class);
+    }
 }

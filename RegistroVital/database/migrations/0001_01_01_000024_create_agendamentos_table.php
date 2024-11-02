@@ -21,7 +21,8 @@ return new class extends Migration {
             $table->date('data_agendamento');
             $table->integer('situacao_paciente');
             $table->integer('situacao_profissional');
-            $table->string('endereco_consulta', 60);
+            $table->integer('endereco_consulta_id')->constrained('enderecos');
+            $table->float('valor_atendimento');
             $table->timestamps();
             $table->softDeletes();
         });

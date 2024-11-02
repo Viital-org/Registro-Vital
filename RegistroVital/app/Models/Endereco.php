@@ -27,6 +27,11 @@ class Endereco extends Model
     {
         return $this->hasMany(Usuario::class,'id_usuario');
     }
+
+    public function especializacoesprofissionais() {
+        return $this->hasMany(EspecializacaoProfissional::class, 'id');
+    }
+
 }
 
 

@@ -10,11 +10,10 @@ class Consulta extends Model
     use HasFactory;
 
     protected $fillable = [
-        'data',
-        'status',
         'profissional_id',
         'paciente_id',
-        'valor',
+        'agendamento_id',
+        'situacao',
     ];
 
     public function profissional()

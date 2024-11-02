@@ -17,6 +17,7 @@ class StatusSeeder extends Seeder
         $statusList = [
             ['descricao' => 'confirmado'],
             ['descricao' => 'cancelado'],
+            ['descricao' => 'pendente'],
         ];
 
         foreach ($statusList as $status) {
