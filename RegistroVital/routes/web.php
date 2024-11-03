@@ -4,6 +4,7 @@ use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\AnotacoesSaudeController;
 use App\Http\Controllers\AtuaAreasController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\DicasController;
 use App\Http\Controllers\EspecializacoesController;
@@ -162,8 +163,12 @@ Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function
     Route::get('/administrador/logs', [AdministradorController::class, 'showLogs'])->name('administrador.logs');
 
     //cria adm
-    Route::get('/admin/profissionais', [AdministradorController::class, 'listarProfissionais'])->name('administrador.profissionais');
+    Route::get('/admin/profissionais', [AdministradorController::class, 'listarUsuarios'])->name('administrador.profissionais');
     Route::put('/admin/profissionais/{id}/transformar', [AdministradorController::class, 'transformarEmAdministrador'])->name('administrador.transformar');
+
+    //Bloquear Usuario
+    Route::put('/administrador/usuario/bloquear/{id}', [RegisteredUserController::class, 'bloquearUsuario'])->name('administrador.bloquear');
+
 
     //Relatorios
     Route::get('/relatorios_administrador', [RelatoriosController::class, 'relatorios_administrador'])->name('relatorios_administrador');

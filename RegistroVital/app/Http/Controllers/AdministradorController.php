@@ -69,7 +69,7 @@ class AdministradorController extends Controller
     {
         return view('profile.administrador-dashboard');
     }
-    public function listarProfissionais(Request $request)
+    public function listarUsuarios(Request $request)
     {
         $tipoUsuario = $request->input('tipo_usuario');
 
@@ -77,7 +77,7 @@ class AdministradorController extends Controller
             return $query->where('tipo_usuario', $tipoUsuario);
         })->paginate(10);
 
-        return view('Cadastros.Administrador.listaprofissionais', compact('usuarios', 'tipoUsuario'));
+        return view('Cadastros.Administrador.listausuarios', compact('usuarios', 'tipoUsuario'));
     }
 
     public function transformarEmAdministrador(Request $request, $id)

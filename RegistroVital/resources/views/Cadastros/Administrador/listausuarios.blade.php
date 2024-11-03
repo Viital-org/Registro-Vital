@@ -38,9 +38,17 @@
                     </p>
 
                     <!-- Botão de bloquear usuário -->
-                    <button class="btn btn-danger mt-2">
-                        <i class="fas fa-ban"></i> Bloquear Usuário
+                    <button
+                        class="btn {{ $usuario->situacao_cadastro === 1 ? 'btn-danger' : 'btn-success' }} mt-2"
+                        onclick="event.preventDefault(); document.getElementById('bloquear-form-{{ $usuario->id }}').submit();">
+                        <i class="fas fa-ban"></i>
+                        {{ $usuario->situacao_cadastro === 1 ? 'Bloquear Usuário' : 'Desbloquear Usuário' }}
                     </button>
+
+                    <form id="bloquear-form-{{ $usuario->id }}" action="{{ route('administrador.bloquear', $usuario->id) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('PUT')
+                    </form>
 
                     @if ($usuario->tipo_usuario == 2)
                         <!-- Botão para abrir o modal -->

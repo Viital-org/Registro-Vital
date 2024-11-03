@@ -112,4 +112,14 @@ class RegisteredUserController extends Controller
         return response()->json($especializacoes);
 
     }
+    public function bloquearUsuario($id)
+    {
+        $usuario = Usuario::findOrFail($id);
+
+        $usuario->situacao_cadastro = $usuario->situacao_cadastro === 1 ? 0 : 1;
+        $usuario->save();
+
+        $mensagem = $usuario->situacao_cadastro === 1 ? 'Usuário desbloqueado com sucesso!' : 'Usuário bloqueado com sucesso!';
+        return redirect()->back()->with('success', $mensagem);
+    }
 }
