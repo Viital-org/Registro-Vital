@@ -28,7 +28,7 @@
         </div>
 
         <div class="input-group mb-3">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon1" data-bs-toggle="modal" data-bs-target="#exampleModal">Definir endereço</button>
+            <button class="btn btn-outline-secondary" type="button" id="button-addon1" data-bs-toggle="modal" data-bs-target="#enderecoModal">Definir endereço</button>
             <input type="text" class="form-control" id="endereco" name="endereco" aria-describedby="button-addon1" readonly placeholder="Endereço de atendimento">
         </div>
 
@@ -37,19 +37,19 @@
             <input type="number" name="valor_consulta" id="valor_consulta" class="form-select" required>
         </div>
 
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">1</label>
-        </div>
-
-        <input type="submit" value="Cadastrar">
+        <!-- ABRE O MODAL PARA CADASTRAR DIAS DE ATENDIMENTO -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#diasAtendimentoModal">
+            Definir dias de atendimento
+        </button>
+        <br> <br>
+        <input class="btn btn-primary" type="submit" value="Cadastrar">
 
         <!-- MODAL PARA INSERIR O ENDEREÇO -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="enderecoModal" tabindex="-1" aria-labelledby="enderecoModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Endereço</h1>
+                        <h1 class="modal-title fs-5" id="enderecoModal">Endereço</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -96,6 +96,64 @@
                 </div>
             </div>
         </div>
+
+        <!-- MODAL PARA CADASTRAR OS DIAS DE ATENDIMENTO -->
+
+        <div class="modal fade" id="diasAtendimentoModal" tabindex="-1" aria-labelledby="diasAtendimentoModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Horários de Atendimento</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="dia" class="form-label">Dia da Semana:</label>
+                            <select id="dia" class="form-select">
+                                <option value="">Selecione um dia</option>
+                                <option value="segunda">Segunda-feira</option>
+                                <option value="terca">Terça-feira</option>
+                                <option value="quarta">Quarta-feira</option>
+                                <option value="quinta">Quinta-feira</option>
+                                <option value="sexta">Sexta-feira</option>
+                                <option value="sabado">Sábado</option>
+                                <option value="domingo">Domingo</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="horarioInicio" class="form-label">Hora Inicial:</label>
+                            <input type="time" class="form-control" id="horarioInicio">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="horarioFim" class="form-label">Hora Final:</label>
+                            <input type="time" class="form-control" id="horarioFim">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tempoConsulta" class="form-label">Tempo de Consulta:</label>
+                            <input type="time" class="form-control" id="tempoConsulta">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="inicioPausa" class="form-label">Início da Pausa:</label>
+                            <input type="time" class="form-control" id="inicioPausa">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fimPausa" class="form-label">Fim da Pausa:</label>
+                            <input type="time" class="form-control" id="fimPausa">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary" id="salvarHorario">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </form>
 
     <!-- INCLUINDO O JQUERY -->
@@ -149,6 +207,65 @@
             altera();
             // Fecha o modal após atualizar o endereço
             $('#exampleModal').modal('hide');
+        });
+    </script>
+
+    <!-- SCRIPT PARA DEIXAR DINÂMICA A SELEÇÃO DOS HORÁRIOS -->
+
+    <script>
+        const horarios = {};
+
+        $(document).ready(function() {
+            $('#dia').on('change', function() {
+                const diaSelecionado = $(this).val();
+
+                // Salva os dados do dia anterior antes de limpar os campos
+                const diaAnterior = $('#dia').data('dia-anterior');
+                if (diaAnterior) {
+                    horarios[diaAnterior] = {
+                        inicio: $('#horarioInicio').val(),
+                        fim: $('#horarioFim').val(),
+                        tempo: $('#tempoConsulta').val(),
+                        inicioPausa: $('#inicioPausa').val(),
+                        fimPausa: $('#fimPausa').val(),
+                    };
+                }
+
+                // Limpa os campos se um novo dia for selecionado
+                if (diaSelecionado) {
+                    if (horarios[diaSelecionado]) {
+                        $('#horarioInicio').val(horarios[diaSelecionado].inicio);
+                        $('#horarioFim').val(horarios[diaSelecionado].fim);
+                        $('#tempoConsulta').val(horarios[diaSelecionado].tempo);
+                        $('#inicioPausa').val(horarios[diaSelecionado].inicioPausa);
+                        $('#fimPausa').val(horarios[diaSelecionado].fimPausa);
+                    } else {
+                        $('#horarioInicio').val('');
+                        $('#horarioFim').val('');
+                        $('#tempoConsulta').val('');
+                        $('#inicioPausa').val('');
+                        $('#fimPausa').val('');
+                    }
+                    // Atualiza o dia anterior
+                    $('#dia').data('dia-anterior', diaSelecionado);
+                }
+            });
+
+            $('#salvarHorario').on('click', function() {
+                const diaSelecionado = $('#dia').val();
+                if (diaSelecionado) {
+                    // Salva os dados preenchidos no objeto
+                    horarios[diaSelecionado] = {
+                        inicio: $('#horarioInicio').val(),
+                        fim: $('#horarioFim').val(),
+                        tempo: $('#tempoConsulta').val(),
+                        inicioPausa: $('#inicioPausa').val(),
+                        fimPausa: $('#fimPausa').val(),
+                    };
+                    // Fecha o modal
+                    $('#diasAtendimentoModal').modal('hide');
+                }
+            });
         });
     </script>
 

@@ -146,14 +146,14 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform .5s ease;
-    transform: translateX(9%);
+    //transform: translateX(9%);
     height: 100%;
     vertical-align: middle;
 }
 
-.main-content:hover {
+/*.main-content:hover {
     transform:translateX(0%)
-}
+}*/
 
 // Botões
 .btn-primary {

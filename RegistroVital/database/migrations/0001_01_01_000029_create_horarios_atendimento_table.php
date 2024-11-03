@@ -6,19 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('especializacoes_profissionais', function (Blueprint $table) {
+        Schema::create('horarios_atendimento', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profissional_id')->constrained('profissionais', 'usuario_id')->onDelete('cascade');
-            $table->integer('area_atuacao_id')->constrained('profissionais','area_atuacao_id')->onDelete('cascade');
             $table->foreignId('especializacao_id')->constrained('especializacoes')->onDelete('cascade');
-            $table->foreignId('endereco_atuacao_id')->constrained('enderecos')->onDelete('cascade');
-            $table->float('valor_atendimento');
-            $table->string('rqe',7);
+            $table->string('dia_semana')->nullable();
+            $table->time('inicio_atendimento');
+            $table->time('fim_atendimento');
+            $table->time('tempo_consulta');
+            $table->time('inicio_pausa')->nullable();
+            $table->time('fim_pausa')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Enderecos_profissionais');
+        Schema::dropIfExists('horarios_atendimento');
     }
 };
