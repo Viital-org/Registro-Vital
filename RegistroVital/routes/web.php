@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 Route::get('/registroprofissional/{especializacao_id}', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'getEspecializacoes']);
+
+Route::post('/redefinirsenha', [\App\Http\Controllers\Auth\PasswordResetLinkController::class, 'enviaEmail'])->name('emailredefinicao');
+
 Route::middleware('layout.dinamico')->group(function () {
 
     Route::get('/', function () {

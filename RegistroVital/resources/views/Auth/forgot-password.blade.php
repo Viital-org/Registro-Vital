@@ -18,7 +18,7 @@
                     @endif
 
                     <!-- Formulário de Recuperação de Senha -->
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('emailredefinicao') }}">
                         @csrf
 
                         <!-- Endereço de Email -->

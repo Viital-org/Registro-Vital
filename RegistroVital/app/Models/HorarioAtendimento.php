@@ -18,4 +18,5 @@ class HorarioAtendimento extends Model
         'inicio_pausa',
         'fim_pausa',
     ];
+
 }
