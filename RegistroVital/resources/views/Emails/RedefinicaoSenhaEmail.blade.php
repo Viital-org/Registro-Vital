@@ -1,4 +1,4 @@
-<p>Olá {{ $dados['nomeUsuario']}}, </p>
+<p>Olá, {{ $dados['nomeUsuario']}}!! </p>
 
 <p>Sua senha foi redefinida com sucesso! Abaixo está sua nova senha temporária: </p>
 

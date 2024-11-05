@@ -243,10 +243,22 @@
                             @enderror
                         </div>
 
+
+
+                        <!-- Checkbox para aceitação dos termos de uso -->
+                        <div class="mb-3">
+                            <input type="checkbox" id="aceito_termos" />
+                            <label for="aceito_termos" class="form-label">
+                                Aceito os <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: blue; text-decoration: underline; cursor: pointer;">Termos de uso</a>
+                            </label>
+                        </div>
+
+
                         <!-- Botão de Registro -->
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary btn-lg w-100 campopaciente campoprofissional">Registrar</button>
+                            <button type="submit" id="btnRegistrar" class="btn btn-primary btn-lg w-100 campopaciente campoprofissional" disabled>Registrar</button>
                         </div>
+
                     </form>
 
                     <!-- Link para login -->
@@ -338,6 +350,35 @@
             });
         });
     </script>
+
+
+    <!-- SCRIPT PARA LIBERAR O BOTÃO DE REGISTRO SÓ QUANDO ACEITAR OS TERMOS DE USO -->
+
+    <script>
+        $(document).ready(function() {
+            // Habilitar/desabilitar o botão de registro com base na checkbox
+            $('#aceito_termos').on('change', function() {
+                $('#btnRegistrar').prop('disabled', !this.checked);
+            });
+        });
+    </script>
+
+
+
+    <!-- Modal para termos de uso -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @include('Documentoslegais.termosdeuso')
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 
