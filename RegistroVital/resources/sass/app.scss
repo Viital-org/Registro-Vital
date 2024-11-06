@@ -147,11 +147,16 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform .5s ease;
+<<<<<<< HEAD
     // transform: translateX(9%);
+=======
+    //transform: translateX(9%);
+>>>>>>> 359aa6dfd77580f00c5b5bb46418808b831538da
     height: 100%;
     vertical-align: middle;
 }
 
+<<<<<<< HEAD
 .main-content:hover {
     // transform:translateX(0%)
 }
@@ -169,6 +174,11 @@ body {
     border-width: 1px;
     background-color: $cinza-escuro;
 }
+=======
+/*.main-content:hover {
+    transform:translateX(0%)
+}*/
+>>>>>>> 359aa6dfd77580f00c5b5bb46418808b831538da
 
 // Botões
 .btn-primary {
