@@ -253,7 +253,6 @@
                             </label>
                         </div>
 
-
                         <!-- Botão de Registro -->
                         <div class="d-grid gap-2">
                             <button type="submit" id="btnRegistrar" class="btn btn-primary btn-lg w-100 campopaciente campoprofissional" disabled>Registrar</button>

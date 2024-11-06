@@ -50,7 +50,7 @@ class EspecializacaoProfissionalController extends Controller
 
         EspecializacaoProfissional::cadastraEndereco($user, $validated, $request);
 
-        return redirect()->route('minhasespecializacoes.index')->with('success', 'Agendamento criado com sucesso!');
+        return redirect()->route('minhasespecializacoes.index')->with('success', 'Especialização criada com sucesso!');
 
     }
 
