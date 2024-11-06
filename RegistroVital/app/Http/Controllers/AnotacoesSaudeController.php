@@ -73,6 +73,7 @@ class AnotacoesSaudeController extends Controller
         ]);
 
         Anotacaosaude::create($validated);
+
         return redirect()->route('anotacoessaude-index')->with('success', 'Anotação criada com sucesso!');
     }
 

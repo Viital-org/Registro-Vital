@@ -4,14 +4,16 @@
 
 @section('conteudo')
 
-    <div class="container mt-5">
-        <h2 class="text-center">Relatório de Anotações</h2>
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Relatório de Anotações</h2>
+            <canvas id="graficoAnotacoes"></canvas>
+        </div>
 
-        <canvas id="graficoAnotacoes" width="400" height="200"></canvas>
-
-        <h2 class="text-center mt-5">Relatório de Metas</h2>
-
-        <canvas id="graficoMetas" width="400" height="200"></canvas>
+        <div class="col">
+            <h2 class="text-center mt-5">Relatório de Metas</h2>
+            <canvas id="graficoMetas"></canvas>
+        </div>
 
         <button id="downloadButtonAnotacoes" class="btn btn-primary mt-3">Baixar Gráfico de Anotações</button>
         <button id="downloadButtonMetas" class="btn btn-primary mt-3">Baixar Gráfico de Metas</button>

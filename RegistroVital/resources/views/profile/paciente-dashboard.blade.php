@@ -3,24 +3,61 @@
 @section('titulo', 'Registro Vital - Paciente')
 
 @section('conteudo')
-    <div class="container my-5">
+    <div class="container">
         @if (session('error'))
             <div id="error-message" class="alert alert-danger text-center">
                 {{ session('error') }}
             </div>
         @endif
 
-        <div id="carouselExampleSlidesOnly" class="carousel slide shadow-sm rounded" data-bs-ride="carousel"
-             data-bs-interval="3500">
-            <div class="carousel-inner">
-                @foreach (['img1', 'img2', 'img3', 'img4'] as $image)
-                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                        <img src="{{ asset("img/$image.png") }}" class="d-block w-100 rounded"
-                             style="max-height: 530px; opacity: 0.75;">
+        <div class="header row">
+            <h1>Bem-vindo... {{ Auth::user()->nome_completo }}</h1>
+        </div>
+
+        <div class="row dica">
+            <h3>Dica do Dia</h3>
+            <h6>Categoria da dica</h6>
+            <p>XX/XX/XXXX</p>
+            <p>(Conteúdo da dica) Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat deleniti sint a harum itaque suscipit nam neque saepe, ut veniam alias, aperiam aliquam, rerum quasi officiis illo eum unde. Nulla.</p>
+        </div>
+
+        <div class="row">
+            <div class="anotacoes col">
+                <h3 class="infos-paciente">Última Anotações</h3>
+
+                <table>
+                    <!-- foreach -->
+                    <thead>
+                        <tr>
+                            <td><h6>Data e hora</h6></td> <!-- Ex: XX/XX/XXXX - XX:XX -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus aspernatur numquam tempora velit</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="agendamentos col">
+                <h3 class="infos-paciente">Agendamentos</h3>
+                <!-- foreach -->
+                <div class="row">
+                    <div class="col">
+                        <table class="tabela-agendamento">
+                            <tr>
+                                <td><h6>Data e hora</h6></td> <!-- Ex: XX/XX/XXXX - XX:XX -->
+                            </tr>
+                            <tr>
+                                <td>Tipo da consulta</td> <!-- (Ex: consulta ginecologista) -->
+                                <td>Nome médico</td>
+                            </tr>
+                        </table>
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
+
     </div>
 @endsection
 

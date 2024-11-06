@@ -5,7 +5,8 @@ $primaria-admin: #000000;
 $primaria-medico: #006adb;
 $primaria-paciente: #A0D3E8;
 $secundaria: #A0D3E8;
-$cinza-claro: #F5F5F5;
+$cinza-escuro: #c1c1c1;
+$cinza-claro: #f0efef;
 $cinza: #edebeb;
 $verde: #6CCB3A;
 $branco: #FFFFFF;
@@ -80,7 +81,7 @@ body {
 // }
 
 .navbar {
-    background-color: $primaria-medico;
+    background-color: $primaria-paciente;
 
     .navbar-brand {
         margin-left: 1rem;
@@ -146,13 +147,27 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform .5s ease;
-    transform: translateX(9%);
+    // transform: translateX(9%);
     height: 100%;
     vertical-align: middle;
 }
 
 .main-content:hover {
-    transform:translateX(0%)
+    // transform:translateX(0%)
+}
+
+.dica {
+    border-width: 2px;
+    border-style: solid;
+    border-color: $cinza-escuro;
+    background-color: $cinza-claro;
+    border-radius: .5rem;
+    margin-bottom: 2rem;
+}
+
+.separador {
+    border-width: 1px;
+    background-color: $cinza-escuro;
 }
 
 // Botões
@@ -180,6 +195,28 @@ body {
     max-width: 40rem    ;
     max-height: 20rem;
     display: flex;
+}
+
+.anotacoes, .agendamentos {
+    background-color: $cinza-claro;
+    height: 20rem;
+    max-height: 23rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $cinza-escuro;
+    border-radius: .5rem;
+}
+
+.anotacoes {
+    margin-right: 2rem;
+}
+
+.infos-paciente {
+    margin: 1rem;
+}
+
+.header {
+    margin: 1rem;
 }
 
 // Rodapé

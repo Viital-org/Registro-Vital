@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Usuario;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,10 +29,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Tentar buscar o usuário pelo e-mail
+        $usuario = Usuario::where('email', $request->input('email'))->first();
+
+        // Verifica se o usuário existe e está bloqueado
+        if ($usuario && $usuario->situacao_cadastro === 0) {
+            return back()->withErrors([
+                'email' => 'Não foi possível realizar o login, usuário bloqueado.',
+            ]);
+        }
+
+        // Autentica o usuário
         $request->authenticate();
 
+        // Regenera a sessão
         $request->session()->regenerate();
 
+        // Log de sucesso de login
         Log::channel('auth')->info('Usuário ID: ' . Auth::id() . ' fez login no sistema', [
             'user_id' => Auth::id(),
             'action' => 'Login',
@@ -39,6 +53,7 @@ class AuthenticatedSessionController extends Controller
             'timestamp' => now(),
         ]);
 
+        // Redireciona de acordo com o tipo de usuário
         switch ($request->user()->tipo_usuario) {
             case 2:
                 return redirect()->intended(route('profissional.dashboard'));
@@ -47,7 +62,6 @@ class AuthenticatedSessionController extends Controller
             default:
                 return redirect()->intended(route('paciente.dashboard'));
         }
-
     }
 
     /**

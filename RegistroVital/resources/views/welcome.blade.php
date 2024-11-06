@@ -5,7 +5,7 @@
 @section('conteudo')
 
     <div class="container-fluid">
-        <div class="main-content">
+        <div class="main">
             <h1 class="text-center mb-4">Bem-vindo ao RegistroVital</h1>
 
             @if (session('error'))

@@ -92,12 +92,15 @@ class RegisteredUserController extends Controller
         // Autentica o usuário após o registro
         Auth::login($user);
 
+        \Flasher\Toastr\Prime\toastr()->addSuccess('Registro realizado com sucesso');
+
         // Redirecionamento com base no tipo de usuário
         return match ($user->tipo_usuario) {
-            2 => redirect()->route('profissional.dashboard'), // Profissional
-            3 => redirect()->route('administrador.dashboard'), // Administrador
-            default => redirect()->intended(route('paciente.dashboard')), // Paciente
+            2 => redirect()->route('profissional.dashboard')->with('Registro realizado com sucesso'), // Profissional
+            3 => redirect()->route('administrador.dashboard')->with('Registro realizado com sucesso'), // Administrador
+            default => redirect()->intended(route('paciente.dashboard'))->with('Registro realizado com sucesso'), // Paciente
         };
+
     }
 
     public function create(): View
@@ -111,5 +114,16 @@ class RegisteredUserController extends Controller
         $especializacoes = Especializacao::where('area_atuacao_id', $area_atuacao_id)->get();
         return response()->json($especializacoes);
 
+    }
+    public function bloquearUsuario($id)
+    {
+        $usuario = Usuario::findOrFail($id);
+
+        $usuario->situacao_cadastro = $usuario->situacao_cadastro === 1 ? 0 : 1;
+        $usuario->save();
+
+        $mensagem = $usuario->situacao_cadastro === 1 ? 'Usuário desbloqueado com sucesso!' : 'Usuário bloqueado com sucesso!';
+
+        return redirect()->back()->with('success', $mensagem);
     }
 }

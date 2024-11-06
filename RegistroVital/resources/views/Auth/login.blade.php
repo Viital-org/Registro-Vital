@@ -10,6 +10,13 @@
                 <div class="card shadow-sm p-4">
                     <h1 class="text-center mb-4">Login</h1>
 
+                    <!-- Exibe mensagem de erro caso o usuário esteja bloqueado -->
+                    @if ($errors->has('email'))
+                        <div class="alert alert-danger">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
