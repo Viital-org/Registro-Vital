@@ -1,75 +1,194 @@
-<section>
-    <header>
-        <h2 class="mb-3">Informações do Paciente</h2>
-        <p class="mb-3">Atualize suas informações de paciente</p>
+<section class="container mx-auto p-6 bg-white rounded-lg shadow-md">
+    <header class="mb-6">
+        <h2 class="text-2xl font-bold text-primary mb-2">Informações do Paciente</h2>
+        <p class="text-gray-600">Atualize suas informações de paciente</p>
+        <script src="{{asset("js/BuscaCep.js")}}"></script>
     </header>
 
-    <form method="post" action="{{ route('profile.updateRoleInfo') }}" class="mb-3">
+    <form method="post" action="{{ route('profile.updateRoleInfo') }}" class="space-y-6">
         @csrf
         @method('patch')
 
-        <div class="mb-3">
-            <label for="datanascimento" class="form-label">Data de Nascimento</label>
-            <input type="date" name="datanascimento" id="datanascimento" class="form-control"
-                   value="{{ $paciente->datanascimento }}" required>
+        {{-- CPF --}}
+        <div class="flex flex-col">
+            <x-input-label for="cpf" :value="'CPF'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="cpf"
+                name="cpf"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->cpf"
+                required/>
+            <x-input-error :messages="$errors->get('cpf')" class="mt-2 text-red-500"/>
         </div>
 
-        <div class="mb-3">
-            <label for="cep" class="form-label">CEP</label>
-            <input type="text" name="cep" id="cep" class="form-control" value="{{ $paciente->cep }}" required>
+        {{-- RG --}}
+        <div class="flex flex-col">
+            <x-input-label for="rg" :value="'RG'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="rg"
+                name="rg"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->rg"
+                required/>
+            <x-input-error :messages="$errors->get('rg')" class="mt-2 text-red-500"/>
         </div>
 
-        <div class="mb-3">
-            <label for="endereco" class="form-label">Endereço</label>
-            <input type="text" name="endereco" id="endereco" class="form-control" value="{{ $paciente->endereco }}"
-                   required>
+        {{-- Data de Nascimento --}}
+        <div class="flex flex-col">
+            <x-input-label for="data_nascimento" :value="'Data de Nascimento'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="data_nascimento"
+                name="data_nascimento"
+                type="date"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->data_nascimento"
+                required/>
+            <x-input-error :messages="$errors->get('data_nascimento')" class="mt-2 text-red-500"/>
         </div>
 
-        <div class="mb-3">
-            <label for="numcartaocred" class="form-label">Cartão de Crédito</label>
-            <input type="text" name="numcartaocred" id="numcartaocred" class="form-control"
-                   value="{{ $paciente->numcartaocred }}" required>
+        {{-- CEP --}}
+        <div class="flex flex-col">
+            <x-input-label for="cep" :value="'CEP'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="cep"
+                name="cep"
+                type="text"
+                onblur="pesquisacep(this.value)"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->cep"
+                required/>
+            <x-input-error :messages="$errors->get('cep')" class="mt-2 text-red-500"/>
         </div>
 
-        <div class="mb-3">
-            <label for="hobbies" class="form-label">Hobbies</label>
-            <input type="text" name="hobbies" id="hobbies" class="form-control" value="{{ $paciente->hobbies }}"
-                   required>
+        {{-- Cidade e Estado --}}
+        <div class="flex flex-col">
+            <x-input-label for="cidade" :value="'Cidade'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="cidade"
+                name="cidade"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->cidade"
+                required/>
+            <x-input-error :messages="$errors->get('cidade')" class="mt-2 text-red-500"/>
         </div>
 
-        <div class="mb-3">
-            <label for="doencascronicas" class="form-label">Lista de Doenças Crônicas</label>
-            <input type="text" name="doencascronicas" id="doencascronicas" class="form-control"
-                   value="{{ $paciente->doencascronicas }}" required>
+        <div class="flex flex-col">
+            <x-input-label for="estado" :value="'Estado'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="uf"
+                name="estado"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->estado"
+                required/>
+            <x-input-error :messages="$errors->get('estado')" class="mt-2 text-red-500"/>
         </div>
 
-        <div class="mb-3">
-            <label for="remediosregulares" class="form-label">Lista de Remédios Regulares</label>
-            <input type="text" name="remediosregulares" id="remediosregulares" class="form-control"
-                   value="{{ $paciente->remediosregulares }}" required>
+        <div class="flex flex-col">
+            <x-input-label for="bairro" :value="'Bairro'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="bairro"
+                name="bairro"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->bairro"
+                required/>
+            <x-input-error :messages="$errors->get('bairro')" class="mt-2 text-red-500"/>
         </div>
 
-        <div class="mb-3">
-            <label for="meta_id" class="form-label">Meta</label>
-            <select name="meta_id" id="meta_id" class="form-select">
-                <option value="">Não definido</option>
-                @foreach($metas as $meta)
-                    <option value="{{ $meta->id }}"
-                            @if ($meta->id == $paciente->meta_id) selected @endif>{{ $meta->meta }}</option>
-                @endforeach
+        {{-- Endereço (Rua e Número) --}}
+        <div class="flex flex-col">
+            <x-input-label for="rua_endereco" :value="'Endereço (Rua)'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="rua"
+                name="rua_endereco"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->rua_endereco"
+                required/>
+            <x-input-error :messages="$errors->get('rua_endereco')" class="mt-2 text-red-500"/>
+        </div>
+
+        <div class="flex flex-col">
+            <x-input-label for="numero_endereco" :value="'Número do Endereço'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="numero"
+                name="numero_endereco"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->numero_endereco"
+                required/>
+            <x-input-error :messages="$errors->get('numero_endereco')" class="mt-2 text-red-500"/>
+        </div>
+
+        {{-- Gênero --}}
+        <div class="flex flex-col">
+            <x-input-label for="genero" :value="'Gênero'" class="font-semibold text-gray-700"/>
+            <select
+                id="genero"
+                name="genero"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                required>
+                <option value="">Selecione</option>
+                <option value="M" @if($paciente->genero == 'M') selected @endif>Masculino</option>
+                <option value="F" @if($paciente->genero == 'F') selected @endif>Feminino</option>
+                <option value="O" @if($paciente->genero == 'O') selected @endif>Outro</option>
             </select>
+            <x-input-error :messages="$errors->get('genero')" class="mt-2 text-red-500"/>
         </div>
 
-        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        {{-- Estado Civil --}}
+        <div class="flex flex-col">
+            <x-input-label for="estado_civil" :value="'Estado Civil'" class="font-semibold text-gray-700"/>
+            <select
+                id="estado_civil"
+                name="estado_civil"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                required>
+                <option value="">Selecione</option>
+                <option value="1" @if($paciente->estado_civil == 1) selected @endif>Solteiro(a)</option>
+                <option value="2" @if($paciente->estado_civil == 2) selected @endif>Casado(a)</option>
+                <option value="3" @if($paciente->estado_civil == 3) selected @endif>Divorciado(a)</option>
+                <option value="4" @if($paciente->estado_civil == 4) selected @endif>Viúvo(a)</option>
+            </select>
+            <x-input-error :messages="$errors->get('estado_civil')" class="mt-2 text-red-500"/>
+        </div>
 
+        {{-- Tipo Sanguíneo --}}
+        <div class="flex flex-col">
+            <x-input-label for="tipo_sanguineo" :value="'Tipo Sanguíneo'" class="font-semibold text-gray-700"/>
+            <x-text-input
+                id="tipo_sanguineo"
+                name="tipo_sanguineo"
+                type="text"
+                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                :value="$paciente->tipo_sanguineo"
+                required/>
+            <x-input-error :messages="$errors->get('tipo_sanguineo')" class="mt-2 text-red-500"/>
+        </div>
+
+        {{-- Botão de Salvar --}}
+        <div class="flex justify-end">
+            <button
+                class="px-4 py-2 bg-primary text-white font-bold rounded-md shadow hover:bg-primary-dark transition ease-in-out duration-150">
+                Salvar Alterações
+            </button>
+        </div>
+
+        {{-- Mensagem de sucesso --}}
         @if (session('status') === 'role-info-updated')
-            <p
-                x-data="{ show: true }"
-                x-show="show"
-                x-transition
-                x-init="setTimeout(() => show = false, 2000)"
-                class="mb-3"
-            >Alterações Salvas</p>
+            <div x-data="{ show: true }"
+                 x-show="show"
+                 x-transition
+                 x-init="setTimeout(() => show = false, 2000)"
+                 class="text-green-500 text-sm font-semibold mt-2">
+                Alterações Salvas
+            </div>
         @endif
     </form>
+
+
 </section>

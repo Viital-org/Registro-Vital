@@ -11,18 +11,28 @@ class Paciente extends Model implements PacienteInterface
 {
     use HasFactory;
 
+    protected $primaryKey = 'usuario_id';
+
     protected $fillable = [
         'user_id',
         'nome',
         'email',
         'datanascimento',
         'cep',
+<<<<<<< HEAD
         'endereco',
         'numcartaocred',
         'hobbies',
         'doencascronicas',
         'remediosregulares',
         'meta_id',
+=======
+        'cidade',
+        'estado',
+        'genero',
+        'estado_civil',
+        'tipo_sanguineo',
+>>>>>>> develop
     ];
 
     public function getNome(): string

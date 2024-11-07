@@ -11,26 +11,18 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class EspecializacaoFactory extends Factory
 {
+    protected $model = Especializacao::class;
+
     /**
-     * Define the model's default state.
+     * Define o estado padrão do modelo.
      *
      * @return array<string, mixed>
      */
     public function definition(): array
     {
-        $atuaareas = AtuaArea::all();
-        if ($atuaareas->count() > 0) {
-            $atuaarea = $atuaareas->random();
-            $atuaareaId = $atuaarea->id;
-        } else {
-            $atuaareaId = null;
-        }
-
         return [
-            'especializacao' => $this->faker->jobTitle,
-            'tempoespecializacao' => $this->faker->numberBetween(1, 100),
-            'area_id' => $atuaareaId,
-            'descricao' => $this->faker->text,
+            'descricao_especializacao' => $this->faker->unique()->word(),
+            'area_atuacao_id' => AtuaArea::factory(),
         ];
     }
 }

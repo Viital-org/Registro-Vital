@@ -12,7 +12,11 @@ class TipoAnotacao extends Model
     protected $table = 'tipoanotacoes';
 
     protected $fillable = [
+<<<<<<< HEAD
         'tipo_anotacao',
         'desc_anotacao'
+=======
+        'descricao_tipo',
+>>>>>>> develop
     ];
 }

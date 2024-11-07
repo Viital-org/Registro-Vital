@@ -12,6 +12,10 @@ class MetaSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         Meta::factory(10)->create();
+=======
+        Meta::factory()->count(10)->create();
+>>>>>>> develop
     }
 }

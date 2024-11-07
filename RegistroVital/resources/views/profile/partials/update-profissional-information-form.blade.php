@@ -12,9 +12,11 @@
             <label for="areaatuacao_id" class="form-label">Área de Atuação</label>
             <select name="areaatuacao_id" id="areaatuacao_id" class="form-select">
                 <option value="" @if (is_null($profissional->areaatuacao_id)) selected @endif>Não definido</option>
-                @foreach($atuaareas as $atuaarea)
+                @foreach($areasAtuacao as $atuaarea)
                     <option value="{{ $atuaarea->id }}"
-                            @if ($atuaarea->id === $profissional->areaatuacao_id) selected @endif>{{ $atuaarea->area }}</option>
+                            @if ($atuaarea->id === $profissional->areaatuacao_id) selected @endif>
+                        {{ $atuaarea->descricao_area }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -75,7 +77,7 @@
                         .done(function (data) {
                             $('#especializacao_id').html('<option value="">Não Definido</option>');
                             $.each(data, function (_, especializacao) {
-                                $('#especializacao_id').append(`<option value="${especializacao.id}">${especializacao.especializacao}</option>`);
+                                $('#especializacao_id').append(`<option value="${especializacao.id}">${especializacao.descricao_especializacao}</option>`);
                             });
 
                             if (especializacaoSelecionada) {
@@ -98,4 +100,3 @@
         });
     </script>
 </section>
-

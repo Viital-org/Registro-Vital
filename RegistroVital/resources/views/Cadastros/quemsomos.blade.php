@@ -3,6 +3,13 @@
 @section('titulo', 'Quem Somos')
 
 @section('conteudo')
+<<<<<<< HEAD
+=======
+    <div class="container my-5">
+        <!-- Animação de slogan -->
+        <h4 class="text-center text-muted" style="animation: slogan 5s infinite alternate;"><i>Seu diário pessoal de
+                saúde</i></h4>
+>>>>>>> develop
 
     @csrf
 

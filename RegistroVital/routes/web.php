@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\AnotacoesSaudeController;
 use App\Http\Controllers\AtuaAreasController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\DicasController;
 use App\Http\Controllers\EspecializacoesController;
@@ -10,9 +12,17 @@ use App\Http\Controllers\MetasController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfissionaisController;
-use App\Http\Controllers\TipoAnotacoesController;
+use App\Http\Controllers\RelatoriosController;
 use Illuminate\Support\Facades\Route;
 
+<<<<<<< HEAD
+=======
+require __DIR__ . '/auth.php';
+
+Route::get('/registroprofissional/{especializacao_id}', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'getEspecializacoes']);
+
+Route::post('/redefinirsenha', [\App\Http\Controllers\Auth\PasswordResetLinkController::class, 'enviaEmail'])->name('emailredefinicao');
+>>>>>>> develop
 
 Route::middleware('layout.dinamico')->group(function () {
 
@@ -28,9 +38,91 @@ Route::middleware('layout.dinamico')->group(function () {
         return view('Cadastros/ajuda');
     })->name('ajuda');
 
+<<<<<<< HEAD
 
     //Profissionais
 //Route::resource('/cadastroprofissional', ProfissionaisController::class);
+=======
+});
+
+// Rotas Protegidas por Autenticação
+Route::middleware(['auth', 'layout.dinamico'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/role', [ProfileController::class, 'updateRoleInfo'])->name('profile.updateRoleInfo');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Consultas
+    Route::get('/consultas', [ConsultasController::class, 'index'])->name('consultas.index');
+    Route::patch('/consultas/{id}', [ConsultasController::class, 'update'])->name('consultas.update');
+    Route::get('/consultas/{id}', [ConsultasController::class, 'show'])->name('consultas.show');
+    Route::delete('/consultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas.destroy');
+    Route::get('/consultas/{id}/anotacoes', [ConsultasController::class, 'listAnotacoes'])->name('consultas.anotacoes');
+
+});
+
+// Rotas Específicas para Pacientes
+Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function () {
+    Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
+    Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes.edit');
+    Route::put('/editarpaciente/{id}', [PacientesController::class, 'update'])->name('pacientes-update');
+
+    // Anotações
+    Route::get('/anotacoes', [AnotacoesSaudeController::class, 'index'])->name('anotacoessaude-index');
+    Route::get('/anotacoes/criar', [AnotacoesSaudeController::class, 'create'])->name('anotacoessaude-create');
+    Route::post('/anotacoes', [AnotacoesSaudeController::class, 'store'])->name('anotacoessaude-store');
+    Route::get('/anotacoes/editar/{id}', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
+    Route::put('/anotacoes/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
+    Route::delete('/anotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
+
+    // Agendamentos
+    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
+    Route::get('/agendamentos/create', [AgendamentosController::class, 'create'])->name('agendamentos.create');
+    Route::post('/agendamentos', [AgendamentosController::class, 'store'])->name('agendamentos.store');
+    Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
+    Route::get('/agendamentos/{area_atuacao_id}', [AgendamentosController::class, 'getEspecializacoes']);
+    Route::get('/agendamentosprofissionais/{especializacao_id}', [AgendamentosController::class, 'getProfissional']);
+    Route::get('/enderecosagendamento/{profissional_id}/{especializacao_id}', [AgendamentosController::class, 'getEnderecos']);
+
+    //Dicas
+    Route::resource('/cadastrodicas', DicasController::class);
+    Route::get('/listadicas', [DicasController::class, 'index'])->name('dicas.index');
+    Route::post('/guardardicas', [DicasController::class, 'store'])->name('dicas.store');
+    Route::post('/listadicas', [DicasController::class, 'show'])->name('dicas.show');
+    Route::get('/cadastrodica', [DicasController::class, 'create']);
+    Route::get('/editardica/{id}', [DicasController::class, 'edit'])->name('dicas.edit');
+    Route::put('/editardica/{id}', [DicasController::class, 'update'])->name('dicas.update');
+    Route::delete('/listadicas/{id}', [DicasController::class, 'destroy'])->name('dicas.delete');
+
+    //Metas
+    Route::resource('metas', MetasController::class);
+    Route::put('metas/{meta}/complete', [MetasController::class, 'complete'])->name('metas.complete');
+    Route::put('metas/{meta}/increment', [MetasController::class, 'increment'])->name('metas.increment');
+    Route::put('metas/{meta}/start', [MetasController::class, 'start'])->name('metas.start');
+
+    //Relatorios
+    Route::get('/relatorios_paciente', [RelatoriosController::class, 'relatorios_paciente'])->name('relatorios_paciente');
+});
+
+// Rotas Específicas para Profissionais
+Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function () {
+    Route::get('/profissional/dashboard', [ProfissionaisController::class, 'tela'])->name('profissional.dashboard');
+    Route::get('/cadastrarprof', [ProfissionaisController::class, 'create'])->name('cadastrarprof');
+    Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
+    Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
+
+
+    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
+
+    Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
+    Route::get('/especializacaoprofissional', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'create'])->name('profissional.especializacoes');
+    Route::get('/especializacaoprofissional/{area_atuacao_id}', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'getEspecializacoes']);
+    Route::post('/cadastraespecializacao', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'store'])->name('especializacao-profissional-store');
+    Route::get('/minhasespecializacoes', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'index'])->name('minhasespecializacoes.index');
+    Route::delete('/excluirespecializacao/{id}', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'destroy'])->name('excluirespecializacao.destroy');
+
+    //Route::resource('/cadastroprofissional', ProfissionaisController::class);
+>>>>>>> develop
     Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
 //Route::post('/guardarprofissionais', [ProfissionaisController::class, 'store'])->name('profissionais-store');
 //Route::post('/listaprofissionais', [ProfissionaisController::class, 'show'])->name('profissionais-show');
@@ -39,9 +131,15 @@ Route::middleware('layout.dinamico')->group(function () {
 
 //Pacientes
 //Route::resource('/cadastropacientes', PacientesController::class);
+<<<<<<< HEAD
     Route::get('/listapacientes', [PacientesController::class, 'index'])->name('pacientes-index');
 //Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
 //Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes-show');
+=======
+    Route::get('/listapacientes', [PacientesController::class, 'index'])->name('pacientes.index');
+//Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
+    Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes.show');
+>>>>>>> develop
 //Route::get('/cadastropaci', [PacientesController::class, 'create']);
 //Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
 
@@ -55,7 +153,6 @@ Route::middleware('layout.dinamico')->group(function () {
 //Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
 //Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas-delete');
 
-
 //Areas de atuacao
     Route::resource('/cadastroatuaareas', AtuaAreasController::class);
     Route::get('/listaatuaareas', [AtuaAreasController::class, 'index'])->name('atuaareas-index');
@@ -65,6 +162,7 @@ Route::middleware('layout.dinamico')->group(function () {
     Route::get('/editaratuaarea/{id}', [AtuaAreasController::class, 'edit'])->name('atuaareas-edit');
     Route::put('/editaratuaarea/{id}', [AtuaAreasController::class, 'update'])->name('atuaareas-update');
     Route::delete('/listaatuaareas/{id}', [AtuaAreasController::class, 'destroy'])->name('atuaareas-delete');
+
 //Especializacoes
     Route::resource('/cadastroespecializacoes', EspecializacoesController::class);
     Route::get('/listaespecializacoes', [EspecializacoesController::class, 'index'])->name('especializacoes-index');
@@ -75,6 +173,7 @@ Route::middleware('layout.dinamico')->group(function () {
     Route::put('/editarespecializacao/{id}', [EspecializacoesController::class, 'update'])->name('especializacoes-update');
     Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, 'destroy'])->name('especializacoes-delete');
 
+<<<<<<< HEAD
 //Agendamentos
 //Route::resource('/cadastroagendamentos', AgendamentosController::class);
     Route::get('/listaagendamentos', [AgendamentosController::class, 'index'])->name('agendamentos-index');
@@ -131,10 +230,31 @@ Route::middleware(['auth', 'layout.dinamico'])->group(function () {
     Route::get('/consultas/{id}/anotacoes', [ConsultasController::class, 'listAnotacoes'])->name('consultas.anotacoes');
 
 
+=======
+});
+
+Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function () {
+    Route::get('/administrador/dashboard', [AdministradorController::class, 'tela'])->name('administrador.dashboard');
+    Route::get('/logs/filter', [AdministradorController::class, 'showLogs'])->name('logs.filter');
+    Route::get('/administrador/logs', [AdministradorController::class, 'showLogs'])->name('administrador.logs');
+
+    //cria adm
+    Route::get('/admin/profissionais', [AdministradorController::class, 'listarUsuarios'])->name('administrador.profissionais');
+    Route::put('/admin/profissionais/{id}/transformar', [AdministradorController::class, 'transformarEmAdministrador'])->name('administrador.transformar');
+
+    //Bloquear Usuario
+    Route::put('/administrador/usuario/bloquear/{id}', [RegisteredUserController::class, 'bloquearUsuario'])->name('administrador.bloquear');
+
+
+    //Relatorios
+    Route::get('/relatorios_administrador', [RelatoriosController::class, 'relatorios_administrador'])->name('relatorios_administrador');
+
+>>>>>>> develop
 });
 
 require __DIR__ . '/auth.php';
 
+<<<<<<< HEAD
 Route::middleware(['auth', 'role:paciente', 'layout.dinamico'])->group(function () {
     Route::get('/paciente/dashboard', [PacientesController::class, 'tela'])->name('paciente.dashboard');
     Route::get('/editarpaciente/{id}', [PacientesController::class, 'edit'])->name('pacientes-edit');
@@ -166,3 +286,6 @@ Route::middleware(['auth', 'role:medico', 'layout.dinamico'])->group(function ()
     Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
 
 });
+=======
+
+>>>>>>> develop

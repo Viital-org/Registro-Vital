@@ -21,25 +21,21 @@ class ConsultasController extends Controller
 
         if ($user->role === 'paciente') {
             $consultas = Consulta::where('paciente_id', $user->paciente->id)
-                ->where('status', '!=', 'cancelada')
+                ->where('situacao', '!=', 'cancelada')
                 ->where('data', '>=', $today)
                 ->paginate(5);
         } elseif ($user->role === 'medico') {
             $consultas = Consulta::where('profissional_id', $user->profissional->id)
-                ->where('status', '!=', 'cancelada')
+                ->where('situacao', '!=', 'cancelada')
                 ->where('data', '>=', $today)
                 ->paginate(5);
         } else {
-            $consultas = collect();
+            $consultas = Consulta::whereRaw('1=0')->paginate(5);;
         }
 
         Consulta::where('data', '<', $today)
-            ->where('status', 'agendado')
-            ->update(['status' => 'cancelada']);
-
-        Consulta::where('data', '<', $today)
-            ->where('status', 'confirmada')
-            ->update(['status' => 'realizada']);
+            ->where('situacao', 1)
+            ->update(['situacao' => 2]);
 
         return view('consultas.listaconsultas', compact('consultas'));
     }
@@ -54,7 +50,7 @@ class ConsultasController extends Controller
 
         if ($user->role === 'paciente' && $user->paciente->id === $consulta->paciente_id) {
             $consulta->update($request->validate([
-                'status' => 'required|in:agendado,confirmada,cancelada',
+                'situacao' => 'required|in:confirmado(a),cancelado(a)',
             ]));
 
             return redirect()->route('consultas.index', $consulta->id)->with('success', 'Status atualizado com sucesso!');
@@ -70,7 +66,7 @@ class ConsultasController extends Controller
     {
         $validated = $request->validate([
             'data' => 'required|date|after_or_equal:today',
-            'status' => 'required|string|max:255',
+            'situacao' => 'required|string|max:255',
             'profissional_id' => 'required|exists:profissionais,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'valor' => 'required|numeric',

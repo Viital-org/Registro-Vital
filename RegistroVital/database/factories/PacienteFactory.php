@@ -4,7 +4,11 @@ namespace Database\Factories;
 
 use App\Models\Meta;
 use App\Models\Paciente;
+<<<<<<< HEAD
 use App\Models\User;
+=======
+use App\Models\Usuario;
+>>>>>>> develop
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -28,6 +32,7 @@ class PacienteFactory extends Factory
             $metaId = null;
         }
         return [
+<<<<<<< HEAD
             'user_id' => $user->id,
             'nome' => $user->name,
             'email' => $user->email,
@@ -39,6 +44,23 @@ class PacienteFactory extends Factory
             'doencascronicas' => $this->faker->word,
             'remediosregulares' => $this->faker->word,
             'meta_id' => $metaId,
+=======
+            'usuario_id' => null,
+            'cpf' => $this->faker->unique()->numerify('###########'),
+            'rg' => $this->faker->unique()->numerify('###########'),
+            'data_nascimento' => $this->faker->date(),
+            'bairro'=>$this->faker->streetName(),
+            'rua_endereco' => $this->faker->streetName(),
+            'numero_endereco' => $this->faker->numberBetween(1, 100),
+            'cep' => $this->faker->numerify('########'),
+            'cidade' => $this->faker->city(),
+            'estado' => $this->faker->stateAbbr(),
+            'genero' => $this->faker->randomElement(['M', 'F']),
+            'estado_civil' => $this->faker->numberBetween(1, 5),
+            'tipo_sanguineo' => $this->faker->randomElement(['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']),
+            'created_at'=> now(),
+            'updated_at'=> now(),
+>>>>>>> develop
         ];
     }
 }

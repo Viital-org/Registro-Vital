@@ -14,10 +14,11 @@ class PacientesController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::leftJoin('metas', 'pacientes.meta_id', '=', 'metas.id')
-            ->select('pacientes.*', 'metas.meta')
-            ->orderBy('pacientes.created_at')
-            ->simplePaginate(5);;
+        // Obter todos os pacientes com as metas associadas
+        $pacientes = Paciente::with('usuario')
+            ->orderBy('created_at')
+            ->simplePaginate(5);
+
         return view('Cadastros/listapacientes', ['pacientes' => $pacientes]);
     }
 
@@ -26,22 +27,30 @@ class PacientesController extends Controller
      */
     public function store(Request $request)
     {
+        // Validação dos dados do paciente
         $validated = $request->validate([
+<<<<<<< HEAD
             'datanascimento' => 'required|date',
+=======
+            'cpf' => 'required|string|max:14|unique:pacientes',
+            'rg' => 'nullable|string|max:12',
+            'data_nascimento' => 'required|date',
+            'rua_endereco' => 'required|string|max:255',
+            'numero_endereco' => 'required|string|max:10',
+>>>>>>> develop
             'cep' => 'required|string|max:9',
-            'endereco' => 'required|string|max:255',
-            'numcartaocred' => 'nullable|string|max:16',
-            'hobbies' => 'nullable|string|max:255',
-            'doencascronicas' => 'nullable|string|max:255',
-            'remediosregulares' => 'nullable|string|max:255',
+            'cidade' => 'required|string|max:50',
+            'estado' => 'required|string|max:2',
+            'genero' => 'required|string|max:10',
+            'estado_civil' => 'nullable|string|max:15',
+            'tipo_sanguineo' => 'nullable|string|max:3',
             'meta_id' => 'nullable|exists:metas,id',
-
         ]);
 
-        $validated['user_id'] = Auth::id();
-        $validated['nome'] = Auth::user()->name;
-        $validated['email'] = Auth::user()->email;
+        // Associar o usuário autenticado como o proprietário do paciente
+        $validated['usuario_id'] = Auth::id();
 
+        // Criar o paciente
         Paciente::create($validated);
 
         return redirect()->route('paciente.dashboard')->with('success', 'Paciente cadastrado com sucesso!');
@@ -52,63 +61,68 @@ class PacientesController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
+        // Obter metas para o formulário
         $metas = Meta::all();
 
         return view('Cadastros/cadastropacientes', [
+<<<<<<< HEAD
             'user' => $user,
             'metas' => $metas
+=======
+            'metas' => $metas,
+>>>>>>> develop
         ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Request $request)
+    public function show(Request $request, $id)
     {
-        $id = $request->input('id');
-
-        if ($id === null) {
-            $pacientes = Paciente::all();
-        } else {
-            $pacientes = Paciente::where('id', '=', $id)->get();
-        }
-
-        return view('Cadastros/listapacientes', ['pacientes' => $pacientes]);
+        $paciente = Paciente::with('usuario')->findOrFail($id);
+        return view('Cadastros/showpaciente', ['paciente' => $paciente]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit($id)
     {
-        $user = Auth::user();
-        $paciente = Paciente::where('user_id', $user->id)->firstOrFail();
+        $paciente = Paciente::with('usuario')->findOrFail($id);
+        $metas = Meta::all();
 
-        return view('pacientes.edit', [
-            'pacientes' => $paciente,
+        return view('Cadastros/editpaciente', [
+            'paciente' => $paciente,
+            'metas' => $metas,
         ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $user = Auth::user();
-        $paciente = Paciente::where('user_id', $user->id)->firstOrFail();
+        $paciente = Paciente::findOrFail($id);
 
+        // Validação dos dados do paciente
         $validated = $request->validate([
-            'datanascimento' => 'required|date',
+            'cpf' => 'required|string|max:14|unique:pacientes,cpf,' . $paciente->id,
+            'rg' => 'nullable|string|max:12',
+            'data_nascimento' => 'required|date',
+            'rua_endereco' => 'required|string|max:255',
+            'numero_endereco' => 'required|string|max:10',
             'cep' => 'required|string|max:9',
-            'endereco' => 'required|string|max:255',
-            'numcartaocred' => 'nullable|string|max:16',
-            'hobbies' => 'nullable|string|max:255',
-            'doencascronicas' => 'nullable|string|max:255',
-            'remediosregulares' => 'nullable|string|max:255',
+            'cidade' => 'required|string|max:50',
+            'estado' => 'required|string|max:2',
+            'genero' => 'required|string|max:10',
+            'estado_civil' => 'nullable|string|max:15',
+            'tipo_sanguineo' => 'nullable|string|max:3',
             'meta_id' => 'nullable|exists:metas,id',
         ]);
 
+        // Atualizar os dados do paciente
         $paciente->update($validated);
 
-        return redirect()->route('paciente.dashboard')->with('success', 'Dados atualizados com sucesso!');
+
+        return redirect()->route('paciente.dashboard')->with('success', 'Dados do paciente atualizados com sucesso!');
+
     }
 
     /**
@@ -125,5 +139,5 @@ class PacientesController extends Controller
     {
         return view('profile.paciente-dashboard');
     }
-}
 
+}

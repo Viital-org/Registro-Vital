@@ -15,8 +15,13 @@ class Anotacaosaude extends Model
         'paciente_id',
         'anotacao',
         'data_anotacao',
+<<<<<<< HEAD
         'tipo_anot',
         'visibilidade',
+=======
+        'tipo_anotacao',
+        'tipo_visibilidade',
+>>>>>>> develop
     ];
 
     public function paciente()

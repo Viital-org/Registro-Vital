@@ -43,5 +43,10 @@ test('Testa se ao apagar o primeiro registro, ele some.', function () {
     $item = Meta::first();
     $item->delete();
 
+<<<<<<< HEAD
     expect($item['id'])->not->toBe('1');
+=======
+    $item = Meta::find($id);
+    expect($item)->toBeNull();
+>>>>>>> develop
 });

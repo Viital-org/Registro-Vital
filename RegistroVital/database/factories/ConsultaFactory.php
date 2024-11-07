@@ -36,7 +36,6 @@ class ConsultaFactory extends Factory
             'status' => $this->faker->randomElement(['agendado', 'confirmada', 'realizada', 'cancelada']),
             'profissional_id' => $profissionalId,
             'paciente_id' => $pacienteId,
-            'valor' => $this->faker->randomFloat(100, 7080),
         ];
     }
 }

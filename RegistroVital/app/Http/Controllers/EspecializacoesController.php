@@ -13,13 +13,12 @@ class EspecializacoesController extends Controller
      */
     public function index()
     {
-        $especializacoes = Especializacao::leftJoin('atuaareas', 'especializacoes.area_id', '=', 'atuaareas.id')
-            ->select('especializacoes.*', 'atuaareas.area')
-            ->orderBy('especializacoes.created_at')
+        $especializacoes = Especializacao::with('areaAtuacao')
+            ->orderBy('created_at')
             ->simplePaginate(5);
-        return view('Cadastros/listaespecializacoes', ['especializacoes' => $especializacoes]);
-    }
 
+        return view('Cadastros/listaespecializacoes', compact('especializacoes'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,8 +34,8 @@ class EspecializacoesController extends Controller
      */
     public function create()
     {
-        $atuaareas = AtuaArea::all();
-        return view('Cadastros/cadastroespecializacoes', ['atuaareas' => $atuaareas]);
+        $areasAtuacao = AtuaArea::all();
+        return view('Cadastros/cadastroespecializacoes', compact('areasAtuacao'));
     }
 
     /**
@@ -45,23 +44,13 @@ class EspecializacoesController extends Controller
     public function show(Request $request)
     {
         $id = $request->input('search_id');
+        $especializacoes = Especializacao::with('areaAtuacao')
+            ->when($id, fn($query) => $query->where('id', $id))
+            ->orderBy('created_at')
+            ->paginate(5);
 
-        if ($id === null) {
-            $especializacoes = Especializacao::leftJoin('atuaareas', 'especializacoes.area_id', '=', 'atuaareas.id')
-                ->select('especializacoes.*', 'atuaareas.area')
-                ->orderBy('especializacoes.created_at')
-                ->paginate(5);
-        } else {
-            $especializacoes = Especializacao::leftJoin('atuaareas', 'especializacoes.area_id', '=', 'atuaareas.id')
-                ->where('especializacoes.id', '=', $id)
-                ->select('especializacoes.*', 'atuaareas.area')
-                ->orderBy('especializacoes.created_at')
-                ->paginate(5);
-        }
-
-        return view('Cadastros.listaespecializacoes', ['especializacoes' => $especializacoes]);
+        return view('Cadastros.listaespecializacoes', compact('especializacoes'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -69,8 +58,8 @@ class EspecializacoesController extends Controller
     public function edit($id)
     {
         $especializacao = Especializacao::find($id);
-        $atuaareas = AtuaArea::all();
-        return view('Cadastros/editarespecializacao', ['especializacoes' => $especializacao, 'atuaareas' => $atuaareas]);
+        $areasAtuacao = AtuaArea::all();
+        return view('Cadastros/editarespecializacao', compact('especializacao', 'areasAtuacao'));
     }
 
     /**
@@ -78,14 +67,14 @@ class EspecializacoesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $especializacao = Especializacao::findorfail($id);
+        $especializacao = Especializacao::findOrFail($id);
         $especializacao->update($request->all());
         return redirect()->route('especializacoes-index');
     }
 
     public function getByArea($areaId)
     {
-        $especializacoes = Especializacao::where('area_id', $areaId)->get();
+        $especializacoes = Especializacao::where('area_atuacao_id', $areaId)->get();
         return response()->json($especializacoes);
     }
 
@@ -94,8 +83,8 @@ class EspecializacoesController extends Controller
      */
     public function destroy($id)
     {
-        $especializacao = Especializacao::findorfail($id);
+        $especializacao = Especializacao::findOrFail($id);
         $especializacao->delete();
-        return redirect()->route('especializacoes-index');
+        return redirect()->route('especializacoes-index')->with('success', 'Especialização excluída com sucesso.');
     }
 }

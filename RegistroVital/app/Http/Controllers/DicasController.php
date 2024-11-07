@@ -13,8 +13,8 @@ class DicasController extends Controller
      */
     public function index()
     {
-        $dicas = Dica::join('pacientes', 'dicas.paciente_id', '=', 'pacientes.id')
-            ->select('dicas.*', 'pacientes.nome as nome_paciente')
+        $dicas = Dica::join('tipos_usuarios', 'dicas.tipo_usuario', '=', 'tipos_usuarios.id')
+            ->select('dicas.*', 'tipos_usuarios.id')
             ->orderBy('dicas.created_at')
             ->simplePaginate(5);
         return view('Cadastros/listadicas', ['dicas' => $dicas]);
@@ -47,14 +47,14 @@ class DicasController extends Controller
 
 
         if ($id === null) {
-            $dicas = Dica::join('pacientes', 'dicas.paciente_id', '=', 'pacientes.id')
-                ->select('dicas.*', 'pacientes.nome as nome_paciente')
+            $dicas = Dica::join('tipos_usuarios', 'dicas.tipo_usuario', '=', 'tipos_usuarios.id')
+                ->select('dicas.*', 'tipos_usuarios.id')
                 ->orderBy('dicas.created_at')
                 ->paginate(5);
         } else {
-            $dicas = Dica::join('pacientes', 'dicas.paciente_id', '=', 'pacientes.id')
+            $dicas = Dica::join('usuarios', 'dicas.tipo_usuario', '=', 'usuarios.id')
                 ->where('dicas.id', '=', $id)
-                ->select('dicas.*', 'pacientes.nome as nome_paciente')
+                ->select('dicas.*', 'usuarios.nome as nome_usuario')
                 ->orderBy('dicas.created_at')
                 ->paginate(5);
         }

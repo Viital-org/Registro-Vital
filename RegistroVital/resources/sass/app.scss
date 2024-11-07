@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 
+<<<<<<< HEAD
 .container-fluid {
     min-height: 100vh; /* Garante que o contêiner ocupe pelo menos a altura total da viewport */
     max-height: 100%;
@@ -49,6 +50,146 @@
     margin-top: 70px;
     border-radius: 10px;
     position: fixed;
+=======
+// Cor Principal
+$primaria-admin: #000000;
+$primaria-medico: #006adb;
+$primaria-paciente: #A0D3E8;
+$secundaria: #A0D3E8;
+$cinza-escuro: #c1c1c1;
+$cinza-claro: #f0efef;
+$cinza: #edebeb;
+$verde: #6CCB3A;
+$branco: #FFFFFF;
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.perfil {
+    text-align: center;
+}
+
+.dropdown-menu {
+    appearance: none;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    transition: background-color .8s;
+    width: 100%;
+    padding: 100%;
+    font-weight: 500;
+    text-align: center;
+}
+
+.nav-link:hover {
+    background-color: $branco;
+    color: $primaria-admin;
+}
+
+.userImg {
+    width: 30px;
+}
+
+.marca {
+    margin-top: 4%;
+}
+
+.titulo {
+    color: $branco;
+    text-decoration: none;
+}
+
+.logo {
+    max-height: 2.5rem;
+    max-width: 2.5rem;
+}
+
+.links {
+    font-weight: 400;
+}
+
+.userImg {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.user {
+    list-style-type: none;
+    width: 100%;
+    padding: none;
+}
+
+// Container Principal
+// .container-fluid {
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     vertical-align: middle;
+// }
+
+.navbar {
+    background-color: $primaria-paciente;
+
+    .navbar-brand {
+        margin-left: 1rem;
+        font-size: 20pt;
+        font-weight: bold;
+    }
+
+    .navbar-collapse {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-link {
+        font-size: 12pt;
+        margin: 0 30px;
+        color: white;
+
+        &:hover {
+            color: $primaria-admin;
+        }
+    }
+}
+
+// Sidebar
+.sidebar-admin {
+    width: 18%;
+    height: 100%;
+    background-color: $primaria-admin;
+    position: fixed;
+    transition: transform .5s ease;
+    transform: translateX(-90%);
+    z-index: 1;
+}
+
+.sidebar-paciente {
+    width: 18%;
+    height: 100%;
+    background-color: $primaria-paciente;
+    position: fixed;
+    transition: transform .5s ease;
+    transform: translateX(-90%);
+    z-index: 1;
+}
+
+.sidebar-profissional {
+    width: 18%;
+    height: 100%;
+    background-color: $primaria-medico;
+    position: fixed;
+    transition: transform .5s ease;
+    transform: translateX(-90%);
+    z-index: 1;
+}
+
+.sidebar-admin:hover, .sidebar-paciente:hover, .sidebar-profissional:hover {
+    transform: translateX(0%);
+>>>>>>> develop
 }
 
 .sidebar .nav-link {
@@ -61,6 +202,7 @@
 
 /* Conteúdo principal */
 .main-content {
+<<<<<<< HEAD
     margin-left: 25%;
     padding-top: 5%;
     color: #333333; /* Cor de texto */
@@ -89,10 +231,58 @@
     border-radius: 15px;
     padding: 5px;
     font-family: sans-serif;
+=======
+    color: #333333;
+    font-size: 12pt;
+    display: flex;
+    flex-direction: column;
+    transition: transform .5s ease;
+    // transform: translateX(9%);
+    height: 100%;
+    vertical-align: middle;
+}
+
+.main-content:hover {
+    // transform:translateX(0%)
+}
+
+.dica {
+    border-width: 2px;
+    border-style: solid;
+    border-color: $cinza-escuro;
+    background-color: $cinza-claro;
+    border-radius: .5rem;
+    margin-bottom: 2rem;
+}
+
+.separador {
+    border-width: 1px;
+    background-color: $cinza-escuro;
+}
+
+// Botões
+.btn-primary {
+    background-color: $primaria-admin;
+    border-color: $primaria-admin;
+
+    &:hover {
+        background-color: darken($primaria-admin, 10%);
+        border-color: darken($primaria-admin, 10%);
+    }
+}
+
+// Conteúdo em Destaque
+.fundo-branco-texto {
+    background-color: rgba(240, 255, 255, 0.678);
+    border-radius: 15px;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+>>>>>>> develop
     text-align: justify;
     line-height: 2;
 }
 
+<<<<<<< HEAD
 @keyframes plano-fundo {
     0% {
         background-position-x: 0%;
@@ -121,4 +311,57 @@
     100% {
         color: rgba(31, 19, 39, 0.863);
     }
+=======
+.graficoUsuarios {
+    max-width: 40rem    ;
+    max-height: 20rem;
+    display: flex;
+}
+
+.anotacoes, .agendamentos {
+    background-color: $cinza-claro;
+    height: 20rem;
+    max-height: 23rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $cinza-escuro;
+    border-radius: .5rem;
+}
+
+.anotacoes {
+    margin-right: 2rem;
+}
+
+.infos-paciente {
+    margin: 1rem;
+}
+
+.header {
+    margin: 1rem;
+}
+
+.btn-login {
+    width: 20rem;
+    background-color: $primaria-paciente;
+    border: none;
+    border-radius: .5rem;
+    height: 3rem;
+}
+
+.btn-registro {
+    width: 20rem;
+    background-color: $cinza-escuro;
+    border: none;
+    border-radius: .5rem;
+    height: 3rem;
+}
+
+// Rodapé
+footer {
+    margin-top: auto;
+    background-color: darken(#c2ced3, 5%);
+    padding: 15px;
+    text-align: center;
+    color: $primaria-admin;
+>>>>>>> develop
 }

@@ -13,7 +13,7 @@ class AtuaAreasController extends Controller
     public function index()
     {
         $atuaareas = AtuaArea::with('especializacoes')->simplePaginate(5);
-        return view('Cadastros/listaatuaareas', compact('atuaareas'), ['atuaareas' => $atuaareas]);
+        return view('Cadastros/listaatuaareas', compact('atuaareas'));
     }
 
     /**
@@ -21,7 +21,10 @@ class AtuaAreasController extends Controller
      */
     public function store(Request $request)
     {
-        AtuaArea::create($request->all());
+        AtuaArea::create($request->validate([
+            'descricao_area' => 'required|string|max:20',
+        ]));
+
         return redirect()->route('atuaareas-index');
     }
 
@@ -46,7 +49,7 @@ class AtuaAreasController extends Controller
             $atuaareas = AtuaArea::where('id', $id)->paginate(5);
         }
 
-        return view('Cadastros.listaatuaareas', compact('atuaareas'));
+        return view('Cadastros/listaatuaareas', compact('atuaareas'));
     }
 
     /**
@@ -63,8 +66,12 @@ class AtuaAreasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $atuaarea = AtuaArea::findorfail($id);
-        $atuaarea->update($request->all());
+        $atuaarea = AtuaArea::findOrFail($id);
+
+        $atuaarea->update($request->validate([
+            'descricao_area' => 'required|string|max:20',
+        ]));
+
         return redirect()->route('atuaareas-index');
     }
 
@@ -73,9 +80,9 @@ class AtuaAreasController extends Controller
      */
     public function destroy($id)
     {
-        $atuaarea = AtuaArea::findorfail($id);
+        $atuaarea = AtuaArea::findOrFail($id);
         $atuaarea->delete();
-        return redirect()->route('atuaareas-index')->with('success', 'Área de atuação excluída com sucesso.');
 
+        return redirect()->route('atuaareas-index')->with('success', 'Área de atuação excluída com sucesso.');
     }
 }

@@ -13,15 +13,21 @@ class Especializacao extends Model
     protected $table = 'especializacoes';
 
     protected $fillable = [
-        'especializacao',
-        'tempoespecializacao',
-        'descricao',
-        'area_id',
+        'descricao_especializacao',
+        'area_atuacao_id',
     ];
+
+
 
     public function area()
     {
-        return $this->belongsTo(AtuaArea::class, 'area_id');
+        return $this->belongsTo(AtuaArea::class, 'area_atuacao_id');
     }
+
+    public function profissionais()
+    {
+        return $this->hasMany(Profissional::class, 'especializacao', 'id');
+    }
+
 }
 

@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AtuaAreaFactory extends Factory
 {
+    protected $model = AtuaArea::class;
+
     /**
      * Define the model's default state.
      *
@@ -18,8 +20,13 @@ class AtuaAreaFactory extends Factory
     public function definition(): array
     {
         return [
+<<<<<<< HEAD
             'area' => $this->faker->jobTitle(),
             'descricao' => $this->faker->text(),
+=======
+            'descricao_area' => $this->faker->unique()->word(),
+>>>>>>> develop
         ];
     }
 }
+

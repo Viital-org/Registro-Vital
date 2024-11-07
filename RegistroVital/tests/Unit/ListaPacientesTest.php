@@ -20,7 +20,7 @@ test('Testa se os pacientes estão sendo listados', function () {
 });
 
 test('Testa se o usuario esta sendo redirecionado para a pagina', function () {
-    $response = $this->get(route('pacientes-show'));
+    $response = $this->get(route('pacientes.show'));
 
     $response->assertStatus(200);
 });
