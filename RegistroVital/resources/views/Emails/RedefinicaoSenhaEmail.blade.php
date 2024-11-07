@@ -2,7 +2,7 @@
 
 <p>Sua senha foi redefinida com sucesso! Abaixo está sua nova senha temporária: </p>
 
-<p>Nova Senha: <strong>{{$dados['novaSenha']}}</strong> </p>
+<p>Nova Senha: <strong>{{$dados['novaSenha']}}</strong></p>
 
 <p>Recomendamos que você faça login e altere sua senha para algo mais pessoal e seguro assim que possível.</p>
 

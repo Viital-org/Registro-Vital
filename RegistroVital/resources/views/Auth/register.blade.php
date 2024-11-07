@@ -32,7 +32,7 @@
                         </div>
 
                         <!-- Nome -->
-                        <div class="mb-3 campopaciente campoprofissional" >
+                        <div class="mb-3 campopaciente campoprofissional">
                             <label for="nome_completo" class="form-label">Nome Completo</label>
                             <input type="text" name="nome_completo" id="nome_completo" aria-describedby="nameHelp"
                                    class="form-control @error('name') is-invalid @enderror"
@@ -97,7 +97,7 @@
                         </div>
 
                         <!-- ÁREA DE ATUAÇÃO - PROFISSIONAL -->
-                        <div class="mb-3 campoprofissional" >
+                        <div class="mb-3 campoprofissional">
                             <label for="area_atuacao_id" class="form-label">Área de Atuação</label>
                             <select name="area_atuacao_id" id="area_atuacao_id" class="form-select">
                                 <option value="">Selecione a Área de Atuação</option>
@@ -116,7 +116,7 @@
                         </div>
 
                         <!-- DATA NASCIMENTO - PACIENTE -->
-                        <div class="mb-3 campopaciente" >
+                        <div class="mb-3 campopaciente">
                             <label for="data_nascimento" class="form-label">Data de nascimento</label>
                             <input type="date" name="data_nascimento" id="data_Nascimento"
                                    class="form-control @error('data_nascimento') is-invalid @enderror"
@@ -177,7 +177,8 @@
                         <!-- CEP -->
                         <div class="mb-3 campopaciente campoprofissional">
                             <label for="CEP" class="form-label">CEP</label>
-                            <input type="text" name="cep" id="cep" class="form-control" onblur="pesquisacep(this.value);">
+                            <input type="text" name="cep" id="cep" class="form-control"
+                                   onblur="pesquisacep(this.value);">
                         </div>
 
                         <!-- ESTADO -->
@@ -244,18 +245,22 @@
                         </div>
 
 
-
                         <!-- Checkbox para aceitação dos termos de uso -->
                         <div class="mb-3">
-                            <input type="checkbox" id="aceito_termos" />
+                            <input type="checkbox" id="aceito_termos"/>
                             <label for="aceito_termos" class="form-label">
-                                Aceito os <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: blue; text-decoration: underline; cursor: pointer;">Termos de uso</a>
+                                Aceito os <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                             style="color: blue; text-decoration: underline; cursor: pointer;">Termos de
+                                    uso</a>
                             </label>
                         </div>
 
                         <!-- Botão de Registro -->
                         <div class="d-grid gap-2">
-                            <button type="submit" id="btnRegistrar" class="btn btn-primary btn-lg w-100 campopaciente campoprofissional" disabled>Registrar</button>
+                            <button type="submit" id="btnRegistrar"
+                                    class="btn btn-primary btn-lg w-100 campopaciente campoprofissional" disabled>
+                                Registrar
+                            </button>
                         </div>
 
                     </form>
@@ -264,7 +269,8 @@
                     <p class="text-center mt-3">Já tem uma conta? <a href="{{ route('login') }}">Faça login aqui</a></p>
 
                     <!-- Link para redefinição de senha -->
-                    <p class="text-center mt-3">Esqueceu sua senha? <a href="{{ route('password.request') }}">Redefinir</a></p>
+                    <p class="text-center mt-3">Esqueceu sua senha? <a
+                            href="{{ route('password.request') }}">Redefinir</a></p>
                 </div>
             </div>
         </div>
@@ -285,7 +291,7 @@
 
     <!-- Script para esconder e mostrar campos -->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             let cnpj = document.getElementById('cnpj');
             let registro_profissional = document.getElementById('registro_profissional');
             let area_atuacao = document.getElementById('area_atuacao_id');
@@ -309,7 +315,7 @@
                     registro_profissional.setAttribute('required', 'required');
                     area_atuacao.setAttribute('required', 'required');
                     especializacao.setAttribute('required', 'required');
-                } else{
+                } else {
                     $('.campopaciente').hide();
                     $('.campoprofissional').hide();
                 }
@@ -319,7 +325,7 @@
             toggleFields($('#tipo_usuario').val());
 
             // Executa quando o valor do select mudar
-            $('#tipo_usuario').on('change', function() {
+            $('#tipo_usuario').on('change', function () {
                 toggleFields($(this).val());
             });
         });
@@ -327,20 +333,20 @@
 
     <!-- BUSCA A ESPECIALIZAÇÃO CONFORME A ÁREA DE ATUAÇÃO SELECIONADA **ALELUIA** -->
     <script>
-        $(document).ready(function() {
-            $('#area_atuacao_id').on('change', function() {
+        $(document).ready(function () {
+            $('#area_atuacao_id').on('change', function () {
                 var areaAtuacaoId = $(this).val();
                 $('#especializacao_id').html('<option value="">Selecione a Especialização</option>');
                 if (areaAtuacaoId) {
                     $.ajax({
                         url: '/registroprofissional/' + areaAtuacaoId, // A rota correta
                         type: 'GET',
-                        success: function(response) {
-                            response.forEach(function(especializacao) {
+                        success: function (response) {
+                            response.forEach(function (especializacao) {
                                 $('#especializacao_id').append('<option value="' + especializacao.id + '">' + especializacao.descricao_especializacao + '</option>');
                             });
                         },
-                        error: function(jqXHR, textStatus, errorThrown) {
+                        error: function (jqXHR, textStatus, errorThrown) {
                             console.error('Erro na requisição:', textStatus, errorThrown);
                             console.log('Resposta:', jqXHR.responseText); // Para ver o que está sendo retornado em caso de erro
                         }
@@ -354,9 +360,9 @@
     <!-- SCRIPT PARA LIBERAR O BOTÃO DE REGISTRO SÓ QUANDO ACEITAR OS TERMOS DE USO -->
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Habilitar/desabilitar o botão de registro com base na checkbox
-            $('#aceito_termos').on('change', function() {
+            $('#aceito_termos').on('change', function () {
                 $('#btnRegistrar').prop('disabled', !this.checked);
             });
         });
@@ -365,7 +371,8 @@
 
 
     <!-- Modal para termos de uso -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">

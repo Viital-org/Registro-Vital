@@ -29,7 +29,7 @@
                     <li class="nav-item">
                         @if (auth()->check())
                             <a class="nav-link"
-                            href="{{ auth()->usuario()->tipo_usuario === '1' ? route('paciente.dashboard') : route('profissional.dashboard') }}">
+                               href="{{ auth()->usuario()->tipo_usuario === '1' ? route('paciente.dashboard') : route('profissional.dashboard') }}">
                                 Home
                             </a>
                         @endif
@@ -45,7 +45,6 @@
         </div>
     </nav>
 </header>
-
 
 
 <!-- Conteúdo da página -->

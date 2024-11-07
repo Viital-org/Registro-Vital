@@ -17,8 +17,6 @@ class Especializacao extends Model
         'area_atuacao_id',
     ];
 
-
-
     public function area()
     {
         return $this->belongsTo(AtuaArea::class, 'area_atuacao_id');
@@ -26,7 +24,7 @@ class Especializacao extends Model
 
     public function profissionais()
     {
-        return $this->hasMany(Profissional::class, 'especializacao', 'id');
+        return $this->belongsToMany(Profissional::class, 'especializacoes_profissionais', 'especializacao_id', 'profissional_id');
     }
 
 }

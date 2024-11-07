@@ -70,8 +70,10 @@
                         <!-- Botões -->
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
-                            <a class="btn btn-link text-center" href="{{ route('password.request') }}">Esqueci minha senha</a>
-                            <a class="btn btn-link text-center" href="{{ route('register') }}">Ainda não tem uma conta? Cadastre-se</a>
+                            <a class="btn btn-link text-center" href="{{ route('password.request') }}">Esqueci minha
+                                senha</a>
+                            <a class="btn btn-link text-center" href="{{ route('register') }}">Ainda não tem uma conta?
+                                Cadastre-se</a>
                         </div>
                     </form>
                 </div>

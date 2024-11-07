@@ -7,7 +7,9 @@ use App\Http\Controllers\AtuaAreasController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\DicasController;
+use App\Http\Controllers\EspecializacaoProfissionalController;
 use App\Http\Controllers\EspecializacoesController;
+use App\Http\Controllers\HorarioAtendimentoController;
 use App\Http\Controllers\MetasController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfileController;
@@ -67,15 +69,6 @@ Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function
     Route::put('/anotacoes/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
     Route::delete('/anotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
 
-    // Agendamentos
-    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
-    Route::get('/agendamentos/create', [AgendamentosController::class, 'create'])->name('agendamentos.create');
-    Route::post('/agendamentos', [AgendamentosController::class, 'store'])->name('agendamentos.store');
-    Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
-    Route::get('/agendamentos/{area_atuacao_id}', [AgendamentosController::class, 'getEspecializacoes']);
-    Route::get('/agendamentosprofissionais/{especializacao_id}', [AgendamentosController::class, 'getProfissional']);
-    Route::get('/enderecosagendamento/{profissional_id}/{especializacao_id}', [AgendamentosController::class, 'getEnderecos']);
-
     //Dicas
     Route::resource('/cadastrodicas', DicasController::class);
     Route::get('/listadicas', [DicasController::class, 'index'])->name('dicas.index');
@@ -104,14 +97,20 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
     Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
 
 
-    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
-
     Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
-    Route::get('/especializacaoprofissional', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'create'])->name('profissional.especializacoes');
-    Route::get('/especializacaoprofissional/{area_atuacao_id}', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'getEspecializacoes']);
-    Route::post('/cadastraespecializacao', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'store'])->name('especializacao-profissional-store');
-    Route::get('/minhasespecializacoes', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'index'])->name('minhasespecializacoes.index');
-    Route::delete('/excluirespecializacao/{id}', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'destroy'])->name('excluirespecializacao.destroy');
+    Route::get('/especializacaoprofissional', [EspecializacaoProfissionalController::class, 'create'])->name('profissional.especializacoes');
+    Route::get('/especializacaoprofissional/{area_atuacao_id}', [EspecializacaoProfissionalController::class, 'getEspecializacoes']);
+    Route::post('/cadastraespecializacao', [EspecializacaoProfissionalController::class, 'store'])->name('especializacao-profissional-store');
+    Route::get('/minhasespecializacoes', [EspecializacaoProfissionalController::class, 'index'])->name('minhasespecializacoes.index');
+    Route::delete('/excluirespecializacao/{id}', [EspecializacaoProfissionalController::class, 'destroy'])->name('excluirespecializacao.destroy');
+
+    //Horarios
+    Route::get('/profissional/horarios/cadastrar/{id}', [HorarioAtendimentoController::class, 'create'])->name('horarios.cadastrar');
+    Route::post('/profissional/horarios/store', [HorarioAtendimentoController::class, 'store'])->name('horarios.store');
+    Route::get('/especializacoes/{id}/horarios', [HorarioAtendimentoController::class, 'listar'])->name('horarios.listar');
+    Route::get('/profissional/horarios/{id}', [HorarioAtendimentoController::class, 'edit'])->name('horarios.edit');
+    Route::put('/profissional/horarios/{id}', [HorarioAtendimentoController::class, 'update'])->name('horarios.update');
+    Route::delete('/profissional/horarios/{id}', [HorarioAtendimentoController::class, 'destroy'])->name('horarios.destroy');
 
     //Route::resource('/cadastroprofissional', ProfissionaisController::class);
     Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
@@ -128,15 +127,6 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
 //Route::get('/cadastropaci', [PacientesController::class, 'create']);
 //Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
 
-//Consultas
-//Route::resource('/cadastroconsultas', ConsultasController::class);
-    Route::get('/listaconsultas', [ConsultasController::class, 'index'])->name('consultas-index');
-//Route::post('/guardarconsultas', [ConsultasController::class, 'store'])->name('consultas-store');
-//Route::post('/listaconsultas', [ConsultasController::class, 'show'])->name('consultas-show');
-//Route::get('/cadastroconsul', [ConsultasController::class, 'create']);
-//Route::get('/editarconsulta/{id}', [ConsultasController::class, 'edit'])->name('consultas-edit');
-//Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
-//Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas-delete');
 
 //Areas de atuacao
     Route::resource('/cadastroatuaareas', AtuaAreasController::class);
@@ -157,6 +147,35 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
     Route::get('/editarespecializacao/{id}', [EspecializacoesController::class, 'edit'])->name('especializacoes-edit');
     Route::put('/editarespecializacao/{id}', [EspecializacoesController::class, 'update'])->name('especializacoes-update');
     Route::delete('/listaespecializacoes/{id}', [EspecializacoesController::class, 'destroy'])->name('especializacoes-delete');
+
+});
+
+Route::middleware(['auth', 'tipo_usuario:1,2', 'layout.dinamico'])->group(function () {
+    //Consultas
+    Route::resource('/cadastroconsultas', ConsultasController::class);
+    Route::get('/listaconsultas', [ConsultasController::class, 'index'])->name('consultas-index');
+    Route::post('/guardarconsultas', [ConsultasController::class, 'store'])->name('consultas-store');
+    Route::post('/listaconsultas', [ConsultasController::class, 'show'])->name('consultas-show');
+    Route::get('/cadastroconsul', [ConsultasController::class, 'create']);
+    Route::get('/editarconsulta/{id}', [ConsultasController::class, 'edit'])->name('consultas-edit');
+    Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
+    Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas-delete');
+
+    // Agendamentos
+    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
+    Route::get('/agendamentos/create', [AgendamentosController::class, 'create'])->name('agendamentos.create');
+    Route::post('/agendamentos', [AgendamentosController::class, 'store'])->name('agendamentos.store');
+    Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
+    Route::get('/agendamentos/especializacoes/{areaAtuacaoId}', [AgendamentosController::class, 'getEspecializacoes']);;
+    Route::get('/agendamentos/profissionais/{areaAtuacaoId}/{especializacaoId}', [AgendamentosController::class, 'getProfissionaisPorEspecializacao']);
+    Route::get('/agendamentos/endereco/{profissionalId}/{areaAtuacaoId}/{especializacaoId}', [AgendamentosController::class, 'getEnderecoPorProfissional']);
+    Route::get('/dias-atendimento/{profissionalId}/{especializacaoId}/{areaAtuacaoId}', [AgendamentosController::class, 'getDiasdaSemana']);
+    Route::get('/especializacao-profissional/{profissionalId}/{especializacaoId}/{areaAtuacaoId}', [AgendamentosController::class, 'getEspecializacaoProfissionalId']);
+    Route::get('/horarios-disponiveis', [AgendamentosController::class, 'getHorariosDisponiveis']);
+
+
+
+
 
 });
 

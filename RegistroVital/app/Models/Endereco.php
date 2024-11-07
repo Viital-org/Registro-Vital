@@ -25,11 +25,12 @@ class Endereco extends Model
 
     public function usuario()
     {
-        return $this->hasMany(Usuario::class,'id_usuario');
+        return $this->hasMany(Usuario::class, 'id_usuario');
     }
 
-    public function especializacoesprofissionais() {
-        return $this->hasMany(EspecializacaoProfissional::class, 'id');
+    public function especializacoesProfissionais()
+    {
+        return $this->hasMany(EspecializacaoProfissional::class, 'endereco_atuacao_id');
     }
 
 }

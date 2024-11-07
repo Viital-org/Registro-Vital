@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -63,6 +62,7 @@ class Meta extends Model
         $this->save();
         return "Meta concluída ou prazo expirado";
     }
+
     public function incrementarSequencia()
     {
         $this->sequencia_atual++;

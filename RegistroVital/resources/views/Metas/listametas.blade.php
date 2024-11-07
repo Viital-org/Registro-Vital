@@ -14,7 +14,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $meta->titulo_meta }}</h5>
                     <p class="card-text">{{ $meta->descricao_meta }}</p>
-                    <p><strong>Progresso Atual:</strong> {{ $meta->progresso_atual }} / {{ $meta->quantidade_alvo }} {{ $meta->unidade_metrica }}</p>
+                    <p><strong>Progresso Atual:</strong> {{ $meta->progresso_atual }}
+                        / {{ $meta->quantidade_alvo }} {{ $meta->unidade_metrica }}</p>
                     <p><strong>Sequência Atual:</strong> {{ $meta->sequencia_atual }}</p>
                     <p><strong>Maior Sequência:</strong> {{ $meta->maior_sequencia }}</p>
 
@@ -40,7 +41,9 @@
                         <form action="{{ route('metas.destroy', $meta->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir esta meta?');">Excluir</button>
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Deseja realmente excluir esta meta?');">Excluir
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -56,7 +59,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $meta->titulo_meta }}</h5>
                     <p class="card-text">{{ $meta->descricao_meta }}</p>
-                    <p><strong>Progresso Atual:</strong> {{ $meta->progresso_atual }} / {{ $meta->quantidade_alvo }} {{ $meta->unidade_metrica }}</p>
+                    <p><strong>Progresso Atual:</strong> {{ $meta->progresso_atual }}
+                        / {{ $meta->quantidade_alvo }} {{ $meta->unidade_metrica }}</p>
                     <p><strong>Sequência Atual:</strong> {{ $meta->sequencia_atual }}</p>
                     <p><strong>Maior Sequência:</strong> {{ $meta->maior_sequencia }}</p>
 
@@ -93,7 +97,9 @@
                         <form action="{{ route('metas.destroy', $meta->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir esta meta?');">Excluir</button>
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Deseja realmente excluir esta meta?');">Excluir
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -109,14 +115,17 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $meta->titulo_meta }}</h5>
                     <p class="card-text">{{ $meta->descricao_meta }}</p>
-                    <p><strong>Meta concluída em:</strong> {{ $meta->data_fim ?? 'Data de conclusão não registrada' }}</p>
+                    <p><strong>Meta concluída em:</strong> {{ $meta->data_fim ?? 'Data de conclusão não registrada' }}
+                    </p>
 
                     <div class="d-flex justify-content-between">
                         <a href="{{ route('metas.show', $meta->id) }}" class="btn btn-primary">Ver Detalhes</a>
                         <form action="{{ route('metas.destroy', $meta->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir esta meta?');">Excluir</button>
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Deseja realmente excluir esta meta?');">Excluir
+                            </button>
                         </form>
                     </div>
                 </div>

@@ -30,12 +30,6 @@ class MetasController extends Controller
         return view('metas.listametas', compact('metasPendentes', 'metasIniciadas', 'metasConcluidas'));
     }
 
-    public function create()
-    {
-        $tiposMetas = TipoMeta::all();
-        return view('metas.cadastrometas', compact('tiposMetas'));
-    }
-
     public function store(Request $request)
     {
         $validatedData = $this->validateMeta($request);
@@ -53,6 +47,25 @@ class MetasController extends Controller
         return redirect()->route('metas.index')->with('success', 'Meta criada com sucesso!');
     }
 
+    private function validateMeta(Request $request)
+    {
+        return $request->validate([
+            'titulo_meta' => 'required|string|max:20',
+            'descricao_meta' => 'nullable|string|max:80',
+            'tipo_meta_id' => 'required|exists:tipo_metas,id',
+            'data_inicio' => 'required|date|after_or_equal:today',
+            'data_fim' => 'nullable|date|after:data_inicio',
+            'unidade_metrica' => 'required|string|max:20',
+            'quantidade_alvo' => 'required|integer|min:1',
+        ]);
+    }
+
+    public function create()
+    {
+        $tiposMetas = TipoMeta::all();
+        return view('metas.cadastrometas', compact('tiposMetas'));
+    }
+
     public function show(Meta $meta)
     {
         $periodo = [
@@ -65,6 +78,7 @@ class MetasController extends Controller
 
         return view('metas.visualizarmeta', compact('meta', 'periodo', 'maiorSequencia', 'tipoMeta'));
     }
+
     public function edit(Meta $meta)
     {
         $tiposMetas = TipoMeta::all();
@@ -89,6 +103,7 @@ class MetasController extends Controller
         $meta->delete();
         return redirect()->route('metas.index')->with('success', 'Meta excluída com sucesso!');
     }
+
     public function start($id)
     {
         $meta = Meta::findOrFail($id);
@@ -101,6 +116,7 @@ class MetasController extends Controller
 
         return redirect()->route('metas.index')->with('success', 'Meta iniciada com sucesso!');
     }
+
     public function complete(Meta $meta)
     {
         if ($meta->situacao != 2) {
@@ -111,6 +127,7 @@ class MetasController extends Controller
 
         return redirect()->route('metas.index')->with('error', 'A meta já está concluída.');
     }
+
     public function increment(Meta $meta)
     {
         if ($meta->progresso_atual < $meta->quantidade_alvo) {
@@ -120,18 +137,5 @@ class MetasController extends Controller
         }
 
         return redirect()->route('metas.index')->with('error', 'Não é possível incrementar o progresso, meta já atingida.');
-    }
-
-    private function validateMeta(Request $request)
-    {
-        return $request->validate([
-            'titulo_meta' => 'required|string|max:20',
-            'descricao_meta' => 'nullable|string|max:80',
-            'tipo_meta_id' => 'required|exists:tipo_metas,id',
-            'data_inicio' => 'required|date|after_or_equal:today',
-            'data_fim' => 'nullable|date|after:data_inicio',
-            'unidade_metrica' => 'required|string|max:20',
-            'quantidade_alvo' => 'required|integer|min:1',
-        ]);
     }
 }

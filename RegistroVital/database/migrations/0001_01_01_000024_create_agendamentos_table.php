@@ -19,9 +19,10 @@ return new class extends Migration {
             $table->foreignId('area_atuacao_id')->constrained('areas_atuacao')->onDelete('cascade');
             $table->string('especializacao_id', 30)->nullable();
             $table->date('data_agendamento');
+            $table->time('hora_agendamento');
             $table->integer('situacao_paciente');
             $table->integer('situacao_profissional');
-            $table->integer('endereco_consulta_id')->constrained('enderecos');
+            $table->foreignId('endereco_consulta_id')->constrained('enderecos');
             $table->float('valor_atendimento');
             $table->timestamps();
             $table->softDeletes();

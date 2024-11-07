@@ -15,12 +15,12 @@ return new class extends Migration {
             $table->foreignId('usuario_id')->constrained('usuarios');
             $table->integer('situacao_endereco');
             $table->string('cep', 8);
-            $table->string('rua',50);
-            $table->string('complemento',60);
-            $table->string('bairro',50);
-            $table->string('cidade',50);
-            $table->string('uf',2);
-            $table->string('numero_endereco',10);
+            $table->string('rua', 50);
+            $table->string('complemento', 60);
+            $table->string('bairro', 50);
+            $table->string('cidade', 50);
+            $table->string('uf', 2);
+            $table->string('numero_endereco', 10);
             $table->timestamps();
             $table->softDeletes();
         });

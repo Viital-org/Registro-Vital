@@ -56,7 +56,7 @@
     </div>
 
     <script>
-        document.getElementById('indefinido').addEventListener('change', function() {
+        document.getElementById('indefinido').addEventListener('change', function () {
             const dataFimInput = document.getElementById('data_fim');
             if (this.checked) {
                 dataFimInput.value = '';
@@ -66,7 +66,7 @@
             }
         });
 
-        document.getElementById('data_inicio').addEventListener('change', function() {
+        document.getElementById('data_inicio').addEventListener('change', function () {
             const dataInicio = new Date(this.value);
             const dataFimInput = document.getElementById('data_fim');
             const maxDate = new Date(dataInicio);

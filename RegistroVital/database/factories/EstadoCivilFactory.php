@@ -17,7 +17,7 @@ class EstadoCivilFactory extends Factory
     public function definition(): array
     {
         return [
-            'descricao'=>([
+            'descricao' => ([
                 'solteiro(a)',
                 'casado(a)',
                 'divorciado(a)',
@@ -25,8 +25,8 @@ class EstadoCivilFactory extends Factory
                 'união estável',
 
             ]),
-            'created_at'=> now(),
-            'updated_at'=> now(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

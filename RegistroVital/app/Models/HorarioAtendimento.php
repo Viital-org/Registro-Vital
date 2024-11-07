@@ -9,8 +9,7 @@ class HorarioAtendimento extends Model
     protected $table = 'horarios_atendimento';
 
     protected $fillable = [
-        'profissional_id',
-        'especializacao_id',
+        'especializacao_profissional_id',
         'dia_semana',
         'inicio_atendimento',
         'fim_atendimento',
@@ -19,4 +18,9 @@ class HorarioAtendimento extends Model
         'fim_pausa',
     ];
 
+    // Relacionamento com EspecializacaoProfissional
+    public function especializacaoProfissional()
+    {
+        return $this->belongsTo(EspecializacaoProfissional::class, 'especializacao_profissional_id');
+    }
 }

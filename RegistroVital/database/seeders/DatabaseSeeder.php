@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\EstadoCivil;
-use App\Models\TipoRecomendacao;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

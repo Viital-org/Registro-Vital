@@ -16,7 +16,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
-use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
@@ -27,7 +26,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'nome_completo' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:40', 'unique:' . Usuario::class],
-            'cpf'=>['required','string','size:11', 'unique:'. Paciente::class],
+            'cpf' => ['required', 'string', 'size:11', 'unique:' . Paciente::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'tipo_usuario' => ['required', 'integer', 'in:1,2,3'],
         ]);
@@ -49,27 +48,27 @@ class RegisteredUserController extends Controller
                 Paciente::create([
                     'usuario_id' => $user->id,
                     'cpf' => $request->cpf,
-                    'data_nascimento'=> $request->data_nascimento,
-                    'estado_civil'=> $request->estado_civil,
-                    'genero'=>$request->genero,
-                    'bairro'=>$request->bairro,
-                    'rua_endereco'=>$request->rua,
-                    'numero_endereco'=>$request->numero,
-                    'cep'=>$request->cep,
-                    'cidade'=>$request->cidade,
-                    'estado'=>$request->estado,
+                    'data_nascimento' => $request->data_nascimento,
+                    'estado_civil' => $request->estado_civil,
+                    'genero' => $request->genero,
+                    'bairro' => $request->bairro,
+                    'rua_endereco' => $request->rua,
+                    'numero_endereco' => $request->numero,
+                    'cep' => $request->cep,
+                    'cidade' => $request->cidade,
+                    'estado' => $request->estado,
                 ]);
                 break;
             case 2: // Profissional
                 Profissional::create([
                     'usuario_id' => $user->id,
-                    'genero'=>$request->genero,
+                    'genero' => $request->genero,
                     'cpf' => $request->cpf,
-                    'cnpj'=>$request->cnpj,
-                    'registro_profissional'=>$request->registro_profissional,
-                    'tempo_experiencia'=>$request->tempo_experiencia,
-                    'area_atuacao_id'=>$request->area_atuacao_id,
-                    'especializacao_id'=>$request->especializacao_id
+                    'cnpj' => $request->cnpj,
+                    'registro_profissional' => $request->registro_profissional,
+                    'tempo_experiencia' => $request->tempo_experiencia,
+                    'area_atuacao_id' => $request->area_atuacao_id,
+                    'especializacao_id' => $request->especializacao_id
                 ]);
                 break;
             case 3: // Administrador
@@ -78,15 +77,15 @@ class RegisteredUserController extends Controller
         }
 
         Endereco::create([
-            'usuario_id'=> $user->id,
-            'situacao_endereco'=> '1',
-            'cep'=> $request->cep,
-            'rua'=> $request->rua,
-            'complemento'=> $request->complemento,
-            'bairro'=> $request->bairro,
-            'cidade'=>$request->cidade,
-            'uf'=>$request->uf,
-            'numero_endereco'=>$request->numero,
+            'usuario_id' => $user->id,
+            'situacao_endereco' => '1',
+            'cep' => $request->cep,
+            'rua' => $request->rua,
+            'complemento' => $request->complemento,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'uf' => $request->uf,
+            'numero_endereco' => $request->numero,
         ]);
 
         // Autentica o usuário após o registro
@@ -115,6 +114,7 @@ class RegisteredUserController extends Controller
         return response()->json($especializacoes);
 
     }
+
     public function bloquearUsuario($id)
     {
         $usuario = Usuario::findOrFail($id);
