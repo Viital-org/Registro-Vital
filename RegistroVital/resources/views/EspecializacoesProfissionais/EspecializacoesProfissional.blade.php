@@ -4,7 +4,9 @@
 
 @section('conteudo')
 
-    <form action="{{ route('especializacao-profissional-store') }}" method="POST">
+<div class="form-especializacao-profissional">
+    <h1>Cadastrar especialização</h1>
+<form action="{{ route('especializacao-profissional-store') }}" method="POST">
         @csrf
 
         <div class="mb-3">
@@ -269,4 +271,6 @@
         });
     </script>
 
+</div>
+    
 @endsection
