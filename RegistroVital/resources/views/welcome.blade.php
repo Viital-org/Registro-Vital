@@ -6,7 +6,7 @@
 
     <div class="container-fluid">
         <div class="main">
-            <h1 class="text-center mb-4">Bem-vindo ao RegistroVital</h1>
+            <h1 class="text-center mb-4">Bem-vindo ao Registro Vital</h1>
 
             @if (session('error'))
                 <div id="error-message" class="alert alert-danger text-center">
@@ -15,7 +15,7 @@
             @endif
 
             @if (Route::has('login'))
-                <nav class="mb-4 d-flex justify-content-center">
+                <nav>
                     @auth
                         @php
                             switch (Auth::user()->tipo_usuario) {
@@ -35,13 +35,14 @@
                         @endphp
                         <a href="{{ $dashboardUrl }}" class="btn btn-success mx-2">Ir para o Painel</a>
                     @else
-                        <button onclick="window.location.href='{{ route('login') }}'" class="btn btn-primary mx-2">
+                        <button onclick="window.location.href='{{ route('login') }}'" 
+                                class="btn-login">
                             Login
                         </button>
 
                         @if (Route::has('register'))
                             <button onclick="window.location.href='{{ route('register') }}'"
-                                    class="btn btn-secondary mx-2">
+                                    class="btn-registro">
                                 Registro
                             </button>
                         @endif

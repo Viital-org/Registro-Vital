@@ -219,6 +219,22 @@ body {
     margin: 1rem;
 }
 
+.btn-login {
+    width: 20rem;
+    background-color: $primaria-paciente;
+    border: none;
+    border-radius: .5rem;
+    height: 3rem;
+}
+
+.btn-registro {
+    width: 20rem;
+    background-color: $cinza-escuro;
+    border: none;
+    border-radius: .5rem;
+    height: 3rem;
+}
+
 // Rodapé
 footer {
     margin-top: auto;
