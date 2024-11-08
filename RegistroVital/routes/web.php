@@ -172,6 +172,8 @@ Route::middleware(['auth', 'tipo_usuario:1,2', 'layout.dinamico'])->group(functi
     Route::get('/dias-atendimento/{profissionalId}/{especializacaoId}/{areaAtuacaoId}', [AgendamentosController::class, 'getDiasdaSemana']);
     Route::get('/especializacao-profissional/{profissionalId}/{especializacaoId}/{areaAtuacaoId}', [AgendamentosController::class, 'getEspecializacaoProfissionalId']);
     Route::get('/horarios-disponiveis', [AgendamentosController::class, 'getHorariosDisponiveis']);
+    Route::get('/valor-atendimento/{profissionalId}/{areaAtuacaoId}/{especializacaoId}/{enderecoId}', [AgendamentosController::class, 'getValorAtendimento']);
+
 
 
 

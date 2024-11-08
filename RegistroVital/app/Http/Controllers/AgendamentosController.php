@@ -19,62 +19,83 @@ class AgendamentosController extends Controller
     {
         $user = Auth::user();
         $today = date('Y-m-d');
+
         if ($user->tipo_usuario === 1) {
+            // Paciente
             $agendamentos = Agendamento::where('paciente_id', $user->id)
-                ->with('profissionais', 'especializacoes', 'endereco')
+                ->with('profissional', 'especializacao', 'endereco')
                 ->paginate(5);
         } elseif ($user->tipo_usuario === 2) {
+            // Profissional
             $agendamentos = Agendamento::where('profissional_id', $user->id)
-                ->with('paciente', 'especializacoes', 'endereco')
+                ->with('paciente', 'especializacao', 'endereco')
                 ->paginate(5);
         } else {
+            // Administrador ou outro tipo de usuário
             $agendamentos = collect();
         }
+
         return view('agendamentos.listaagendamentos', compact('agendamentos'));
     }
 
     public function store(Request $request)
     {
-        $valor_atendimento = EspecializacaoProfissional::getValorAtendimento($request['profissional_id'], $request['especializacao_id']);
-
+        // Validar os dados do formulário
         $validated = $request->validate([
-            'especializacao_id' => 'required|exists:especializacoes,id',
             'area_atuacao_id' => 'required|exists:areas_atuacao,id',
+            'especializacao_id' => 'required|exists:especializacoes,id',
             'profissional_id' => 'required|exists:profissionais,usuario_id',
             'data_agendamento' => 'required|date|after_or_equal:today',
-            'hora_agendamento' => 'required|date_format:H:i',
-            'endereco_id' => 'required',
+            'horario_agendamento' => 'required|date_format:H:i:s',
+            'endereco_atuacao_id' => 'required|exists:enderecos,id',
+            'valor_atendimento' => 'required|string', // Valor esperado como string (ex: "R$ 100")
         ]);
 
+        // Extrair o valor numérico de 'valor_atendimento' (caso inclua "R$")
+        $validated['valor_atendimento'] = (float) str_replace(['R$', ' '], '', $validated['valor_atendimento']);
+
+        // Atribuir o ID do paciente
         $validated['paciente_id'] = Auth::user()->id;
-        $validated['valor_atendimento'] = $valor_atendimento;
         $validated['situacao_paciente'] = 1;
         $validated['situacao_profissional'] = 3;
-        $validated['endereco_consulta_id'] = $validated['endereco_id'];
+        $validated['endereco_consulta_id'] = $validated['endereco_atuacao_id'];
 
-        // Verificar se já existe um agendamento para o mesmo profissional, especialização e horário
+        // Verificar se já existe um agendamento para o mesmo profissional, especialização, data e horário
         $exists = Agendamento::where('profissional_id', $validated['profissional_id'])
             ->where('especializacao_id', $validated['especializacao_id'])
             ->where('data_agendamento', $validated['data_agendamento'])
-            ->where('hora_agendamento', $validated['hora_agendamento'])
+            ->where('hora_agendamento', $validated['horario_agendamento'])
             ->exists();
 
         if ($exists) {
             return back()->withErrors(['horario' => 'O profissional já possui um agendamento neste horário.']);
         }
 
-        // Criação do Agendamento e da Consulta
-        $agendamento = Agendamento::create($validated);
+        // Criar o agendamento
+        $agendamento = Agendamento::create([
+            'paciente_id' => $validated['paciente_id'],
+            'profissional_id' => $validated['profissional_id'],
+            'area_atuacao_id' => $validated['area_atuacao_id'],
+            'especializacao_id' => $validated['especializacao_id'],
+            'data_agendamento' => $validated['data_agendamento'],
+            'hora_agendamento' => $validated['horario_agendamento'],
+            'situacao_paciente' => $validated['situacao_paciente'],
+            'situacao_profissional' => $validated['situacao_profissional'],
+            'endereco_consulta_id' => $validated['endereco_consulta_id'],
+            'valor_atendimento' => $validated['valor_atendimento'],
+        ]);
 
-        $consulta = Consulta::create([
+        // Criar a consulta associada ao agendamento
+        Consulta::create([
             'agendamento_id' => $agendamento->id,
-            'situacao' => '3',
+            'situacao' => 3,
             'profissional_id' => $validated['profissional_id'],
             'paciente_id' => $validated['paciente_id'],
         ]);
 
         return redirect()->route('agendamentos.index')->with('success', 'Agendamento criado com sucesso!');
     }
+
 
     public function create()
     {
@@ -240,22 +261,18 @@ class AgendamentosController extends Controller
 
         return response()->json(['message' => 'Endereço não encontrado'], 404);
     }
-    public function getValorConsulta($profissionalId, $areaAtuacaoId, $especializacaoId)
+    public function getValorAtendimento($profissionalId, $areaAtuacaoId, $especializacaoId, $enderecoId)
     {
-        // Busca o registro relacionado ao profissional, especialização e área de atuação
         $especializacaoProfissional = EspecializacaoProfissional::where('profissional_id', $profissionalId)
             ->where('area_atuacao_id', $areaAtuacaoId)
             ->where('especializacao_id', $especializacaoId)
-            ->first(); // Não precisa de 'with' aqui para o valor_atendimento
+            ->where('endereco_atuacao_id', $enderecoId)
+            ->first();
 
         if ($especializacaoProfissional) {
-            // Retorna o valor formatado com 2 casas decimais
-            return response()->json([
-                'valor_atendimento' => number_format($especializacaoProfissional->valor_atendimento, 2, ',', '.')
-            ]);
+            return response()->json(['valor_atendimento' => $especializacaoProfissional->valor_atendimento]);
         }
 
-        // Se não encontrar o valor, retorna erro 404
-        return response()->json(['valor_atendimento' => null], 404);
+        return response()->json(['valor_atendimento' => null]);
     }
 }

@@ -56,6 +56,12 @@
                 </select>
             </div>
 
+            <!-- Campo Valor do Atendimento -->
+            <div class="mb-3">
+                <label for="valor_atendimento" class="form-label">Valor do Atendimento</label>
+                <input type="text" name="valor_atendimento" id="valor_atendimento" class="form-control" readonly>
+            </div>
+
             <button type="submit" class="btn btn-primary">Agendar</button>
         </form>
     </div>
@@ -70,6 +76,7 @@
             const especializacaoSelect = document.getElementById('especializacao_id');
             const profissionalSelect = document.getElementById('profissional_id');
             const enderecoSelect = document.getElementById('endereco_atuacao_id');
+            const valorAtendimentoInput = document.getElementById('valor_atendimento');
 
             // Evento de mudança na área de atuação
             areaAtuacaoSelect.addEventListener('change', function () {
@@ -85,6 +92,12 @@
             profissionalSelect.addEventListener('change', function () {
                 fetchEndereco(profissionalSelect.value, areaAtuacaoSelect.value, especializacaoSelect.value);
                 setupFlatpickr(profissionalSelect.value, especializacaoSelect.value, areaAtuacaoSelect.value);
+                fetchValorAtendimento(profissionalSelect.value, areaAtuacaoSelect.value, especializacaoSelect.value, enderecoSelect.value);
+            });
+
+            // Evento de mudança no endereço
+            enderecoSelect.addEventListener('change', function () {
+                fetchValorAtendimento(profissionalSelect.value, areaAtuacaoSelect.value, especializacaoSelect.value, enderecoSelect.value);
             });
 
             function fetchEspecializacoes(areaAtuacaoId) {
@@ -117,13 +130,14 @@
                             data.forEach(profissional => {
                                 const option = document.createElement('option');
                                 option.value = profissional.usuario_id;
-                                option.textContent = `${profissional.nome_completo}`
+                                option.textContent = `${profissional.nome_completo}`;
                                 profissionalSelect.appendChild(option);
                             });
                         })
                         .catch(error => console.error('Erro ao buscar profissionais:', error));
                 }
             }
+
             function fetchEndereco(profissionalId, areaAtuacaoId, especializacaoId) {
                 if (profissionalId && areaAtuacaoId && especializacaoId) {
                     fetch(`/agendamentos/endereco/${profissionalId}/${areaAtuacaoId}/${especializacaoId}`)
@@ -131,6 +145,7 @@
                         .then(data => {
                             if (data.endereco_atuacao_id) {
                                 enderecoSelect.innerHTML = `<option value="${data.endereco_atuacao_id}">${data.endereco}</option>`;
+                                fetchValorAtendimento(profissionalId, areaAtuacaoId, especializacaoId, data.endereco_atuacao_id);
                             } else {
                                 enderecoSelect.innerHTML = '<option value="">Endereço não encontrado</option>';
                             }
@@ -141,87 +156,44 @@
 
             let flatpickrInstance = null; // Variável para armazenar a instância do flatpickr
 
-// Função para configurar o Flatpickr
             function setupFlatpickr(profissionalId, especializacaoId, areaAtuacaoId) {
-                // Resetar o campo de data e limpar qualquer data selecionada
                 document.getElementById("data_agendamento").value = '';
 
-                // Se uma instância do flatpickr já existe, destrua-a antes de criar uma nova
                 if (flatpickrInstance) {
                     flatpickrInstance.destroy();
                 }
 
-                // Fazer o fetch dos dias de atendimento e configurar o flatpickr
                 fetch(`/dias-atendimento/${profissionalId}/${especializacaoId}/${areaAtuacaoId}`)
                     .then(response => response.json())
                     .then(diasPermitidos => {
-                        // Mapeando os dias de semana em português para os valores corretos do Flatpickr (0 - Domingo, 6 - Sábado)
                         const diasSemanaMap = {
-                            'sunday': 0,
-                            'monday': 1,
-                            'tuesday': 2,
-                            'wednesday': 3,
-                            'thursday': 4,
-                            'friday': 5,
-                            'saturday': 6
+                            'sunday': 0, 'monday': 1, 'tuesday': 2, 'wednesday': 3, 'thursday': 4, 'friday': 5, 'saturday': 6
                         };
-
-                        // Convertendo os diasPermitidos de português para os índices corretos do Flatpickr
                         const diasPermitidosIndices = diasPermitidos.map(dia => diasSemanaMap[dia.toLowerCase()]);
 
-                        // Inicializando o flatpickr
                         flatpickrInstance = flatpickr("#data_agendamento", {
                             dateFormat: "Y-m-d",
                             minDate: "today",
                             disable: [
-                                function(date) {
-                                    // Desabilita os dias da semana que não estão na lista dos diasPermitidosIndices
+                                function (date) {
                                     return !diasPermitidosIndices.includes(date.getDay());
                                 }
                             ],
-                            locale: {
-                                firstDayOfWeek: 1 // Define a segunda-feira como o primeiro dia da semana
-                            }
+                            locale: { firstDayOfWeek: 1 }
                         });
                     })
                     .catch(error => console.error('Erro ao carregar dias de atendimento:', error));
             }
 
-// Função para adicionar o listener de alteração nos campos de seleção
-            function addChangeListeners() {
-                const areaAtuacao = document.getElementById('area_atuacao'); // Id do campo de área de atuação
-                const especializacao = document.getElementById('especializacao'); // Id do campo de especialização
-                const profissional = document.getElementById('profissional'); // Id do campo de profissional
-
-                // Adicionando listeners para os campos de seleção
-                areaAtuacao.addEventListener('change', () => resetData());
-                especializacao.addEventListener('change', () => resetData());
-                profissional.addEventListener('change', () => resetData());
-            }
-
-// Função para resetar a data e atualizar o Flatpickr
-            function resetData() {
-                // Resetar o campo de data e garantir que mostre o placeholder
-                document.getElementById("data_agendamento").value = '';
-
-                // Reconfigurar o flatpickr com os valores atuais dos campos de seleção
-                const profissionalId = document.getElementById('profissional').value;
-                const especializacaoId = document.getElementById('especializacao').value;
-                const areaAtuacaoId = document.getElementById('area_atuacao').value;
-
-                setupFlatpickr(profissionalId, especializacaoId, areaAtuacaoId);
-            }
-
-// Chamar a função addChangeListeners assim que a página for carregada ou quando o DOM estiver pronto
-            document.addEventListener('DOMContentLoaded', () => {
-                addChangeListeners();  // Adiciona os listeners para os campos de seleção
-            });
-
-            function fetchEspecializacaoProfissionalId(profissionalId, especializacaoId, areaAtuacaoId) {
-                return fetch(`/especializacao-profissional/${profissionalId}/${especializacaoId}/${areaAtuacaoId}`)
-                    .then(response => response.json())
-                    .then(data => data.especializacao_profissional_id)
-                    .catch(error => console.error('Erro ao buscar o ID da especialização profissional:', error));
+            async function fetchEspecializacaoProfissionalId(profissionalId, especializacaoId, areaAtuacaoId) {
+                try {
+                    const response = await fetch(`/especializacao-profissional/${profissionalId}/${especializacaoId}/${areaAtuacaoId}`);
+                    const data = await response.json();
+                    return data.especializacao_profissional_id;
+                } catch (error) {
+                    console.error('Erro ao buscar o ID da especialização profissional:', error);
+                    return null;
+                }
             }
 
             document.getElementById('data_agendamento').addEventListener('change', async function () {
@@ -233,29 +205,55 @@
                 const especializacaoId = especializacaoSelect.value;
                 const areaAtuacaoId = areaAtuacaoSelect.value;
 
-                // Obter especializacao_profissional_id antes de buscar horários
                 const especializacaoProfissionalId = await fetchEspecializacaoProfissionalId(profissionalId, especializacaoId, areaAtuacaoId);
 
                 if (especializacaoProfissionalId) {
-                    // Cria a URL com todos os parâmetros necessários
                     const url = `/horarios-disponiveis?dia_semana=${diaSemana}&especializacao_profissional_id=${especializacaoProfissionalId}`;
-
                     fetch(url)
                         .then(response => response.json())
                         .then(data => {
                             const horarioSelect = document.getElementById('horario_agendamento');
                             horarioSelect.innerHTML = '<option value="">Escolha o horário</option>';
-
-                            // Preenche o select com os horários disponíveis
                             data.forEach(horario => {
                                 const option = document.createElement('option');
-                                option.value = horario.id;
-                                option.textContent = `${horario.inicio_atendimento}`;  // Exibe somente o horário de início
+                                option.value = `${horario.inicio_atendimento}`;
+                                option.textContent = `${horario.inicio_atendimento}`;
                                 horarioSelect.appendChild(option);
                             });
                         })
-                        .catch(error => console.error('Erro ao carregar horários:', error));
+                        .catch(error => console.error('Erro ao buscar horários disponíveis:', error));
+                } else {
+                    console.error('Especialização profissional não encontrada.');
                 }
+            });
+
+            function fetchValorAtendimento(profissionalId, areaAtuacaoId, especializacaoId, enderecoId) {
+                if (profissionalId && areaAtuacaoId && especializacaoId && enderecoId) {
+                    fetch(`/valor-atendimento/${profissionalId}/${areaAtuacaoId}/${especializacaoId}/${enderecoId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.valor_atendimento !== null) {
+                                valorAtendimentoInput.value =  `R$ ${data.valor_atendimento}`;
+                            } else {
+                                valorAtendimentoInput.value = 'Valor não encontrado';
+                            }
+                        })
+                        .catch(error => console.error('Erro ao buscar valor de atendimento:', error));
+                } else {
+                    valorAtendimentoInput.value = '';
+                }
+            }
+
+            // Adicionando os eventos 'change' para cada seleção relevante
+            [profissionalSelect, areaSelect, especializacaoSelect, enderecoSelect].forEach(select => {
+                select.addEventListener('change', () => {
+                    const profissionalId = profissionalSelect.value;
+                    const areaAtuacaoId = areaSelect.value;
+                    const especializacaoId = especializacaoSelect.value;
+                    const enderecoId = enderecoSelect.value;
+
+                    fetchValorAtendimento(profissionalId, areaAtuacaoId, especializacaoId, enderecoId);
+                });
             });
         });
     </script>

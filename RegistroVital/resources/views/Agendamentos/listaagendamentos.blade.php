@@ -20,19 +20,37 @@
             @foreach($agendamentos as $agendamento)
                 <tr>
                     <td>{{ $agendamento->id }}</td>
-                    <td>{{ $agendamento->especializacao->descricao_especializacao ? $agendamento->especializacao->descricao_especializacao : 'Especialização não encontrada' }}</td>
-                    @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario === 1)
-                        <td>{{ $agendamento->profissional->usuario->nome_completo }}</td>
-                    @elseif(\Illuminate\Support\Facades\Auth::user()->tipo_usuario === 2)
-                        <td>{{ $agendamento->paciente->usuario->nome_completo }}</td>
+
+                    {{-- Exibe a especialização ou uma mensagem se não existir --}}
+                    <td>{{ $agendamento->especializacao->descricao_especializacao ?? 'Especialização não encontrada' }}</td>
+
+                    {{-- Exibe o nome do profissional ou do paciente conforme o tipo de usuário --}}
+                    @if(Auth::user()->tipo_usuario === 1)
+                        <td>{{ $agendamento->profissional->usuario->nome_completo ?? 'Profissional não encontrado' }}</td>
+                    @elseif(Auth::user()->tipo_usuario === 2)
+                        <td>{{ $agendamento->paciente->usuario->nome_completo ?? 'Paciente não encontrado' }}</td>
                     @endif
+
+                    {{-- Exibe a data do agendamento --}}
                     <td>{{ $agendamento->data_agendamento }}</td>
-                    <td>{{ $agendamento->valor_atendimento }}</td>
-                    <td>{{ $agendamento->endereco->rua . ', ' . $agendamento->endereco->numero_endereco . ' - ' . $agendamento->endereco->bairro . ', ' . $agendamento->endereco->cidade . '/' . $agendamento->endereco->uf }}</td>
+
+                    {{-- Exibe o valor da consulta formatado --}}
+                    <td>{{ 'R$ ' . number_format($agendamento->valor_atendimento, 2, ',', '.') }}</td>
+
+                    {{-- Exibe o endereço completo ou mensagem se não existir --}}
+                    <td>
+                        {{ $agendamento->endereco->rua ?? 'Rua não encontrada' }},
+                        {{ $agendamento->endereco->numero_endereco ?? 'N/A' }},
+                        {{ $agendamento->endereco->bairro ?? 'Bairro não encontrado' }},
+                        {{ $agendamento->endereco->cidade ?? 'Cidade não encontrada' }}/
+                        {{ $agendamento->endereco->uf ?? 'UF não encontrada' }}
+                    </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+
+        {{-- Paginação --}}
         {{ $agendamentos->links() }}
     </div>
 @endsection
