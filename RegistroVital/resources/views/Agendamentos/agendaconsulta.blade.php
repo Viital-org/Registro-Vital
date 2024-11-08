@@ -56,11 +56,6 @@
                 </select>
             </div>
 
-            <div>
-                <label for="valor_consulta">Valor da Consulta:</label>
-                <span id="valor_consulta">R$ 0,00</span>
-            </div>
-
             <button type="submit" class="btn btn-primary">Agendar</button>
         </form>
     </div>
@@ -95,7 +90,7 @@
             function fetchEspecializacoes(areaAtuacaoId) {
                 if (areaAtuacaoId) {
                     fetch(`/agendamentos/especializacoes/${areaAtuacaoId}`)
-                .then(response => response.json())
+                        .then(response => response.json())
                         .then(data => {
                             especializacaoSelect.innerHTML = '<option value="">Selecione a Especialização</option>';
                             profissionalSelect.innerHTML = '<option value="">Selecione o Profissional</option>';
@@ -122,21 +117,20 @@
                             data.forEach(profissional => {
                                 const option = document.createElement('option');
                                 option.value = profissional.usuario_id;
-                                option.textContent = `${profissional.nome_completo}`;
+                                option.textContent = `${profissional.nome_completo}`
                                 profissionalSelect.appendChild(option);
                             });
                         })
                         .catch(error => console.error('Erro ao buscar profissionais:', error));
                 }
             }
-
             function fetchEndereco(profissionalId, areaAtuacaoId, especializacaoId) {
                 if (profissionalId && areaAtuacaoId && especializacaoId) {
                     fetch(`/agendamentos/endereco/${profissionalId}/${areaAtuacaoId}/${especializacaoId}`)
-                .then(response => response.json())
+                        .then(response => response.json())
                         .then(data => {
                             if (data.endereco_atuacao_id) {
-                                enderecoSelect.innerHTML = <option value="${data.endereco_atuacao_id}">${data.endereco}</option>;
+                                enderecoSelect.innerHTML = `<option value="${data.endereco_atuacao_id}">${data.endereco}</option>`;
                             } else {
                                 enderecoSelect.innerHTML = '<option value="">Endereço não encontrado</option>';
                             }
@@ -159,7 +153,7 @@
 
                 // Fazer o fetch dos dias de atendimento e configurar o flatpickr
                 fetch(`/dias-atendimento/${profissionalId}/${especializacaoId}/${areaAtuacaoId}`)
-            .then(response => response.json())
+                    .then(response => response.json())
                     .then(diasPermitidos => {
                         // Mapeando os dias de semana em português para os valores corretos do Flatpickr (0 - Domingo, 6 - Sábado)
                         const diasSemanaMap = {
@@ -180,7 +174,7 @@
                             dateFormat: "Y-m-d",
                             minDate: "today",
                             disable: [
-                                function (date) {
+                                function(date) {
                                     // Desabilita os dias da semana que não estão na lista dos diasPermitidosIndices
                                     return !diasPermitidosIndices.includes(date.getDay());
                                 }
@@ -225,7 +219,7 @@
 
             function fetchEspecializacaoProfissionalId(profissionalId, especializacaoId, areaAtuacaoId) {
                 return fetch(`/especializacao-profissional/${profissionalId}/${especializacaoId}/${areaAtuacaoId}`)
-            .then(response => response.json())
+                    .then(response => response.json())
                     .then(data => data.especializacao_profissional_id)
                     .catch(error => console.error('Erro ao buscar o ID da especialização profissional:', error));
             }
