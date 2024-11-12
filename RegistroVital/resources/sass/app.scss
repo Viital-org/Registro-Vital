@@ -80,6 +80,7 @@ body {
 //     vertical-align: middle;
 // }
 
+// navbar início
 .navbar {
     background-color: $primaria-paciente;
 
@@ -195,6 +196,17 @@ body {
     max-width: 40rem;
     max-height: 20rem;
     display: flex;
+}
+
+.graficos {
+    align-items: center;
+}
+
+.graficoAnotacoes, .graficoMetas {
+    max-width: 25%;
+    max-height: 20%;
+    background-color: $cinza-claro;
+    border-width: 2px;
 }
 
 .anotacoes, .agendamentos {

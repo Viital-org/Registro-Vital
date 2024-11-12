@@ -4,19 +4,21 @@
 
 @section('conteudo')
 
-    <div class="row">
-        <div class="col">
-            <h2 class="text-center">Relatório de Anotações</h2>
+    <h1>Relatórios</h1>
+
+    <div class="row graficos">
+        <div class="graficoAnotacoes">
+            <h3 class="text-center">Relatório de Anotações</h3>
             <canvas id="graficoAnotacoes"></canvas>
         </div>
 
-        <div class="col">
-            <h2 class="text-center mt-5">Relatório de Metas</h2>
+        <div class="graficoMetas">
+            <h3 class="text-center">Relatório de Metas</h3>
             <canvas id="graficoMetas"></canvas>
         </div>
 
-        <button id="downloadButtonAnotacoes" class="btn btn-primary mt-3">Baixar Gráfico de Anotações</button>
-        <button id="downloadButtonMetas" class="btn btn-primary mt-3">Baixar Gráfico de Metas</button>
+        <button id="downloadButtonAnotacoes" class="btn btn-primary">Baixar Gráfico de Anotações</button>
+        <button id="downloadButtonMetas" class="btn btn-primary">Baixar Gráfico de Metas</button>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
