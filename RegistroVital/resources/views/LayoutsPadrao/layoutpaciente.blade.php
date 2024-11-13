@@ -8,7 +8,8 @@
     <!-- Importação de arquivos JavaScript e CSS com Vite -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="\public\startbootstrap-sb-admin-2-gh-pages\css\sb-admin-2.css">
+    <link href="public\startbootstrap-sb-admin-2-gh-pages\css\sb-admin-2.css">
+    <link href="public\startbootstrap-sb-admin-2-gh-pages\vendor\fontawesome-free\css\all.min.css">
 </head>
 <body>
 
