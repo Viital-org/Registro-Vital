@@ -3,67 +3,79 @@
 @section('titulo', 'Agendar Consulta')
 
 @section('conteudo')
-    <div class="container">
-        <h1>Agendar Consulta</h1>
-        <form action="{{ route('agendamentos.store') }}" method="POST">
-            @csrf
-            <!-- Selecione a Área de Atuação -->
-            <div class="form-group">
-                <label for="area_atuacao_id">Área de Atuação</label>
-                <select id="area_atuacao_id" name="area_atuacao_id" class="form-control">
-                    <option value="">Selecione a Área de Atuação</option>
-                    @foreach ($areasAtuacao as $area)
-                        <option value="{{ $area->id }}">{{ $area->descricao_area }}</option>
-                    @endforeach
-                </select>
+    <div class="container px-5">
+        <!-- Contact form-->
+        <div class="bg-light rounded-4 py-5 px-4 px-md-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                <h1 class="fw-bolder">Agendamento de consultas</h1>
             </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <form action="{{ route('agendamentos.store') }}" method="POST" >
+                        @csrf
 
-            <!-- Selecione a Especialização -->
-            <div class="form-group">
-                <label for="especializacao_id">Especialização</label>
-                <select id="especializacao_id" name="especializacao_id" class="form-control">
-                    <option value="">Selecione a Especialização</option>
-                </select>
+                        <!-- Selecione a área de atuação -->
+                        <div class="form-group">
+                            <label for="area_atuacao_id">Área de Atuação</label>
+                            <select id="area_atuacao_id" name="area_atuacao_id" class="form-control">
+                                <option value="">Selecione a Área de Atuação</option>
+                                @foreach ($areasAtuacao as $area)
+                                    <option value="{{ $area->id }}">{{ $area->descricao_area }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Selecione a Especialização-->
+                        <div class="form-group">
+                            <label for="especializacao_id">Especialização</label>
+                            <select id="especializacao_id" name="especializacao_id" class="form-control">
+                                <option value="">Selecione a Especialização</option>
+                            </select>
+                        </div>
+                        <!-- Selecione o Profissional -->
+                        <div class="form-group">
+                            <label for="profissional_id">Profissional</label>
+                            <select id="profissional_id" name="profissional_id" class="form-control">
+                                <option value="">Selecione o Profissional</option>
+                            </select>
+                        </div>
+
+                        <!-- Campo Endereço -->
+                        <div class="mb-3">
+                            <label for="endereco_atuacao_id" class="form-label">Endereço</label>
+                            <select name="endereco_atuacao_id" id="endereco_atuacao_id" class="form-select" required>
+                                <option value="">Selecione o endereço da consulta</option>
+                            </select>
+                        </div>
+
+                        <!-- Campo Data do Agendamento -->
+                        <div class="mb-3">
+                            <label for="data_agendamento" class="form-label">Data do Agendamento</label>
+                            <input type="text" name="data_agendamento" id="data_agendamento" class="form-control"
+                                   placeholder="Escolher Data" readonly required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="horario_agendamento">Horário</label>
+                            <select id="horario_agendamento" name="horario_agendamento" class="form-control">
+                                <option value="">Escolha o horário</option>
+                            </select>
+                        </div>
+
+                        <!-- Campo Valor do Atendimento -->
+                        <div class="mb-3">
+                            <label for="valor_atendimento" class="form-label">Valor do Atendimento</label>
+                            <input type="text" name="valor_atendimento" id="valor_atendimento" class="form-control" readonly>
+                        </div>
+
+                        <!-- Agendar -->
+                        <div class="d-grid"><button type="submit" class="btn btn-primary">Agendar</button></div>
+
+                    </form>
+                </div>
             </div>
-
-            <!-- Selecione o Profissional -->
-            <div class="form-group">
-                <label for="profissional_id">Profissional</label>
-                <select id="profissional_id" name="profissional_id" class="form-control">
-                    <option value="">Selecione o Profissional</option>
-                </select>
-            </div>
-
-            <!-- Campo Endereço -->
-            <div class="mb-3">
-                <label for="endereco_atuacao_id" class="form-label">Endereço</label>
-                <select name="endereco_atuacao_id" id="endereco_atuacao_id" class="form-select" required>
-                    <option value="">Selecione o endereço da consulta</option>
-                </select>
-            </div>
-
-            <!-- Campo Data do Agendamento -->
-            <div class="mb-3">
-                <label for="data_agendamento" class="form-label">Data do Agendamento</label>
-                <input type="text" name="data_agendamento" id="data_agendamento" class="form-control"
-                       placeholder="Escolher Data" readonly required>
-            </div>
-
-            <div class="mb-3">
-                <label for="horario_agendamento">Horário</label>
-                <select id="horario_agendamento" name="horario_agendamento" class="form-control">
-                    <option value="">Escolha o horário</option>
-                </select>
-            </div>
-
-            <!-- Campo Valor do Atendimento -->
-            <div class="mb-3">
-                <label for="valor_atendimento" class="form-label">Valor do Atendimento</label>
-                <input type="text" name="valor_atendimento" id="valor_atendimento" class="form-control" readonly>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Agendar</button>
-        </form>
+        </div>
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
