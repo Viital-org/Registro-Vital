@@ -4,13 +4,21 @@
 
 @section('conteudo')
 
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow-sm p-4">
-                    <h1 class="text-center mb-4">Registro de Usuário</h1>
+<div class="container">
 
-                    <form method="POST" action="{{ route('register') }}">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image">
+                        <p/>Procurar imagem na vibe da tela de login
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <!-- Função -->
@@ -265,16 +273,30 @@
 
                     </form>
 
-                    <!-- Link para login -->
-                    <p class="text-center mt-3">Já tem uma conta? <a href="{{ route('login') }}">Faça login aqui</a></p>
-
-                    <!-- Link para redefinição de senha -->
-                    <p class="text-center mt-3">Esqueceu sua senha? <a
-                            href="{{ route('password.request') }}">Redefinir</a></p>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="{{ route('password.request') }}">Esqueceu a senha? Redefinir</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="{{ route('login') }}">Já tem uma conta?</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
     @if ($errors->any())
         <div class="alert alert-danger">
