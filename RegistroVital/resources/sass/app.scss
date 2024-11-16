@@ -15,6 +15,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.card-login {
+    overflow: hidden;
+}
+
 .perfil {
     text-align: center;
 }
@@ -249,6 +253,10 @@ body {
     border: none;
     border-radius: .5rem;
     height: 3rem;
+}
+
+.imagem-login {
+    margin: 2rem;
 }
 
 // Rodapé
