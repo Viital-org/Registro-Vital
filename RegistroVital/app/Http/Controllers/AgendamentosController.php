@@ -18,17 +18,22 @@ class AgendamentosController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $today = date('Y-m-d');
 
         if ($user->tipo_usuario === 1) {
             // Paciente
             $agendamentos = Agendamento::where('paciente_id', $user->id)
-                ->with('profissional', 'especializacao', 'endereco')
+                ->whereHas('consulta', function ($query) {
+                    $query->whereIn('situacao', [2, 3, 4]); // Inclui também cancelado pelo profissional
+                })
+                ->with(['profissional.usuario', 'especializacao', 'endereco', 'consulta'])
                 ->paginate(5);
         } elseif ($user->tipo_usuario === 2) {
             // Profissional
             $agendamentos = Agendamento::where('profissional_id', $user->id)
-                ->with('paciente', 'especializacao', 'endereco')
+                ->whereHas('consulta', function ($query) {
+                    $query->whereIn('situacao', [2, 3, 4]); // Inclui também cancelado pelo profissional
+                })
+                ->with(['paciente.usuario', 'especializacao', 'endereco', 'consulta'])
                 ->paginate(5);
         } else {
             // Administrador ou outro tipo de usuário
@@ -86,14 +91,16 @@ class AgendamentosController extends Controller
         ]);
 
         // Criar a consulta associada ao agendamento
-        Consulta::create([
+        $consulta = Consulta::create([
             'agendamento_id' => $agendamento->id,
-            'situacao' => 3,
+            'situacao' => 0, //pendente
             'profissional_id' => $validated['profissional_id'],
             'paciente_id' => $validated['paciente_id'],
         ]);
 
-        return redirect()->route('agendamentos.index')->with('success', 'Agendamento criado com sucesso!');
+        $agendamento->update(['consulta_id' => $consulta->id]);
+
+        return redirect()->route('consultas.index')->with('success', 'Agendamento criado com sucesso!');
     }
 
 

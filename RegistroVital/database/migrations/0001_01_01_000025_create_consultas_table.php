@@ -16,6 +16,9 @@ return new class extends Migration {
             $table->foreignId('profissional_id')->constrained('profissionais', 'usuario_id')->onDelete('cascade');
             $table->foreignId('agendamento_id')->constrained('agendamentos')->onDelete('cascade');
             $table->integer('situacao');
+            $table->string('motivo')->nullable();
+            $table->timestamp('horario_inicio_real')->nullable();
+            $table->timestamp('horario_fim_real')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

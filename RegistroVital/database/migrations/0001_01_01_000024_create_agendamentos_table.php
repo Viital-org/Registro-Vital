@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string('especializacao_id', 30)->nullable();
             $table->date('data_agendamento');
             $table->time('hora_agendamento');
+            $table->foreignId('consulta_id')->nullable()->constrained('consultas')->onDelete('cascade');
             $table->integer('situacao_paciente');
             $table->integer('situacao_profissional');
             $table->foreignId('endereco_consulta_id')->constrained('enderecos');

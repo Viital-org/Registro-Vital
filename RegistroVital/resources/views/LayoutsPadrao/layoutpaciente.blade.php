@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('titulo')</title>
 
     <!-- Importação de arquivos JavaScript e CSS com Vite -->
@@ -41,10 +42,10 @@
                     <a class="dropdown-item" href="{{ route('agendamentos.create') }}">Agendar Consulta</a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="{{ route('agendamentos.index') }}">Histórico de Agendamentos</a>
+                    <a class="dropdown-item" href="{{ route('consultas.index') }}">Lista de Consultas Atuais</a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="{{ route('consultas.index') }}">Lista de Consultas</a>
+                    <a class="dropdown-item" href="{{ route('agendamentos.index') }}">Agendamentos Passados</a>
                 </li>
             </ul>
         </li>
@@ -52,8 +53,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="anotacoesDropdown" role="button"
                data-bs-toggle="dropdown" aria-expanded="false">Anotações</a>
             <ul class="dropdown-menu" aria-labelledby="anotacoesDropdown">
-                <li><a class="dropdown-item" href="{{ route('anotacoessaude-create') }}">Cadastrar
-                        Anotação</a></li>
+                <li><a class="dropdown-item" href="{{ route('anotacoessaude-create') }}">Cadastrar Anotação</a></li>
                 <li><a class="dropdown-item" href="{{ route('anotacoessaude-index') }}">Listar Anotações</a>
                 </li>
             </ul>

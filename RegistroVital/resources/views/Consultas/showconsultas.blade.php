@@ -7,52 +7,53 @@
         <h1>Detalhes da Consulta</h1>
         <table class="table">
             <tr>
-                <th>ID</th>
-                <td>{{ $consulta->id }}</td>
+                <th>Data</th>
+                <td>{{ $consulta->agendamento->data_agendamento }}</td>
             </tr>
             <tr>
-                <th>Data</th>
-                <td>{{ $consulta->data }}</td>
+                <th>Hora</th>
+                <td>{{ $consulta->agendamento->hora_agendamento }}</td>
             </tr>
             <tr>
                 <th>Status</th>
-                <td>{{ $consulta->status }}</td>
+                <td>
+                    @switch($consulta->situacao)
+                        @case(0) Pendente @break
+                        @case(1) Confirmada @break
+                        @case(2) Finalizada @break
+                        @default Cancelada
+                    @endswitch
+                </td>
             </tr>
             <tr>
                 <th>Profissional</th>
-                <td>{{ $consulta->profissional->nome }}</td>
+                <td>{{ $consulta->profissional->usuario->nome_completo }}</td>
             </tr>
             <tr>
                 <th>Paciente</th>
-                <td>{{ $consulta->paciente->nome }}</td>
+                <td>{{ $consulta->paciente->usuario->nome_completo }}</td>
+            </tr>
+            <tr>
+                <th>Especialização</th>
+                <td>{{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}</td>
+            </tr>
+            <tr>
+                <th>Área de Atuação</th>
+                <td>{{ $consulta->agendamento->especializacao->area->descricao_area ?? 'N/A' }}</td>
+            </tr>
+            <tr>
+                <th>Endereço</th>
+                <td>
+                    {{ $consulta->agendamento->endereco->rua ?? 'N/A' }},
+                    {{ $consulta->agendamento->endereco->cidade ?? 'N/A' }},
+                    {{ $consulta->agendamento->endereco->uf ?? 'N/A' }} -
+                    {{ $consulta->agendamento->endereco->cep ?? 'N/A' }}
+                </td>
             </tr>
             <tr>
                 <th>Valor</th>
-                <td>{{ $consulta->valor }}</td>
+                <td>{{ 'R$ ' . number_format($consulta->agendamento->valor_atendimento, 2, ',', '.') }}</td>
             </tr>
         </table>
-        @if (Auth::user()->role === 'paciente')
-            <form action="{{ route('consultas.update', $consulta->id) }}" method="POST">
-                @csrf
-                @method('PATCH')
-                <div class="mb-3">
-                    <label for="status" class="form-label">Status</label>
-                    <select name="status" id="status" class="form-select" required>
-                        <option value="agendado" {{ $consulta->status === 'agendado' ? 'selected' : '' }}>Agendado
-                        </option>
-                        <option value="confirmada" {{ $consulta->status === 'confirmada' ? 'selected' : '' }}>
-                            Confirmada
-                        </option>
-                        <option value="cancelada" {{ $consulta->status === 'cancelada' ? 'selected' : '' }}>Cancelada
-                        </option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Atualizar Status</button>
-            </form>
-        @endif
-        @if(Auth::user()->role === 'medico')
-            <a href="{{ route('consultas.anotacoes', $consulta->id) }}" class="btn btn-primary">Ver Anotações do
-                Paciente</a>
-        @endif
     </div>
 @endsection

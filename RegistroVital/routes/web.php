@@ -160,6 +160,11 @@ Route::middleware(['auth', 'tipo_usuario:1,2', 'layout.dinamico'])->group(functi
     Route::get('/editarconsulta/{id}', [ConsultasController::class, 'edit'])->name('consultas-edit');
     Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
     Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas-delete');
+    Route::patch('/consultas/{id}/alterar-situacao', [ConsultasController::class, 'alterarSituacao'])->name('consultas.alterarSituacao');
+    Route::patch('/consultas/{id}/iniciar', [ConsultasController::class, 'iniciar'])->name('consultas.iniciar');
+    Route::patch('/consultas/{id}/finalizar', [ConsultasController::class, 'finalizar'])->name('consultas.finalizar');
+    Route::get('/consultas/{id}/ativa', [ConsultasController::class, 'consultaAtiva'])->name('consultas.ativa');
+
 
     // Agendamentos
     Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');

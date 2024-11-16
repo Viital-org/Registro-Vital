@@ -2,118 +2,148 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agendamento;
 use App\Models\Anotacaosaude;
 use App\Models\Consulta;
 use App\Models\Paciente;
 use App\Models\Profissional;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ConsultasController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Exibir lista de consultas.
      */
     public function index()
     {
         $user = Auth::user();
         $today = date('Y-m-d');
 
-        if ($user->role === 'paciente') {
-            $consultas = Consulta::where('paciente_id', $user->paciente->id)
-                ->where('situacao', '!=', 'cancelada')
-                ->where('data', '>=', $today)
-                ->paginate(5);
-        } elseif ($user->role === 'medico') {
-            $consultas = Consulta::where('profissional_id', $user->profissional->id)
-                ->where('situacao', '!=', 'cancelada')
-                ->where('data', '>=', $today)
-                ->paginate(5);
-        } else {
-            $consultas = Consulta::whereRaw('1=0')->paginate(5);;
-        }
-
-        Consulta::where('data', '<', $today)
-            ->where('situacao', 1)
+        // Atualizar status de consultas antigas
+        Consulta::whereHas('agendamento', function ($query) use ($today) {
+            $query->where('data_agendamento', '<', $today);
+        })->where('situacao', 1)
             ->update(['situacao' => 2]);
+
+        // Selecionar consultas relevantes
+        $consultas = Consulta::with(['agendamento.especializacao'])
+            ->where(function ($query) use ($user) {
+                if ($user->tipo_usuario === 1) { // Paciente
+                    $query->where('paciente_id', $user->id);
+                } elseif ($user->tipo_usuario === 2) { // Profissional
+                    $query->where('profissional_id', $user->id);
+                }
+            })
+            ->whereIn('situacao', [0, 1, 5]) // Inclui as consultas em andamento
+            ->select('id', 'agendamento_id', 'situacao')
+            ->paginate(5);
 
         return view('consultas.listaconsultas', compact('consultas'));
     }
 
+// Método para confirmar ou cancelar consulta
+    public function alterarSituacao(Request $request, $id)
+    {
+        $user = Auth::user();
+        $consulta = Consulta::findOrFail($id);
+
+        // Validação de entrada
+        $validated = $request->validate([
+            'situacao' => 'required|in:1,2,3,4, 5', // Status permitidos
+            'motivo' => 'nullable|string|max:255', // Motivo é opcional, mas obrigatório para situação 4
+        ]);
+
+        // Verificar permissões para alterar o status
+        if ($user->tipo_usuario === 2 && $user->id === $consulta->profissional_id) {
+            if ($validated['situacao'] == 4 && empty($validated['motivo'])) {
+                return back()->withErrors(['motivo' => 'O motivo é obrigatório ao cancelar.']);
+            }
+        } elseif ($user->tipo_usuario === 1 && !in_array($validated['situacao'], [1, 3])) {
+            return redirect()->route('consultas.index')->with('error', 'Ação não permitida.');
+        }
+
+        // Atualizar situação
+        $consulta->update([
+            'situacao' => $validated['situacao'],
+            'motivo' => $validated['motivo'] ?? null,
+        ]);
+
+        return redirect()->route('consultas.index')->with('success', 'Status atualizado com sucesso!');
+    }
+
+
     /**
-     * Update the specified resource in storage.
+     * Atualizar status da consulta.
      */
     public function update(Request $request, $id)
     {
         $user = Auth::user();
         $consulta = Consulta::findOrFail($id);
 
-        if ($user->role === 'paciente' && $user->paciente->id === $consulta->paciente_id) {
-            $consulta->update($request->validate([
-                'situacao' => 'required|in:confirmado(a),cancelado(a)',
-            ]));
+        if ($user->tipo_usuario === 1 && $user->id === $consulta->paciente_id) {
+            $validated = $request->validate([
+                'situacao' => 'required|in:0,1,2,3, 4, 5', // 0: Pendente, 1: Confirmada, 2: Finalizada, 3: Cancelada , 4: Cancelada  Pelo Profissional, 5: Ativa
+            ]);
 
-            return redirect()->route('consultas.index', $consulta->id)->with('success', 'Status atualizado com sucesso!');
+            $consulta->update($validated);
+            return redirect()->route('consultas.index')->with('success', 'Status atualizado com sucesso!');
         }
 
         return redirect()->route('consultas.index')->with('error', 'Você não tem permissão para atualizar esta consulta.');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Criar uma nova consulta a partir de um agendamento.
      */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'data' => 'required|date|after_or_equal:today',
-            'situacao' => 'required|string|max:255',
-            'profissional_id' => 'required|exists:profissionais,id',
-            'paciente_id' => 'required|exists:pacientes,id',
-            'valor' => 'required|numeric',
+            'agendamento_id' => 'required|exists:agendamentos,id',
         ]);
 
-        Consulta::create($validated);
+        $agendamento = Agendamento::findOrFail($validated['agendamento_id']);
+        $consulta = Consulta::create([
+            'id' => $agendamento->id,
+            'paciente_id' => $agendamento->paciente_id,
+            'profissional_id' => $agendamento->profissional_id,
+            'agendamento_id' => $agendamento->id,
+            'situacao' => 0, // Padrão: pendente
+        ]);
 
         return redirect()->route('consultas.index')->with('success', 'Consulta criada com sucesso!');
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $profissionais = Profissional::all();
-        $pacientes = Paciente::all();
-        return view('consultas.cadastroconsultas', compact('profissionais', 'pacientes'));
-    }
-
-    /**
-     * Display the specified resource.
+     * Mostrar detalhes da consulta.
      */
     public function show($id)
     {
-        $consulta = Consulta::with(['profissional', 'paciente'])->findOrFail($id);
+        $consulta = Consulta::with(['profissional.usuario', 'paciente.usuario', 'agendamento.endereco'])->findOrFail($id);
         $user = Auth::user();
 
-        if (($user->role === 'medico' && $consulta->profissional_id !== $user->profissional->id) ||
-            ($user->role === 'paciente' && $consulta->paciente_id !== $user->paciente->id)) {
+        // Verificar permissões
+        if (($user->tipo_usuario === 1 && $consulta->paciente_id !== $user->id) ||
+            ($user->tipo_usuario === 2 && $consulta->profissional_id !== $user->id)) {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta página.');
         }
 
+        // Retornar a view com os dados completos
         return view('consultas.showconsultas', compact('consulta'));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Excluir consulta.
      */
     public function destroy($id)
     {
         $consulta = Consulta::findOrFail($id);
         $user = Auth::user();
 
-        if (($user->role === 'medico' && $consulta->profissional_id !== $user->profissional->id) ||
-            ($user->role === 'paciente' && $consulta->paciente_id !== $user->paciente->id)) {
-            return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta página.');
+        if (($user->tipo_usuario === 1 && $consulta->paciente_id !== $user->id) ||
+            ($user->tipo_usuario === 2 && $consulta->profissional_id !== $user->id)) {
+            return redirect()->route('welcome')->with('error', 'Você não tem permissão para excluir esta consulta.');
         }
 
         $consulta->delete();
@@ -128,16 +158,70 @@ class ConsultasController extends Controller
         $consulta = Consulta::findOrFail($id);
         $user = Auth::user();
 
-        if ($user->role === 'medico' && $consulta->profissional_id !== $user->profissional->id) {
+        // Verifica se o usuário é um profissional e se ele está tentando acessar uma consulta que não é dele
+        if ($user->tipo_usuario === 2 && $consulta->profissional_id !== $user->id) {
             return redirect()->route('welcome')->with('error', 'Você não tem permissão para acessar esta página.');
         }
 
+        // Consulta as anotações do paciente com visibilidade = 1 (visíveis ao profissional)
         $anotacoessaude = Anotacaosaude::where('paciente_id', $consulta->paciente_id)
-            ->where('visibilidade', 'Visivel')
-            ->join('tipoanotacoes', 'tipoanotacoes.id', '=', 'anotacoessaude.tipo_anot')
-            ->select('anotacoessaude.*', 'tipoanotacoes.tipo_anotacao as tipo_anotacao', 'tipoanotacoes.desc_anotacao as desc_anotacao')
+            ->where('tipo_visibilidade', '1')  // Apenas as anotações com visibilidade pública
+            ->join('tipos_anotacao', 'tipos_anotacao.id', '=', 'anotacoes.tipo_anotacao')
+            ->select('anotacoes.*', 'tipos_anotacao.descricao_tipo as tipo_anotacao')
             ->simplePaginate(5);
 
+        // Retorna a view com as anotações do paciente
         return view('Anotacoes.listaanotacoesmedico', compact('anotacoessaude', 'consulta'));
+    }
+    public function iniciar($id)
+    {
+        $consulta = Consulta::findOrFail($id);
+
+        // Confirma se a consulta está em estado confirmado (situacao = 1)
+        if ($consulta->situacao !== 1) {
+            return redirect()->back()->with('error', 'Não é possível iniciar esta consulta.');
+        }
+
+        // Atualiza o horário de início real e define a situação como "em andamento"
+        $consulta->horario_inicio_real = now();
+        $consulta->situacao = 5; // Status "em andamento"
+        $consulta->save();
+
+        // Redireciona para a view de consulta ativa
+        return redirect()->route('consultas.ativa', $consulta->id)->with('success', 'Consulta iniciada com sucesso.');
+    }
+
+    public function finalizar($id)
+    {
+        $consulta = Consulta::findOrFail($id);
+
+        // Confirma se a consulta está em andamento (situacao = 5)
+        if ($consulta->situacao !== 5) {
+            return redirect()->back()->with('error', 'Não é possível finalizar esta consulta.');
+        }
+
+        $consulta->horario_fim_real = Carbon::now();
+        $consulta->situacao = 2; // Status "finalizada"
+        $consulta->save();
+
+        return redirect()->route('consultas.index')->with('success', 'Consulta finalizada com sucesso.');
+    }
+    public function consultaAtiva($id)
+    {
+        $consulta = Consulta::with(['paciente', 'agendamento'])->findOrFail($id);
+
+        if ($consulta->situacao !== 5) {
+            return redirect()->route('consultas.index')->with('error', 'Esta consulta não está em andamento.');
+        }
+
+        if (auth()->user()->tipo_usuario === 2 && auth()->user()->id !== $consulta->profissional_id) {
+            return abort(403, 'Acesso negado. Você não está autorizado a acessar esta consulta.');
+        }
+
+        if (auth()->user()->tipo_usuario === 1 && auth()->user()->id !== $consulta->paciente_id) {
+            return abort(403, 'Acesso negado. Você não está autorizado a acessar esta consulta.');
+        }
+
+        return view('consultas.ativa', compact('consulta'));
     }
 }

@@ -41,7 +41,8 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false"> Consultas Marcadas </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('agendamentos.index') }}">Lista de Consultas</a></li>
+                    <li><a class="dropdown-item" href="{{ route('consultas.index') }}">Lista das minhas Consultas Agendadas</a></li>
+                    <li><a class="dropdown-item" href="{{ route('agendamentos.index') }}">Historico dos meus Agendamentos</a></li>
                 </ul>
             </li>
         </ul>
