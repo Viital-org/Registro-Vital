@@ -16,7 +16,7 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Crie Sua Conta!</h1>
                             </div>
                             <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -29,7 +29,6 @@
                                 <option value="" disabled selected>Escolha o tipo de usuário</option>
                                 <option value="1" {{ old('tipo_usuario') == 1 ? 'selected' : '' }}>Paciente</option>
                                 <option value="2" {{ old('tipo_usuario') == 2 ? 'selected' : '' }}>Profissional</option>
-                                <option value="3" {{ old('tipo_usuario') == 3 ? 'selected' : '' }}>Administrador
                                 </option>
                             </select>
                             @error('tipo_usuario')

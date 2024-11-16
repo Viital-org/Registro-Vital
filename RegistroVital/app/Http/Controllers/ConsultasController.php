@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Agendamento;
 use App\Models\Anotacaosaude;
 use App\Models\Consulta;
-use App\Models\Paciente;
-use App\Models\Profissional;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +42,27 @@ class ConsultasController extends Controller
     }
 
 // Método para confirmar ou cancelar consulta
+
+    /**
+     * Atualizar status da consulta.
+     */
+    public function update(Request $request, $id)
+    {
+        $user = Auth::user();
+        $consulta = Consulta::findOrFail($id);
+
+        if ($user->tipo_usuario === 1 && $user->id === $consulta->paciente_id) {
+            $validated = $request->validate([
+                'situacao' => 'required|in:0,1,2,3, 4, 5', // 0: Pendente, 1: Confirmada, 2: Finalizada, 3: Cancelada , 4: Cancelada  Pelo Profissional, 5: Ativa
+            ]);
+
+            $consulta->update($validated);
+            return redirect()->route('consultas.index')->with('success', 'Status atualizado com sucesso!');
+        }
+
+        return redirect()->route('consultas.index')->with('error', 'Você não tem permissão para atualizar esta consulta.');
+    }
+
     public function alterarSituacao(Request $request, $id)
     {
         $user = Auth::user();
@@ -71,27 +90,6 @@ class ConsultasController extends Controller
         ]);
 
         return redirect()->route('consultas.index')->with('success', 'Status atualizado com sucesso!');
-    }
-
-
-    /**
-     * Atualizar status da consulta.
-     */
-    public function update(Request $request, $id)
-    {
-        $user = Auth::user();
-        $consulta = Consulta::findOrFail($id);
-
-        if ($user->tipo_usuario === 1 && $user->id === $consulta->paciente_id) {
-            $validated = $request->validate([
-                'situacao' => 'required|in:0,1,2,3, 4, 5', // 0: Pendente, 1: Confirmada, 2: Finalizada, 3: Cancelada , 4: Cancelada  Pelo Profissional, 5: Ativa
-            ]);
-
-            $consulta->update($validated);
-            return redirect()->route('consultas.index')->with('success', 'Status atualizado com sucesso!');
-        }
-
-        return redirect()->route('consultas.index')->with('error', 'Você não tem permissão para atualizar esta consulta.');
     }
 
     /**
@@ -173,6 +171,7 @@ class ConsultasController extends Controller
         // Retorna a view com as anotações do paciente
         return view('Anotacoes.listaanotacoesmedico', compact('anotacoessaude', 'consulta'));
     }
+
     public function iniciar($id)
     {
         $consulta = Consulta::findOrFail($id);
@@ -206,6 +205,7 @@ class ConsultasController extends Controller
 
         return redirect()->route('consultas.index')->with('success', 'Consulta finalizada com sucesso.');
     }
+
     public function consultaAtiva($id)
     {
         $consulta = Consulta::with(['paciente', 'agendamento'])->findOrFail($id);

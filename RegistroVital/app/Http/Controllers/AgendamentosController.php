@@ -57,7 +57,7 @@ class AgendamentosController extends Controller
         ]);
 
         // Extrair o valor numérico de 'valor_atendimento' (caso inclua "R$")
-        $validated['valor_atendimento'] = (float) str_replace(['R$', ' '], '', $validated['valor_atendimento']);
+        $validated['valor_atendimento'] = (float)str_replace(['R$', ' '], '', $validated['valor_atendimento']);
 
         // Atribuir o ID do paciente
         $validated['paciente_id'] = Auth::user()->id;
@@ -268,6 +268,7 @@ class AgendamentosController extends Controller
 
         return response()->json(['message' => 'Endereço não encontrado'], 404);
     }
+
     public function getValorAtendimento($profissionalId, $areaAtuacaoId, $especializacaoId, $enderecoId)
     {
         $especializacaoProfissional = EspecializacaoProfissional::where('profissional_id', $profissionalId)

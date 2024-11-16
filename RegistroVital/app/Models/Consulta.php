@@ -28,6 +28,7 @@ class Consulta extends Model
     {
         return $this->belongsTo(Paciente::class, 'paciente_id');
     }
+
     public function agendamento()
     {
         return $this->belongsTo(Agendamento::class, 'agendamento_id');
