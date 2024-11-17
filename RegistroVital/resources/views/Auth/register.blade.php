@@ -11,7 +11,7 @@
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-block bg-register-image">
-                        <p/>Procurar imagem na vibe da tela de login
+                        <img src="{{ asset('/img/registro.png') }}" class="img-fluid imagem-registro">
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">

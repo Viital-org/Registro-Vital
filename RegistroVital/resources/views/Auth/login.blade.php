@@ -68,16 +68,14 @@
                                             {{ old('remember') ? 'checked' : '' }}>
                                         <label class="form-check-label" for="remember">Lembre-se de mim</label>
                                     </div>
-
-                                    <!-- Botões -->
-                                    <div class="d-grid gap-2">
-                                        <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
-                                        <a class="btn btn-link text-center" href="{{ route('password.request') }}">Esqueci minha
-                                            senha</a>
-                                        <a class="btn btn-link text-center" href="{{ route('register') }}">Ainda não tem uma conta?
-                                            Cadastre-se</a>
-                                    </div>
                                 </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="{{ route('password.request') }}">Esqueceu a senha? Redefinir</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="{{ route('login') }}">Já tem uma conta?</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
