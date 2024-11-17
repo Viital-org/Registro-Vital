@@ -92,7 +92,7 @@
 
 <!-- Sidebar -->
 <aside class="sidebar-paciente" id="sidebarPaciente">
-    <div class="d-flex flex-column align-items-center sidebar-header p-4">
+    <div class="d-flex flex-column align-items-center sidebar-header p-4 mt-4">
         <img src="{{ asset('/img/cruz.png') }}" alt="Logo Registro Vital" class="logo img-fluid mb-2">
         <h3 class="titulo text-dark">Registro Vital</h3>
         <h5 class="titulo">Paciente</h5>
