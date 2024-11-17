@@ -3,86 +3,94 @@
 @section('titulo', 'Consulta Ativa')
 
 @section('conteudo')
-    <div class="container mt-4">
-        <div class="row">
-            <!-- Coluna de Informações do Paciente -->
-            <div class="col-md-12 col-lg-6 mb-3">
-                <div class="card">
+    <div class="container my-4">
+        <!-- Cabeçalho -->
+        <div class="text-center mb-4">
+            <h1 class="display-5 text-primary">Consulta Ativa</h1>
+            <p class="text-muted">Detalhes e ações disponíveis para esta consulta.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Informações do Paciente -->
+            <div class="col-md-12 col-lg-6">
+                <div class="card shadow-sm">
                     <div class="card-header bg-primary text-white">
-                        <h5>Informações do Paciente</h5>
+                        <h5><i class="bi bi-person-circle me-2"></i>Informações do Paciente</h5>
                     </div>
                     <div class="card-body">
-                        <ul class="list-unstyled">
-                            <li><strong>Nome:</strong> {{ $consulta->paciente->usuario->nome_completo }}</li>
-                            <li><strong>CPF:</strong> {{ $consulta->paciente->cpf ?? 'N/A' }}</li>
-                            <li><strong>Data de Nascimento:</strong> {{ $consulta->paciente->data_nascimento ?? 'N/A' }}</li>
-                            <li><strong>Gênero:</strong> {{ $consulta->paciente->genero ?? 'N/A' }}</li>
-                            <li><strong>Estado Civil:</strong> {{ $consulta->paciente->estado_civil ?? 'N/A' }}</li>
-                            <li><strong>Tipo Sanguíneo:</strong> {{ $consulta->paciente->tipo_sanguineo ?? 'N/A' }}</li>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Nome:</strong> {{ $consulta->paciente->usuario->nome_completo }}</li>
+                            <li class="list-group-item"><strong>CPF:</strong> {{ $consulta->paciente->cpf ?? 'N/A' }}</li>
+                            <li class="list-group-item"><strong>Data de Nascimento:</strong> {{ $consulta->paciente->data_nascimento ?? 'N/A' }}</li>
+                            <li class="list-group-item"><strong>Gênero:</strong> {{ $consulta->paciente->genero ?? 'N/A' }}</li>
+                            <li class="list-group-item"><strong>Estado Civil:</strong> {{ $consulta->paciente->estado_civil ?? 'N/A' }}</li>
+                            <li class="list-group-item"><strong>Tipo Sanguíneo:</strong> {{ $consulta->paciente->tipo_sanguineo ?? 'N/A' }}</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Coluna de Detalhes da Consulta -->
-            <div class="col-md-12 col-lg-6 mb-3">
-                <div class="card">
+            <!-- Detalhes da Consulta -->
+            <div class="col-md-12 col-lg-6">
+                <div class="card shadow-sm">
                     <div class="card-header bg-secondary text-white">
-                        <h5>Detalhes da Consulta</h5>
+                        <h5><i class="bi bi-calendar-event me-2"></i>Detalhes da Consulta</h5>
                     </div>
                     <div class="card-body">
-                        <ul class="list-unstyled">
-                            <li><strong>Data Agendada:</strong> {{ $consulta->agendamento->data_agendamento }}</li>
-                            <li><strong>Horário Agendado:</strong> {{ $consulta->agendamento->hora_agendamento }}</li>
-                            <li><strong>Área Médica:</strong> {{ $consulta->agendamento->especializacao->area->descricao_area ?? 'N/A' }}</li>
-                            <li><strong>Especialização:</strong> {{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}</li>
-                            <li><strong>Profissional Responsável:</strong> {{ $consulta->profissional->usuario->nome_completo }}</li>
-                            <li><strong>Endereço da Consulta:</strong> {{ $consulta->agendamento->endereco->rua ?? 'N/A' }},
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Data Agendada:</strong> {{ $consulta->agendamento->data_agendamento }}</li>
+                            <li class="list-group-item"><strong>Horário:</strong> {{ $consulta->agendamento->hora_agendamento }}</li>
+                            <li class="list-group-item"><strong>Área Médica:</strong> {{ $consulta->agendamento->especializacao->area->descricao_area ?? 'N/A' }}</li>
+                            <li class="list-group-item"><strong>Especialização:</strong> {{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}</li>
+                            <li class="list-group-item"><strong>Profissional:</strong> {{ $consulta->profissional->usuario->nome_completo }}</li>
+                            <li class="list-group-item"><strong>Endereço:</strong>
+                                {{ $consulta->agendamento->endereco->rua ?? 'N/A' }},
                                 {{ $consulta->agendamento->endereco->numero_endereco ?? 'N/A' }},
-                                {{ $consulta->agendamento->endereco->cidade ?? 'N/A' }},
-                                {{ $consulta->agendamento->endereco->uf ?? 'N/A' }}</li>
+                                {{ $consulta->agendamento->endereco->cidade ?? 'N/A' }} -
+                                {{ $consulta->agendamento->endereco->uf ?? 'N/A' }}
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Formulário de Prescrição -->
-        <div class="row">
-            <div class="col-12 mb-3">
-                <div class="card">
-                    <div class="card-header bg-info text-white">
-                        <h5>Prescrição Médica</h5>
+        <!-- Prescrição Médica -->
+        <div class="card my-4 shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h5><i class="bi bi-file-earmark-medical me-2"></i>Prescrição Médica</h5>
+            </div>
+            <div class="card-body">
+                <form action="#" method="POST" id="prescricaoForm">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="prescricao" class="form-label">Descrição da Prescrição:</label>
+                        <textarea id="prescricao" name="prescricao" class="form-control" rows="4">{{ old('prescricao') }}</textarea>
                     </div>
-                    <div class="card-body">
-                        <form action="#" method="POST" id="prescricaoForm">
-                            @csrf
-                            <div class="form-group">
-                                <label for="prescricao">Descrição da Prescrição:</label>
-                                <textarea id="prescricao" name="prescricao" class="form-control" rows="4">{{ old('prescricao') }}</textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" onclick="guardarPrescricao(event)">Salvar Prescrição</button>
-                        </form>
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-primary" onclick="guardarPrescricao(event)">
+                        <i class="bi bi-save me-1"></i>Salvar Prescrição
+                    </button>
+                </form>
             </div>
         </div>
 
         <!-- Ações -->
-        <div class="row">
-            <div class="col-12">
-                <div class="btn-group" role="group">
-                    @if(Auth::user()->tipo_usuario === 2)
-                        <a href="{{ route('consultas.anotacoes', $consulta->id) }}" class="btn btn-primary">Ver Anotações do Paciente</a>
-                    @endif
-                    <button onclick="imprimirPrescricao()" class="btn btn-warning">Imprimir Prescrição</button>
-                    <form method="POST" action="{{ route('consultas.finalizar', $consulta->id) }}" onsubmit="return confirm('Deseja finalizar esta consulta?')">
-                        @csrf
-                        @method('PATCH')
-                        <button type="submit" class="btn btn-success">Finalizar Consulta</button>
-                    </form>
-                </div>
-            </div>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            @if(Auth::user()->tipo_usuario === 2)
+                <a href="{{ route('consultas.anotacoes', $consulta->id) }}" class="btn btn-primary">
+                    <i class="bi bi-journal-text me-1"></i>Ver Anotações
+                </a>
+            @endif
+            <button onclick="imprimirPrescricao()" class="btn btn-warning">
+                <i class="bi bi-printer me-1"></i>Imprimir Prescrição
+            </button>
+            <form method="POST" action="{{ route('consultas.finalizar', $consulta->id) }}" onsubmit="return confirm('Deseja finalizar esta consulta?')">
+                @csrf
+                @method('PATCH')
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-check-circle me-1"></i>Finalizar Consulta
+                </button>
+            </form>
         </div>
     </div>
 
@@ -102,17 +110,14 @@
         function guardarPrescricao(event) {
             event.preventDefault(); // Impede o envio do formulário
             const prescricao = document.getElementById('prescricao').value;
-            // Atualiza o conteúdo da área de impressão com a prescrição
             document.getElementById('prescricaoTexto').innerText = prescricao;
         }
 
         // Função para imprimir o layout
         function imprimirPrescricao() {
-            var conteudo = document.getElementById('prescricaoPrint').innerHTML;
-            var janelaImpressao = window.open('', '', 'height=500,width=800');
-            janelaImpressao.document.write('<html><head><title>Prescrição Médica</title>');
-            janelaImpressao.document.write('<style>@media print { body { font-family: Arial, sans-serif; } }</style>');
-            janelaImpressao.document.write('</head><body>');
+            const conteudo = document.getElementById('prescricaoPrint').innerHTML;
+            const janelaImpressao = window.open('', '', 'height=500,width=800');
+            janelaImpressao.document.write('<html><head><title>Prescrição Médica</title></head><body>');
             janelaImpressao.document.write(conteudo);
             janelaImpressao.document.write('</body></html>');
             janelaImpressao.document.close();
