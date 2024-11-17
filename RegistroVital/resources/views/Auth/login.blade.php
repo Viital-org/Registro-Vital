@@ -68,6 +68,10 @@
                                             {{ old('remember') ? 'checked' : '' }}>
                                         <label class="form-check-label" for="remember">Lembre-se de mim</label>
                                     </div>
+
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
+                                    </div>
                                 </form>
                                     <hr>
                                     <div class="text-center">

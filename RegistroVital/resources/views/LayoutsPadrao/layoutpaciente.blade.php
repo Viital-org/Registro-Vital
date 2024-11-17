@@ -13,7 +13,7 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         /* Sidebar padrão */
@@ -23,13 +23,13 @@
             left: 0;
             height: 100%;
             width: 250px;
-            background-color: #e3f2fd; /* Azul claro */
+            background-color: #A0D3E8; /* Azul claro */
             color: #000;
             transition: transform 0.3s ease-in-out;
             z-index: 1000;
             transform: translateX(-250px); /* Inicialmente escondida */
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 0 10px 10px 0;
+            /* border-radius: 0 10px 10px 0; */
         }
 
         .sidebar-paciente:hover {
