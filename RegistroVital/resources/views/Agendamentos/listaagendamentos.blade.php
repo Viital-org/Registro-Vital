@@ -28,7 +28,7 @@
 
                                         {{-- Exibe a data do agendamento --}}
                                         <p class="fw-bolder">
-                                            Tipo: <i class="fw-normal">{{ $agendamento->data_agendamento }}</i>
+                                            Tipo: <i class="fw-normal">{{ \Carbon\Carbon::parse($agendamento->data_agendamento)->format('d-m-Y') }}</i>
                                         </p>
 
                                         {{-- Exibe o valor do agendamento --}}

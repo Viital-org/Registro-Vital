@@ -18,7 +18,7 @@
                                     <!-- Parte esquerda -->
                                     <div class="p-4 w-100">
                                         <h4>
-                                            {{ $item->data_anotacao }}
+                                            {{ \Carbon\Carbon::parse($item->data_anotacao)->format('d-m-Y') }}
                                         </h4>
 
                                         <!-- Tipo e Visibilidade em linhas separadas -->
