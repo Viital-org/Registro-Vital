@@ -17,13 +17,13 @@ class ConsultasController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $today = date('Y-m-d');
+        $today = now()->format('Y-m-d');
 
-        // Atualizar status de consultas antigas
+        // Atualizar status de consultas cujo dia de agendamento já passou
         Consulta::whereHas('agendamento', function ($query) use ($today) {
-            $query->where('data_agendamento', '<', $today);
+            $query->whereDate('data_agendamento', '<', $today);
         })->where('situacao', 1)
-            ->update(['situacao' => 2]);
+        ->update(['situacao' => 3]);
 
         // Selecionar consultas relevantes
         $consultas = Consulta::with(['agendamento.especializacao'])

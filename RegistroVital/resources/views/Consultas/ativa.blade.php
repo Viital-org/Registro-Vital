@@ -21,7 +21,7 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><strong>Nome:</strong> {{ $consulta->paciente->usuario->nome_completo }}</li>
                             <li class="list-group-item"><strong>CPF:</strong> {{ $consulta->paciente->cpf ?? 'N/A' }}</li>
-                            <li class="list-group-item"><strong>Data de Nascimento:</strong> {{ $consulta->paciente->data_nascimento ?? 'N/A' }}</li>
+                            <li class="list-group-item"><strong>Data de Nascimento: </strong>{{ \Carbon\Carbon::parse($consulta->paciente->data_nascimento)->format('d/m/Y') ?? 'N/A' }}</li>
                             <li class="list-group-item"><strong>Gênero:</strong> {{ $consulta->paciente->genero ?? 'N/A' }}</li>
                             <li class="list-group-item"><strong>Estado Civil:</strong> {{ $consulta->paciente->estado_civil ?? 'N/A' }}</li>
                             <li class="list-group-item"><strong>Tipo Sanguíneo:</strong> {{ $consulta->paciente->tipo_sanguineo ?? 'N/A' }}</li>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Data Agendada:</strong> {{ $consulta->agendamento->data_agendamento }}</li>
+                            <li class="list-group-item"><strong>Data Agendada: </strong> {{ \Carbon\Carbon::parse($consulta->agendamento->data_agendamento)->format('d/m/Y') ?? 'N/A' }}</li>
                             <li class="list-group-item"><strong>Horário:</strong> {{ $consulta->agendamento->hora_agendamento }}</li>
                             <li class="list-group-item"><strong>Área Médica:</strong> {{ $consulta->agendamento->especializacao->area->descricao_area ?? 'N/A' }}</li>
                             <li class="list-group-item"><strong>Especialização:</strong> {{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}</li>

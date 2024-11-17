@@ -119,9 +119,17 @@ class MetasController extends Controller
 
     public function complete(Meta $meta)
     {
+
         if ($meta->situacao != 2) {
+
+            if (is_null($meta->data_fim)) {
+                $meta->data_fim = now();
+            }
+
+            // Marca a meta como concluída
             $meta->situacao = 2;
             $meta->save();
+
             return redirect()->route('metas.index')->with('success', 'Meta marcada como concluída!');
         }
 

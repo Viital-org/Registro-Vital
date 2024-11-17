@@ -10,6 +10,9 @@
     <!-- Importação de arquivos JavaScript e CSS com Vite -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <!-- Se o Bootstrap já estiver no app.scss, remova esta linha -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -25,35 +28,46 @@
 
     <ul class="nav flex-column links">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('profissional.dashboard') }}">Home</a>
+            <a class="nav-link d-flex align-items-center" href="{{ route('profissional.dashboard') }}">
+                <i class="fas fa-home me-2" style="font-size: 18px;"></i> Home
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('quemsomos') }}">Quem somos</a>
+            <a class="nav-link d-flex align-items-center" href="{{ route('quemsomos') }}">
+                <i class="fas fa-users me-2" style="font-size: 18px;"></i> Quem somos
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('ajuda') }}">Ajuda</a>
+            <a class="nav-link d-flex align-items-center" href="{{ route('ajuda') }}">
+                <i class="fas fa-question-circle me-2" style="font-size: 18px;"></i> Ajuda
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('minhasespecializacoes.index')}}">Minhas especializações</a>
+            <a class="nav-link d-flex align-items-center" href="{{ route('minhasespecializacoes.index') }}">
+                <i class="fas fa-cogs me-2" style="font-size: 18px;"></i> Minhas especializações
+            </a>
         </li>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-bs-toggle="dropdown" aria-expanded="false"> Consultas Marcadas </a>
+                <a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-calendar-check me-2" style="font-size: 18px;"></i> Consultas Marcadas
+                </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('consultas.index') }}">Lista das minhas Consultas Agendadas</a></li>
-                    <li><a class="dropdown-item" href="{{ route('agendamentos.index') }}">Historico dos meus Agendamentos</a></li>
+                    <li><a class="dropdown-item" href="{{ route('agendamentos.index') }}">Histórico dos meus Agendamentos</a></li>
                 </ul>
             </li>
         </ul>
     </ul>
+
     <div class="perfil">
         @auth
-            <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"
+            <a class="nav-link d-flex align-items-center" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">
                 <img src="{{ asset('/img/avatar.png') }}" alt="Avatar do usuário"
-                     class="userImg img-fluid rounded-circle ms-2">
-                <span>{{ Auth::user()->nome_completo }}</span>
+                     class="userImg img-fluid rounded-circle ms-2" style="width: 30px; height: 30px;">
+                <span class="ms-2">{{ Auth::user()->nome_completo }}</span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                 <li>

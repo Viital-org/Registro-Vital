@@ -18,20 +18,19 @@
                 <tbody>
                 @forelse($consultas as $consulta)
                     <tr>
-                        <td>{{ \Carbon\Carbon::parse($consulta->agendamento->data_agendamento)->format('d/m/Y H:i') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($consulta->agendamento->data_agendamento . ' ' . $consulta->agendamento->hora_agendamento)->format('d/m/Y H:i') }}</td>
                         <td>
                             <span class="badge
                                 @switch($consulta->situacao)
                                     @case(0) badge-warning @break
                                     @case(1) badge-primary @break
-                                    @case(2) badge-success @break
-                                    @default badge-danger
+                                    @case(5) badge-success @break
                                 @endswitch">
                                 @switch($consulta->situacao)
                                     @case(0) Pendente @break
                                     @case(1) Confirmada @break
-                                    @case(2) Finalizada @break
-                                    @default Cancelada
+                                    @case(5) Iniciada @break
+                                    @default
                                 @endswitch
                             </span>
                         </td>

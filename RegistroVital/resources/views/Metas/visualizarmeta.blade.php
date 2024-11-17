@@ -14,7 +14,7 @@
                 <h5 class="card-title">Período da Meta</h5>
                 <p class="card-text">
                     Início: {{ $periodo['inicio'] }}<br>
-                    Fim: {{ $periodo['fim'] }}
+                    Fim: {{ $periodo['fim']  }}
                 </p>
 
                 <h5 class="card-title">Maior Sequência Atingida</h5>
