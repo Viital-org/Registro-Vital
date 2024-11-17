@@ -151,6 +151,32 @@
                 <li><a class="dropdown-item" href="{{ route('metas.index') }}"><i class="fas fa-list"></i> Listar Metas</a></li>
             </ul>
         </li>
+
+        <div class="perfil">
+            @auth
+                <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <img src="{{ asset('/img/avatar.png') }}" alt="Avatar do usuário"
+                         class="userImg img-fluid rounded-circle ms-2">
+                    <span>{{ Auth::user()->nome_completo }}</span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                    <li>
+                        <a href="{{ route('profile.edit') }}" class="dropdown-item">Editar Perfil</a>
+                    </li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                            @csrf
+                            <button type="submit" class="dropdown-item">Sair</button>
+                        </form>
+                    </li>
+                </ul>
+            @else
+                <a class="nav-link" href="{{ route('login') }}">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </a>
+            @endauth
+        </div>
     </ul>
 </aside>
 
