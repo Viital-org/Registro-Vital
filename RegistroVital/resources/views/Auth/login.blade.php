@@ -20,62 +20,63 @@
                                         <h1 class="h4 text-gray-900 mb-4">Bem vindo!</h1>
                                     </div>
                                     <form method="POST" action="{{ route('login') }}">
-                                    @csrf
+                                        @csrf
 
-                                    <!-- Campo de E-mail -->
-                                    <div class="mb-3">
-                                        <input
-                                            placeholder="Endereço de E-Mail"
-                                            type="email"
-                                            name="email"
-                                            id="email"
-                                            class="form-control @error('email') is-invalid @enderror"
-                                            value="{{ old('email') }}"
-                                            required
-                                            autocomplete="email"
-                                            autofocus>
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
+                                        <!-- Campo de E-mail -->
+                                        <div class="mb-3">
+                                            <input
+                                                placeholder="Endereço de E-Mail"
+                                                type="email"
+                                                name="email"
+                                                id="email"
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                value="{{ old('email') }}"
+                                                required
+                                                autocomplete="email"
+                                                autofocus>
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
-                                    </div>
+                                            @enderror
+                                        </div>
 
-                                    <!-- Campo de Senha -->
-                                    <div class="mb-3">
-                                        <input
-                                            placeholder="Senha"
-                                            type="password"
-                                            name="password"
-                                            id="password"
-                                            class="form-control @error('password') is-invalid @enderror"
-                                            required
-                                            autocomplete="current-password">
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
+                                        <!-- Campo de Senha -->
+                                        <div class="mb-3">
+                                            <input
+                                                placeholder="Senha"
+                                                type="password"
+                                                name="password"
+                                                id="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                required
+                                                autocomplete="current-password">
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
-                                    </div>
+                                            @enderror
+                                        </div>
 
-                                    <!-- Opção de "Lembre-se de mim" -->
-                                    <div class="form-check mb-3">
-                                        <input
-                                            type="checkbox"
-                                            name="remember"
-                                            class="form-check-input"
-                                            id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="remember">Lembre-se de mim</label>
-                                    </div>
+                                        <!-- Opção de "Lembre-se de mim" -->
+                                        <div class="form-check mb-3">
+                                            <input
+                                                type="checkbox"
+                                                name="remember"
+                                                class="form-check-input"
+                                                id="remember"
+                                                {{ old('remember') ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="remember">Lembre-se de mim</label>
+                                        </div>
 
-                                    <div class="d-grid gap-2">
-                                        <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
-                                    </div>
-                                </form>
+                                        <div class="d-grid gap-2">
+                                            <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
+                                        </div>
+                                    </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('password.request') }}">Esqueceu a senha? Redefinir</a>
+                                        <a class="small" href="{{ route('password.request') }}">Esqueceu a senha?
+                                            Redefinir</a>
                                     </div>
                                     <div class="text-center">
                                         <a class="small" href="{{ route('login') }}">Já tem uma conta?</a>

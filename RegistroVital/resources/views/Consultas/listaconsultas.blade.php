@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 @extends($layout)
 
 @section('titulo', 'Minhas Consultas')
@@ -9,16 +10,16 @@
             <table class="table table-hover table-striped align-middle">
                 <thead class="thead-dark">
                 <tr>
-                    <th>Data</th>
-                    <th>Status</th>
-                    <th>Área Médica</th>
-                    <th class="text-center">Ações</th>
+                    <th class="text-nowrap">Data</th>
+                    <th class="text-nowrap">Status</th>
+                    <th class="text-nowrap">Área Médica</th>
+                    <th class="text-center text-nowrap">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
                 @forelse($consultas as $consulta)
                     <tr>
-                        <td>{{ \Carbon\Carbon::parse($consulta->agendamento->data_agendamento . ' ' . $consulta->agendamento->hora_agendamento)->format('d/m/Y H:i') }}</td>
+                        <td>{{ Carbon::parse($consulta->agendamento->data_agendamento . ' ' . $consulta->agendamento->hora_agendamento)->format('d/m/Y H:i') }}</td>
                         <td>
                             <span class="badge
                                 @switch($consulta->situacao)
@@ -27,69 +28,79 @@
                                     @case(5) badge-success @break
                                 @endswitch">
                                 @switch($consulta->situacao)
-                                    @case(0) Pendente @break
-                                    @case(1) Confirmada @break
-                                    @case(5) Iniciada @break
+                                    @case(0)
+                                        Pendente @break
+                                    @case(1)
+                                        Confirmada @break
+                                    @case(5)
+                                        Iniciada @break
                                     @default
                                 @endswitch
                             </span>
                         </td>
                         <td>{{ $consulta->agendamento->especializacao->area->descricao_area ?? 'N/A' }}</td>
                         <td class="text-center">
-                            <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-sm btn-info" title="Ver detalhes">
+                            <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-sm btn-info"
+                               title="Ver detalhes">
                                 <i class="fas fa-eye"></i> Detalhes
                             </a>
 
-                            @if(auth()->user()->tipo_usuario === 2) <!-- Profissional -->
-                            @if($consulta->situacao === 1 && \Carbon\Carbon::parse($consulta->agendamento->data_agendamento)->isToday())
-                                <form method="POST" action="{{ route('consultas.iniciar', $consulta->id) }}" class="d-inline">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn btn-sm btn-warning" title="Iniciar consulta" onclick="return confirm('Deseja iniciar esta consulta?')">
-                                        <i class="fas fa-play"></i> Iniciar
+                            @if(auth()->user()->tipo_usuario === 2)
+                                @if($consulta->situacao === 1 && Carbon::parse($consulta->agendamento->data_agendamento)->isToday())
+                                    <form method="POST" action="{{ route('consultas.iniciar', $consulta->id) }}"
+                                          class="d-inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-sm btn-warning" title="Iniciar consulta"
+                                                onclick="return confirm('Deseja iniciar esta consulta?')">
+                                            <i class="fas fa-play"></i> Iniciar
+                                        </button>
+                                    </form>
+                                @endif
+                                @if($consulta->situacao === 1)
+                                    <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#cancelModal{{ $consulta->id }}" title="Cancelar">
+                                        <i class="fas fa-times"></i> Não Posso Atender
                                     </button>
-                                </form>
-                            @endif
-                            @if($consulta->situacao === 1)
-                                <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#cancelModal{{ $consulta->id }}" title="Cancelar">
-                                    <i class="fas fa-times"></i> Não Posso Atender
-                                </button>
-                            @endif
-                            @if($consulta->situacao === 5) <!-- Consulta em andamento -->
-                            <a href="{{ route('consultas.ativa', $consulta->id) }}" class="btn btn-sm btn-success">
-                                <i class="fas fa-redo"></i> Retomar
-                            </a>
-                            @endif
-                            @elseif(auth()->user()->tipo_usuario === 1) <!-- Paciente -->
-                            @if($consulta->situacao === 0)
-                                <button onclick="confirmAction({{ $consulta->id }}, 'confirmar')" class="btn btn-sm btn-success">
-                                    <i class="fas fa-check"></i> Confirmar
-                                </button>
-                            @elseif($consulta->situacao === 1)
-                                <button onclick="confirmAction({{ $consulta->id }}, 'cancelar')" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-ban"></i> Cancelar
-                                </button>
-                            @endif
+                                @endif
+                                @if($consulta->situacao === 5)
+                                    <a href="{{ route('consultas.ativa', $consulta->id) }}"
+                                       class="btn btn-sm btn-success">
+                                        <i class="fas fa-redo"></i> Retomar
+                                    </a>
+                                @endif
+                            @elseif(auth()->user()->tipo_usuario === 1)
+                                @if($consulta->situacao === 0)
+                                    <button onclick="confirmAction({{ $consulta->id }}, 'confirmar')"
+                                            class="btn btn-sm btn-success">
+                                        <i class="fas fa-check"></i> Confirmar
+                                    </button>
+                                @elseif($consulta->situacao === 1)
+                                    <button onclick="confirmAction({{ $consulta->id }}, 'cancelar')"
+                                            class="btn btn-sm btn-danger">
+                                        <i class="fas fa-ban"></i> Cancelar
+                                    </button>
+                                @endif
                             @endif
                         </td>
                     </tr>
 
                     <!-- Modal para motivo do cancelamento -->
-                    <div class="modal fade" id="cancelModal{{ $consulta->id }}" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="cancelModal{{ $consulta->id }}" tabindex="-1" role="dialog"
+                         aria-labelledby="cancelModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Motivo para não poder atender</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                                 </div>
                                 <form action="{{ route('consultas.alterarSituacao', $consulta->id) }}" method="POST">
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="situacao" value="4">
                                     <div class="modal-body">
-                                        <textarea name="motivo" class="form-control" placeholder="Descreva o motivo" required></textarea>
+                                        <textarea name="motivo" class="form-control" placeholder="Descreva o motivo"
+                                                  required></textarea>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary">Enviar</button>
@@ -112,8 +123,8 @@
     <script>
         function confirmAction(id, action) {
             const actions = {
-                confirmar: { message: 'Você deseja confirmar esta consulta?', situacao: 1 },
-                cancelar: { message: 'Você deseja cancelar esta consulta?', situacao: 3 }
+                confirmar: {message: 'Você deseja confirmar esta consulta?', situacao: 1},
+                cancelar: {message: 'Você deseja cancelar esta consulta?', situacao: 3}
             };
 
             const confirmation = confirm(actions[action].message);

@@ -25,7 +25,9 @@
                                     @default <span class="badge bg-danger">Cancelada</span>
                                 @endswitch
                             </li>
-                            <li><strong>Valor:</strong> {{ 'R$ ' . number_format($consulta->agendamento->valor_atendimento, 2, ',', '.') }}</li>
+                            <li>
+                                <strong>Valor:</strong> {{ 'R$ ' . number_format($consulta->agendamento->valor_atendimento, 2, ',', '.') }}
+                            </li>
                         </ul>
                     </div>
 
@@ -34,8 +36,12 @@
                         <h5 class="text-primary"><i class="fas fa-user-md"></i> Profissional</h5>
                         <ul class="list-unstyled">
                             <li><strong>Nome:</strong> {{ $consulta->profissional->usuario->nome_completo }}</li>
-                            <li><strong>Especialização:</strong> {{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}</li>
-                            <li><strong>Área de Atuação:</strong> {{ $consulta->agendamento->especializacao->area->descricao_area ?? 'N/A' }}</li>
+                            <li>
+                                <strong>Especialização:</strong> {{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}
+                            </li>
+                            <li><strong>Área de
+                                    Atuação:</strong> {{ $consulta->agendamento->especializacao->area->descricao_area ?? 'N/A' }}
+                            </li>
                         </ul>
                         <h5 class="text-primary mt-3"><i class="fas fa-user"></i> Paciente</h5>
                         <ul class="list-unstyled">

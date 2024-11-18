@@ -36,7 +36,8 @@
                             {{ $especializacaoprofissional->enderecos->rua }},
                             {{ $especializacaoprofissional->enderecos->numero_endereco }} -
                             {{ $especializacaoprofissional->enderecos->bairro }},
-                            {{ $especializacaoprofissional->enderecos->cidade }}-{{ $especializacaoprofissional->enderecos->uf }},
+                            {{ $especializacaoprofissional->enderecos->cidade }}
+                            -{{ $especializacaoprofissional->enderecos->uf }},
                             {{ $especializacaoprofissional->enderecos->cep }}
                         </td>
                         <td>R$ {{ number_format($especializacaoprofissional->valor_atendimento, 2, ',', '.') }}</td>
@@ -71,7 +72,8 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Confirmação de Exclusão</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Fechar"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <p>Deseja realmente excluir a especialização
@@ -79,7 +81,9 @@
                                                 </p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Cancelar
+                                                </button>
                                                 <button type="submit" class="btn btn-danger">Excluir</button>
                                             </div>
                                         </div>

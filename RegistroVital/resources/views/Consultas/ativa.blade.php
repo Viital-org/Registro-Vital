@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 @extends($layout)
 
 @section('titulo', 'Consulta Ativa')
@@ -19,12 +20,19 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Nome:</strong> {{ $consulta->paciente->usuario->nome_completo }}</li>
-                            <li class="list-group-item"><strong>CPF:</strong> {{ $consulta->paciente->cpf ?? 'N/A' }}</li>
-                            <li class="list-group-item"><strong>Data de Nascimento: </strong>{{ \Carbon\Carbon::parse($consulta->paciente->data_nascimento)->format('d/m/Y') ?? 'N/A' }}</li>
-                            <li class="list-group-item"><strong>Gênero:</strong> {{ $consulta->paciente->genero ?? 'N/A' }}</li>
-                            <li class="list-group-item"><strong>Estado Civil:</strong> {{ $consulta->paciente->estado_civil ?? 'N/A' }}</li>
-                            <li class="list-group-item"><strong>Tipo Sanguíneo:</strong> {{ $consulta->paciente->tipo_sanguineo ?? 'N/A' }}</li>
+                            <li class="list-group-item">
+                                <strong>Nome:</strong> {{ $consulta->paciente->usuario->nome_completo }}</li>
+                            <li class="list-group-item"><strong>CPF:</strong> {{ $consulta->paciente->cpf ?? 'N/A' }}
+                            </li>
+                            <li class="list-group-item"><strong>Data de
+                                    Nascimento: </strong>{{ Carbon::parse($consulta->paciente->data_nascimento)->format('d/m/Y') ?? 'N/A' }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Gênero:</strong> {{ $consulta->paciente->genero ?? 'N/A' }}</li>
+                            <li class="list-group-item"><strong>Estado
+                                    Civil:</strong> {{ $consulta->paciente->estado_civil ?? 'N/A' }}</li>
+                            <li class="list-group-item"><strong>Tipo
+                                    Sanguíneo:</strong> {{ $consulta->paciente->tipo_sanguineo ?? 'N/A' }}</li>
                         </ul>
                     </div>
                 </div>
@@ -38,11 +46,20 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Data Agendada: </strong> {{ \Carbon\Carbon::parse($consulta->agendamento->data_agendamento)->format('d/m/Y') ?? 'N/A' }}</li>
-                            <li class="list-group-item"><strong>Horário:</strong> {{ $consulta->agendamento->hora_agendamento }}</li>
-                            <li class="list-group-item"><strong>Área Médica:</strong> {{ $consulta->agendamento->especializacao->area->descricao_area ?? 'N/A' }}</li>
-                            <li class="list-group-item"><strong>Especialização:</strong> {{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}</li>
-                            <li class="list-group-item"><strong>Profissional:</strong> {{ $consulta->profissional->usuario->nome_completo }}</li>
+                            <li class="list-group-item"><strong>Data
+                                    Agendada: </strong> {{ Carbon::parse($consulta->agendamento->data_agendamento)->format('d/m/Y') ?? 'N/A' }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Horário:</strong> {{ $consulta->agendamento->hora_agendamento }}</li>
+                            <li class="list-group-item"><strong>Área
+                                    Médica:</strong> {{ $consulta->agendamento->especializacao->area->descricao_area ?? 'N/A' }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Especialização:</strong> {{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Profissional:</strong> {{ $consulta->profissional->usuario->nome_completo }}
+                            </li>
                             <li class="list-group-item"><strong>Endereço:</strong>
                                 {{ $consulta->agendamento->endereco->rua ?? 'N/A' }},
                                 {{ $consulta->agendamento->endereco->numero_endereco ?? 'N/A' }},
@@ -65,7 +82,8 @@
                     @csrf
                     <div class="mb-3">
                         <label for="prescricao" class="form-label">Descrição da Prescrição:</label>
-                        <textarea id="prescricao" name="prescricao" class="form-control" rows="4">{{ old('prescricao') }}</textarea>
+                        <textarea id="prescricao" name="prescricao" class="form-control"
+                                  rows="4">{{ old('prescricao') }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" onclick="guardarPrescricao(event)">
                         <i class="bi bi-save me-1"></i>Salvar Prescrição
@@ -84,7 +102,8 @@
             <button onclick="imprimirPrescricao()" class="btn btn-warning">
                 <i class="bi bi-printer me-1"></i>Imprimir Prescrição
             </button>
-            <form method="POST" action="{{ route('consultas.finalizar', $consulta->id) }}" onsubmit="return confirm('Deseja finalizar esta consulta?')">
+            <form method="POST" action="{{ route('consultas.finalizar', $consulta->id) }}"
+                  onsubmit="return confirm('Deseja finalizar esta consulta?')">
                 @csrf
                 @method('PATCH')
                 <button type="submit" class="btn btn-success">
@@ -99,7 +118,9 @@
         <div style="padding: 20px;">
             <h3>Prescrição Médica</h3>
             <p><strong>Paciente:</strong> {{ $consulta->paciente->usuario->nome_completo }}</p>
-            <p><strong>Especialização:</strong> {{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}</p>
+            <p>
+                <strong>Especialização:</strong> {{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}
+            </p>
             <p><strong>Prescrição:</strong></p>
             <p id="prescricaoTexto">{{ old('prescricao', 'Aguardando preenchimento...') }}</p>
         </div>

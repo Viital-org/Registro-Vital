@@ -7,12 +7,13 @@
         <!-- Contact form-->
         <div class="bg-light rounded-4 py-5 px-4 px-md-5">
             <div class="text-center mb-5">
-                <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i
+                        class="bi bi-envelope"></i></div>
                 <h1 class="fw-bolder">Agendamento de consultas</h1>
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-8 col-xl-6">
-                    <form action="{{ route('agendamentos.store') }}" method="POST" >
+                    <form action="{{ route('agendamentos.store') }}" method="POST">
                         @csrf
 
                         <!-- Selecione a área de atuação -->
@@ -66,11 +67,14 @@
                         <!-- Campo Valor do Atendimento -->
                         <div class="mb-3">
                             <label for="valor_atendimento" class="form-label">Valor do Atendimento</label>
-                            <input type="text" name="valor_atendimento" id="valor_atendimento" class="form-control" readonly>
+                            <input type="text" name="valor_atendimento" id="valor_atendimento" class="form-control"
+                                   readonly>
                         </div>
 
                         <!-- Agendar -->
-                        <div class="d-grid"><button type="submit" class="btn btn-primary">Agendar</button></div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Agendar</button>
+                        </div>
 
                     </form>
                 </div>
@@ -179,7 +183,13 @@
                     .then(response => response.json())
                     .then(diasPermitidos => {
                         const diasSemanaMap = {
-                            'sunday': 0, 'monday': 1, 'tuesday': 2, 'wednesday': 3, 'thursday': 4, 'friday': 5, 'saturday': 6
+                            'sunday': 0,
+                            'monday': 1,
+                            'tuesday': 2,
+                            'wednesday': 3,
+                            'thursday': 4,
+                            'friday': 5,
+                            'saturday': 6
                         };
                         const diasPermitidosIndices = diasPermitidos.map(dia => diasSemanaMap[dia.toLowerCase()]);
 
@@ -191,7 +201,7 @@
                                     return !diasPermitidosIndices.includes(date.getDay());
                                 }
                             ],
-                            locale: { firstDayOfWeek: 1 }
+                            locale: {firstDayOfWeek: 1}
                         });
                     })
                     .catch(error => console.error('Erro ao carregar dias de atendimento:', error));
@@ -245,7 +255,7 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.valor_atendimento !== null) {
-                                valorAtendimentoInput.value =  `R$ ${data.valor_atendimento}`;
+                                valorAtendimentoInput.value = `R$ ${data.valor_atendimento}`;
                             } else {
                                 valorAtendimentoInput.value = 'Valor não encontrado';
                             }

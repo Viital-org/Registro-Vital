@@ -126,9 +126,12 @@
                 <i class="fas fa-calendar-alt"></i> Agendamentos
             </a>
             <ul class="dropdown-menu" aria-labelledby="agendamentosDropdown">
-                <li><a class="dropdown-item" href="{{ route('agendamentos.create') }}"><i class="fas fa-plus-circle"></i> Agendar Consulta</a></li>
-                <li><a class="dropdown-item" href="{{ route('consultas.index') }}"><i class="fas fa-list"></i> Lista de Consultas Atuais</a></li>
-                <li><a class="dropdown-item" href="{{ route('agendamentos.index') }}"><i class="fas fa-history"></i> Agendamentos Passados</a></li>
+                <li><a class="dropdown-item" href="{{ route('agendamentos.create') }}"><i
+                            class="fas fa-plus-circle"></i> Agendar Consulta</a></li>
+                <li><a class="dropdown-item" href="{{ route('consultas.index') }}"><i class="fas fa-list"></i> Lista de
+                        Consultas Atuais</a></li>
+                <li><a class="dropdown-item" href="{{ route('agendamentos.index') }}"><i class="fas fa-history"></i>
+                        Agendamentos Passados</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown">
@@ -137,8 +140,10 @@
                 <i class="fas fa-clipboard"></i> Anotações
             </a>
             <ul class="dropdown-menu" aria-labelledby="anotacoesDropdown">
-                <li><a class="dropdown-item" href="{{ route('anotacoessaude-create') }}"><i class="fas fa-plus"></i> Cadastrar Anotação</a></li>
-                <li><a class="dropdown-item" href="{{ route('anotacoessaude-index') }}"><i class="fas fa-list"></i> Listar Anotações</a></li>
+                <li><a class="dropdown-item" href="{{ route('anotacoessaude-create') }}"><i class="fas fa-plus"></i>
+                        Cadastrar Anotação</a></li>
+                <li><a class="dropdown-item" href="{{ route('anotacoessaude-index') }}"><i class="fas fa-list"></i>
+                        Listar Anotações</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown">
@@ -147,8 +152,10 @@
                 <i class="fas fa-bullseye"></i> Metas
             </a>
             <ul class="dropdown-menu" aria-labelledby="metasDropdown">
-                <li><a class="dropdown-item" href="{{ route('metas.create') }}"><i class="fas fa-plus"></i> Cadastrar Meta</a></li>
-                <li><a class="dropdown-item" href="{{ route('metas.index') }}"><i class="fas fa-list"></i> Listar Metas</a></li>
+                <li><a class="dropdown-item" href="{{ route('metas.create') }}"><i class="fas fa-plus"></i> Cadastrar
+                        Meta</a></li>
+                <li><a class="dropdown-item" href="{{ route('metas.index') }}"><i class="fas fa-list"></i> Listar Metas</a>
+                </li>
             </ul>
         </li>
 

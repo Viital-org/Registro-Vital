@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 @extends($layout)
 
 @section('titulo', 'Cadastrar nova meta')
@@ -7,7 +8,8 @@
         <!-- Contact form-->
         <div class="bg-light rounded-4 py-5 px-4 px-md-5">
             <div class="text-center mb-5">
-                <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i
+                        class="bi bi-envelope"></i></div>
                 <h1 class="fw-bolder">Criar meta</h1>
                 <p class="lead fw-normal text-muted mb-0">Desafiar-se te ajuda a crescer!</p>
             </div>
@@ -38,29 +40,34 @@
                         <div class="form-group">
                             <label for="data_inicio">Data de Início:</label>
                             <input type="date" name="data_inicio" id="data_inicio" required class="form-control"
-                                   min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                                   min="{{ Carbon::now()->format('Y-m-d') }}">
                         </div>
 
                         <div class="form-group">
                             <label for="data_fim">Data de Fim:</label>
                             <input type="date" name="data_fim" id="data_fim" class="form-control">
                             <div class="form-check">
-                                <input type="checkbox" id="indefinido" name="indefinido" class="form-check-input" value="1">
+                                <input type="checkbox" id="indefinido" name="indefinido" class="form-check-input"
+                                       value="1">
                                 <label for="indefinido" class="form-check-label">Indefinido</label>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="unidade_metrica">Unidade Métrica:</label>
-                            <input type="text" name="unidade_metrica" required class="form-control" placeholder="Ex: kg, cm">
+                            <input type="text" name="unidade_metrica" required class="form-control"
+                                   placeholder="Ex: kg, cm">
                         </div>
 
                         <div class="form-group">
                             <label for="quantidade_alvo">Quantidade Alvo:</label>
-                            <input type="number" name="quantidade_alvo" required class="form-control" placeholder="Ex: 10">
+                            <input type="number" name="quantidade_alvo" required class="form-control"
+                                   placeholder="Ex: 10">
                         </div>
 
-                        <div class="d-grid"><button class="btn btn-primary btn-lg " id="submitButton" type="submit">Salvar</button></div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg " id="submitButton" type="submit">Salvar</button>
+                        </div>
                     </form>
                 </div>
             </div>

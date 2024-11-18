@@ -5,12 +5,13 @@
 @section('conteudo')
 
     <div class="container px-5">
-            <!-- Contact form-->
+        <!-- Contact form-->
         <div class="bg-light rounded-4 py-5 px-4 px-md-5">
             <div class="text-center mb-5">
-                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                    <h1 class="fw-bolder">Cadastrar anotação</h1>
-                    <p class="lead fw-normal text-muted mb-0">Há alguma novidade?</p>
+                <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i
+                        class="bi bi-envelope"></i></div>
+                <h1 class="fw-bolder">Cadastrar anotação</h1>
+                <p class="lead fw-normal text-muted mb-0">Há alguma novidade?</p>
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-8 col-xl-6">
@@ -34,9 +35,9 @@
                         </div>
 
                         <div class="mb-4">
-                                <label for="data_anotacao" class="form-label">Data da Anotação</label>
-                                <input type="date" name="data_anotacao" id="data_anotacao" class="form-control"
-                                       max="{{ date('Y-m-d') }}" required>
+                            <label for="data_anotacao" class="form-label">Data da Anotação</label>
+                            <input type="date" name="data_anotacao" id="data_anotacao" class="form-control"
+                                   max="{{ date('Y-m-d') }}" required>
                         </div>
 
                         <div class="mb-4">
@@ -47,7 +48,9 @@
                             </select>
                         </div>
                         <!-- Submit Button-->
-                        <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Cadastrar</button></div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Cadastrar</button>
+                        </div>
                     </form>
                 </div>
             </div>

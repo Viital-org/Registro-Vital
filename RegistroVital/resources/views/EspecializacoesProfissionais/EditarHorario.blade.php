@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 @extends($layout)
 
 @section('titulo', 'Editar Horário de Atendimento')
@@ -64,7 +65,7 @@
                 <label for="inicio_atendimento">Início do Atendimento</label>
                 <input type="time" name="inicio_atendimento"
                        class="form-control @error('inicio_atendimento') is-invalid @enderror"
-                       value="{{ old('inicio_atendimento', isset($horarioAtendimento->inicio_atendimento) ? \Carbon\Carbon::parse($horarioAtendimento->inicio_atendimento)->format('H:i') : '') }}"
+                       value="{{ old('inicio_atendimento', isset($horarioAtendimento->inicio_atendimento) ? Carbon::parse($horarioAtendimento->inicio_atendimento)->format('H:i') : '') }}"
                        required>
                 @error('inicio_atendimento')
                 <div class="invalid-feedback">{{ $message }}</div>
@@ -75,7 +76,7 @@
                 <label for="fim_atendimento">Fim do Atendimento</label>
                 <input type="time" name="fim_atendimento"
                        class="form-control @error('fim_atendimento') is-invalid @enderror"
-                       value="{{ old('fim_atendimento', isset($horarioAtendimento->fim_atendimento) ? \Carbon\Carbon::parse($horarioAtendimento->fim_atendimento)->format('H:i') : '') }}"
+                       value="{{ old('fim_atendimento', isset($horarioAtendimento->fim_atendimento) ? Carbon::parse($horarioAtendimento->fim_atendimento)->format('H:i') : '') }}"
                        required>
                 @error('fim_atendimento')
                 <div class="invalid-feedback">{{ $message }}</div>
@@ -86,7 +87,7 @@
                 <label for="tempo_consulta">Tempo de Consulta</label>
                 <input type="time" name="tempo_consulta"
                        class="form-control @error('tempo_consulta') is-invalid @enderror"
-                       value="{{ old('tempo_consulta', isset($horarioAtendimento->tempo_consulta) ? \Carbon\Carbon::parse($horarioAtendimento->tempo_consulta)->format('H:i') : '') }}"
+                       value="{{ old('tempo_consulta', isset($horarioAtendimento->tempo_consulta) ? Carbon::parse($horarioAtendimento->tempo_consulta)->format('H:i') : '') }}"
                        required>
                 @error('tempo_consulta')
                 <div class="invalid-feedback">{{ $message }}</div>
@@ -96,7 +97,7 @@
             <div class="form-group">
                 <label for="inicio_pausa">Início da Pausa</label>
                 <input type="time" name="inicio_pausa" class="form-control @error('inicio_pausa') is-invalid @enderror"
-                       value="{{ old('inicio_pausa', isset($horarioAtendimento->inicio_pausa) ? \Carbon\Carbon::parse($horarioAtendimento->inicio_pausa)->format('H:i') : '') }}">
+                       value="{{ old('inicio_pausa', isset($horarioAtendimento->inicio_pausa) ? Carbon::parse($horarioAtendimento->inicio_pausa)->format('H:i') : '') }}">
                 @error('inicio_pausa')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -105,7 +106,7 @@
             <div class="form-group">
                 <label for="fim_pausa">Fim da Pausa</label>
                 <input type="time" name="fim_pausa" class="form-control @error('fim_pausa') is-invalid @enderror"
-                       value="{{ old('fim_pausa', isset($horarioAtendimento->fim_pausa) ? \Carbon\Carbon::parse($horarioAtendimento->fim_pausa)->format('H:i') : '') }}">
+                       value="{{ old('fim_pausa', isset($horarioAtendimento->fim_pausa) ? Carbon::parse($horarioAtendimento->fim_pausa)->format('H:i') : '') }}">
                 @error('fim_pausa')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
