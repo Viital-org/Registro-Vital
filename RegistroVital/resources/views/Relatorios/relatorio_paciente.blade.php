@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        <img src="{{ asset('/img/consultando.png') }}">
                     </div>
                 </div>
             </div>
@@ -98,12 +98,12 @@
             <div class="col-xl-8 col-lg-7">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Metas</h6>
-                        <button id="downloadButtonMetas" class="btn btn-primary">Exportar</button>
+                        <h6 class="m-0 font-weight-bold text-primary">Anotações</h6>
+                        <button id="downloadButtonAnotacoes" class="btn btn-primary">Exportar</button>
                     </div>
                     <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="myAreaChart"></canvas>
+                        <div class="chart-area pt-4 pb-2">
+                            <canvas id="graficoAnotacoes"></canvas>
                         </div>
                     </div>
                 </div>
@@ -112,27 +112,17 @@
             <div class="col-xl-4 col-lg-5">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Quantidades de anotações por tipo</h6>
-                        <button id="downloadButtonAnotacoes" class="btn btn-primary">Exportar</button>
+                        <h6 class="m-0 font-weight-bold text-primary">Metas</h6>
+                        <button id="downloadButtonMetas" class="btn btn-primary">Exportar</button>
                     </div>
                     <div class="card-body">
-                        <div class="chart-pie pt-4 pb-2">
-                            <canvas id="myPieChart"></canvas>
-                        </div>
-                        <div class="mt-4 text-center small">
-                            @foreach($anotacoes as $anotacao)
-                            <span class="mr-2">
-                                <i class="fas fa-circle text-primary"></i> {{ $anotacao->descricao_tipo }}
-                            </span>
-                            @endforeach
+                        <div class="chart-area pt-4 pb-2">
+                            <canvas id="graficoMetas"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <button id="downloadButtonAnotacoes" class="btn btn-primary">Baixar Gráfico</button>
-        <button id="downloadButtonMetas" class="btn btn-primary">Baixar Gráfico</button>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
@@ -165,19 +155,15 @@
                         'rgba(153, 102, 255, 1)',
                         'rgba(255, 159, 64, 1)'
                     ],
-                    borderWidth: 1
                 }]
             };
 
             const configAnotacoes = {
-                type: 'bar',
+                type: 'pie',
                 data: dataAnotacoes,
                 options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+                    responsive: true, // Makes the chart responsive to container size
+                    maintainAspectRatio: true,
                 }
             };
 
@@ -218,7 +204,7 @@
             };
 
             const configMetas = {
-                type: 'pie',
+                type: 'bar',
                 data: dataMetas,
                 options: {
                     responsive: true,
