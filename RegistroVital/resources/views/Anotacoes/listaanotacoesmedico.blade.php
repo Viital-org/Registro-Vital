@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 @extends($layout)
 
 @section('titulo', 'Anotações do Paciente: ' . $consulta->paciente->usuario->nome_completo)
@@ -7,7 +8,8 @@
 
     <div class="container mt-4">
         <!-- Título principal -->
-        <h1 class="display-4 text-center mb-4">Anotações Visíveis de {{ $consulta->paciente->usuario->nome_completo }}</h1>
+        <h1 class="display-4 text-center mb-4">Anotações Visíveis
+            de {{ $consulta->paciente->usuario->nome_completo }}</h1>
 
         <!-- Se não houver anotações, exibe uma mensagem -->
         @if($anotacoessaude->isEmpty())
@@ -32,7 +34,7 @@
                         <tr>
                             <td>{{ $item->tipo_anotacao }}</td> <!-- Exibe tipo da anotação -->
                             <td>{{ $item->descricao_anotacao }}</td> <!-- Exibe a descrição da anotação -->
-                            <td>{{ \Carbon\Carbon::parse($item->data_anotacao)->format('d/m/Y') }}</td>
+                            <td>{{ Carbon::parse($item->data_anotacao)->format('d/m/Y') }}</td>
                         </tr>
                     @endforeach
                     </tbody>

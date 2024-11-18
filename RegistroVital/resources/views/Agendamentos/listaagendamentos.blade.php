@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 @extends($layout)
 
 @section('titulo', 'Meus Agendamentos')
@@ -28,7 +29,8 @@
 
                                         {{-- Exibe a data do agendamento --}}
                                         <p class="fw-bolder">
-                                            Tipo: <i class="fw-normal">{{ \Carbon\Carbon::parse($agendamento->data_agendamento)->format('d-m-Y') }}</i>
+                                            Tipo: <i
+                                                class="fw-normal">{{ Carbon::parse($agendamento->data_agendamento)->format('d-m-Y') }}</i>
                                         </p>
 
                                         {{-- Exibe o valor do agendamento --}}
@@ -73,8 +75,8 @@
                                                 <i class="fw-normal">
                                                     @if($agendamento->consulta->horario_inicio_real && $agendamento->consulta->horario_fim_real)
                                                         @php
-                                                            $inicio = \Carbon\Carbon::parse($agendamento->consulta->horario_inicio_real);
-                                                            $fim = \Carbon\Carbon::parse($agendamento->consulta->horario_fim_real);
+                                                            $inicio = Carbon::parse($agendamento->consulta->horario_inicio_real);
+                                                            $fim = Carbon::parse($agendamento->consulta->horario_fim_real);
                                                             $duracao = $inicio->diff($fim);
 
                                                             // Formatar a duração em horas e minutos

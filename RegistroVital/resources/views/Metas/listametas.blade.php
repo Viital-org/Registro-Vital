@@ -5,7 +5,8 @@
 @section('conteudo')
     <div class="container">
         <h1 class="my-4 text-center">Suas Metas</h1>
-        <a href="{{ route('metas.create') }}" class="btn btn-primary mb-4"><i class="bi bi-plus-circle"></i> Cadastrar Nova Meta</a>
+        <a href="{{ route('metas.create') }}" class="btn btn-primary mb-4"><i class="bi bi-plus-circle"></i> Cadastrar
+            Nova Meta</a>
 
         {{-- Metas Pendentes --}}
         <h2 class="mt-5 mb-3 text-muted">Metas Pendentes</h2>
@@ -14,7 +15,8 @@
                 <div class="card-body">
                     <h5 class="card-title font-weight-bold">{{ $meta->titulo_meta }}</h5>
                     <p class="card-text text-muted">{{ $meta->descricao_meta }}</p>
-                    <p><strong>Progresso Atual:</strong> {{ $meta->progresso_atual }} / {{ $meta->quantidade_alvo }} {{ $meta->unidade_metrica }}</p>
+                    <p><strong>Progresso Atual:</strong> {{ $meta->progresso_atual }}
+                        / {{ $meta->quantidade_alvo }} {{ $meta->unidade_metrica }}</p>
                     <p><strong>Sequência Atual:</strong> {{ $meta->sequencia_atual }}</p>
                     <p><strong>Maior Sequência:</strong> {{ $meta->maior_sequencia }}</p>
 
@@ -32,15 +34,19 @@
                         <form action="{{ route('metas.start', $meta) }}" method="POST" class="d-inline">
                             @csrf
                             @method('PUT')
-                            <button type="submit" class="btn btn-info btn-sm"><i class="bi bi-play-circle"></i> Iniciar Meta</button>
+                            <button type="submit" class="btn btn-info btn-sm"><i class="bi bi-play-circle"></i> Iniciar
+                                Meta
+                            </button>
                         </form>
 
-                        <a href="{{ route('metas.edit', $meta->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Editar</a>
+                        <a href="{{ route('metas.edit', $meta->id) }}" class="btn btn-warning btn-sm"><i
+                                class="bi bi-pencil-square"></i> Editar</a>
 
                         <form action="{{ route('metas.destroy', $meta->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir esta meta?');">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Deseja realmente excluir esta meta?');">
                                 <i class="bi bi-trash"></i> Excluir
                             </button>
                         </form>
@@ -58,7 +64,8 @@
                 <div class="card-body">
                     <h5 class="card-title font-weight-bold">{{ $meta->titulo_meta }}</h5>
                     <p class="card-text text-muted">{{ $meta->descricao_meta }}</p>
-                    <p><strong>Progresso Atual:</strong> {{ $meta->progresso_atual }} / {{ $meta->quantidade_alvo }} {{ $meta->unidade_metrica }}</p>
+                    <p><strong>Progresso Atual:</strong> {{ $meta->progresso_atual }}
+                        / {{ $meta->quantidade_alvo }} {{ $meta->unidade_metrica }}</p>
                     <p><strong>Sequência Atual:</strong> {{ $meta->sequencia_atual }}</p>
                     <p><strong>Maior Sequência:</strong> {{ $meta->maior_sequencia }}</p>
 
@@ -77,24 +84,32 @@
                             <form action="{{ route('metas.increment', $meta) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit" class="btn btn-info btn-sm"><i class="bi bi-arrow-up-circle"></i> Incrementar Progresso</button>
+                                <button type="submit" class="btn btn-info btn-sm"><i class="bi bi-arrow-up-circle"></i>
+                                    Incrementar Progresso
+                                </button>
                             </form>
                         @else
-                            <button class="btn btn-secondary btn-sm" disabled><i class="bi bi-arrow-up-circle"></i> Incrementar Progresso</button>
+                            <button class="btn btn-secondary btn-sm" disabled><i class="bi bi-arrow-up-circle"></i>
+                                Incrementar Progresso
+                            </button>
                         @endif
 
                         <form action="{{ route('metas.complete', $meta) }}" method="POST" class="d-inline">
                             @csrf
                             @method('PUT')
-                            <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-check-circle"></i> Marcar como Concluída</button>
+                            <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-check-circle"></i>
+                                Marcar como Concluída
+                            </button>
                         </form>
 
-                        <a href="{{ route('metas.edit', $meta->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Editar</a>
+                        <a href="{{ route('metas.edit', $meta->id) }}" class="btn btn-warning btn-sm"><i
+                                class="bi bi-pencil-square"></i> Editar</a>
 
                         <form action="{{ route('metas.destroy', $meta->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir esta meta?');">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Deseja realmente excluir esta meta?');">
                                 <i class="bi bi-trash"></i> Excluir
                             </button>
                         </form>
@@ -122,11 +137,13 @@
 
 
                     <div class="d-flex justify-content-between mt-3">
-                        <a href="{{ route('metas.show', $meta->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i> Ver Detalhes</a>
+                        <a href="{{ route('metas.show', $meta->id) }}" class="btn btn-primary btn-sm"><i
+                                class="bi bi-eye"></i> Ver Detalhes</a>
                         <form action="{{ route('metas.destroy', $meta->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir esta meta?');">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Deseja realmente excluir esta meta?');">
                                 <i class="bi bi-trash"></i> Excluir
                             </button>
                         </form>
