@@ -1,7 +1,7 @@
-<section class="container mx-auto p-6 bg-white rounded-lg shadow-md">
-    <header class="mb-6">
-        <h2 class="text-2xl font-bold text-primary mb-2">Informações do Administrador</h2>
-        <p class="text-gray-600">Atualize suas informações de administrador</p>
+<section class="container mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <header class="mb-6 text-center">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-2">Informações do Administrador</h2>
+        <p class="text-gray-600 text-sm">Atualize suas informações de administrador</p>
     </header>
 
     <form method="post" action="{{ route('profile.updateRoleInfo') }}" class="space-y-6">
@@ -9,35 +9,39 @@
         @method('patch')
 
         {{-- Cargo --}}
-        <div class="flex flex-col">
-            <x-input-label for="cargo" :value="'Cargo'" class="font-semibold text-gray-700"/>
-            <x-text-input
+        <div class="form-group">
+            <label for="cargo" class="text-gray-800 font-medium text-sm">Cargo</label>
+            <input
                 id="cargo"
                 name="cargo"
                 type="text"
-                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                class="form-control form-control-user"
                 :value="$administrador->cargo"
-                required/>
+                required
+            />
             <x-input-error :messages="$errors->get('cargo')" class="mt-2 text-red-500"/>
         </div>
 
         {{-- Data de Criação --}}
-        <div class="flex flex-col">
-            <x-input-label for="data_criacao" :value="'Data de Criação'" class="font-semibold text-gray-700"/>
-            <x-text-input
+        <div class="form-group">
+            <label for="data_criacao" class="text-gray-800 font-medium text-sm">Data de Criação</label>
+            <input
                 id="data_criacao"
                 name="data_criacao"
                 type="date"
-                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                class="form-control form-control-user"
                 :value="$administrador->data_criacao"
-                required/>
+                required
+            />
             <x-input-error :messages="$errors->get('data_criacao')" class="mt-2 text-red-500"/>
         </div>
 
         {{-- Botão de Salvar --}}
-        <div class="flex justify-end">
+        <div class="form-group flex justify-end">
             <button
-                class="px-4 py-2 bg-primary text-white font-bold rounded-md shadow hover:bg-primary-dark transition ease-in-out duration-150">
+                type="submit"
+                class="btn btn-primary btn-user btn-block py-2 px-6 rounded-lg shadow-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary transition duration-300"
+            >
                 Salvar Alterações
             </button>
         </div>

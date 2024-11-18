@@ -10,10 +10,10 @@
             <table class="table table-hover table-striped align-middle">
                 <thead class="thead-dark">
                 <tr>
-                    <th>Data</th>
-                    <th>Status</th>
-                    <th>Área Médica</th>
-                    <th class="text-center">Ações</th>
+                    <th class="text-nowrap">Data</th>
+                    <th class="text-nowrap">Status</th>
+                    <th class="text-nowrap">Área Médica</th>
+                    <th class="text-center text-nowrap">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,7 +46,6 @@
                             </a>
 
                             @if(auth()->user()->tipo_usuario === 2)
-                                <!-- Profissional -->
                                 @if($consulta->situacao === 1 && Carbon::parse($consulta->agendamento->data_agendamento)->isToday())
                                     <form method="POST" action="{{ route('consultas.iniciar', $consulta->id) }}"
                                           class="d-inline">
@@ -59,20 +58,18 @@
                                     </form>
                                 @endif
                                 @if($consulta->situacao === 1)
-                                    <button class="btn btn-sm btn-danger" data-toggle="modal"
-                                            data-target="#cancelModal{{ $consulta->id }}" title="Cancelar">
+                                    <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#cancelModal{{ $consulta->id }}" title="Cancelar">
                                         <i class="fas fa-times"></i> Não Posso Atender
                                     </button>
                                 @endif
                                 @if($consulta->situacao === 5)
-                                    <!-- Consulta em andamento -->
                                     <a href="{{ route('consultas.ativa', $consulta->id) }}"
                                        class="btn btn-sm btn-success">
                                         <i class="fas fa-redo"></i> Retomar
                                     </a>
                                 @endif
                             @elseif(auth()->user()->tipo_usuario === 1)
-                                <!-- Paciente -->
                                 @if($consulta->situacao === 0)
                                     <button onclick="confirmAction({{ $consulta->id }}, 'confirmar')"
                                             class="btn btn-sm btn-success">
@@ -95,9 +92,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Motivo para não poder atender</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                                 </div>
                                 <form action="{{ route('consultas.alterarSituacao', $consulta->id) }}" method="POST">
                                     @csrf
