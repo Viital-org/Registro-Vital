@@ -37,7 +37,9 @@ class AgendamentosController extends Controller
                 ->paginate(5);
         } else {
             // Administrador ou outro tipo de usuário
-            $agendamentos = collect();
+            $agendamentos = Agendamento::query()
+                ->with(['paciente.usuario', 'profissional.usuario', 'especializacao', 'endereco', 'consulta'])
+                ->paginate(5);
         }
 
         return view('agendamentos.listaagendamentos', compact('agendamentos'));

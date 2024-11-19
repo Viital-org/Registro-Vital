@@ -241,4 +241,7 @@ Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function
     Route::put('/atualizartipoanotacao/{id}', [TipoAnotacoesController::class, 'update'])->name('tipoanotacao-update');
     Route::delete('/excluirtipoanotacao/{id}', [TipoAnotacoesController::class, 'destroy'])->name('tipoanotacao-delete');
 
+    // Agendamentos
+    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
+
 });

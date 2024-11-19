@@ -177,6 +177,12 @@
             </ul>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('agendamentos.index') }}">
+                <i class="fa fa-calendar-check"></i> Agendamentos
+            </a>
+        </li>
+
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="relatoriosDropdown" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">

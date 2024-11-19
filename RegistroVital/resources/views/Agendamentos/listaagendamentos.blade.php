@@ -20,16 +20,20 @@
                                         <h4 class="fw-bolder">
                                             {{-- Exibe o nome do profissional e a especialização conforme o tipo de usuário --}}
                                             @if(Auth::user()->tipo_usuario === 1)
-                                                <td>{{ $agendamento->profissional->usuario->nome_completo ?? 'Profissional não encontrado' }}</td>
+                                                <td>{{ $agendamento->profissional->usuario->nome_completo ?? 'Profissional não encontrado' }} - {{ $agendamento->especializacao->descricao_especializacao ?? 'Especialização não encontrada' }}</td>
                                             @elseif(Auth::user()->tipo_usuario === 2)
-                                                <td>{{ $agendamento->paciente->usuario->nome_completo ?? 'Paciente não encontrado' }}</td>
+                                                <td>{{ $agendamento->paciente->usuario->nome_completo ?? 'Paciente não encontrado' }} - {{ $agendamento->especializacao->descricao_especializacao ?? 'Especialização não encontrada' }}</td>
                                             @endif
-                                            - {{ $agendamento->especializacao->descricao_especializacao ?? 'Especialização não encontrada' }}
                                         </h4>
 
+                                        @if(Auth::user()->tipo_usuario === 3)
+                                            <p><strong>Especialização: </strong>{{ $agendamento->especializacao->descricao_especializacao ?? 'Especialização não encontrada' }}</p>
+                                            <p><strong>Paciente: </strong> {{$agendamento->paciente->usuario->nome_completo ?? 'Paciente não encontrado'}}</p>
+                                            <p><strong>Profissional: </strong> {{ $agendamento->profissional->usuario->nome_completo ?? 'Profissional não encontrado' }}</p>
+                                        @endif
                                         {{-- Exibe a data do agendamento --}}
                                         <p class="fw-bolder">
-                                            Tipo: <i
+                                            Data: <i
                                                 class="fw-normal">{{ Carbon::parse($agendamento->data_agendamento)->format('d-m-Y') }}</i>
                                         </p>
 
