@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 use App\Models\AtuaArea;
 use App\Models\Especializacao;
 use App\Models\Profissional;
@@ -12,6 +13,11 @@ use App\Models\Especializacao;
 use App\Models\Usuario;
 use App\Models\AtuaArea;
 use App\Models\Profissional;
+>>>>>>> develop
+=======
+use App\Models\AtuaArea;
+use App\Models\Profissional;
+use App\Models\Usuario;
 >>>>>>> develop
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -49,7 +55,7 @@ class ProfissionalFactory extends Factory
 
         $especializacao = $areaAtuacao ? $areaAtuacao->especializacoes()->inRandomOrder()->first() : null;
 
-        $usuario = Usuario::where('tipo_usuario',2)->InRandomOrder()->first();
+        $usuario = Usuario::where('tipo_usuario', 2)->InRandomOrder()->first();
 
         return [
             'usuario_id' => $usuario->id,

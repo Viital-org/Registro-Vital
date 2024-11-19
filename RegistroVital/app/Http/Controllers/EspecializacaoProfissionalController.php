@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agendamento;
-use App\Models\AtuaArea;
-use App\Models\Endereco;
 use App\Models\Especializacao;
 use App\Models\EspecializacaoProfissional;
 use Illuminate\Http\JsonResponse;
@@ -17,7 +14,7 @@ class EspecializacaoProfissionalController extends Controller
     {
         $user = Auth::user();
         $especializacoesprofissional = EspecializacaoProfissional::where('profissional_id', $user->id)
-            ->with(['especializacoes', 'areas_atuacao', 'enderecos'])
+            ->with(['especializacoes', 'areas_atuacao', 'enderecos', 'horariosAtendimento'])
             ->paginate(5);
 
         return view('EspecializacoesProfissionais.ListaEspecializacoesProfissionais', compact('especializacoesprofissional'));
@@ -26,7 +23,7 @@ class EspecializacaoProfissionalController extends Controller
 
     public function create()
     {
-        $areas_atuacao= EspecializacaoProfissional::getAreaAtuacao();
+        $areas_atuacao = EspecializacaoProfissional::getAreaAtuacao();
 
         return view('Especializacoesprofissionais.especializacoesprofissional', compact('areas_atuacao'));
     }

@@ -8,6 +8,51 @@
         <h2 class="text-center">Relatórios de Administração</h2>
 
         <div class="row">
+            <div class="col-xl-7 col-lg-7">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h4 class="m-0 font-weight-bold text-primary">Número de Usuários</h4>
+                        <button id="downloadButtonNumeroUsuarios" class="btn btn-primary">Exportar</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area pt-4 pb-2">
+                            <canvas id="graficoUsuarios"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-5 col-lg-5">
+                <div class="card shadow mb-4 grafico-2-admin">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h4 class="m-0 font-weight-bold text-primary">Número de anotações</h4>
+                        <button id="downloadButtonMetas" class="btn btn-primary">Exportar</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-pie pt-4 pb-2">
+                            <canvas id="graficoTopUsuarios"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h4 class="m-0 font-weight-bold text-primary">Quantidades de anotações de cada tipo</h4>
+                        <button id="downloadButtonAnotacoes" class="btn btn-primary">Exportar</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area pt-4 pb-2">
+                            <canvas id="graficoTiposAnotacoes"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
             <div class="col-md-2">
                 <button id="graficoUsuariosButton" class="btn btn-secondary mb-3">Total de Usuários</button>
                 <button id="graficoTopUsuariosButton" class="btn btn-secondary mb-3">Top 5 Usuários com mais Anotações
@@ -157,6 +202,20 @@
             const link = document.createElement('a');
             link.href = image;
             link.download = 'grafico.png';
+            link.click();
+        }); 
+
+        document.getElementById('downloadButtonAnotacoes').addEventListener('click', function () {
+            const link = document.createElement('a');
+            link.href = graficoAnotacoes.toBase64Image();
+            link.download = 'grafico-anotacoes.png';
+            link.click();
+        });
+
+        document.getElementById('downloadButtonNumeroUsuarios').addEventListener('click', function () {
+            const link = document.createElement('a');
+            link.href = graficoMetas.toBase64Image();
+            link.download = 'grafico-numero-usuarios.png';
             link.click();
         });
 

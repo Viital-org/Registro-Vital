@@ -3,9 +3,12 @@
 namespace Database\Seeders;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use App\Models\EstadoCivil;
 use App\Models\TipoRecomendacao;
+>>>>>>> develop
+=======
 >>>>>>> develop
 use Illuminate\Database\Seeder;
 

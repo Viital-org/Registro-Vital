@@ -4,14 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('horarios_atendimento', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profissional_id')->constrained('profissionais', 'usuario_id')->onDelete('cascade');
-            $table->foreignId('especializacao_id')->constrained('especializacoes')->onDelete('cascade');
+            $table->foreignId('especializacao_profissional_id')->constrained('especializacoes_profissionais')->onDelete('cascade');
             $table->string('dia_semana')->nullable();
             $table->time('inicio_atendimento');
             $table->time('fim_atendimento');
@@ -21,6 +19,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
     }
 
     /**

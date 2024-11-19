@@ -3,56 +3,67 @@
 @section('titulo', 'Detalhes da Consulta')
 
 @section('conteudo')
-    <div class="container">
-        <h1>Detalhes da Consulta</h1>
-        <table class="table">
-            <tr>
-                <th>ID</th>
-                <td>{{ $consulta->id }}</td>
-            </tr>
-            <tr>
-                <th>Data</th>
-                <td>{{ $consulta->data }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ $consulta->status }}</td>
-            </tr>
-            <tr>
-                <th>Profissional</th>
-                <td>{{ $consulta->profissional->nome }}</td>
-            </tr>
-            <tr>
-                <th>Paciente</th>
-                <td>{{ $consulta->paciente->nome }}</td>
-            </tr>
-            <tr>
-                <th>Valor</th>
-                <td>{{ $consulta->valor }}</td>
-            </tr>
-        </table>
-        @if (Auth::user()->role === 'paciente')
-            <form action="{{ route('consultas.update', $consulta->id) }}" method="POST">
-                @csrf
-                @method('PATCH')
-                <div class="mb-3">
-                    <label for="status" class="form-label">Status</label>
-                    <select name="status" id="status" class="form-select" required>
-                        <option value="agendado" {{ $consulta->status === 'agendado' ? 'selected' : '' }}>Agendado
-                        </option>
-                        <option value="confirmada" {{ $consulta->status === 'confirmada' ? 'selected' : '' }}>
-                            Confirmada
-                        </option>
-                        <option value="cancelada" {{ $consulta->status === 'cancelada' ? 'selected' : '' }}>Cancelada
-                        </option>
-                    </select>
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Detalhes da Consulta</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- Detalhes do Agendamento -->
+                    <div class="col-md-6 mb-4">
+                        <h5 class="text-primary"><i class="fas fa-calendar-alt"></i> Detalhes do Agendamento</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>Data:</strong> {{ $consulta->agendamento->data_agendamento }}</li>
+                            <li><strong>Hora:</strong> {{ $consulta->agendamento->hora_agendamento }}</li>
+                            <li>
+                                <strong>Status:</strong>
+                                @switch($consulta->situacao)
+                                    @case(0) <span class="badge bg-warning">Pendente</span> @break
+                                    @case(1) <span class="badge bg-success">Confirmada</span> @break
+                                    @case(2) <span class="badge bg-info">Finalizada</span> @break
+                                    @default <span class="badge bg-danger">Cancelada</span>
+                                @endswitch
+                            </li>
+                            <li>
+                                <strong>Valor:</strong> {{ 'R$ ' . number_format($consulta->agendamento->valor_atendimento, 2, ',', '.') }}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Profissional e Paciente -->
+                    <div class="col-md-6 mb-4">
+                        <h5 class="text-primary"><i class="fas fa-user-md"></i> Profissional</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>Nome:</strong> {{ $consulta->profissional->usuario->nome_completo }}</li>
+                            <li>
+                                <strong>Especialização:</strong> {{ $consulta->agendamento->especializacao->descricao_especializacao ?? 'N/A' }}
+                            </li>
+                            <li><strong>Área de
+                                    Atuação:</strong> {{ $consulta->agendamento->especializacao->area->descricao_area ?? 'N/A' }}
+                            </li>
+                        </ul>
+                        <h5 class="text-primary mt-3"><i class="fas fa-user"></i> Paciente</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>Nome:</strong> {{ $consulta->paciente->usuario->nome_completo }}</li>
+                        </ul>
+                    </div>
+
+                    <!-- Local da Consulta -->
+                    <div class="col-12 mb-4">
+                        <h5 class="text-primary"><i class="fas fa-map-marker-alt"></i> Local da Consulta</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>Endereço:</strong></li>
+                            <li>
+                                {{ $consulta->agendamento->endereco->rua ?? 'N/A' }},
+                                {{ $consulta->agendamento->endereco->cidade ?? 'N/A' }},
+                                {{ $consulta->agendamento->endereco->uf ?? 'N/A' }} -
+                                {{ $consulta->agendamento->endereco->cep ?? 'N/A' }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Atualizar Status</button>
-            </form>
-        @endif
-        @if(Auth::user()->role === 'medico')
-            <a href="{{ route('consultas.anotacoes', $consulta->id) }}" class="btn btn-primary">Ver Anotações do
-                Paciente</a>
-        @endif
+            </div>
+        </div>
     </div>
 @endsection

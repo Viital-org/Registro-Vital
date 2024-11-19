@@ -7,7 +7,9 @@ use App\Http\Controllers\AtuaAreasController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\DicasController;
+use App\Http\Controllers\EspecializacaoProfissionalController;
 use App\Http\Controllers\EspecializacoesController;
+use App\Http\Controllers\HorarioAtendimentoController;
 use App\Http\Controllers\MetasController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfileController;
@@ -52,13 +54,6 @@ Route::middleware(['auth', 'layout.dinamico'])->group(function () {
     Route::patch('/profile/role', [ProfileController::class, 'updateRoleInfo'])->name('profile.updateRoleInfo');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Consultas
-    Route::get('/consultas', [ConsultasController::class, 'index'])->name('consultas.index');
-    Route::patch('/consultas/{id}', [ConsultasController::class, 'update'])->name('consultas.update');
-    Route::get('/consultas/{id}', [ConsultasController::class, 'show'])->name('consultas.show');
-    Route::delete('/consultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas.destroy');
-    Route::get('/consultas/{id}/anotacoes', [ConsultasController::class, 'listAnotacoes'])->name('consultas.anotacoes');
-
 });
 
 // Rotas Específicas para Pacientes
@@ -74,15 +69,6 @@ Route::middleware(['auth', 'tipo_usuario:1', 'layout.dinamico'])->group(function
     Route::get('/anotacoes/editar/{id}', [AnotacoesSaudeController::class, 'edit'])->name('anotacoessaude-edit');
     Route::put('/anotacoes/{id}', [AnotacoesSaudeController::class, 'update'])->name('anotacoessaude-update');
     Route::delete('/anotacoes/{id}', [AnotacoesSaudeController::class, 'destroy'])->name('anotacoessaude-delete');
-
-    // Agendamentos
-    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
-    Route::get('/agendamentos/create', [AgendamentosController::class, 'create'])->name('agendamentos.create');
-    Route::post('/agendamentos', [AgendamentosController::class, 'store'])->name('agendamentos.store');
-    Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
-    Route::get('/agendamentos/{area_atuacao_id}', [AgendamentosController::class, 'getEspecializacoes']);
-    Route::get('/agendamentosprofissionais/{especializacao_id}', [AgendamentosController::class, 'getProfissional']);
-    Route::get('/enderecosagendamento/{profissional_id}/{especializacao_id}', [AgendamentosController::class, 'getEnderecos']);
 
     //Dicas
     Route::resource('/cadastrodicas', DicasController::class);
@@ -111,24 +97,29 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
     Route::get('/editarprofissional', [ProfissionaisController::class, 'edit'])->name('profissionais-edit');
     Route::post('/editarprofissional', [ProfissionaisController::class, 'update'])->name('profissionais-update');
 
-
-    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
-
     Route::get('/especializacoes/{areaId}', [EspecializacoesController::class, 'getByArea']);
-    Route::get('/especializacaoprofissional', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'create'])->name('profissional.especializacoes');
-    Route::get('/especializacaoprofissional/{area_atuacao_id}', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'getEspecializacoes']);
-    Route::post('/cadastraespecializacao', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'store'])->name('especializacao-profissional-store');
-    Route::get('/minhasespecializacoes', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'index'])->name('minhasespecializacoes.index');
-    Route::delete('/excluirespecializacao/{id}', [\App\Http\Controllers\EspecializacaoProfissionalController::class, 'destroy'])->name('excluirespecializacao.destroy');
+    Route::get('/especializacaoprofissional', [EspecializacaoProfissionalController::class, 'create'])->name('profissional.especializacoes');
+    Route::get('/especializacaoprofissional/{area_atuacao_id}', [EspecializacaoProfissionalController::class, 'getEspecializacoes']);
+    Route::post('/cadastraespecializacao', [EspecializacaoProfissionalController::class, 'store'])->name('especializacao-profissional-store');
+    Route::get('/minhasespecializacoes', [EspecializacaoProfissionalController::class, 'index'])->name('minhasespecializacoes.index');
+    Route::delete('/excluirespecializacao/{id}', [EspecializacaoProfissionalController::class, 'destroy'])->name('excluirespecializacao.destroy');
 
+    //Horarios
+    Route::get('/profissional/horarios/cadastrar/{id}', [HorarioAtendimentoController::class, 'create'])->name('horarios.cadastrar');
+    Route::post('/profissional/horarios/store', [HorarioAtendimentoController::class, 'store'])->name('horarios.store');
+    Route::get('/especializacoes/{id}/horarios', [HorarioAtendimentoController::class, 'listar'])->name('horarios.listar');
+    Route::get('/profissional/horarios/{id}', [HorarioAtendimentoController::class, 'edit'])->name('horarios.edit');
+    Route::put('/profissional/horarios/{id}', [HorarioAtendimentoController::class, 'update'])->name('horarios.update');
+    Route::delete('/profissional/horarios/{id}', [HorarioAtendimentoController::class, 'destroy'])->name('horarios.destroy');
+
+<<<<<<< HEAD
     //Route::resource('/cadastroprofissional', ProfissionaisController::class);
 >>>>>>> develop
+=======
+>>>>>>> develop
     Route::get('/listaprofissionais', [ProfissionaisController::class, 'index'])->name('profissionais-index');
-//Route::post('/guardarprofissionais', [ProfissionaisController::class, 'store'])->name('profissionais-store');
-//Route::post('/listaprofissionais', [ProfissionaisController::class, 'show'])->name('profissionais-show');
-//Route::delete('/listaprofissionais/{id}', [ProfissionaisController::class, 'destroy'])->name('profissionais-delete');
-//Route::get('/especializacoes/{areaId}', [ProfissionaisController::class, 'especializacoesPorArea']);
 
+<<<<<<< HEAD
 //Pacientes
 //Route::resource('/cadastropacientes', PacientesController::class);
 <<<<<<< HEAD
@@ -136,9 +127,11 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
 //Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
 //Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes-show');
 =======
+=======
+>>>>>>> develop
     Route::get('/listapacientes', [PacientesController::class, 'index'])->name('pacientes.index');
-//Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
     Route::post('/listapacientes', [PacientesController::class, 'show'])->name('pacientes.show');
+<<<<<<< HEAD
 >>>>>>> develop
 //Route::get('/cadastropaci', [PacientesController::class, 'create']);
 //Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
@@ -152,6 +145,8 @@ Route::middleware(['auth', 'tipo_usuario:2', 'layout.dinamico'])->group(function
 //Route::get('/editarconsulta/{id}', [ConsultasController::class, 'edit'])->name('consultas-edit');
 //Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
 //Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas-delete');
+=======
+>>>>>>> develop
 
 //Areas de atuacao
     Route::resource('/cadastroatuaareas', AtuaAreasController::class);
@@ -233,6 +228,43 @@ Route::middleware(['auth', 'layout.dinamico'])->group(function () {
 =======
 });
 
+Route::middleware(['auth', 'tipo_usuario:1,2', 'layout.dinamico'])->group(function () {
+    //Consultas
+    Route::resource('/cadastroconsultas', ConsultasController::class);
+    Route::get('/listaconsultas', [ConsultasController::class, 'index'])->name('consultas-index');
+    Route::post('/guardarconsultas', [ConsultasController::class, 'store'])->name('consultas-store');
+    Route::post('/listaconsultas', [ConsultasController::class, 'show'])->name('consultas-show');
+    Route::get('/cadastroconsul', [ConsultasController::class, 'create']);
+    Route::get('/editarconsulta/{id}', [ConsultasController::class, 'edit'])->name('consultas-edit');
+    Route::put('/editarconsulta/{id}', [ConsultasController::class, 'update'])->name('consultas-update');
+    Route::delete('/listaconsultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas-delete');
+    Route::patch('/consultas/{id}/alterar-situacao', [ConsultasController::class, 'alterarSituacao'])->name('consultas.alterarSituacao');
+    Route::patch('/consultas/{id}/iniciar', [ConsultasController::class, 'iniciar'])->name('consultas.iniciar');
+    Route::patch('/consultas/{id}/finalizar', [ConsultasController::class, 'finalizar'])->name('consultas.finalizar');
+    Route::post('/consultas/{id}/ativa', [ConsultasController::class, 'consultaAtiva'])->name('consultas.ativa');
+
+    // Consultas
+    Route::get('/consultas', [ConsultasController::class, 'index'])->name('consultas.index');
+    Route::patch('/consultas/{id}', [ConsultasController::class, 'update'])->name('consultas.update');
+    Route::get('/consultas/{id}', [ConsultasController::class, 'show'])->name('consultas.show');
+    Route::delete('/consultas/{id}', [ConsultasController::class, 'destroy'])->name('consultas.destroy');
+    Route::get('/consultas/{id}/anotacoes', [ConsultasController::class, 'listAnotacoes'])->name('consultas.anotacoes');
+
+    // Agendamentos
+    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
+    Route::get('/agendamentos/create', [AgendamentosController::class, 'create'])->name('agendamentos.create');
+    Route::post('/agendamentos', [AgendamentosController::class, 'store'])->name('agendamentos.store');
+    Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
+    Route::get('/agendamentos/especializacoes/{areaAtuacaoId}', [AgendamentosController::class, 'getEspecializacoes']);;
+    Route::get('/agendamentos/profissionais/{areaAtuacaoId}/{especializacaoId}', [AgendamentosController::class, 'getProfissionaisPorEspecializacao']);
+    Route::get('/agendamentos/endereco/{profissionalId}/{areaAtuacaoId}/{especializacaoId}', [AgendamentosController::class, 'getEnderecoPorProfissional']);
+    Route::get('/dias-atendimento/{profissionalId}/{especializacaoId}/{areaAtuacaoId}', [AgendamentosController::class, 'getDiasdaSemana']);
+    Route::get('/especializacao-profissional/{profissionalId}/{especializacaoId}/{areaAtuacaoId}', [AgendamentosController::class, 'getEspecializacaoProfissionalId']);
+    Route::get('/horarios-disponiveis', [AgendamentosController::class, 'getHorariosDisponiveis']);
+    Route::get('/valor-atendimento/{profissionalId}/{areaAtuacaoId}/{especializacaoId}/{enderecoId}', [AgendamentosController::class, 'getValorAtendimento']);
+
+});
+
 Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function () {
     Route::get('/administrador/dashboard', [AdministradorController::class, 'tela'])->name('administrador.dashboard');
     Route::get('/logs/filter', [AdministradorController::class, 'showLogs'])->name('logs.filter');
@@ -245,10 +277,10 @@ Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function
     //Bloquear Usuario
     Route::put('/administrador/usuario/bloquear/{id}', [RegisteredUserController::class, 'bloquearUsuario'])->name('administrador.bloquear');
 
-
     //Relatorios
     Route::get('/relatorios_administrador', [RelatoriosController::class, 'relatorios_administrador'])->name('relatorios_administrador');
 
+<<<<<<< HEAD
 >>>>>>> develop
 });
 
@@ -288,4 +320,19 @@ Route::middleware(['auth', 'role:medico', 'layout.dinamico'])->group(function ()
 });
 =======
 
+>>>>>>> develop
+=======
+    Route::resource('/cadastroprofissional', ProfissionaisController::class);
+    Route::post('/guardarprofissionais', [ProfissionaisController::class, 'store'])->name('profissionais-store');
+    Route::post('/listaprofissionais', [ProfissionaisController::class, 'show'])->name('profissionais-show');
+    Route::delete('/listaprofissionais/{id}', [ProfissionaisController::class, 'destroy'])->name('profissionais-delete');
+    Route::get('/especializacoes/{areaId}', [ProfissionaisController::class, 'especializacoesPorArea']);
+
+    //Pacientes
+    Route::resource('/cadastropacientes', PacientesController::class);
+    Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
+    Route::post('/guardarpacientes', [PacientesController::class, 'store'])->name('pacientes-store');
+    Route::get('/cadastropaci', [PacientesController::class, 'create']);
+    Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
+});
 >>>>>>> develop

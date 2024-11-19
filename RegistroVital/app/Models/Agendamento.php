@@ -17,6 +17,7 @@ class Agendamento extends Model
         'profissional_id',
         'paciente_id',
         'data_agendamento',
+        'hora_agendamento',
         'consulta_id',
         'situacao_paciente',
         'situacao_profissional',
@@ -29,35 +30,25 @@ class Agendamento extends Model
         return $this->belongsTo(Consulta::class, 'consulta_id');
     }
 
-    public function especializacoes() // PEGA A ÁREA DE ATUACAO DA ESPECIALIZACAO
+    public function especializacoes()
     {
         return $this->hasMany(Especializacao::class, 'area_atuacao_id');
     }
 
-    public function profissionais() //PEGA A ESPECIALIZACAO DO PROFISSIONAL
+    public function profissionais()
     {
-        return $this->hasMany(Profissional::class, 'especializacao_id');
+        return $this->belongsToMany(Profissional::class, 'especializacao_profissionais', 'agendamento_id', 'profissional_id');
     }
 
-    public function profissional() // PEGA O PROFISSIONAL
+    public function profissional()
     {
         return $this->belongsTo(Profissional::class, 'profissional_id');
     }
 
     public function especializacao()
     {
-        return $this->belongsTo(Especializacao::class,'especializacao_id');
+        return $this->belongsTo(Especializacao::class, 'especializacao_id');
     }
-
-    /*public function areaAtuacaoEspecializacoes()
-    {
-        return $this->hasMany(Especializacao::class, 'area_atuacao_id');
-    }
-
-    public function EspecializacoesProfissionais()
-    {
-        return $this->hasMany(Profissional::class, 'especializacao_id');
-    }*/
 
     public function paciente()
     {

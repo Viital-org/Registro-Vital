@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="1.2 - Atualização de dependências">
       <change afterPath="$PROJECT_DIR$/registro_vital_mobile/lib/screen/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -19,6 +20,14 @@
       <change beforePath="$PROJECT_DIR$/RegistroVital/database/migrations/0001_01_01_000028_create_agendas_profissionais_table.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutmedico.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
+>>>>>>> develop
+=======
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#64 Funções pendentes do toastr">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Agendamentos/listaagendamentos.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Agendamentos/listaagendamentos.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" afterDir="false" />
 >>>>>>> develop
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +45,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -2930,7 +2940,7 @@
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/luan_/Registro-Vital/RegistroVital/resources/sass&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/luan_/Registro-Vital/RegistroVital/public&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -2943,14 +2953,16 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\public" />
+      <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\public\assets" />
       <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\resources\sass" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\public" />
       <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\resources\views\Cadastros" />
       <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\resources\sass" />
       <recent name="C:\Registro-Vital\RegistroVital\resources\views" />
       <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\registro_vital_mobile\lib\screen" />
-      <recent name="C:\Users\bruno\StudioProjects\Registro-Vital\mobile_app" />
     </key>
   </component>
   <component name="RunManager" selected="Flutter.Unnamed">
@@ -3212,11 +3224,24 @@
       <option name="project" value="LOCAL" />
       <updated>1730042545107</updated>
     </task>
+<<<<<<< HEAD
     <option name="localTasksCounter" value="27" />
+>>>>>>> develop
+=======
+    <task id="LOCAL-00027" summary="#64 Funções pendentes do toastr">
+      <option name="closed" value="true" />
+      <created>1731453191952</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1731453191952</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
 >>>>>>> develop
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <MESSAGE value="Criação do arquivo base da aplicação mobile" />
     <MESSAGE value="1.1 - Atualização de dependências" />
@@ -3234,6 +3259,8 @@
     </breakpoint-manager>
 =======
     <MESSAGE value="#0003 - modernizando e organizando todas as migrations" />
+=======
+>>>>>>> develop
     <MESSAGE value="#0006 - Modificação inicial telas" />
     <MESSAGE value="#0007 - Modificação migration ID usuarios" />
     <MESSAGE value="#0006 - Modificação inicial telas" />
@@ -3258,7 +3285,16 @@
     <MESSAGE value="#37 Criação de profissional e paciente padrão" />
     <MESSAGE value="#38 API CEP na edição dos pacientes" />
     <MESSAGE value="#39 Ajuste dos campos no banco de dados (tamanho e tipo)" />
+<<<<<<< HEAD
     <option name="LAST_COMMIT_MESSAGE" value="#39 Ajuste dos campos no banco de dados (tamanho e tipo)" />
+>>>>>>> develop
+=======
+    <MESSAGE value="#64 Funções pendentes do toastr" />
+    <option name="LAST_COMMIT_MESSAGE" value="#64 Funções pendentes do toastr" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
 >>>>>>> develop
   </component>
 </project>

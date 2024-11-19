@@ -7,7 +7,6 @@ use App\Mail\RedefinicaoDeSenha;
 use App\Models\Usuario;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
@@ -53,7 +52,7 @@ class PasswordResetLinkController extends Controller
                     'destinatario' => $usuarioInfo->email,
                     'from' => 'no-reply@registrovital.com.br',
                     'novaSenha' => $novaSenha,
-                    'nomeUsuario'=>$usuarioInfo->nome_completo,
+                    'nomeUsuario' => $usuarioInfo->nome_completo,
                 ]));
 
         } else {

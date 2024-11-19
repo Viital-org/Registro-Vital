@@ -2,11 +2,8 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\ProfissionaisController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
 
 class EspecializacaoProfissional extends Model
 {
@@ -23,6 +20,49 @@ class EspecializacaoProfissional extends Model
         'rqe',
     ];
 
+    // Relacionamento com Especializacao
+
+    public static function getAreaAtuacao()
+    {
+        return AtuaArea::all();
+    }
+
+    // Relacionamento com Area de Atuacao
+
+    public static function getValorAtendimento($profissional, $especializacao)
+    {
+        return self::where('profissional_id', $profissional)
+            ->where('especializacao_id', $especializacao)
+            ->value('valor_atendimento');
+    }
+
+    // Relacionamento com Endereco de Atuacao
+
+    public static function cadastraEndereco($user, $validated, $request)
+    {
+        $endereco = Endereco::create([
+            'usuario_id' => $user->id,
+            'situacao_endereco' => 1,
+            'cep' => $validated['cep'],
+            'rua' => $validated['rua'],
+            'complemento' => $request['complemento'],
+            'bairro' => $validated['bairro'],
+            'cidade' => $validated['cidade'],
+            'uf' => $validated['uf'],
+            'numero_endereco' => $validated['numero'],
+        ]);
+
+        $especializacao = self::create([
+            'profissional_id' => $user->id,
+            'area_atuacao_id' => $validated['area_atuacao_id'],
+            'especializacao_id' => $validated['especializacao_id'],
+            'valor_atendimento' => $validated['valor_consulta'],
+            'endereco_atuacao_id' => $endereco['id'],
+            'rqe' => $validated['rqe'],
+        ]);
+    }
+
+    // Relacionamento com Profissional
 
     public function especializacoes()
     {
@@ -34,6 +74,8 @@ class EspecializacaoProfissional extends Model
         return $this->belongsTo(AtuaArea::class, 'area_atuacao_id');
     }
 
+    // Métodos auxiliares
+
     public function enderecos()
     {
         return $this->belongsTo(Endereco::class, 'endereco_atuacao_id');
@@ -44,42 +86,8 @@ class EspecializacaoProfissional extends Model
         return $this->belongsTo(Profissional::class, 'profissional_id');
     }
 
-    public static function getAreaAtuacao() {
-
-        $AreaAtuacao = AtuaArea::all();
-
-        return $AreaAtuacao;
-
+    public function horariosAtendimento()
+    {
+        return $this->hasMany(HorarioAtendimento::class, 'especializacao_profissional_id');
     }
-
-    public static function getValorAtendimento($profissional, $especializacao){
-        $valor = EspecializacaoProfissional::where('profissional_id', $profissional)
-            ->where('especializacao_id', $especializacao)
-            ->value('valor_atendimento');
-
-        return $valor;
-    }
-    public static function cadastraEndereco($user, $validated, $request){
-        $endereco = Endereco::create([
-            'usuario_id'=> $user->id,
-            'situacao_endereco'=> 1,
-            'cep'=> $validated['cep'],
-            'rua'=> $validated['rua'],
-            'complemento'=>$request['complemento'],
-            'bairro'=> $validated['bairro'],
-            'cidade'=>$validated['cidade'],
-            'uf'=>$validated['uf'],
-            'numero_endereco'=>$validated['numero'],
-        ]);
-        $especializacao = EspecializacaoProfissional::create([
-            'profissional_id'=> $user->id,
-            'area_atuacao_id'=> $validated['area_atuacao_id'],
-            'especializacao_id'=> $validated['especializacao_id'],
-            'valor_atendimento'=>$validated['valor_consulta'],
-            'endereco_atuacao_id'=>$endereco['id'],
-            'rqe'=>$validated['rqe'],
-
-        ]);
-    }
-
 }

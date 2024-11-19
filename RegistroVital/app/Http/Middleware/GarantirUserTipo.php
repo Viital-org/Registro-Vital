@@ -14,7 +14,7 @@ class GarantirUserTipo
      *
      * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
-    public function handle(Request $request, Closure $next, int $tipo_usuario): Response
+    public function handle(Request $request, Closure $next, ...$tipos_usuario): Response
     {
         $user = Auth::user();
 
@@ -22,7 +22,7 @@ class GarantirUserTipo
             return redirect()->route('login')->with('error', 'Por favor, faça login.');
         }
 
-        if ($user->tipo_usuario !== $tipo_usuario) {
+        if (!in_array($user->tipo_usuario, $tipos_usuario)) {
             switch ($user->tipo_usuario) {
                 case 1:
                     return redirect()->route('paciente.dashboard')->with('error', 'Você não tem permissão para acessar esta página.');

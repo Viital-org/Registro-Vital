@@ -52,8 +52,9 @@ class Profissional extends Model
 >>>>>>> develop
     }
 
-    public function especializacao()
+    public function especializacoesProfissionais()
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         return $this->belongsTo(Especializacao::class, 'especializacao_id');
     }
@@ -63,6 +64,14 @@ class Profissional extends Model
         return $this->belongsTo(User::class, 'user_id');
 =======
         return $this->belongsTo(Especializacao::class, 'especializacao_id', 'id');
+=======
+        return $this->hasMany(EspecializacaoProfissional::class, 'profissional_id', 'usuario_id');
+    }
+
+    public function especializacoes()
+    {
+        return $this->belongsToMany(Especializacao::class, 'especializacoes_profissionais', 'profissional_id', 'especializacao_id');
+>>>>>>> develop
     }
 
     public function enderecos()

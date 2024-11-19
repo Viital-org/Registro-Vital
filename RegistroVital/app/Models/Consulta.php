@@ -21,6 +21,12 @@ class Consulta extends Model
         'paciente_id',
         'agendamento_id',
         'situacao',
+<<<<<<< HEAD
+>>>>>>> develop
+=======
+        'motivo',
+        'horario_inicio_real',
+        'horario_fim_real'
 >>>>>>> develop
     ];
 
@@ -32,6 +38,11 @@ class Consulta extends Model
     public function paciente()
     {
         return $this->belongsTo(Paciente::class, 'paciente_id');
+    }
+
+    public function agendamento()
+    {
+        return $this->belongsTo(Agendamento::class, 'agendamento_id');
     }
 }
 

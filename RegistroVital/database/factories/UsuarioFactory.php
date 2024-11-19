@@ -31,13 +31,22 @@ class UsuarioFactory extends Factory
         ];
     }
 
+    protected function generatePhoneNumber(): string
+    {
+        $ddd = $this->faker->numberBetween(11, 99);
+        $prefixo = $this->faker->numberBetween(90000, 99999);
+        $sufixo = $this->faker->numberBetween(1000, 9999);
+
+        return sprintf('%02d%05d%04d', $ddd, $prefixo, $sufixo);
+    }
+
     public function pacientePadrao(): static
     {
-        return $this->state(function(array $attributes) {
+        return $this->state(function (array $attributes) {
             return [
                 'nome_completo' => 'Paciente',
                 'email' => 'paciente@paciente.com',
-                'situacao_cadastro'=> 1,
+                'situacao_cadastro' => 1,
                 'tipo_usuario' => 1,
                 'senha' => '123123123',
             ];
@@ -52,7 +61,7 @@ class UsuarioFactory extends Factory
             return [
                 'nome_completo' => 'Profissional',
                 'email' => 'profissional@profissional.com',
-                'situacao_cadastro'=> 1,
+                'situacao_cadastro' => 1,
                 'tipo_usuario' => 2,
                 'senha' => '123123123',
             ];
@@ -60,28 +69,20 @@ class UsuarioFactory extends Factory
             Profissional::factory()->create(['usuario_id' => $usuario->id]);
         });
     }
+
     public function administradorPadrao(): static
     {
         return $this->state(function (array $attributes) {
             return [
                 'nome_completo' => 'Administrador',
                 'email' => 'administrador@administrador.com',
-                'situacao_cadastro'=> 1,
+                'situacao_cadastro' => 1,
                 'tipo_usuario' => 3,
                 'senha' => '123123123',
             ];
         })->afterCreating(function (Usuario $usuario) {
             Administrador::factory()->create(['usuario_id' => $usuario->id]);
         });
-    }
-
-    protected function generatePhoneNumber(): string
-    {
-        $ddd = $this->faker->numberBetween(11, 99);
-        $prefixo = $this->faker->numberBetween(90000, 99999);
-        $sufixo = $this->faker->numberBetween(1000, 9999);
-
-        return sprintf('%02d%05d%04d', $ddd, $prefixo, $sufixo);
     }
 
     /**

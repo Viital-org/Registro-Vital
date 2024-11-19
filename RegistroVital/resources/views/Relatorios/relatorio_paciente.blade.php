@@ -4,19 +4,123 @@
 
 @section('conteudo')
 
-    <div class="row">
-        <div class="col">
-            <h2 class="text-center">Relatório de Anotações</h2>
-            <canvas id="graficoAnotacoes"></canvas>
+    <div class="container-fluid">
+
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="titulo-pagina h1 mb-0 text-gray-800 fw-bolder">Dashboard</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
         </div>
 
-        <div class="col">
-            <h2 class="text-center mt-5">Relatório de Metas</h2>
-            <canvas id="graficoMetas"></canvas>
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-right-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Metas Concluídas
+                                </div>
+                                <div
+                                    class="h5 mb-0 font-weight-bold text-gray-800">{{ $metas->where('situacao', 2)->sum('total') }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <img src="{{ asset('/img/meta.png') }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Total de anotações
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalAnotacoes }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <img src="{{ asset('/img/nota.png') }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Consultas
+                                    Realizadas
+                                </div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">6</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <img src="{{ asset('/img/consultando.png') }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Pontos arrecadados
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            </div>
+                            <div class="col-auto">
+                                <img src="{{ asset('/img/estrela.png') }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <button id="downloadButtonAnotacoes" class="btn btn-primary mt-3">Baixar Gráfico de Anotações</button>
-        <button id="downloadButtonMetas" class="btn btn-primary mt-3">Baixar Gráfico de Metas</button>
+
+        <div class="row">
+            <div class="col-xl-8 col-lg-7">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Anotações</h6>
+                        <button id="downloadButtonAnotacoes" class="btn btn-primary">Exportar</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area pt-4 pb-2">
+                            <canvas id="graficoAnotacoes"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-5">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Metas</h6>
+                        <button id="downloadButtonMetas" class="btn btn-primary">Exportar</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-pie pt-4 pb-2">
+                            <canvas id="graficoMetas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
@@ -49,19 +153,15 @@
                         'rgba(153, 102, 255, 1)',
                         'rgba(255, 159, 64, 1)'
                     ],
-                    borderWidth: 1
                 }]
             };
 
             const configAnotacoes = {
-                type: 'bar',
+                type: 'pie',
                 data: dataAnotacoes,
                 options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+                    responsive: true, // Makes the chart responsive to container size
+                    maintainAspectRatio: true,
                 }
             };
 
@@ -82,7 +182,7 @@
                     label: 'Quantidade de Metas',
                     data: [
                         @foreach($metas as $meta)
-                            {{ $meta->situacao == 0 ? $meta->total : 0 }},
+                        {{ $meta->situacao == 0 ? $meta->total : 0 }},
                         {{ $meta->situacao == 1 ? $meta->total : 0 }},
                         {{ $meta->situacao == 2 ? $meta->total : 0 }},
                         @endforeach
@@ -102,7 +202,7 @@
             };
 
             const configMetas = {
-                type: 'pie',
+                type: 'bar',
                 data: dataMetas,
                 options: {
                     responsive: true,
@@ -119,28 +219,47 @@
             });
         </script>
 
-        <h3 class="mt-5">Total de Anotações: {{ $totalAnotacoes }}</h3>
-        <ul class="list-group">
-            @foreach($anotacoes as $anotacao)
-                <li class="list-group-item">
-                    <strong>{{ $anotacao->descricao_tipo }}:</strong>
-                    {{ $anotacao->total }} anotações ({{ $anotacao->percentual }}%)
-                </li>
-            @endforeach
-        </ul>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h4 class="m-0 font-weight-bold text-primary">
+                            Total de Anotações: {{ $totalAnotacoes }}
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach($anotacoes as $anotacao)
+                            <li class="list-group-item">
+                                <strong>{{ $anotacao->descricao_tipo }}:</strong>
+                                {{ $anotacao->total }} anotações ({{ $anotacao->percentual }}%)
+                            </li>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
-        <h3 class="mt-5">Total de Metas: {{ $totalMetas }}</h3>
-        <ul class="list-group">
-            <li class="list-group-item">
-                <strong>Pendente:</strong> {{ $metas->where('situacao', 0)->sum('total') }}
-            </li>
-            <li class="list-group-item">
-                <strong>Iniciada:</strong> {{ $metas->where('situacao', 1)->sum('total') }}
-            </li>
-            <li class="list-group-item">
-                <strong>Concluída:</strong> {{ $metas->where('situacao', 2)->sum('total') }}
-            </li>
-        </ul>
-    </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h4 class="m-0 font-weight-bold text-primary">
+                            Total de Metas: {{ $totalMetas }}
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Pendente:</strong> {{ $metas->where('situacao', 0)->sum('total') }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Iniciada:</strong> {{ $metas->where('situacao', 1)->sum('total') }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Concluída:</strong> {{ $metas->where('situacao', 2)->sum('total') }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 @endsection

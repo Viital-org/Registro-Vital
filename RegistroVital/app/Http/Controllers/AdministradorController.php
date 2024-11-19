@@ -18,14 +18,6 @@ class AdministradorController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -69,6 +61,7 @@ class AdministradorController extends Controller
     {
         return view('profile.administrador-dashboard');
     }
+
     public function listarUsuarios(Request $request)
     {
         $tipoUsuario = $request->input('tipo_usuario');
@@ -94,6 +87,14 @@ class AdministradorController extends Controller
         ]);
 
         return redirect()->route('administrador.profissionais', ['tipo_usuario' => 2])->with('success', 'Profissional transformado em administrador com sucesso.');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
     }
 
     public function showLogs(Request $request)

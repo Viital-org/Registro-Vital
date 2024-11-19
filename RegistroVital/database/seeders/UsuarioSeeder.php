@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Paciente;
 use App\Models\Profissional;
 use App\Models\Usuario;
-use App\Models\Paciente;
 use Illuminate\Database\Seeder;
 
 class UsuarioSeeder extends Seeder

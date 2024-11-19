@@ -8,6 +8,8 @@
     <!-- Importação de arquivos JavaScript e CSS com Vite -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="..\..\public\startbootstrap-sb-admin-2-gh-pages\css\sb-admin-2.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -90,11 +92,11 @@
     </nav>
 </header>
 
-        <!-- Conteúdo Principal -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
-            @yield('conteudo')
-        </main>
-    </div>
+<!-- Conteúdo Principal -->
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+    @yield('conteudo')
+</main>
+</div>
 </div>
 
 <!-- Scripts -->

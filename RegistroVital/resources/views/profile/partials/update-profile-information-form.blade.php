@@ -2,16 +2,11 @@
     use Illuminate\Contracts\Auth\MustVerifyEmail;
 @endphp
 
-<section class="container mx-auto p-6 bg-white rounded-lg shadow-md">
-    <header class="mb-6">
-        <h2 class="text-2xl font-bold text-primary mb-2">Informações do Perfil</h2>
-        <p class="text-gray-600">Atualize suas informações pessoais e de E-mail</p>
+<section class="container mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <header class="mb-6 text-center">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-2">Informações do Perfil</h2>
+        <p class="text-gray-600 text-sm">Atualize suas informações pessoais e de E-mail</p>
     </header>
-
-    {{-- Form para reenvio de verificação de e-mail --}}
-    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
-        @csrf
-    </form>
 
     {{-- Formulário de atualização do perfil --}}
     <form method="post" action="{{ route('profile.update') }}" class="space-y-6">
@@ -19,26 +14,26 @@
         @method('patch')
 
         {{-- Nome --}}
-        <div class="flex flex-col">
-            <x-input-label for="nome_completo" :value="'Nome Completo'" class="font-semibold text-gray-700"/>
-            <x-text-input
+        <div class="form-group">
+            <label for="nome_completo" class="text-gray-800 font-medium text-sm">Nome Completo</label>
+            <input
                 id="nome_completo"
                 name="nome_completo"
                 type="text"
-                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                class="form-control form-control-user"
                 :value="old('nome_completo', $user->nome_completo)"
                 required autofocus autocomplete="nome_completo"/>
             <x-input-error :messages="$errors->get('nome_completo')" class="mt-2 text-red-500"/>
         </div>
 
         {{-- E-mail --}}
-        <div class="flex flex-col">
-            <x-input-label for="email" :value="'E-mail'" class="font-semibold text-gray-700"/>
-            <x-text-input
+        <div class="form-group">
+            <label for="email" class="text-gray-800 font-medium text-sm">E-mail</label>
+            <input
                 id="email"
                 name="email"
                 type="email"
-                class="border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"
+                class="form-control form-control-user"
                 :value="old('email', $user->email)"
                 required autocomplete="username"/>
             <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-500"/>
@@ -62,9 +57,10 @@
         </div>
 
         {{-- Botão de salvar alterações --}}
-        <div class="flex justify-end">
+        <div class="form-group">
             <button
-                class="px-4 py-2 bg-primary text-white font-bold rounded-md shadow hover:bg-primary-dark transition ease-in-out duration-150">
+                type="submit"
+                class="btn btn-primary btn-user btn-block py-2 px-6 rounded-lg shadow-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary transition duration-300">
                 Salvar alterações
             </button>
         </div>
@@ -81,3 +77,7 @@
         @endif
     </form>
 </section>
+
+<!-- Incluir links do Bootstrap e SB Admin -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

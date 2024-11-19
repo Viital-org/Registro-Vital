@@ -62,7 +62,9 @@
             <h3>Dica do Dia</h3>
             <h6>Categoria da dica</h6>
             <p>XX/XX/XXXX</p>
-            <p>(Conteúdo da dica) Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat deleniti sint a harum itaque suscipit nam neque saepe, ut veniam alias, aperiam aliquam, rerum quasi officiis illo eum unde. Nulla.</p>
+            <p>(Conteúdo da dica) Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat deleniti sint a
+                harum itaque suscipit nam neque saepe, ut veniam alias, aperiam aliquam, rerum quasi officiis illo eum
+                unde. Nulla.</p>
         </div>
 
         <div class="row">
@@ -72,14 +74,16 @@
                 <table>
                     <!-- foreach -->
                     <thead>
-                        <tr>
-                            <td><h6>Data e hora</h6></td> <!-- Ex: XX/XX/XXXX - XX:XX -->
-                        </tr>
+                    <tr>
+                        <td><h6>Data e hora</h6></td> <!-- Ex: XX/XX/XXXX - XX:XX -->
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus aspernatur numquam tempora velit</td>
-                        </tr>
+                    <tr>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus aspernatur numquam tempora
+                            velit
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
