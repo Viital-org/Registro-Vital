@@ -24,7 +24,7 @@ class TipoAnotacoesController extends Controller
 
         TipoAnotacao::create($validated);
 
-        return redirect()->route('tipoanotacao-create')->with('success','Tipo de anotação cadastrado');
+        return redirect()->route('tipoanotacao-create')->with('success', 'Tipo de anotação cadastrado');
     }
 
     public function create()

@@ -49,7 +49,7 @@ class AtuaAreasController extends Controller
         if ($buscaarea === null) {
             $atuaareas = AtuaArea::paginate(5);
         } else {
-            $atuaareas = AtuaArea::where('descricao_area', 'like', '%' .  $buscaarea . '%')->paginate(5);
+            $atuaareas = AtuaArea::where('descricao_area', 'like', '%' . $buscaarea . '%')->paginate(5);
         }
 
         return view('Cadastros/listaatuaareas', compact('atuaareas'));

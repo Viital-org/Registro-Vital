@@ -142,7 +142,7 @@ class PacientesController extends Controller
         $hoje = now()->toDateString(); // Data atual
         $agora = now()->format('H:i:s'); // Hora atual
 
-        $agendamentos = Agendamento::where('paciente_id', $userId)
+        $proximosagendamentos = Agendamento::where('paciente_id', $userId)
             ->where(function ($query) use ($hoje, $agora) {
                 $query->where('data_agendamento', '>', $hoje) // Agendamentos em datas futuras
                 ->orWhere(function ($subQuery) use ($hoje, $agora) {
@@ -157,7 +157,7 @@ class PacientesController extends Controller
 
         return view('profile.paciente-dashboard', [
             'anotacoes' => $anotacoes,
-            'agendamentos' => $agendamentos,
+            'proximosagendamentos' => $proximosagendamentos,
         ]);
     }
 

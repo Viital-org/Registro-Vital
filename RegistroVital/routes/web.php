@@ -198,7 +198,6 @@ Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function
     Route::delete('/listapacientes/{id}', [PacientesController::class, 'destroy'])->name('pacientes-delete');
 
 
-
     //Areas de atuacao
     Route::resource('/cadastroatuaareas', AtuaAreasController::class);
     Route::get('/listaatuaareas', [AtuaAreasController::class, 'index'])->name('atuaareas-index');
@@ -240,8 +239,5 @@ Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function
     Route::get('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'edit'])->name('tipoanotacao-edit');
     Route::put('/atualizartipoanotacao/{id}', [TipoAnotacoesController::class, 'update'])->name('tipoanotacao-update');
     Route::delete('/excluirtipoanotacao/{id}', [TipoAnotacoesController::class, 'destroy'])->name('tipoanotacao-delete');
-
-    // Agendamentos
-    Route::get('/agendamentos', [AgendamentosController::class, 'index'])->name('agendamentos.index');
 
 });

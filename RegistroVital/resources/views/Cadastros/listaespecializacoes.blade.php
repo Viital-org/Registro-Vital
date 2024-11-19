@@ -66,11 +66,13 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel{{ $item->id }}">Confirmação de
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $item->id }}">Confirmação
+                                                    de
                                                     Exclusão</h5>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Deseja realmente excluir a especialização '{{ $item->especializacao }}'?</p>
+                                                <p>Deseja realmente excluir a especialização
+                                                    '{{ $item->especializacao }}'?</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

@@ -51,7 +51,7 @@
         {{-- Próximos Agendamentos --}}
         <div class="bg-gray-50 border border-gray-200 rounded-md shadow-md p-4 mt-6">
             <h2 class="text-lg md:text-xl font-semibold">
-                <i class="fas fa-calendar-alt mr-2" style="color: #007bff" ></i> Próximos Agendamentos
+                <i class="fas fa-calendar-alt mr-2" style="color: #007bff"></i> Próximos Agendamentos
             </h2>
             <div class="overflow-x-auto mt-4">
                 <table class="w-full text-sm text-left border-collapse border border-gray-300">
@@ -60,11 +60,12 @@
                         <th class="py-2 px-4 text-center">Data</th>
                         <th class="py-2 px-4 text-center">Hora</th>
                         <th class="py-2 px-4 text-center">Paciente</th>
+                        <th class="py-2 px-4 text-center">Area</th>
                         <th class="py-2 px-4 text-center">Especialização</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($agendamentos as $agendamento)
+                    @foreach ($proximosagendamentos as $agendamento)
                         <tr class="hover:bg-gray-50">
                             <td class="py-2 px-4 text-center border-b border-gray-300">
                                 {{ Carbon::parse($agendamento->data_agendamento)->format('d/m/Y') }}
@@ -76,11 +77,14 @@
                                 {{ $agendamento->paciente->usuario->nome_completo ?? 'N/A' }}
                             </td>
                             <td class="py-2 px-4 text-center border-b border-gray-300">
+                                {{ $agendamento->especializacao->area->descricao_area ?? 'N/A' }}
+                            </td>
+                            <td class="py-2 px-4 text-center border-b border-gray-300">
                                 {{ $agendamento->especializacao->descricao_especializacao ?? 'N/A' }}
                             </td>
                         </tr>
                     @endforeach
-                    @if ($agendamentos->isEmpty())
+                    @if ($proximosagendamentos->isEmpty())
                         <tr>
                             <td colspan="4" class="py-4 text-gray-500 text-center border-b border-gray-300">
                                 Nenhum agendamento encontrado.
@@ -103,13 +107,13 @@
             </ul>
         </div>
 
-        {{-- Feedbacks Recentes --}}
+        {{-- Feedbacks Recentes
         <div class="bg-white border border-gray-200 rounded-md shadow-md p-4 mt-6">
             <h2 class="text-lg md:text-xl font-semibold" style="color: #000000;">
                 <i class="fas fa-comment-dots mr-2" style="color: #007bff"></i> Feedbacks Recentes
             </h2>
             <ul class="mt-4 space-y-3">
-                {{-- @foreach ($feedbacks as $feedback)
+                 @foreach ($feedbacks as $feedback)
                     <li class="flex flex-col md:flex-row justify-between items-start md:items-center">
                         <span class="text-gray-600">{{ $feedback->descricao_feedback }}</span>
                         <span class="text-sm text-gray-400 mt-2 md:mt-0">
@@ -119,9 +123,9 @@
                 @endforeach
                 @if ($feedbacks->isEmpty())
                     <p class="text-gray-500">Nenhum feedback recebido.</p>
-                @endif--}}
+                @endif
             </ul>
-        </div>
+        </div>--}}
     </div>
 @endsection
 

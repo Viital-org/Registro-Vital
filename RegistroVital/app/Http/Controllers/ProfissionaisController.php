@@ -152,13 +152,21 @@ class ProfissionaisController extends Controller
         $usuarioId = Auth::id();
 
         // Carrega os próximos agendamentos do profissional
-        $agendamentos = Agendamento::with(['profissional.usuario', 'especializacao.area'])
-            ->whereHas('profissional', function ($query) use ($usuarioId) {
-                $query->where('usuario_id', $usuarioId);
+        // Buscando agendamentos futuros relacionados ao usuário logado
+        $hoje = now()->toDateString(); // Data atual
+        $agora = now()->format('H:i:s'); // Hora atual
+
+        $proximosagendamentos = Agendamento::where('profissional_id', $usuarioId)
+            ->where(function ($query) use ($hoje, $agora) {
+                $query->where('data_agendamento', '>', $hoje) // Agendamentos em datas futuras
+                ->orWhere(function ($subQuery) use ($hoje, $agora) {
+                    $subQuery->where('data_agendamento', $hoje)
+                        ->where('hora_agendamento', '>=', $agora); // Agendamentos no mesmo dia com horário futuro
+                });
             })
-            ->where('data_agendamento', '>=', now())
             ->orderBy('data_agendamento', 'asc')
-            ->take(5) // Limite de agendamentos para exibir
+            ->orderBy('hora_agendamento', 'asc') // Ordena também por hora
+            ->take(5) // Limitando aos 5 mais próximos
             ->get();
 
         // Busca os pacientes acompanhados pelo profissional
@@ -167,7 +175,7 @@ class ProfissionaisController extends Controller
         })->with(['usuario', 'agendamento' => function ($query) {
             $query->orderBy('data_agendamento', 'desc');
         }])->get()->map(function ($paciente) {
-            return (object) [
+            return (object)[
                 'nome_completo' => $paciente->usuario->nome_completo ?? 'N/A',
                 'ultima_consulta' => $paciente->agendamento->first()->data_agendamento ?? 'N/A',
             ];
@@ -178,20 +186,20 @@ class ProfissionaisController extends Controller
             'pacientes_atendidos' => Agendamento::where('profissional_id', $usuarioId)
                 ->where('data_agendamento', '<', now())
                 ->count(),
-            'proximos_agendamentos' => $agendamentos->count(),
+            'proximos_agendamentos' => $proximosagendamentos->count(),
         ];
 
         // Feedbacks recentes recebidos pelo profissional
         /**$feedbacks = Feedback::where('profissional_id', $usuarioId)
-        ->with('paciente')
-        ->orderBy('created_at', 'desc')
-        ->take(5)
-        ->get();
+         * ->with('paciente')
+         * ->orderBy('created_at', 'desc')
+         * ->take(5)
+         * ->get();
          **/
 
         // Retorna a view com os dados necessários
         return view('profile.profissional-dashboard', [
-            'agendamentos' => $agendamentos,
+            'proximosagendamentos' => $proximosagendamentos,
             'pacientes' => $pacientes,
             'estatisticas' => $estatisticas,
             //'feedbacks' => $feedbacks,

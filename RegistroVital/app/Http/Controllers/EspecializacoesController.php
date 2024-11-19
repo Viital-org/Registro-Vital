@@ -27,7 +27,7 @@ class EspecializacoesController extends Controller
     {
         $validated = ($request->validate([
             'area_atuacao_id' => 'required|integer',
-            'descricao_especializacao'=> 'required|string|max:60',
+            'descricao_especializacao' => 'required|string|max:60',
         ]));
 
         Especializacao::create($validated);
@@ -52,7 +52,7 @@ class EspecializacoesController extends Controller
     {
         $buscaespec = $request->input('search_id');
         $especializacoes = Especializacao::with('area')
-            ->when($buscaespec, fn($query) => $query->where('descricao_especializacao', 'like', '%' .  $buscaespec . '%'))
+            ->when($buscaespec, fn($query) => $query->where('descricao_especializacao', 'like', '%' . $buscaespec . '%'))
             ->orderBy('created_at')
             ->simplePaginate(5);
 

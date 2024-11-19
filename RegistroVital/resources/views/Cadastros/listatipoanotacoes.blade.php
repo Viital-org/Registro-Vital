@@ -61,13 +61,15 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModalLabel{{ $item->id }}">Confirmação de exclusão</h5>
+                                    <h5 class="modal-title" id="deleteModalLabel{{ $item->id }}">Confirmação de
+                                        exclusão</h5>
                                 </div>
                                 <div class="modal-body">
                                     <p>Deseja realmente excluir a anotação '{{ $item->desc_anotacao }}'?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+                                    </button>
                                     <form action="{{ route('tipoanotacao-delete', ['id'=> $item->id])}}" method="POST">
                                         @csrf
                                         @method('DELETE')

@@ -62,7 +62,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($agendamentos as $agendamento)
+                    @foreach ($proximosagendamentos as $agendamento)
                         <tr class="hover:bg-gray-50">
                             <td class="py-2 px-4 text-center border-b border-gray-300">
                                 {{ Carbon::parse($agendamento->data_agendamento)->format('d/m/Y') }}
@@ -78,7 +78,7 @@
                             </td>
                         </tr>
                     @endforeach
-                    @if ($agendamentos->isEmpty())
+                    @if ($proximosagendamentos->isEmpty())
                         <tr>
                             <td colspan="4" class="py-4 text-gray-500 text-center border-b border-gray-300">
                                 Nenhum agendamento encontrado.
