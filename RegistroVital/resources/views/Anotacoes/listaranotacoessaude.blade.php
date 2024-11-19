@@ -8,7 +8,7 @@
     <section class="py-5">
         <div class="container px-5 mb-5">
             <div class="text-center mb-5">
-                <h1 class="fs-2 fw-bold mb-0"><span class="text-gradient d-inline">Minhas anotações</span></h1>
+                <h1 class="fs-2 fw-bold mb-0">Minhas anotações</h1>
             </div>
             @foreach($anotacoessaude as $item)
                 <div class="row gx-5 justify-content-center mt-3">
@@ -19,11 +19,7 @@
                                     <!-- Parte esquerda -->
                                     <div class="p-4 w-100">
                                         <h4>
-<<<<<<< HEAD
                                             {{ \Carbon\Carbon::parse($item->data_anotacao)->format('d/m/Y') }}
-=======
-                                            {{ Carbon::parse($item->data_anotacao)->format('d-m-Y') }}
->>>>>>> 521cb12037bbc5dc78442a35c00692452d544884
                                         </h4>
 
                                         <!-- Tipo e Visibilidade em linhas separadas -->

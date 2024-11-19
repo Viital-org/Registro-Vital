@@ -40,7 +40,7 @@
             top: 20px;
             left: 20px;
             z-index: 1100;
-            background-color: #A0D3E8;
+            background-color: #006adb;
             color: white;
             border: none;
             padding: 10px 15px;

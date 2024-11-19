@@ -5,7 +5,7 @@
 
 @section('conteudo')
     <div class="container my-4">
-        <h1 class="mb-4 text-center">Minhas Consultas</h1>
+        <h1 class="mb-4 text-center fw-bolder">Minhas Consultas</h1>
         <div class="table-responsive rounded-3">
             <table class="table table-hover table-striped align-middle">
                 <thead class="thead-dark">

@@ -4,12 +4,10 @@
 
 @section('conteudo')
 
-    <!-- Begin Page Content -->
     <div class="container-fluid">
 
-        <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="titulo-pagina h1 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="titulo-pagina h1 mb-0 text-gray-800 fw-bolder">Dashboard</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
         </div>
@@ -31,14 +29,9 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-                    <div class="col-auto">
-                        <img src="{{ asset('/img/consultando.png') }}">
-=======
                 </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
@@ -57,7 +50,6 @@
                 </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-info shadow h-100 py-2">
                     <div class="card-body">
@@ -73,14 +65,13 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <img src="{{ asset('/img/consultando.png') }}">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-warning shadow h-100 py-2">
                     <div class="card-body">
@@ -95,7 +86,6 @@
                                 <img src="{{ asset('/img/estrela.png') }}">
                             </div>
                         </div>
->>>>>>> 521cb12037bbc5dc78442a35c00692452d544884
                     </div>
                 </div>
             </div>
@@ -124,20 +114,8 @@
                         <button id="downloadButtonMetas" class="btn btn-primary">Exportar</button>
                     </div>
                     <div class="card-body">
-<<<<<<< HEAD
-                        <div class="chart-area pt-4 pb-2">
-                            <canvas id="graficoMetas"></canvas>
-=======
                         <div class="chart-pie pt-4 pb-2">
-                            <canvas id="myPieChart"></canvas>
-                        </div>
-                        <div class="mt-4 text-center small">
-                            @foreach($anotacoes as $anotacao)
-                                <span class="mr-2">
-                                <i class="fas fa-circle text-primary"></i> {{ $anotacao->descricao_tipo }}
-                            </span>
-                            @endforeach
->>>>>>> 521cb12037bbc5dc78442a35c00692452d544884
+                            <canvas id="graficoMetas"></canvas>
                         </div>
                     </div>
                 </div>
@@ -204,7 +182,7 @@
                     label: 'Quantidade de Metas',
                     data: [
                         @foreach($metas as $meta)
-                            {{ $meta->situacao == 0 ? $meta->total : 0 }},
+                        {{ $meta->situacao == 0 ? $meta->total : 0 }},
                         {{ $meta->situacao == 1 ? $meta->total : 0 }},
                         {{ $meta->situacao == 2 ? $meta->total : 0 }},
                         @endforeach
@@ -241,28 +219,47 @@
             });
         </script>
 
-        <h3 class="mt-5">Total de Anotações: {{ $totalAnotacoes }}</h3>
-        <ul class="list-group">
-            @foreach($anotacoes as $anotacao)
-                <li class="list-group-item">
-                    <strong>{{ $anotacao->descricao_tipo }}:</strong>
-                    {{ $anotacao->total }} anotações ({{ $anotacao->percentual }}%)
-                </li>
-            @endforeach
-        </ul>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h4 class="m-0 font-weight-bold text-primary">
+                            Total de Anotações: {{ $totalAnotacoes }}
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach($anotacoes as $anotacao)
+                            <li class="list-group-item">
+                                <strong>{{ $anotacao->descricao_tipo }}:</strong>
+                                {{ $anotacao->total }} anotações ({{ $anotacao->percentual }}%)
+                            </li>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
-        <h3 class="mt-5">Total de Metas: {{ $totalMetas }}</h3>
-        <ul class="list-group">
-            <li class="list-group-item">
-                <strong>Pendente:</strong> {{ $metas->where('situacao', 0)->sum('total') }}
-            </li>
-            <li class="list-group-item">
-                <strong>Iniciada:</strong> {{ $metas->where('situacao', 1)->sum('total') }}
-            </li>
-            <li class="list-group-item">
-                <strong>Concluída:</strong> {{ $metas->where('situacao', 2)->sum('total') }}
-            </li>
-        </ul>
-    </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h4 class="m-0 font-weight-bold text-primary">
+                            Total de Metas: {{ $totalMetas }}
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Pendente:</strong> {{ $metas->where('situacao', 0)->sum('total') }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Iniciada:</strong> {{ $metas->where('situacao', 1)->sum('total') }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Concluída:</strong> {{ $metas->where('situacao', 2)->sum('total') }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 @endsection
