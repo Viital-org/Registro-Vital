@@ -136,6 +136,11 @@
                 <i class="fas fa-chart-bar"></i> Relatórios
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" href="{{ route('minhasespecializacoes.index') }}">
+                <i class="fas fa-cogs me-2" style="font-size: 18px;"></i> Minhas especializações
+            </a>
+        </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="consultasDropdown" role="button"
                data-bs-toggle="dropdown" aria-expanded="false">
