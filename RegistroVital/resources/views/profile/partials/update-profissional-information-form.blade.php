@@ -11,10 +11,12 @@
         <!-- Área de Atuação -->
         <div class="flex flex-col">
             <x-input-label for="areaatuacao_id" :value="'Área de Atuação'" class="font-semibold text-gray-700"/>
-            <select name="areaatuacao_id" id="areaatuacao_id" class="form-select border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm">
+            <select name="areaatuacao_id" id="areaatuacao_id"
+                    class="form-select border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm">
                 <option value="" @if (is_null($profissional->areaatuacao_id)) selected @endif>Não definido</option>
                 @foreach($areasAtuacao as $atuaarea)
-                    <option value="{{ $atuaarea->id }}" @if ($atuaarea->id === $profissional->areaatuacao_id) selected @endif>
+                    <option value="{{ $atuaarea->id }}"
+                            @if ($atuaarea->id === $profissional->areaatuacao_id) selected @endif>
                         {{ $atuaarea->descricao_area }}
                     </option>
                 @endforeach
@@ -25,7 +27,8 @@
         <!-- Especialização -->
         <div class="flex flex-col">
             <x-input-label for="especializacao_id" :value="'Especialização'" class="font-semibold text-gray-700"/>
-            <select name="especializacao_id" id="especializacao_id" class="form-select border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"></select>
+            <select name="especializacao_id" id="especializacao_id"
+                    class="form-select border-gray-300 focus:border-primary focus:ring-primary rounded-md shadow-sm"></select>
             <x-input-error :messages="$errors->get('especializacao_id')" class="mt-2 text-red-500"/>
         </div>
 
@@ -83,7 +86,8 @@
 
         <!-- Botão de Salvar -->
         <div class="flex justify-end">
-            <button type="submit" class="btn btn-primary px-6 py-2 rounded-lg shadow-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary transition duration-300">
+            <button type="submit"
+                    class="btn btn-primary px-6 py-2 rounded-lg shadow-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary transition duration-300">
                 Salvar Alterações
             </button>
         </div>

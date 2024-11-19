@@ -1,7 +1,8 @@
 <section class="container mx-auto p-6 bg-white rounded-lg shadow-lg">
     <header class="mb-6 text-center">
         <h2 class="text-2xl font-semibold text-gray-900 mb-2">Deletar Conta</h2>
-        <p class="text-gray-600 text-sm mb-4">Depois que sua conta for excluída, todos os dados e acessos serão excluídos permanentemente.
+        <p class="text-gray-600 text-sm mb-4">Depois que sua conta for excluída, todos os dados e acessos serão
+            excluídos permanentemente.
             Antes de excluir sua conta, verifique se tem certeza que quer realizar o processo e salve qualquer
             informação que você deseja reter.</p>
     </header>
@@ -20,7 +21,8 @@
 
             <h2 class="text-xl font-semibold text-gray-900 mb-3">Você tem certeza que deseja DELETAR esta conta?</h2>
 
-            <p class="text-gray-600 text-sm mb-6">Quando sua conta for excluída, todos os dados e acessos serão excluídos permanentemente.
+            <p class="text-gray-600 text-sm mb-6">Quando sua conta for excluída, todos os dados e acessos serão
+                excluídos permanentemente.
                 Por favor, insira sua senha para confirmar que você quer PERMANENTEMENTE DELETAR sua conta.</p>
 
             <div class="form-group">

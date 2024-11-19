@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agendamento;
+use App\Models\Anotacaosaude;
 use App\Models\Meta;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
@@ -128,7 +130,35 @@ class PacientesController extends Controller
 
     public function tela()
     {
-        return view('profile.paciente-dashboard');
+        $userId = auth()->id();
+
+        // Buscando anotações relacionadas ao usuário logado
+        $anotacoes = Anotacaosaude::where('paciente_id', $userId)
+            ->orderBy('created_at', 'desc')
+            ->take(5) // Limitando às 5 mais recentes
+            ->get();
+
+        // Buscando agendamentos futuros relacionados ao usuário logado
+        $hoje = now()->toDateString(); // Data atual
+        $agora = now()->format('H:i:s'); // Hora atual
+
+        $agendamentos = Agendamento::where('paciente_id', $userId)
+            ->where(function ($query) use ($hoje, $agora) {
+                $query->where('data_agendamento', '>', $hoje) // Agendamentos em datas futuras
+                ->orWhere(function ($subQuery) use ($hoje, $agora) {
+                    $subQuery->where('data_agendamento', $hoje)
+                        ->where('hora_agendamento', '>=', $agora); // Agendamentos no mesmo dia com horário futuro
+                });
+            })
+            ->orderBy('data_agendamento', 'asc')
+            ->orderBy('hora_agendamento', 'asc') // Ordena também por hora
+            ->take(5) // Limitando aos 5 mais próximos
+            ->get();
+
+        return view('profile.paciente-dashboard', [
+            'anotacoes' => $anotacoes,
+            'agendamentos' => $agendamentos,
+        ]);
     }
 
 }

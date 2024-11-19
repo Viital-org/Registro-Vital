@@ -92,7 +92,8 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Motivo para não poder atender</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Fechar"></button>
                                 </div>
                                 <form action="{{ route('consultas.alterarSituacao', $consulta->id) }}" method="POST">
                                     @csrf

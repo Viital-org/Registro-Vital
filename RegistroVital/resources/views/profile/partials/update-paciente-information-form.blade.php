@@ -37,7 +37,8 @@
 
         <!-- Data de Nascimento -->
         <div class="form-group">
-            <x-input-label for="data_nascimento" :value="'Data de Nascimento'" class="text-gray-800 font-medium text-sm"/>
+            <x-input-label for="data_nascimento" :value="'Data de Nascimento'"
+                           class="text-gray-800 font-medium text-sm"/>
             <x-text-input
                 id="data_nascimento"
                 name="data_nascimento"
@@ -116,7 +117,8 @@
 
         <!-- Número do Endereço -->
         <div class="form-group">
-            <x-input-label for="numero_endereco" :value="'Número do Endereço'" class="text-gray-800 font-medium text-sm"/>
+            <x-input-label for="numero_endereco" :value="'Número do Endereço'"
+                           class="text-gray-800 font-medium text-sm"/>
             <x-text-input
                 id="numero"
                 name="numero_endereco"

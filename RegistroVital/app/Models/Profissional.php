@@ -47,4 +47,9 @@ class Profissional extends Model
     {
         return $this->hasMany(Endereco::class);
     }
+
+    public function agendamento()
+    {
+        return $this->hasMany(Agendamento::class, 'profissional_id', 'usuario_id');
+    }
 }

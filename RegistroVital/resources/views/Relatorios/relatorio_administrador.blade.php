@@ -180,7 +180,7 @@
             link.href = image;
             link.download = 'grafico.png';
             link.click();
-        }); 
+        });
 
         document.getElementById('downloadButtonAnotacoes').addEventListener('click', function () {
             const link = document.createElement('a');

@@ -1,7 +1,8 @@
 <section class="container mx-auto p-6 bg-white rounded-lg shadow-lg">
     <header class="mb-6 text-center">
         <h2 class="text-2xl font-semibold text-gray-900 mb-2">Atualizar Senha</h2>
-        <p class="text-gray-600 text-sm">Garanta que sua conta esteja usando uma senha longa e forte para mantê-la segura.</p>
+        <p class="text-gray-600 text-sm">Garanta que sua conta esteja usando uma senha longa e forte para mantê-la
+            segura.</p>
     </header>
 
     <form method="post" action="{{ route('password.update') }}" class="space-y-6">
@@ -38,7 +39,8 @@
 
         {{-- Confirmar Senha --}}
         <div class="form-group">
-            <label for="update_password_password_confirmation" class="text-gray-800 font-medium text-sm">Confirmar Senha</label>
+            <label for="update_password_password_confirmation" class="text-gray-800 font-medium text-sm">Confirmar
+                Senha</label>
             <input
                 id="update_password_password_confirmation"
                 name="password_confirmation"

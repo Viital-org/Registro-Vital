@@ -3,7 +3,7 @@
 @section('titulo', 'Agendar Consulta')
 
 @section('conteudo')
-    <div class="container px-5">
+    <div class="container-fluid">
         <!-- Contact form-->
         <div class="bg-light rounded-4 py-5 px-4 px-md-5">
             <div class="text-center mb-5">

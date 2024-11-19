@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agendamento;
 use App\Models\AtuaArea;
 use App\Models\Especializacao;
+use App\Models\Paciente;
 use App\Models\Profissional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -146,6 +148,53 @@ class ProfissionaisController extends Controller
 
     public function tela()
     {
-        return view('profile.profissional-dashboard');
+        // Obtém o ID do profissional autenticado
+        $usuarioId = Auth::id();
+
+        // Carrega os próximos agendamentos do profissional
+        $agendamentos = Agendamento::with(['profissional.usuario', 'especializacao.area'])
+            ->whereHas('profissional', function ($query) use ($usuarioId) {
+                $query->where('usuario_id', $usuarioId);
+            })
+            ->where('data_agendamento', '>=', now())
+            ->orderBy('data_agendamento', 'asc')
+            ->take(5) // Limite de agendamentos para exibir
+            ->get();
+
+        // Busca os pacientes acompanhados pelo profissional
+        $pacientes = Paciente::whereHas('agendamento', function ($query) use ($usuarioId) {
+            $query->where('profissional_id', $usuarioId);
+        })->with(['usuario', 'agendamento' => function ($query) {
+            $query->orderBy('data_agendamento', 'desc');
+        }])->get()->map(function ($paciente) {
+            return (object) [
+                'nome_completo' => $paciente->usuario->nome_completo ?? 'N/A',
+                'ultima_consulta' => $paciente->agendamento->first()->data_agendamento ?? 'N/A',
+            ];
+        });
+
+        // Dados adicionais para exibição
+        $estatisticas = [
+            'pacientes_atendidos' => Agendamento::where('profissional_id', $usuarioId)
+                ->where('data_agendamento', '<', now())
+                ->count(),
+            'proximos_agendamentos' => $agendamentos->count(),
+        ];
+
+        // Feedbacks recentes recebidos pelo profissional
+        /**$feedbacks = Feedback::where('profissional_id', $usuarioId)
+        ->with('paciente')
+        ->orderBy('created_at', 'desc')
+        ->take(5)
+        ->get();
+         **/
+
+        // Retorna a view com os dados necessários
+        return view('profile.profissional-dashboard', [
+            'agendamentos' => $agendamentos,
+            'pacientes' => $pacientes,
+            'estatisticas' => $estatisticas,
+            //'feedbacks' => $feedbacks,
+        ]);
     }
 }
