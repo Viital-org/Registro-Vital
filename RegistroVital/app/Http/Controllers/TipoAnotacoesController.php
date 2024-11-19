@@ -18,14 +18,13 @@ class TipoAnotacoesController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'tipo_anotacao' => 'required|integer',
-            'desc_anotacao' => 'required|string|max:255',
+        $validated = $request->validate([
+            'descricao_tipo' => 'required|string|max:255',
         ]);
 
-        TipoAnotacao::create($validatedData);
+        TipoAnotacao::create($validated);
 
-        return redirect()->route('tipoanotacao-index');
+        return redirect()->route('tipoanotacao-create')->with('success','Tipo de anotação cadastrado');
     }
 
     public function create()
@@ -38,12 +37,12 @@ class TipoAnotacoesController extends Controller
      */
     public function show(Request $request)
     {
-        $id = $request->input('search_id');
+        $desctipo = $request->input('tipoanot');
 
-        if ($id === null) {
+        if ($desctipo === null) {
             $tipoanotacao = TipoAnotacao::paginate(5);
         } else {
-            $tipoanotacao = TipoAnotacao::where('id', '=', $id)->paginate(5);
+            $tipoanotacao = TipoAnotacao::where('descricao_tipo', 'like', '%' . $desctipo . '%')->paginate(5);
         }
 
         return view('Cadastros.listatipoanotacoes', ['tipoanotacao' => $tipoanotacao]);
@@ -65,7 +64,7 @@ class TipoAnotacoesController extends Controller
     {
         $tipodeanotacao = TipoAnotacao::findorfail($id);
         $tipodeanotacao->update($request->all());
-        return redirect()->route('tipoanotacao-index');
+        return redirect()->route('tipoanotacao-index')->with('success', 'Tipo de anotação atualizado com sucesso');
     }
 
     /**

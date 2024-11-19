@@ -15,6 +15,7 @@ use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfissionaisController;
 use App\Http\Controllers\RelatoriosController;
+use App\Http\Controllers\TipoAnotacoesController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
@@ -228,5 +229,16 @@ Route::middleware(['auth', 'tipo_usuario:3', 'layout.dinamico'])->group(function
     Route::get('/editardica/{id}', [DicasController::class, 'edit'])->name('dicas.edit');
     Route::put('/editardica/{id}', [DicasController::class, 'update'])->name('dicas.update');
     Route::delete('/listadicas/{id}', [DicasController::class, 'destroy'])->name('dicas.delete');
+
+
+    //Tipos de anotação
+    Route::resource('/cadastrotipoanotacao', DicasController::class);
+    Route::get('/listatiposanotacao', [TipoAnotacoesController::class, 'index'])->name('tipoanotacao-index');
+    Route::post('/guardatiposanotacao', [TipoAnotacoesController::class, 'store'])->name('tipoanotacao-store');
+    Route::post('/listatiposanotacaofiltro', [TipoAnotacoesController::class, 'show'])->name('tipoanotacao-show');
+    Route::get('/cadastratipoanotacao', [TipoAnotacoesController::class, 'create'])->name('tipoanotacao-create');
+    Route::get('/editartipoanotacao/{id}', [TipoAnotacoesController::class, 'edit'])->name('tipoanotacao-edit');
+    Route::put('/atualizartipoanotacao/{id}', [TipoAnotacoesController::class, 'update'])->name('tipoanotacao-update');
+    Route::delete('/excluirtipoanotacao/{id}', [TipoAnotacoesController::class, 'destroy'])->name('tipoanotacao-delete');
 
 });

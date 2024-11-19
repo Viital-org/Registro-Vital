@@ -145,7 +145,11 @@
                         <i class="fa fa-stethoscope"></i> Especializações
                     </a>
                 </li>
-
+                <li>
+                    <a class="dropdown-item" href="{{ route('tipoanotacao-create') }}">
+                        <i class="fa fa-sticky-note"></i> Tipos de anotação
+                    </a>
+                </li>
             </ul>
         </li>
 
@@ -160,13 +164,16 @@
                         <i class="fas fa-medkit"></i> Áreas de atuação
                     </a>
                 </li>
-
                 <li>
                     <a class="dropdown-item" href="{{ route('especializacoes-index') }}">
                         <i class="fa fa-stethoscope"></i> Especializações
                     </a>
                 </li>
-
+                <li>
+                    <a class="dropdown-item" href="{{ route('tipoanotacao-index') }}">
+                        <i class="fa fa-sticky-note"></i> Tipos de anotação
+                    </a>
+                </li>
             </ul>
         </li>
 
