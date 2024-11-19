@@ -13,7 +13,7 @@ class AtuaArea extends Model
     protected $table = 'areas_atuacao';
 
     protected $fillable = [
-        'descricao_area'
+        'descricao_area',
     ];
 
     protected static function booted()

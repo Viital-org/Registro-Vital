@@ -128,6 +128,48 @@
                 <i class="fas fa-question-circle"></i> Ajuda
             </a>
         </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="cadastrosDropdown" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
+                <i class="fa fa-briefcase"></i> Cadastros
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="cadastrosDropdown">
+                <li>
+                    <a class="dropdown-item" href="{{ route('atuareas-create') }}">
+                        <i class="fas fa-medkit"></i> Áreas de atuação
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('especializacoes-create') }}">
+                        <i class="fa fa-stethoscope"></i> Especializações
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="cadastrosDropdown" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
+                <i class="fa fa-list-alt"></i> Listagens
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="cadastrosDropdown">
+                <li>
+                    <a class="dropdown-item" href="{{ route('atuaareas-index') }}">
+                        <i class="fas fa-medkit"></i> Áreas de atuação
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item" href="{{ route('especializacoes-index') }}">
+                        <i class="fa fa-stethoscope"></i> Especializações
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="relatoriosDropdown" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">

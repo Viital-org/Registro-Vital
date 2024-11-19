@@ -12,7 +12,8 @@ class AtuaAreasController extends Controller
      */
     public function index()
     {
-        $atuaareas = AtuaArea::with('especializacoes')->simplePaginate(5);
+        $atuaareas = AtuaArea::with('especializacoes')
+            ->simplePaginate(5);
         return view('Cadastros/listaatuaareas', compact('atuaareas'));
     }
 
@@ -21,11 +22,13 @@ class AtuaAreasController extends Controller
      */
     public function store(Request $request)
     {
-        AtuaArea::create($request->validate([
+        $validated = ($request->validate([
             'descricao_area' => 'required|string|max:20',
         ]));
 
-        return redirect()->route('atuaareas-index');
+        AtuaArea::create($validated);
+
+        return redirect()->route('atuareas-create')->with('Success', 'Área de atuação criada com sucesso!');
     }
 
     /**
@@ -41,12 +44,12 @@ class AtuaAreasController extends Controller
      */
     public function show(Request $request)
     {
-        $id = $request->input('search_id');
+        $buscaarea = $request->input('busca_area');
 
-        if ($id === null) {
+        if ($buscaarea === null) {
             $atuaareas = AtuaArea::paginate(5);
         } else {
-            $atuaareas = AtuaArea::where('id', $id)->paginate(5);
+            $atuaareas = AtuaArea::where('descricao_area', 'like', '%' .  $buscaarea . '%')->paginate(5);
         }
 
         return view('Cadastros/listaatuaareas', compact('atuaareas'));
@@ -68,12 +71,16 @@ class AtuaAreasController extends Controller
     {
         $atuaarea = AtuaArea::findOrFail($id);
 
-        $atuaarea->update($request->validate([
+        $validated = $request->validate([
             'descricao_area' => 'required|string|max:20',
-        ]));
+        ]);
 
-        return redirect()->route('atuaareas-index');
+        $atuaarea->update($validated);
+
+        // Redirecionar com mensagem de sucesso
+        return redirect()->route('atuaareas-index')->with('success', 'Área de atuação atualizada com sucesso');
     }
+
 
     /**
      * Remove the specified resource from storage.

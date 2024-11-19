@@ -13,7 +13,7 @@ class EspecializacoesController extends Controller
      */
     public function index()
     {
-        $especializacoes = Especializacao::with('areaAtuacao')
+        $especializacoes = Especializacao::with('area')
             ->orderBy('created_at')
             ->simplePaginate(5);
 
@@ -25,8 +25,15 @@ class EspecializacoesController extends Controller
      */
     public function store(Request $request)
     {
-        Especializacao::create($request->all());
-        return redirect()->route('especializacoes-index');
+        $validated = ($request->validate([
+            'area_atuacao_id' => 'required|integer',
+            'descricao_especializacao'=> 'required|string|max:60',
+        ]));
+
+        Especializacao::create($validated);
+
+        return redirect()->route('especializacoes-create')->with('success', 'Especialização criada com sucesso!');
+
     }
 
     /**
@@ -43,11 +50,11 @@ class EspecializacoesController extends Controller
      */
     public function show(Request $request)
     {
-        $id = $request->input('search_id');
-        $especializacoes = Especializacao::with('areaAtuacao')
-            ->when($id, fn($query) => $query->where('id', $id))
+        $buscaespec = $request->input('search_id');
+        $especializacoes = Especializacao::with('area')
+            ->when($buscaespec, fn($query) => $query->where('descricao_especializacao', 'like', '%' .  $buscaespec . '%'))
             ->orderBy('created_at')
-            ->paginate(5);
+            ->simplePaginate(5);
 
         return view('Cadastros.listaespecializacoes', compact('especializacoes'));
     }
@@ -57,9 +64,9 @@ class EspecializacoesController extends Controller
      */
     public function edit($id)
     {
-        $especializacao = Especializacao::find($id);
-        $areasAtuacao = AtuaArea::all();
-        return view('Cadastros/editarespecializacao', compact('especializacao', 'areasAtuacao'));
+        $especializacoes = Especializacao::find($id);
+        $atuaareas = AtuaArea::all();
+        return view('Cadastros/editarespecializacao', compact('especializacoes', 'atuaareas'));
     }
 
     /**

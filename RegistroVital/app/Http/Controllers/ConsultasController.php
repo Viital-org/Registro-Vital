@@ -23,7 +23,7 @@ class ConsultasController extends Controller
         Consulta::whereHas('agendamento', function ($query) use ($today) {
             $query->whereDate('data_agendamento', '<', $today);
         })->where('situacao', 1)
-        ->update(['situacao' => 3]);
+            ->update(['situacao' => 3]);
 
         // Selecionar consultas relevantes
         $consultas = Consulta::with(['agendamento.especializacao'])
