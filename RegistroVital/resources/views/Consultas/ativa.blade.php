@@ -138,9 +138,7 @@
         function imprimirPrescricao() {
             const conteudo = document.getElementById('prescricaoPrint').innerHTML;
             const janelaImpressao = window.open('', '', 'height=500,width=800');
-            janelaImpressao.document.write('<html><head><title>Prescrição Médica</title></head><body>');
             janelaImpressao.document.write(conteudo);
-            janelaImpressao.document.write('</body></html>');
             janelaImpressao.document.close();
             janelaImpressao.print();
         }
