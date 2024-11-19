@@ -144,7 +144,7 @@ Route::middleware(['auth', 'tipo_usuario:1,2', 'layout.dinamico'])->group(functi
     Route::patch('/consultas/{id}/alterar-situacao', [ConsultasController::class, 'alterarSituacao'])->name('consultas.alterarSituacao');
     Route::patch('/consultas/{id}/iniciar', [ConsultasController::class, 'iniciar'])->name('consultas.iniciar');
     Route::patch('/consultas/{id}/finalizar', [ConsultasController::class, 'finalizar'])->name('consultas.finalizar');
-    Route::post('/consultas/{id}/ativa', [ConsultasController::class, 'consultaAtiva'])->name('consultas.ativa');
+    Route::get('/consultas/{id}/ativa', [ConsultasController::class, 'consultaAtiva'])->name('consultas.ativa');
 
     // Consultas
     Route::get('/consultas', [ConsultasController::class, 'index'])->name('consultas.index');

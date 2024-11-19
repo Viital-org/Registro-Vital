@@ -133,7 +133,7 @@ class AgendamentosController extends Controller
             ->where('especializacoes_profissionais.profissional_id', $profissionalId)
             ->where('especializacoes_profissionais.area_atuacao_id', $areaAtuacaoId)
             ->where('especializacoes_profissionais.especializacao_id', $especializacaoId)
-            ->pluck('horarios_atendimento.dia_semana'); // Aqui, estamos pegando o campo 'dia_semana' diretamente da tabela 'horarios_atendimento'
+            ->pluck('horarios_atendimento.dia_semana');
 
         $diasDisponiveis = [];
         foreach ($diasAtendimento as $dia) {

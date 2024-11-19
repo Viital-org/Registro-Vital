@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#64 Funções pendentes do toastr">
+    <list default="true" id="e9dabe42-f31d-4e1e-b90a-5bc51662d140" name="Changes" comment="#0087 Visual tela de editar perfil">
+      <change beforePath="$PROJECT_DIR$/.idea/Registro-Vital.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Registro-Vital.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/Agendamentos/listaagendamentos.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/Agendamentos/listaagendamentos.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/resources/views/LayoutsPadrao/layoutpaciente.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/app/Http/Controllers/AgendamentosController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/public/startbootstrap-sb-admin-2-gh-pages/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/public/startbootstrap-sb-admin-2-gh-pages/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistroVital/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/RegistroVital/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +39,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -55,7 +55,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/RegistroVital/app/Models/Endereco.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\php\php.exe">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\PHP-8.3.4\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/../example-app/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/../example-app/vendor/composer" />
@@ -2883,6 +2883,10 @@
       <path value="$PROJECT_DIR$/RegistroVital/vendor/spatie/flare-client-php" />
       <path value="$PROJECT_DIR$/RegistroVital/vendor/laravel/breeze" />
       <path value="$PROJECT_DIR$/RegistroVital/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/RegistroVital/vendor/php-flasher/flasher" />
+      <path value="$PROJECT_DIR$/RegistroVital/vendor/php-flasher/flasher-laravel" />
+      <path value="$PROJECT_DIR$/RegistroVital/vendor/php-flasher/flasher-toastr" />
+      <path value="$PROJECT_DIR$/RegistroVital/vendor/php-flasher/flasher-toastr-laravel" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -2914,18 +2918,21 @@
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/luan_/Registro-Vital/RegistroVital/public&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Registro-Vital/RegistroVital/database/migrations&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;debugger.dataViews&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Registro-Vital\RegistroVital\database\migrations" />
+      <recent name="C:\Registro-Vital\RegistroVital\resources\views\Consultas" />
       <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\public" />
       <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\public\assets" />
       <recent name="C:\Users\luan_\Registro-Vital\RegistroVital\resources\sass" />
@@ -2959,8 +2966,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PS-242.23339.16" />
-        <option value="bundled-php-predefined-a98d8de5180a-90914f2295cb-com.jetbrains.php.sharedIndexes-PS-242.23339.16" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
+        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
       </set>
     </attachedChunks>
   </component>
@@ -2994,6 +3001,11 @@
       <workItem from="1730030575336" duration="2882000" />
       <workItem from="1730046463973" duration="596000" />
       <workItem from="1730155379655" duration="1883000" />
+      <workItem from="1731710282147" duration="30638000" />
+      <workItem from="1731755026449" duration="4179000" />
+      <workItem from="1731800575286" duration="23319000" />
+      <workItem from="1731888440225" duration="14274000" />
+      <workItem from="1731982459763" duration="2778000" />
     </task>
     <task id="LOCAL-00001" summary="Criação do arquivo base da aplicação mobile">
       <option name="closed" value="true" />
@@ -3211,7 +3223,55 @@
       <option name="project" value="LOCAL" />
       <updated>1731453191952</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="#72 Separação de agendamento e consulta, confirmações e cancelamentos de consultas, consultas iniciadas e finalizadas, compartilhamento de anotações com o médico">
+      <option name="closed" value="true" />
+      <created>1731753006161</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1731753006161</updated>
+    </task>
+    <task id="LOCAL-00029" summary="#73 Correção de Migration de relacionamento Agendamento - Consulta">
+      <option name="closed" value="true" />
+      <created>1731758253596</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1731758253596</updated>
+    </task>
+    <task id="LOCAL-00030" summary="#76 visual pagina de listagem de consulta, detalhe de consulta e listagem de especializações e cosnulta ativa">
+      <option name="closed" value="true" />
+      <created>1731807316996</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1731807316996</updated>
+    </task>
+    <task id="LOCAL-00031" summary="#0079 layout padrão de paciente com botão para abrir e fechar sidebar, inicio layout padrão medico, correção em data de finalização de meta e correção na listagem de consultas">
+      <option name="closed" value="true" />
+      <created>1731840816261</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1731840816261</updated>
+    </task>
+    <task id="LOCAL-00032" summary="#0086 Layout padronizados para os 3 tipos de usuarios">
+      <option name="closed" value="true" />
+      <created>1731894503771</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1731894503771</updated>
+    </task>
+    <task id="LOCAL-00033" summary="#0087 Visual tela de editar perfil">
+      <option name="closed" value="true" />
+      <created>1731902762066</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1731902762066</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -3229,12 +3289,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="#0006 - Modificação inicial telas" />
-    <MESSAGE value="#0007 - Modificação migration ID usuarios" />
-    <MESSAGE value="#0006 - Modificação inicial telas" />
-    <MESSAGE value="#0007 - Modificação migration ID usuarios" />
-    <MESSAGE value="#10.1 commit complementar" />
-    <MESSAGE value="#0006 - Modificação migration ID usuarios" />
     <MESSAGE value="#12- Correção do registro e do login atenticado" />
     <MESSAGE value="#14- Correção no cadastro de anotacoes" />
     <MESSAGE value="#0017 - cadastro de usuario simultaneo com tipo de usuario" />
@@ -3254,7 +3308,13 @@
     <MESSAGE value="#38 API CEP na edição dos pacientes" />
     <MESSAGE value="#39 Ajuste dos campos no banco de dados (tamanho e tipo)" />
     <MESSAGE value="#64 Funções pendentes do toastr" />
-    <option name="LAST_COMMIT_MESSAGE" value="#64 Funções pendentes do toastr" />
+    <MESSAGE value="#72 Separação de agendamento e consulta, confirmações e cancelamentos de consultas, consultas iniciadas e finalizadas, compartilhamento de anotações com o médico" />
+    <MESSAGE value="#73 Correção de Migration de relacionamento Agendamento - Consulta" />
+    <MESSAGE value="#76 visual pagina de listagem de consulta, detalhe de consulta e listagem de especializações e cosnulta ativa" />
+    <MESSAGE value="#0079 layout padrão de paciente com botão para abrir e fechar sidebar, inicio layout padrão medico, correção em data de finalização de meta e correção na listagem de consultas" />
+    <MESSAGE value="#0086 Layout padronizados para os 3 tipos de usuarios" />
+    <MESSAGE value="#0087 Visual tela de editar perfil" />
+    <option name="LAST_COMMIT_MESSAGE" value="#0087 Visual tela de editar perfil" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
