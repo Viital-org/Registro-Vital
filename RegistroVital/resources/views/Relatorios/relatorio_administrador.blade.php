@@ -50,29 +50,6 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-md-2">
-                <button id="graficoUsuariosButton" class="btn btn-secondary mb-3">Total de Usuários</button>
-                <button id="graficoTopUsuariosButton" class="btn btn-secondary mb-3">Top 5 Usuários com mais Anotações
-                </button>
-                <button id="graficoTiposAnotacoesButton" class="btn btn-secondary">Tipos de Anotações</button>
-            </div>
-
-            <div class="col-md-10">
-                <div class="graficoUsuarios">
-                    <canvas id="graficoUsuarios"></canvas>
-                </div>
-                <canvas id="graficoTopUsuarios" width="400" height="200" style="display: none;"></canvas>
-                <canvas id="graficoTiposAnotacoes" width="400" height="200" style="display: none;"></canvas>
-
-                <div class="mt-3">
-                    <button id="downloadPNG" class="btn btn-primary">Baixar Gráfico (PNG)</button>
-                    <button id="downloadPDF" class="btn btn-danger">Baixar Gráfico (PDF)</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
